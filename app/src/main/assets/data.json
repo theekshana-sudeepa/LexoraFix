@@ -1,0 +1,41 @@
+{
+  "categories": [
+    {"id": 1, "name": "Power Tools", "iconName": "ic_services", "description": "Drills, saws, sanders and more"},
+    {"id": 2, "name": "Hand Tools", "iconName": "ic_services", "description": "Hammers, screwdrivers, pliers"},
+    {"id": 3, "name": "Plumbing", "iconName": "ic_services", "description": "Pipes, fittings, fixtures"},
+    {"id": 4, "name": "Electrical", "iconName": "ic_services", "description": "Wiring, switches, breakers"},
+    {"id": 5, "name": "Painting", "iconName": "ic_services", "description": "Brushes, rollers, paint"},
+    {"id": 6, "name": "Garden Tools", "iconName": "ic_services", "description": "Mowers, trimmers, shovels"},
+    {"id": 7, "name": "Fasteners", "iconName": "ic_services", "description": "Screws, nails, bolts, anchors"},
+    {"id": 8, "name": "Safety Gear", "iconName": "ic_services", "description": "Gloves, goggles, helmets"}
+  ],
+  "products": [
+    {"id": 1, "name": "Cordless Drill 20V", "description": "Professional cordless drill with lithium-ion battery, variable speed trigger, and LED work light. Includes 2 batteries and charger.", "price": 8500.00, "imageUrl": "drill", "categoryId": 1, "stock": 25, "videoUrl": "", "featured": true},
+    {"id": 2, "name": "Circular Saw 7-1/4\"", "description": "Powerful 15-amp circular saw with laser guide, dust blower, and carbide-tipped blade. Perfect for lumber and plywood.", "price": 12500.00, "imageUrl": "saw", "categoryId": 1, "stock": 15, "videoUrl": "", "featured": true},
+    {"id": 3, "name": "Orbital Sander", "description": "Random orbit sander with variable speed control and dust collection bag. Ideal for fine finishing work.", "price": 6500.00, "imageUrl": "sander", "categoryId": 1, "stock": 20, "videoUrl": "", "featured": false},
+    {"id": 4, "name": "Impact Driver Set", "description": "High-torque impact driver with 3-speed settings and quick-release chuck. Comes with 30-piece bit set.", "price": 9800.00, "imageUrl": "impact_driver", "categoryId": 1, "stock": 18, "videoUrl": "", "featured": true},
+    {"id": 5, "name": "Hammer Claw 16oz", "description": "Forged steel head with fiberglass handle and rubber grip. Anti-vibration design for comfortable use.", "price": 1200.00, "imageUrl": "hammer", "categoryId": 2, "stock": 50, "videoUrl": "", "featured": false},
+    {"id": 6, "name": "Screwdriver Set 12pc", "description": "Professional magnetic tip screwdrivers with ergonomic handles. Includes Phillips and flathead sizes.", "price": 2500.00, "imageUrl": "screwdriver", "categoryId": 2, "stock": 40, "videoUrl": "", "featured": true},
+    {"id": 7, "name": "Adjustable Wrench Set", "description": "Chrome vanadium steel wrenches in 6\", 8\", 10\" and 12\" sizes with precision jaw mechanisms.", "price": 3200.00, "imageUrl": "wrench", "categoryId": 2, "stock": 35, "videoUrl": "", "featured": false},
+    {"id": 8, "name": "Tape Measure 25ft", "description": "Heavy-duty tape measure with nylon-coated blade, magnetic tip, and belt clip.", "price": 850.00, "imageUrl": "tape", "categoryId": 2, "stock": 60, "videoUrl": "", "featured": false},
+    {"id": 9, "name": "Pipe Wrench 14\"", "description": "Cast iron pipe wrench with hardened steel jaws. Adjustable up to 2\" pipe diameter.", "price": 2800.00, "imageUrl": "pipe_wrench", "categoryId": 3, "stock": 22, "videoUrl": "", "featured": false},
+    {"id": 10, "name": "Plumbing Snake 25ft", "description": "Flexible drain snake for clearing clogged drains. 1/4\" cable with retriever head.", "price": 3500.00, "imageUrl": "snake", "categoryId": 3, "stock": 15, "videoUrl": "", "featured": true},
+    {"id": 11, "name": "Faucet Repair Kit", "description": "Universal faucet repair kit with washers, O-rings, seats, and springs. Fits most standard faucets.", "price": 1500.00, "imageUrl": "faucet", "categoryId": 3, "stock": 45, "videoUrl": "", "featured": false},
+    {"id": 12, "name": "Wire Stripper Pro", "description": "Automatic wire stripper and cutter for 10-24 AWG. Spring-loaded with adjustable tension.", "price": 1800.00, "imageUrl": "wire_stripper", "categoryId": 4, "stock": 30, "videoUrl": "", "featured": false},
+    {"id": 13, "name": "Voltage Tester", "description": "Non-contact voltage tester with LED indicator and audible alert. Detects 50-1000V AC.", "price": 2200.00, "imageUrl": "tester", "categoryId": 4, "stock": 25, "videoUrl": "", "featured": true},
+    {"id": 14, "name": "Electrical Outlet Kit", "description": "10-pack standard electrical outlets with wall plates and mounting screws. 15A 125V rated.", "price": 3800.00, "imageUrl": "outlet", "categoryId": 4, "stock": 40, "videoUrl": "", "featured": false},
+    {"id": 15, "name": "Paint Roller Set", "description": "9\" roller frame with 3 roller covers (smooth, medium, rough nap) and extension pole.", "price": 2100.00, "imageUrl": "roller", "categoryId": 5, "stock": 35, "videoUrl": "", "featured": false},
+    {"id": 16, "name": "Paint Sprayer Electric", "description": "HVLP electric paint sprayer with adjustable spray patterns and flow control. 700W motor.", "price": 7500.00, "imageUrl": "sprayer", "categoryId": 5, "stock": 12, "videoUrl": "", "featured": true},
+    {"id": 17, "name": "Lawn Mower Electric", "description": "20\" electric push lawn mower with 13-amp motor and 7-position height adjustment.", "price": 18500.00, "imageUrl": "mower", "categoryId": 6, "stock": 8, "videoUrl": "", "featured": true},
+    {"id": 18, "name": "Garden Shovel", "description": "D-handle garden shovel with tempered steel blade and fiberglass shaft.", "price": 1800.00, "imageUrl": "shovel", "categoryId": 6, "stock": 30, "videoUrl": "", "featured": false},
+    {"id": 19, "name": "Screw Assortment Box", "description": "500-piece wood screw assortment in organized storage case. Phillips head, zinc plated.", "price": 2400.00, "imageUrl": "screws", "categoryId": 7, "stock": 55, "videoUrl": "", "featured": false},
+    {"id": 20, "name": "Safety Glasses Set", "description": "3-pack ANSI Z87.1 rated safety glasses with anti-fog and scratch-resistant lenses.", "price": 1600.00, "imageUrl": "glasses", "categoryId": 8, "stock": 70, "videoUrl": "", "featured": false}
+  ],
+  "serviceCenters": [
+    {"id": 1, "name": "LexoraFix Main Hub - Colombo", "address": "123 Galle Road, Colombo 03", "phone": "+94112345678", "latitude": 6.9271, "longitude": 79.8612, "description": "Main service center with full tool repair and installation services"},
+    {"id": 2, "name": "LexoraFix Kandy Center", "address": "45 Peradeniya Road, Kandy", "phone": "+94812345678", "latitude": 7.2906, "longitude": 80.6337, "description": "Service center covering central province"},
+    {"id": 3, "name": "LexoraFix Galle Branch", "address": "78 Main Street, Galle Fort", "phone": "+94912345678", "latitude": 6.0324, "longitude": 80.2170, "description": "Southern province service branch"},
+    {"id": 4, "name": "LexoraFix Negombo", "address": "12 Lewis Place, Negombo", "phone": "+94312345678", "latitude": 7.2083, "longitude": 79.8358, "description": "Western coast service point"},
+    {"id": 5, "name": "LexoraFix Jaffna", "address": "56 Hospital Road, Jaffna", "phone": "+94212345678", "latitude": 9.6615, "longitude": 80.0255, "description": "Northern province service center"}
+  ]
+}

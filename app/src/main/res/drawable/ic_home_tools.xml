@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Home Tools & Services icon for LexoraFix splash screen -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="130dp"
+    android:height="130dp"
+    android:viewportWidth="130"
+    android:viewportHeight="130">
+
+    <!-- House outline (white) -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M65,18 L110,54 L105,54 L105,108 L72,108 L72,82 L58,82 L58,108 L25,108 L25,54 L20,54 Z" />
+
+    <!-- Roof highlight (orange) -->
+    <path
+        android:fillColor="#FFFF6B35"
+        android:pathData="M65,18 L110,54 L100,54 L65,28 L30,54 L20,54 Z" />
+
+    <!-- Door (orange accent) -->
+    <path
+        android:fillColor="#FFFF6B35"
+        android:pathData="M58,82 L72,82 L72,108 L58,108 Z" />
+
+    <!-- Door knob -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M69,96 m-2.5,0 a2.5,2.5 0 1,0 5,0 a2.5,2.5 0 1,0 -5,0" />
+
+    <!-- Left window -->
+    <path
+        android:fillColor="#FFFF6B35"
+        android:pathData="M34,62 L50,62 L50,78 L34,78 Z" />
+    <!-- Left window cross (white) -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M41,62 L43,62 L43,78 L41,78 Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M34,69 L50,69 L50,71 L34,71 Z" />
+
+    <!-- Right window -->
+    <path
+        android:fillColor="#FFFF6B35"
+        android:pathData="M80,62 L96,62 L96,78 L80,78 Z" />
+    <!-- Right window cross (white) -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M87,62 L89,62 L89,78 L87,78 Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M80,69 L96,69 L96,71 L80,71 Z" />
+
+    <!-- Wrench (bottom right, orange) -->
+    <path
+        android:fillColor="#FFFF6B35"
+        android:pathData="M96,90 Q101,86 106,89 Q110,93 107,98
+            L103,94 L99,98 L95,94
+            Q92,90 96,90 Z" />
+    <path
+        android:fillColor="#FFFF6B35"
+        android:pathData="M99,97 L103,93 L107,97 L108,100 L100,108 L96,104 Z" />
+
+    <!-- Hammer (bottom left, orange) -->
+    <path
+        android:fillColor="#FFFF6B35"
+        android:pathData="M24,90 L32,90 L32,98 L24,98 Z" />
+    <path
+        android:fillColor="#FFFF6B35"
+        android:pathData="M30,96 L36,96 L36,100 L30,100 Z" />
+    <!-- Hammer handle -->
+    <path
+        android:fillColor="#FFFF6B35"
+        android:pathData="M33,99 L40,106 L38,108 L31,101 Z" />
+
+</vector>

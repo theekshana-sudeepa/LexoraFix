@@ -1,0 +1,140 @@
+<resources>
+    <string name="app_name">LexoraFix</string>
+    <string name="tagline">Home Tools &amp; Services</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_categories">Categories</string>
+    <string name="nav_cart">Cart</string>
+    <string name="nav_services">Services</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Auth -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="logout">Log out</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="dont_have_account">Don\'t have an account? Register</string>
+    <string name="already_have_account">Already have an account? Login</string>
+
+    <!-- Products -->
+    <string name="featured_products">Featured Products</string>
+    <string name="all_categories">All Categories</string>
+    <string name="product_details">Product Details</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="in_stock">In Stock</string>
+    <string name="out_of_stock">Out of Stock</string>
+    <string name="price_format">LKR %s</string>
+    <string name="search_products">Search products…</string>
+    <string name="watch_demo">Watch Demo Video</string>
+    <string name="description">Description</string>
+    <string name="play_demo">Play Demo Video</string>
+
+    <!-- Cart -->
+    <string name="my_cart">My Cart</string>
+    <string name="cart_empty">Your cart is empty</string>
+    <string name="cart_empty_desc">Browse our products and add items to your cart</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="delivery_fee">Delivery Fee</string>
+    <string name="total">Total</string>
+    <string name="checkout">Checkout</string>
+    <string name="remove">Remove</string>
+    <string name="browse_products">Browse Products</string>
+
+    <!-- Checkout -->
+    <string name="delivery_address">Delivery Address</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="place_order">Place Order</string>
+    <string name="items_count">%d items</string>
+
+    <!-- Order -->
+    <string name="order_confirmed">Order Confirmed!</string>
+    <string name="order_id">Order ID: #%s</string>
+    <string name="order_success_message">Your order has been placed successfully. You will receive a notification with updates.</string>
+    <string name="continue_shopping">Continue Shopping</string>
+    <string name="book_service">Book a Service</string>
+    <string name="order_history">Order History</string>
+
+    <!-- Services -->
+    <string name="our_services">Our Services</string>
+    <string name="installation_service">Installation Service</string>
+    <string name="repair_service">Repair Service</string>
+    <string name="maintenance_service">Maintenance Service</string>
+    <string name="select_service_type">Select Service Type</string>
+    <string name="select_date">Select Date</string>
+    <string name="select_time">Select Time</string>
+    <string name="booking_notes">Booking Notes (Optional)</string>
+    <string name="confirm_booking">Confirm Booking</string>
+    <string name="booking_confirmed">Booking Confirmed!</string>
+    <string name="booking_success_message">Your service booking has been confirmed. We will notify you before the scheduled date.</string>
+    <string name="preferred_date">Preferred Date</string>
+    <string name="preferred_time">Preferred Time</string>
+    <string name="additional_notes">Additional Notes</string>
+    <string name="call_center">Call Service Center</string>
+
+    <!-- Profile -->
+    <string name="my_profile">My Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
+    <string name="my_orders">My Orders</string>
+    <string name="my_bookings">My Bookings</string>
+
+    <!-- Map -->
+    <string name="service_centers">Service Centers</string>
+    <string name="nearby_centers">Nearby Service Centers</string>
+    <string name="get_directions">Get Directions</string>
+    <string name="call_provider">Call Provider</string>
+    <string name="distance_format">%.1f km away</string>
+
+    <!-- Notifications -->
+    <string name="channel_orders">Order Updates</string>
+    <string name="channel_bookings">Booking Updates</string>
+    <string name="channel_reminders">Reminders</string>
+    <string name="channel_promotions">Promotions</string>
+
+    <!-- General -->
+    <string name="loading">Loading…</string>
+    <string name="error_occurred">An error occurred. Please try again.</string>
+    <string name="no_internet">No internet connection</string>
+    <string name="retry">Retry</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="field_required">This field is required</string>
+    <string name="invalid_email">Invalid email address</string>
+    <string name="password_too_short">Password must be at least 6 characters</string>
+    <string name="passwords_dont_match">Passwords don\'t match</string>
+    <string name="welcome_back">Welcome back, %s!</string>
+    <string name="shake_hint">Shake your device to quickly open cart!</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_product_image">Product image</string>
+    <string name="cd_category_icon">Category icon</string>
+    <string name="cd_back">Go back</string>
+    <string name="cd_cart">Shopping cart</string>
+    <string name="cd_search">Search</string>
+    <string name="cd_logo">LexoraFix logo</string>
+
+    <!-- Forgot Password -->
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="enter_email_to_reset">Enter your email address and we\'ll send you a link to reset your password.</string>
+    <string name="send_reset_link">Send Reset Link</string>
+    <string name="reset_email_sent">Password reset email sent! Check your inbox.</string>
+
+    <!-- Google Sign-In -->
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="or_divider">OR</string>
+    <string name="google_sign_in_failed">Google sign-in failed. Please try again.</string>
+    <!-- Replace with your actual web client ID from Firebase Console > Authentication > Sign-in method > Google -->
+    <string name="default_web_client_id">YOUR_WEB_CLIENT_ID_HERE</string>
+
+    <!-- Order Status Updates -->
+    <string name="order_status_update">Order Status Update</string>
+    <string name="order_status_changed">Your order #%1$s is now %2$s</string>
+</resources>

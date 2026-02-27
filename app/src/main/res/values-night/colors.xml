@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ========== Night Mode Color Overrides ========== -->
+
+    <!-- Primary — Lighter Coral for dark backgrounds -->
+    <color name="colorPrimary">#FF8F65</color>
+    <color name="colorPrimaryDark">#1A1A2E</color>
+    <color name="colorPrimaryLight">#FFB088</color>
+    <color name="colorPrimaryVariant">#FF6B35</color>
+
+    <!-- Secondary — Brighter Teal -->
+    <color name="colorSecondary">#4DDDC4</color>
+    <color name="colorSecondaryDark">#00C9A7</color>
+    <color name="colorSecondaryLight">#7AEADB</color>
+    <color name="colorSecondaryVariant">#00C9A7</color>
+
+    <!-- Accent -->
+    <color name="colorAccent">#FF8F65</color>
+
+    <!-- Surface & Background — True Dark -->
+    <color name="colorBackground">#121212</color>
+    <color name="colorSurface">#1E1E1E</color>
+    <color name="colorSurfaceVariant">#2A2A2A</color>
+    <color name="colorOnSurface">#E0E0E0</color>
+
+    <!-- Text Colors — Light on dark -->
+    <color name="textPrimary">#E8E8E8</color>
+    <color name="textSecondary">#A0A0A0</color>
+    <color name="textHint">#6B6B6B</color>
+    <color name="textOnPrimary">#FFFFFF</color>
+    <color name="textOnSecondary">#000000</color>
+
+    <!-- Status Colors — Slightly brighter for dark bg -->
+    <color name="colorSuccess">#34D399</color>
+    <color name="colorWarning">#FBBF24</color>
+    <color name="colorError">#F87171</color>
+    <color name="colorInfo">#60A5FA</color>
+    <color name="colorDivider">#333333</color>
+    <color name="splashBackground">#1A1A2E</color>
+
+    <!-- Gradient — Subtle on dark -->
+    <color name="gradientStart">#FF6B35</color>
+    <color name="gradientCenter">#E55A2B</color>
+    <color name="gradientEnd">#CC4A20</color>
+
+    <color name="gradientTealStart">#00A88C</color>
+    <color name="gradientTealEnd">#00C9A7</color>
+
+    <color name="gradientDarkStart">#0D0D1A</color>
+    <color name="gradientDarkEnd">#1A1A2E</color>
+
+    <!-- Card & Elevation — Dark cards -->
+    <color name="cardBackground">#1E1E1E</color>
+    <color name="cardStroke">#333333</color>
+    <color name="divider">#333333</color>
+    <color name="ripple">#33FF8F65</color>
+
+    <!-- Standard -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Status Badge Colors — Brighter for dark bg -->
+    <color name="statusConfirmed">#60A5FA</color>
+    <color name="statusProcessing">#FBBF24</color>
+    <color name="statusShipped">#A78BFA</color>
+    <color name="statusDelivered">#34D399</color>
+    <color name="statusCancelled">#F87171</color>
+
+    <!-- Star -->
+    <color name="starActive">#FBBF24</color>
+    <color name="starInactive">#404040</color>
+
+    <!-- Shimmer -->
+    <color name="shimmerBase">#2A2A2A</color>
+    <color name="shimmerHighlight">#333333</color>
+</resources>

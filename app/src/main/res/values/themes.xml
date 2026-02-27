@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- ========== Base Theme ========== -->
+    <style name="Theme.LexoraFix" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Global Font -->
+        <item name="android:fontFamily">@font/poppins</item>
+
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/textOnPrimary</item>
+
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/textOnSecondary</item>
+
+        <!-- Background & Surface -->
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorError">@color/colorError</item>
+
+        <!-- System Bars -->
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorSurface</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">true</item>
+
+        <!-- Window Transitions -->
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowEnterTransition">@android:transition/fade</item>
+        <item name="android:windowExitTransition">@android:transition/fade</item>
+
+        <!-- Default text appearance -->
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+        <item name="android:textColorHint">@color/textHint</item>
+
+        <!-- Ripple -->
+        <item name="colorControlHighlight">@color/ripple</item>
+    </style>
+
+    <!-- ========== Splash Theme ========== -->
+    <style name="Theme.LexoraFix.Splash" parent="Theme.LexoraFix">
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
+    </style>
+
+    <!-- ========== UCrop Theme ========== -->
+    <style name="Theme.UCrop" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorSecondary</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <!-- ========== Button Styles ========== -->
+    <style name="LexoraButtonPrimary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:minHeight">54dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="elevation">4dp</item>
+        <item name="rippleColor">@color/ripple</item>
+    </style>
+
+    <style name="LexoraButtonSecondary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorSecondary</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:minHeight">54dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="elevation">2dp</item>
+    </style>
+
+    <style name="LexoraButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:minHeight">54dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="rippleColor">@color/ripple</item>
+    </style>
+
+    <style name="LexoraButtonText" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="rippleColor">@color/ripple</item>
+    </style>
+
+    <!-- ========== Card Style ========== -->
+    <style name="LexoraCardStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/cardBackground</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="strokeColor">@color/cardStroke</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="contentPadding">0dp</item>
+    </style>
+
+    <style name="LexoraCardStyleElevated" parent="LexoraCardStyle">
+        <item name="cardElevation">6dp</item>
+    </style>
+
+    <!-- ========== TextInput Style ========== -->
+    <style name="LexoraTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
+        <item name="boxBackgroundColor">@color/colorSurface</item>
+    </style>
+
+    <!-- ========== Bottom Navigation ========== -->
+    <style name="LexoraBottomNavStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="itemIconTint">@color/nav_item_color_state</item>
+        <item name="itemTextColor">@color/nav_item_color_state</item>
+        <item name="elevation">4dp</item>
+        <item name="itemRippleColor">@color/ripple</item>
+        <!-- Material 3 Active Indicator (Pill Shape) -->
+        <item name="itemActiveIndicatorStyle">@style/LexoraActiveIndicator</item>
+        <item name="labelVisibilityMode">unlabeled</item>
+    </style>
+
+    <style name="LexoraActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#1AFF6B35</item> <!-- Translucent Primary -->
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Lexora.Pill</item>
+    </style>
+
+    <style name="ShapeAppearance.Lexora.Pill" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- ========== Toolbar ========== -->
+    <style name="LexoraToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="subtitleTextColor">@color/white</item>
+    </style>
+
+    <!-- ========== Chip Style ========== -->
+    <style name="LexoraChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipCornerRadius">20dp</item>
+        <item name="chipBackgroundColor">@color/colorSurfaceVariant</item>
+        <item name="chipStrokeColor">@color/cardStroke</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="checkedIconEnabled">false</item>
+    </style>
+
+    <!-- ========== Text Styles ========== -->
+    <style name="TextHeadline" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextSubhead" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <style name="TextBody" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="TextCaption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <!-- ========== Dialog Style ========== -->
+    <style name="LexoraDialogStyle" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="shapeAppearanceOverlay">@style/LexoraDialogShape</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="LexoraDialogShape" parent="">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Alias styles for layouts -->
+    <style name="LexoraTextInput" parent="LexoraTextInputStyle" />
+    <style name="LexoraButton" parent="LexoraButtonPrimary" />
+
+    <!-- ========== Bottom Sheet Dialog Theme ========== -->
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
+    </style>
+
+</resources>

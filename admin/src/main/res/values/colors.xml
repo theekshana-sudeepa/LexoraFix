@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Admin Premium Dark Palette -->
+    <color name="adminPrimary">#6C63FF</color>
+    <color name="adminPrimaryDark">#5A52E0</color>
+    <color name="adminPrimaryLight">#8B85FF</color>
+    <color name="adminSecondary">#00C9A7</color>
+    <color name="adminAccent">#FF6B9D</color>
+
+    <color name="adminBackground">#0F0F1A</color>
+    <color name="adminSurface">#1A1A2E</color>
+    <color name="adminSurfaceLight">#242443</color>
+    <color name="adminCardBackground">#1E1E35</color>
+
+    <color name="adminTextPrimary">#E8E8F0</color>
+    <color name="adminTextSecondary">#9CA3AF</color>
+    <color name="adminTextHint">#6B7280</color>
+
+    <color name="adminDivider">#2D2D4A</color>
+    <color name="adminRipple">#1A6C63FF</color>
+
+    <color name="adminSuccess">#10B981</color>
+    <color name="adminWarning">#F59E0B</color>
+    <color name="adminError">#EF4444</color>
+    <color name="adminInfo">#3B82F6</color>
+
+    <color name="adminGradientStart">#6C63FF</color>
+    <color name="adminGradientEnd">#A78BFA</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

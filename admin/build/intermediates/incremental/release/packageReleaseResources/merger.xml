@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3" xmlns:ns1="http://schemas.android.com/tools"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~:!&lt;dir>navigation"><source path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res"><file name="ic_admin_logo_foreground" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/drawable/ic_admin_logo_foreground.xml" qualifiers="" type="drawable"/><file name="gradient_admin_toolbar" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/drawable/gradient_admin_toolbar.xml" qualifiers="" type="drawable"/><file name="bg_status_badge_admin" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/drawable/bg_status_badge_admin.xml" qualifiers="" type="drawable"/><file name="ic_admin_launcher_background" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/drawable/ic_admin_launcher_background.xml" qualifiers="" type="drawable"/><file name="item_admin_product" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_product.xml" qualifiers="" type="layout"/><file name="item_admin_order" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_order.xml" qualifiers="" type="layout"/><file name="item_admin_booking" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_booking.xml" qualifiers="" type="layout"/><file name="activity_add_edit_category" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_category.xml" qualifiers="" type="layout"/><file name="item_admin_category" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_category.xml" qualifiers="" type="layout"/><file name="activity_order_detail" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_order_detail.xml" qualifiers="" type="layout"/><file name="activity_admin_dashboard" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml" qualifiers="" type="layout"/><file name="item_admin_user" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_user.xml" qualifiers="" type="layout"/><file name="activity_admin_product_reviews" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_product_reviews.xml" qualifiers="" type="layout"/><file name="item_admin_review" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_review.xml" qualifiers="" type="layout"/><file name="item_order_detail_product" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_order_detail_product.xml" qualifiers="" type="layout"/><file name="activity_add_edit_product" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml" qualifiers="" type="layout"/><file name="activity_admin_login" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml" qualifiers="" type="layout"/><file name="activity_manage_list" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_manage_list.xml" qualifiers="" type="layout"/><file path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/colors.xml" qualifiers=""><color name="adminPrimary">#6C63FF</color><color name="adminPrimaryDark">#5A52E0</color><color name="adminPrimaryLight">#8B85FF</color><color name="adminSecondary">#00C9A7</color><color name="adminAccent">#FF6B9D</color><color name="adminBackground">#0F0F1A</color><color name="adminSurface">#1A1A2E</color><color name="adminSurfaceLight">#242443</color><color name="adminCardBackground">#1E1E35</color><color name="adminTextPrimary">#E8E8F0</color><color name="adminTextSecondary">#9CA3AF</color><color name="adminTextHint">#6B7280</color><color name="adminDivider">#2D2D4A</color><color name="adminRipple">#1A6C63FF</color><color name="adminSuccess">#10B981</color><color name="adminWarning">#F59E0B</color><color name="adminError">#EF4444</color><color name="adminInfo">#3B82F6</color><color name="adminGradientStart">#6C63FF</color><color name="adminGradientEnd">#A78BFA</color><color name="white">#FFFFFF</color><color name="black">#000000</color></file><file path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/font_certs.xml" qualifiers=""><array name="com_google_android_gms_fonts_certs">
+        <item>@array/com_google_android_gms_fonts_certs_dev</item>
+        <item>@array/com_google_android_gms_fonts_certs_prod</item>
+    </array><string-array name="com_google_android_gms_fonts_certs_dev">
+        <item>
+            +ARWXfTvMLKwSRCMPWeEGBYAOQcBAAwgQzAMBgNVHRMEBTADAQH/MEQG
+            CWCGSAGG+EIBAQQ3BDVQcm9kdWN0aW9uIEdvb2dsZSBwb2JvcyBpbnN0YW5jZXMgZm9yIGFuZHJv
+            aWQtd2Vla2x5LXBvcnRhdHkxKzApBgNVHQ8EIDAeCwRzaWduIAebhQoZ2X12S9I0l0ZJ/aYIHAHj
+            W1532rZ7kF/1fB2gEAAAAEABAMGA1UdJwEB/wQFMAMBAf8wEwYDVR0lBAwwCgYIKwYBBQUHAwMw
+            ewYIKwYBBQUHAQEEbzBtMCoGCCsGAQUFBzABhh5odHRwOi8veS5nLmNvL2NybHMvcG9ib3NpbnN0
+            YW5jZTA/BggrBgEFBQcwAoYzaHR0cDovL3VzZXJzLmduZXQuZ29vZ2xlLmNvbS9wdWJsaWNJbnN0
+            YW5jZUNlcnQuY3J0MB0GA1UdDgQWBBS+8Lg1/ZpXf+o4R3J9f14O7zFf5TAfBgNVHSMEGDAWgBR4
+            uKxO0z5R5b8rM2f534JtI+/zUTANBgkqhkiG9w0BAQsFAAOCAgEAzG0gS/qKkLgU6Zg8Cg8Q3S9E
+            qGgI80xG+mK7v43f7Z7b7F04D36/D3nZ6xT4M/vE0O8bX9F5D6X8/s+H8wI8hL4O4J+E+P54L/G8
+            Z6YjP7H2wF70f0J7o3w03yN1Q2/lW3aH8c7yN/4/WJ0d/+D273K0aE/+yZ8vzv+Y9U4D957O/l9X
+            EaE/+E8Z8M/x1gN9h3V5T/N8W4o/+Z4B0O/sD34o9bK/tT8pM/+x/+2T2T/++R3oO4G+z8M92x37
+            /l+P7Z2z0dO/+x4fR9Z5R+J6F2J+h54j6Q9Y//l7T3o7j1T8Q8H03/j4PzG+x+Y+g/l8o9P5Z/l3
+            B0Y+7E5gP9g6R65M/X0w51O3tO942U03R0a6T6/V2w55h/F+q2j26g3y7O9Z7P++6+R+T5c++N/w
+            H9q5u/k+p/6P+R++w+M4C3v+0K5x+6J9t/p+L/Z9j2c0W9o/C/H+U2g8C9c+P2n0R5h7R1e/P9x8
+            T6h9o++F/I6K8G/k2C+o/z2s4S9Y0w0m+u/M/U/X7c0J7d5Z6F7P8P2S5n0v/u+b0D9V4oR9v8I/
+            Z/e0O/O8P0Z//s2B4P0P/0W4Y4b/v0F+L4e8e//w4p6v+L0D
+        </item>
+    </string-array><string-array name="com_google_android_gms_fonts_certs_prod">
+        <item>
+            +ARWXfTvMLKwSRCMPWeEGBYAOQcBAAwgQzAMBgNVHRMEBTADAQH/MEQG
+            CWCGSAGG+EIBAQQ3BDVQcm9kdWN0aW9uIEdvb2dsZSBwb2JvcyBpbnN0YW5jZXMgZm9yIGFuZHJv
+            aWQtd2Vla2x5LXBvcnRhdHkxKzApBgNVHQ8EIDAeCwRzaWduIAebhQoZ2X12S9I0l0ZJ/aYIHAHj
+            W1532rZ7kF/1fB2gEAAAAEABAMGA1UdJwEB/wQFMAMBAf8wEwYDVR0lBAwwCgYIKwYBBQUHAwMw
+            ewYIKwYBBQUHAQEEbzBtMCoGCCsGAQUFBzABhh5odHRwOi8veS5nLmNvL2NybHMvcG9ib3NpbnN0
+            YW5jZTA/BggrBgEFBQcwAoYzaHR0cDovL3VzZXJzLmduZXQuZ29vZ2xlLmNvbS9wdWJsaWNJbnN0
+            YW5jZUNlcnQuY3J0MB0GA1UdDgQWBBS+8Lg1/ZpXf+o4R3J9f14O7zFf5TAfBgNVHSMEGDAWgBR4
+            uKxO0z5R5b8rM2f534JtI+/zUTANBgkqhkiG9w0BAQsFAAOCAgEAzG0gS/qKkLgU6Zg8Cg8Q3S9E
+            qGgI80xG+mK7v43f7Z7b7F04D36/D3nZ6xT4M/vE0O8bX9F5D6X8/s+H8wI8hL4O4J+E+P54L/G8
+            Z6YjP7H2wF70f0J7o3w03yN1Q2/lW3aH8c7yN/4/WJ0d/+D273K0aE/+yZ8vzv+Y9U4D957O/l9X
+            EaE/+E8Z8M/x1gN9h3V5T/N8W4o/+Z4B0O/sD34o9bK/tT8pM/+x/+2T2T/++R3oO4G+z8M92x37
+            /l+P7Z2z0dO/+x4fR9Z5R+J6F2J+h54j6Q9Y//l7T3o7j1T8Q8H03/j4PzG+x+Y+g/l8o9P5Z/l3
+            B0Y+7E5gP9g6R65M/X0w51O3tO942U03R0a6T6/V2w55h/F+q2j26g3y7O9Z7P++6+R+T5c++N/w
+            H9q5u/k+p/6P+R++w+M4C3v+0K5x+6J9t/p+L/Z9j2c0W9o/C/H+U2g8C9c+P2n0R5h7R1e/P9x8
+            T6h9o++F/I6K8G/k2C+o/z2s4S9Y0w0m+u/M/U/X7c0J7d5Z6F7P8P2S5n0v/u+b0D9V4oR9v8I/
+            Z/e0O/O8P0Z//s2B4P0P/0W4Y4b/v0F+L4e8e//w4p6v+L0D
+        </item>
+    </string-array></file><file path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/themes.xml" qualifiers=""><style name="Theme.LexoraAdmin" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        <item name="android:fontFamily">@font/poppins</item>
+
+        <item name="colorPrimary">@color/adminPrimary</item>
+        <item name="colorPrimaryVariant">@color/adminPrimaryDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/adminSecondary</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:colorBackground">@color/adminBackground</item>
+        <item name="colorSurface">@color/adminSurface</item>
+        <item name="colorOnSurface">@color/adminTextPrimary</item>
+        <item name="colorError">@color/adminError</item>
+        <item name="android:statusBarColor">@color/adminBackground</item>
+        <item name="android:navigationBarColor">@color/adminSurface</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" ns1:targetApi="O_MR1">false</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:textColorPrimary">@color/adminTextPrimary</item>
+        <item name="android:textColorSecondary">@color/adminTextSecondary</item>
+        <item name="android:textColorHint">@color/adminTextHint</item>
+        <item name="colorControlHighlight">@color/adminRipple</item>
+    </style><style name="AdminButtonPrimary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/adminPrimary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:minHeight">54dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style><style name="AdminButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/adminPrimary</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="strokeColor">@color/adminPrimary</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:minHeight">54dp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style><style name="AdminCardStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/adminCardBackground</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/adminDivider</item>
+        <item name="strokeWidth">1dp</item>
+    </style><style name="AdminTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxStrokeColor">@color/adminPrimary</item>
+        <item name="hintTextColor">@color/adminPrimary</item>
+        <item name="boxBackgroundColor">@color/adminSurfaceLight</item>
+    </style></file><file path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/strings.xml" qualifiers=""><string name="app_name">LexoraFix Admin</string></file><file name="poppins" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/font/poppins.xml" qualifiers="" type="font"/><file name="ic_launcher" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" qualifiers="anydpi-v26" type="mipmap"/><file name="ic_launcher_round" path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" qualifiers="anydpi-v26" type="mipmap"/></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="release$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/release/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="release" generated-set="release$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~:!&lt;dir>navigation"><source path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/release/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build/generated/res/resValues/release"/><source path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build/generated/res/processReleaseGoogleServices"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~:!&lt;dir>navigation"><source path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build/generated/res/resValues/release"/><source path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build/generated/res/processReleaseGoogleServices"><file path="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build/generated/res/processReleaseGoogleServices/values/values.xml" qualifiers=""><string name="default_web_client_id" translatable="false">32443902058-078t35s4ft4cg3pkmn3e6es496s891v4.apps.googleusercontent.com</string><string name="gcm_defaultSenderId" translatable="false">32443902058</string><string name="google_api_key" translatable="false">AIzaSyCbfY3oy03eQ3Pl8ildWJ-qTw0Lfl6D4xg</string><string name="google_app_id" translatable="false">1:32443902058:android:a653a6442635efc3e44213</string><string name="google_crash_reporting_api_key" translatable="false">AIzaSyCbfY3oy03eQ3Pl8ildWJ-qTw0Lfl6D4xg</string><string name="google_storage_bucket" translatable="false">lexorafix.firebasestorage.app</string><string name="project_id" translatable="false">lexorafix</string></file></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="res-processReleaseGoogleServices$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"/><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="res-processReleaseGoogleServices" generated-set="res-processReleaseGoogleServices$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~:!&lt;dir>navigation"/><mergedItems/></merger>
