@@ -204,7 +204,7 @@ public class HomeFragment extends Fragment {
                 });
 
         // Search
-        TextInputEditText etSearch = view.findViewById(R.id.et_search);
+        android.widget.EditText etSearch = view.findViewById(R.id.et_search);
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

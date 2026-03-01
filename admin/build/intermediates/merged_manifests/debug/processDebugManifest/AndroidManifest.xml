@@ -76,6 +76,9 @@
         <activity
             android:name="com.lexoratech.lexorafix.admin.activities.AdminProductReviewsActivity"
             android:exported="false" />
+        <activity
+            android:name="com.lexoratech.lexorafix.admin.activities.AdminSettingsActivity"
+            android:exported="false" />
 
         <service
             android:name="com.lexoratech.lexorafix.admin.services.AdminOrderListenerService"

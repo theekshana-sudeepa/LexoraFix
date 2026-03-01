@@ -72,4 +72,19 @@
         <item name="hintTextColor">@color/adminPrimary</item>
         <item name="boxBackgroundColor">@color/adminSurfaceLight</item>
     </style>
+
+    <!-- ========== Admin Navigation Drawer Style ========== -->
+    <style name="AdminNavDrawerStyle" parent="Widget.MaterialComponents.NavigationView">
+        <item name="android:background">#1E293B</item>
+        <item name="itemTextColor">#CBD5E1</item>
+        <item name="itemIconTint">#CBD5E1</item>
+        <item name="itemShapeFillColor">@color/admin_nav_item_bg</item>
+        <item name="itemShapeAppearanceOverlay">@style/AdminNavDrawerShape</item>
+    </style>
+
+    <style name="AdminNavDrawerShape" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
 </resources>

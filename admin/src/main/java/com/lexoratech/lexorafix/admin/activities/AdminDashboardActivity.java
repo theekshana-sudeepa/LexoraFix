@@ -8,9 +8,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
+import android.view.MenuItem;
+import android.os.Handler;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -21,7 +28,8 @@ import com.lexoratech.lexorafix.admin.services.AdminOrderListenerService;
 
 import java.util.Locale;
 
-public class AdminDashboardActivity extends AppCompatActivity {
+public class AdminDashboardActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "AdminDashboard";
     private static final int NOTIFICATION_PERMISSION_REQUEST = 200;
@@ -31,6 +39,9 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
     private ListenerRegistration ordersListener;
     private ListenerRegistration bookingsListener;
+
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +55,32 @@ public class AdminDashboardActivity extends AppCompatActivity {
         tvTotalCategories = findViewById(R.id.tv_total_categories);
         tvTotalRevenue = findViewById(R.id.tv_total_revenue);
         tvLowStock = findViewById(R.id.tv_low_stock);
+
+        // Drawer Setup
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view_admin);
+
+        if (navigationView != null) {
+            navigationView.setNavigationItemSelectedListener(this);
+            // Setup header email
+            android.view.View headerView = navigationView.getHeaderView(0);
+            if (headerView != null) {
+                TextView tvHeaderEmail = headerView.findViewById(R.id.tv_header_email);
+                if (tvHeaderEmail != null && FirebaseAuth.getInstance().getCurrentUser() != null) {
+                    tvHeaderEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                }
+            }
+        }
+
+        // Open Drawer on Menu Icon Click
+        android.view.View btnMenu = findViewById(R.id.btn_menu);
+        if (btnMenu != null) {
+            btnMenu.setOnClickListener(v -> {
+                if (drawerLayout != null) {
+                    drawerLayout.openDrawer(GravityCompat.START);
+                }
+            });
+        }
 
         // Card click navigation (stat cards)
         findViewById(R.id.card_users).setOnClickListener(v -> {
@@ -306,5 +343,56 @@ public class AdminDashboardActivity extends AppCompatActivity {
                     Log.w(TAG, "Categories count failed: " + e.getMessage());
                     tvTotalCategories.setText("--");
                 });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Close drawer first
+        if (drawerLayout != null) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+
+        int id = item.getItemId();
+
+        // Delay to allow drawer to close smoothly before launching new activity
+        new Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+            if (id == R.id.nav_dashboard) {
+                // Already on dashboard
+            } else if (id == R.id.nav_users) {
+                startActivity(new Intent(this, ManageUsersActivity.class));
+            } else if (id == R.id.nav_products) {
+                startActivity(new Intent(this, ManageProductsActivity.class));
+            } else if (id == R.id.nav_categories) {
+                startActivity(new Intent(this, ManageCategoriesActivity.class));
+            } else if (id == R.id.nav_orders) {
+                startActivity(new Intent(this, ManageOrdersActivity.class));
+            } else if (id == R.id.nav_bookings) {
+                startActivity(new Intent(this, ManageBookingsActivity.class));
+            } else if (id == R.id.nav_settings) {
+                startActivity(new Intent(this, AdminSettingsActivity.class));
+            } else if (id == R.id.nav_migrate) {
+                migrateMockDataToFirestore();
+            } else if (id == R.id.nav_logout) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(this, AdminLoginActivity.class));
+                finish();
+            }
+
+            // Apply fade transition
+            if (id != R.id.nav_dashboard && id != R.id.nav_migrate) {
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        }, 250);
+
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout != null && drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

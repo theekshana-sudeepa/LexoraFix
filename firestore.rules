@@ -89,5 +89,11 @@ service cloud.firestore {
     match /{path=**}/orders/{orderId} {
       allow read: if isAdmin();
     }
+
+    // ----- System Settings -----
+    match /system/{document=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
   }
 }

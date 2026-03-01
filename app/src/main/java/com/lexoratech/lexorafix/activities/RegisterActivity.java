@@ -97,7 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 setLoading(false);
                 Log.w(TAG, "Google sign-up failed", e);
-                Toast.makeText(this, "Google sign-up failed. Please try again.",
+                Toast.makeText(this, "Google Sign-Up failed. Please try again.",
                         Toast.LENGTH_SHORT).show();
             }
         }
@@ -111,7 +111,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String uid = FirebaseAuthHelper.getInstance().getCurrentUid();
                 if (uid == null) {
                     setLoading(false);
-                    Toast.makeText(RegisterActivity.this, "Registration error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Registration failed. Unable to verify user context.",
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -215,7 +216,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String uid = FirebaseAuthHelper.getInstance().getCurrentUid();
                 if (uid == null) {
                     setLoading(false);
-                    Toast.makeText(RegisterActivity.this, "Registration error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Registration failed. Please try again.", Toast.LENGTH_SHORT)
+                            .show();
                     return;
                 }
 
@@ -235,7 +237,8 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onError(String message) {
                         Toast.makeText(RegisterActivity.this,
-                                "Account created but profile save failed: " + message, Toast.LENGTH_LONG).show();
+                                "Account created, but profile save failed. Please contact support.", Toast.LENGTH_LONG)
+                                .show();
                         showVerificationDialog();
                     }
                 });
@@ -277,7 +280,7 @@ public class RegisterActivity extends AppCompatActivity {
                 name != null ? name : "",
                 email != null ? email : "");
 
-        Toast.makeText(RegisterActivity.this, "Registration successful! 🎉", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RegisterActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

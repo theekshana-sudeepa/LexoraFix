@@ -106,6 +106,17 @@
         <item name="strokeColor">@color/adminDivider</item>
         <item name="strokeWidth">1dp</item>
     </style>
+    <style name="AdminNavDrawerShape" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+    <style name="AdminNavDrawerStyle" parent="Widget.MaterialComponents.NavigationView">
+        <item name="android:background">#1E293B</item>
+        <item name="itemTextColor">#CBD5E1</item>
+        <item name="itemIconTint">#CBD5E1</item>
+        <item name="itemShapeFillColor">@color/admin_nav_item_bg</item>
+        <item name="itemShapeAppearanceOverlay">@style/AdminNavDrawerShape</item>
+    </style>
     <style name="AdminTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxCornerRadiusTopStart">12dp</item>
         <item name="boxCornerRadiusTopEnd">12dp</item>

@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 setLoading(false);
                 Log.w(TAG, "Google sign-in failed", e);
-                Toast.makeText(this, getString(R.string.google_sign_in_failed),
+                Toast.makeText(this, "Google Sign-In failed. Please try again.",
                         Toast.LENGTH_SHORT).show();
             }
         }
@@ -109,7 +109,8 @@ public class LoginActivity extends AppCompatActivity {
                 String uid = FirebaseAuthHelper.getInstance().getCurrentUid();
                 if (uid == null) {
                     setLoading(false);
-                    Toast.makeText(LoginActivity.this, "Login error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Authentication failed. Unable to verify user context.",
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -189,7 +190,8 @@ public class LoginActivity extends AppCompatActivity {
                 String uid = FirebaseAuthHelper.getInstance().getCurrentUid();
                 if (uid == null) {
                     setLoading(false);
-                    Toast.makeText(LoginActivity.this, "Login error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Authentication failed. Please verify your credentials.",
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -238,9 +240,12 @@ public class LoginActivity extends AppCompatActivity {
                 .setPositiveButton("Resend Email", (dialog, which) -> {
                     user.sendEmailVerification().addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "Verification email sent.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Verification email sent successfully.",
+                                    Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Failed to send email.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this,
+                                    "Failed to send verification email. Please try again later.", Toast.LENGTH_SHORT)
+                                    .show();
                         }
                     });
                 })

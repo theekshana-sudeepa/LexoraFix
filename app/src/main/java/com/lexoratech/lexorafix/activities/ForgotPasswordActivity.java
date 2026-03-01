@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.lexoratech.lexorafix.R;
 import com.lexoratech.lexorafix.data.FirebaseAuthHelper;
+import com.lexoratech.lexorafix.data.FirestoreHelper;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
@@ -55,19 +56,38 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         setLoading(true);
 
-        FirebaseAuthHelper.getInstance().sendPasswordReset(email, new FirebaseAuthHelper.AuthCallback() {
+        FirestoreHelper.getInstance().checkEmailExists(email, new FirestoreHelper.FirestoreCallback<Boolean>() {
             @Override
-            public void onSuccess() {
-                setLoading(false);
-                Toast.makeText(ForgotPasswordActivity.this,
-                        getString(R.string.reset_email_sent), Toast.LENGTH_LONG).show();
-                finish();
+            public void onSuccess(Boolean exists) {
+                if (!exists) {
+                    setLoading(false);
+                    tilEmail.setError("No account found with this email address.");
+                    return;
+                }
+
+                FirebaseAuthHelper.getInstance().sendPasswordReset(email, new FirebaseAuthHelper.AuthCallback() {
+                    @Override
+                    public void onSuccess() {
+                        setLoading(false);
+                        Toast.makeText(ForgotPasswordActivity.this,
+                                getString(R.string.reset_email_sent), Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+
+                    @Override
+                    public void onError(String message) {
+                        setLoading(false);
+                        Toast.makeText(ForgotPasswordActivity.this,
+                                "Failed to send reset email. Please try again later.", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
 
             @Override
             public void onError(String message) {
                 setLoading(false);
-                Toast.makeText(ForgotPasswordActivity.this, message, Toast.LENGTH_LONG).show();
+                Toast.makeText(ForgotPasswordActivity.this, "Network error validating email. Please try again.",
+                        Toast.LENGTH_LONG).show();
             }
         });
     }

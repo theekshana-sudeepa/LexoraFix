@@ -27,6 +27,7 @@
             app:tint="#F8FAFC" />
 
         <TextView
+            android:fontFamily="@font/poppins"
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,6 +39,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:fontFamily="@font/poppins"
             android:id="@+id/tv_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,12 +89,14 @@
             android:visibility="gone">
 
             <TextView
+            android:fontFamily="@font/poppins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="📭"
                 android:textSize="48sp" />
 
             <TextView
+            android:fontFamily="@font/poppins"
                 android:id="@+id/tv_empty_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,6 +106,7 @@
                 android:textSize="16sp" />
 
             <TextView
+            android:fontFamily="@font/poppins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -112,6 +117,7 @@
 
         <!-- Animated Floating Action Button -->
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:fontFamily="@font/poppins"
             android:id="@+id/fab_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

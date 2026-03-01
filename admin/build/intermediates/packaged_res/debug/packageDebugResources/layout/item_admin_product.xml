@@ -10,25 +10,29 @@
     android:foreground="?attr/selectableItemBackground"
     app:cardBackgroundColor="#1E293B"
     app:cardCornerRadius="16dp"
-    app:cardElevation="0dp"
-    app:strokeColor="#334155"
-    app:strokeWidth="1dp">
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <!-- Product Image Container -->
-        <com.google.android.material.card.MaterialCardView
+        <!-- Top Section: Image and Info -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            
+            <!-- Product Image Container -->
+            <com.google.android.material.card.MaterialCardView
             android:layout_width="64dp"
             android:layout_height="64dp"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
-            app:strokeColor="#334155"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <ImageView
                 android:id="@+id/iv_product"
@@ -50,6 +54,7 @@
             android:orientation="vertical">
 
             <TextView
+                        android:fontFamily="@font/poppins"
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,6 +66,7 @@
                 android:ellipsize="end" />
 
             <TextView
+                        android:fontFamily="@font/poppins"
                 android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,6 +84,7 @@
                 android:gravity="center_vertical">
 
                 <TextView
+                        android:fontFamily="@font/poppins"
                     android:id="@+id/tv_stock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -97,6 +104,7 @@
                     app:cardCornerRadius="6dp">
 
                     <TextView
+                        android:fontFamily="@font/poppins"
                         android:id="@+id/tv_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -110,6 +118,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
+                        android:fontFamily="@font/poppins"
                     android:id="@+id/tv_featured"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -120,57 +129,63 @@
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
 
-        <!-- Action Buttons Vertical Strip -->
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="#334155" />
+
+        <!-- Action Buttons Horizontal Row -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:orientation="horizontal"
+            android:gravity="end">
 
             <com.google.android.material.button.MaterialButton
+                android:fontFamily="@font/poppins"
+                android:id="@+id/btn_reviews"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reviews"
+                android:textColor="#A78BFA"
+                app:icon="@android:drawable/ic_menu_sort_by_size"
+                app:iconTint="#A78BFA"
+                android:contentDescription="View Reviews" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:fontFamily="@font/poppins"
                 android:id="@+id/btn_edit"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:textColor="#818CF8"
                 app:icon="@drawable/ic_edit"
                 app:iconTint="#818CF8"
-                app:iconSize="18dp"
-                app:strokeColor="#334155"
-                app:cornerRadius="8dp"
                 android:contentDescription="Edit" />
 
             <com.google.android.material.button.MaterialButton
+                android:fontFamily="@font/poppins"
                 android:id="@+id/btn_delete"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="4dp"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textColor="#FCA5A5"
                 app:icon="@drawable/ic_delete"
                 app:iconTint="#FCA5A5"
-                app:iconSize="18dp"
-                app:strokeColor="#334155"
-                app:cornerRadius="8dp"
                 android:contentDescription="Delete" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_reviews"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="4dp"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                app:icon="@android:drawable/ic_menu_sort_by_size"
-                app:iconTint="#A78BFA"
-                app:iconSize="18dp"
-                app:strokeColor="#334155"
-                app:cornerRadius="8dp"
-                android:contentDescription="View Reviews" />
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

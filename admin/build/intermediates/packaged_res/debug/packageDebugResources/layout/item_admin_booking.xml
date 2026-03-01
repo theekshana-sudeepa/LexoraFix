@@ -39,6 +39,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                        android:fontFamily="@font/poppins"
                     android:id="@+id/tv_service_type"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -49,6 +50,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                        android:fontFamily="@font/poppins"
                     android:id="@+id/tv_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -77,6 +79,7 @@
                     app:tint="@color/adminTextSecondary" />
 
                 <TextView
+                        android:fontFamily="@font/poppins"
                     android:id="@+id/tv_customer_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -98,6 +101,7 @@
 
             <!-- Row 3: Date -->
             <TextView
+                        android:fontFamily="@font/poppins"
                 android:id="@+id/tv_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -108,6 +112,7 @@
 
             <!-- Row 4: Notes -->
             <TextView
+                        android:fontFamily="@font/poppins"
                 android:id="@+id/tv_notes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,6 +144,7 @@
                     app:tint="@color/adminPrimary" />
 
                 <TextView
+                        android:fontFamily="@font/poppins"
                     android:id="@+id/tv_location"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -148,8 +154,7 @@
                     android:maxLines="2"
                     android:text="Location Address"
                     android:textColor="@color/adminPrimaryLight"
-                    android:textSize="13sp"
-                    android:fontFamily="sans-serif-medium" />
+                    android:textSize="13sp" />
                     
                 <ImageView
                     android:layout_width="16dp"

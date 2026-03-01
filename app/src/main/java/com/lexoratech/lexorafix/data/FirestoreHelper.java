@@ -90,6 +90,19 @@ public class FirestoreHelper {
     }
 
     /**
+     * Check if a user account exists with the given email address.
+     */
+    public void checkEmailExists(String email, FirestoreCallback<Boolean> callback) {
+        db.collection(COLLECTION_USERS)
+                .whereEqualTo("email", email)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    callback.onSuccess(!querySnapshot.isEmpty());
+                })
+                .addOnFailureListener(e -> callback.onError(e.getMessage()));
+    }
+
+    /**
      * Update specific fields in a user's Firestore profile.
      */
     public void updateUserProfile(String uid, Map<String, Object> updates, FirestoreCallback<Void> callback) {

@@ -45,7 +45,10 @@
         <activity android:name=".activities.ForgotPasswordActivity" android:exported="false" />
 
         <!-- Main Activity -->
-        <activity android:name=".activities.MainActivity" android:exported="false" android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activities.MainActivity" 
+            android:exported="false" 
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
 
         <!-- Product & Cart Activities -->
         <activity android:name=".activities.ProductDetailActivity" android:exported="false" />
