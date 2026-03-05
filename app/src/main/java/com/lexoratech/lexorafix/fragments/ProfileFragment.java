@@ -157,6 +157,22 @@ public class ProfileFragment extends Fragment {
                                 user.getAddress() != null && !user.getAddress().isEmpty() ? user.getAddress()
                                         : "Not set");
 
+                    // Province / District display
+                    TextView tvProvinceDistrict = getView().findViewById(R.id.tv_province_district);
+                    if (tvProvinceDistrict != null) {
+                        String province = user.getProvince();
+                        String district = user.getDistrict();
+                        boolean hasProvince = province != null && !province.isEmpty();
+                        boolean hasDistrict = district != null && !district.isEmpty();
+                        if (hasProvince && hasDistrict) {
+                            tvProvinceDistrict.setText(province + ", " + district);
+                        } else if (hasProvince) {
+                            tvProvinceDistrict.setText(province);
+                        } else {
+                            tvProvinceDistrict.setText("Not set");
+                        }
+                    }
+
                     if (user.getProfileImageUrl() != null && !user.getProfileImageUrl().isEmpty() && ivAvatar != null) {
                         ivAvatar.setPadding(0, 0, 0, 0);
                         ivAvatar.setBackground(null);

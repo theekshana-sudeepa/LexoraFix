@@ -132,11 +132,11 @@
                     android:layout_height="wrap_content"
                     android:text="LKR 0.00"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:maxLines="1"
                     app:autoSizeTextType="uniform"
-                    app:autoSizeMinTextSize="14sp"
-                    app:autoSizeMaxTextSize="24sp"
+                    app:autoSizeMinTextSize="12sp"
+                    app:autoSizeMaxTextSize="18sp"
                     android:fontFamily="sans-serif-medium"
                     android:textStyle="bold" />
             </LinearLayout>

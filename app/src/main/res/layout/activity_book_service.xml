@@ -7,37 +7,8 @@
     android:background="@color/colorBackground"
     android:orientation="vertical">
 
-    <!-- Toolbar — matches other screens (colorSurface + textPrimary) -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="@color/colorSurface"
-        android:elevation="4dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="16dp">
-
-        <ImageView
-            android:id="@+id/btn_back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_arrow_back"
-            android:padding="8dp"
-            app:tint="@color/textPrimary"
-            android:contentDescription="@string/cd_back" />
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            android:text="@string/book_service"
-            android:textColor="@color/textPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+    <!-- Action Bar -->
+    <include layout="@layout/layout_action_bar" />
 
     <ScrollView
         android:layout_width="match_parent"

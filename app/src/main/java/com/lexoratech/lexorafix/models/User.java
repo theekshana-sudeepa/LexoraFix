@@ -24,6 +24,8 @@ public class User {
     private String address;
     /** Address Line 2 (optional) */
     private String addressLine2;
+    private String province;
+    private String district;
     private String city;
     private String postalCode;
     private String firebaseUid;
@@ -59,6 +61,8 @@ public class User {
         map.put("phone", phone != null ? phone : "");
         map.put("address", address != null ? address : "");
         map.put("addressLine2", addressLine2 != null ? addressLine2 : "");
+        map.put("province", province != null ? province : "");
+        map.put("district", district != null ? district : "");
         map.put("city", city != null ? city : "");
         map.put("postalCode", postalCode != null ? postalCode : "");
         map.put("role", role != null ? role : "customer");
@@ -78,6 +82,8 @@ public class User {
         user.setPhone((String) map.get("phone"));
         user.setAddress((String) map.get("address"));
         user.setAddressLine2((String) map.get("addressLine2"));
+        user.setProvince((String) map.get("province"));
+        user.setDistrict((String) map.get("district"));
         user.setCity((String) map.get("city"));
         user.setPostalCode((String) map.get("postalCode"));
         user.setRole(map.get("role") != null ? (String) map.get("role") : "customer");

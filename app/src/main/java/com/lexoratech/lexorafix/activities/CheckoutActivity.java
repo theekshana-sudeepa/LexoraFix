@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +23,7 @@ import com.lexoratech.lexorafix.adapters.CartAdapter;
 import com.lexoratech.lexorafix.data.DatabaseHelper;
 import com.lexoratech.lexorafix.data.FirebaseAuthHelper;
 import com.lexoratech.lexorafix.data.FirestoreHelper;
+import com.lexoratech.lexorafix.data.LocationData;
 import com.lexoratech.lexorafix.data.SharedPreferencesManager;
 import com.lexoratech.lexorafix.models.CartItem;
 import com.lexoratech.lexorafix.network.EmailHelper;
@@ -54,8 +57,10 @@ public class CheckoutActivity extends AppCompatActivity {
 
     // Structured shipping fields
     private com.google.android.material.textfield.TextInputEditText etAddress, etAddress2, etCity, etPostal;
+    private AutoCompleteTextView actProvince, actDistrict;
     private com.google.android.material.textfield.TextInputEditText etBillingAddr, etBillingAddr2, etBillingCity,
             etBillingPostal;
+    private AutoCompleteTextView actBillingProvince, actBillingDistrict;
     private com.google.android.material.checkbox.MaterialCheckBox cbBillingSame;
     private android.widget.LinearLayout layoutBilling;
 
@@ -68,6 +73,9 @@ public class CheckoutActivity extends AppCompatActivity {
         prefs = SharedPreferencesManager.getInstance(this);
 
         ImageView btnBack = findViewById(R.id.btn_back);
+        TextView tvToolbarTitle = findViewById(R.id.tv_toolbar_title);
+        if (tvToolbarTitle != null)
+            tvToolbarTitle.setText("Checkout");
         MaterialButton btnSavedAddress = findViewById(R.id.btn_saved_address);
         RecyclerView rvItems = findViewById(R.id.rv_items);
         TextView tvTotal = findViewById(R.id.tv_total_bottom);
@@ -79,14 +87,22 @@ public class CheckoutActivity extends AppCompatActivity {
         // ── Structured shipping fields ──────────────────────────────────
         etAddress = findViewById(R.id.et_address);
         etAddress2 = findViewById(R.id.et_address2);
+        actProvince = findViewById(R.id.act_province);
+        actDistrict = findViewById(R.id.act_district);
         etCity = findViewById(R.id.et_city);
         etPostal = findViewById(R.id.et_postal);
         etBillingAddr = findViewById(R.id.et_billing_address);
         etBillingAddr2 = findViewById(R.id.et_billing_address2);
+        actBillingProvince = findViewById(R.id.act_billing_province);
+        actBillingDistrict = findViewById(R.id.act_billing_district);
         etBillingCity = findViewById(R.id.et_billing_city);
         etBillingPostal = findViewById(R.id.et_billing_postal);
         cbBillingSame = findViewById(R.id.cb_billing_same);
         layoutBilling = findViewById(R.id.layout_billing);
+
+        // ── Setup province/district cascading dropdowns ─────────────────
+        setupProvinceDistrictDropdowns(actProvince, actDistrict);
+        setupProvinceDistrictDropdowns(actBillingProvince, actBillingDistrict);
 
         cbBillingSame.setOnCheckedChangeListener((btn, isChecked) -> layoutBilling
                 .setVisibility(isChecked ? android.view.View.GONE : android.view.View.VISIBLE));
@@ -123,6 +139,8 @@ public class CheckoutActivity extends AppCompatActivity {
                             runOnUiThread(() -> {
                                 String addr1 = user.getAddress() != null ? user.getAddress() : "";
                                 String addr2 = user.getAddressLine2() != null ? user.getAddressLine2() : "";
+                                String provinceStr = user.getProvince() != null ? user.getProvince() : "";
+                                String districtStr = user.getDistrict() != null ? user.getDistrict() : "";
                                 String cityStr = user.getCity() != null ? user.getCity() : "";
                                 String zip = user.getPostalCode() != null ? user.getPostalCode() : "";
 
@@ -131,6 +149,12 @@ public class CheckoutActivity extends AppCompatActivity {
                                     etAddress.setText(addr1);
                                 if (!addr2.isEmpty())
                                     etAddress2.setText(addr2);
+                                if (!provinceStr.isEmpty()) {
+                                    actProvince.setText(provinceStr, false);
+                                    populateDistrictDropdown(actDistrict, provinceStr);
+                                    if (!districtStr.isEmpty())
+                                        actDistrict.setText(districtStr, false);
+                                }
                                 if (!cityStr.isEmpty())
                                     etCity.setText(cityStr);
                                 if (!zip.isEmpty())
@@ -138,12 +162,18 @@ public class CheckoutActivity extends AppCompatActivity {
 
                                 prefs.saveUserAddress(addr1);
 
-                                // "Use saved address" now restores all four fields
+                                // "Use saved address" now restores all fields
                                 if (!addr1.isEmpty()) {
                                     btnSavedAddress.setVisibility(android.view.View.VISIBLE);
                                     btnSavedAddress.setOnClickListener(v -> {
                                         etAddress.setText(addr1);
                                         etAddress2.setText(addr2);
+                                        if (!provinceStr.isEmpty()) {
+                                            actProvince.setText(provinceStr, false);
+                                            populateDistrictDropdown(actDistrict, provinceStr);
+                                            if (!districtStr.isEmpty())
+                                                actDistrict.setText(districtStr, false);
+                                        }
                                         etCity.setText(cityStr);
                                         etPostal.setText(zip);
                                     });
@@ -214,9 +244,11 @@ public class CheckoutActivity extends AppCompatActivity {
         fetchStockLimits(adapter);
 
         btnPlaceOrder.setOnClickListener(v -> {
-            // Build combined address string from the four structured fields
+            // Build combined address string from the structured fields
             String addr1 = etAddress.getText() != null ? etAddress.getText().toString().trim() : "";
             String addr2 = etAddress2.getText() != null ? etAddress2.getText().toString().trim() : "";
+            String provinceVal = actProvince.getText() != null ? actProvince.getText().toString().trim() : "";
+            String districtVal = actDistrict.getText() != null ? actDistrict.getText().toString().trim() : "";
             String cityVal = etCity.getText() != null ? etCity.getText().toString().trim() : "";
             String postalVal = etPostal.getText() != null ? etPostal.getText().toString().trim() : "";
 
@@ -230,6 +262,10 @@ public class CheckoutActivity extends AppCompatActivity {
             StringBuilder sb = new StringBuilder(addr1);
             if (!addr2.isEmpty())
                 sb.append(", ").append(addr2);
+            if (!districtVal.isEmpty())
+                sb.append(", ").append(districtVal);
+            if (!provinceVal.isEmpty())
+                sb.append(", ").append(provinceVal);
             if (!cityVal.isEmpty())
                 sb.append(", ").append(cityVal);
             if (!postalVal.isEmpty())
@@ -256,6 +292,27 @@ public class CheckoutActivity extends AppCompatActivity {
 
             verifyStockBeforeCheckout(address);
         });
+    }
+
+    /** Set up cascading province → district dropdowns for a given pair. */
+    private void setupProvinceDistrictDropdowns(AutoCompleteTextView provinceView, AutoCompleteTextView districtView) {
+        ArrayAdapter<String> provinceAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_dropdown_item_1line, LocationData.getProvinces());
+        provinceView.setAdapter(provinceAdapter);
+
+        provinceView.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedProvince = (String) parent.getItemAtPosition(position);
+            populateDistrictDropdown(districtView, selectedProvince);
+            districtView.setText("", false);
+        });
+    }
+
+    /** Populate district dropdown for the given province. */
+    private void populateDistrictDropdown(AutoCompleteTextView districtView, String province) {
+        String[] districts = LocationData.getDistricts(province);
+        ArrayAdapter<String> districtAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_dropdown_item_1line, districts);
+        districtView.setAdapter(districtAdapter);
     }
 
     private void fetchStockLimits(CartAdapter adapter) {

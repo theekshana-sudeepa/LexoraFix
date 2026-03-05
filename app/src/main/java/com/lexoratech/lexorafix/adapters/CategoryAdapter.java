@@ -20,6 +20,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     private final List<Category> categories;
     private final Context context;
+    private final boolean useHomeLayout;
     private OnCategoryClickListener listener;
 
     public interface OnCategoryClickListener {
@@ -27,8 +28,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     public CategoryAdapter(Context context, List<Category> categories) {
+        this(context, categories, false);
+    }
+
+    public CategoryAdapter(Context context, List<Category> categories, boolean useHomeLayout) {
         this.context = context;
         this.categories = categories;
+        this.useHomeLayout = useHomeLayout;
     }
 
     public void setOnCategoryClickListener(OnCategoryClickListener listener) {
@@ -38,7 +44,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_category, parent, false);
+        int layoutRes = useHomeLayout ? R.layout.item_category_home : R.layout.item_category;
+        View view = LayoutInflater.from(context).inflate(layoutRes, parent, false);
         return new ViewHolder(view);
     }
 

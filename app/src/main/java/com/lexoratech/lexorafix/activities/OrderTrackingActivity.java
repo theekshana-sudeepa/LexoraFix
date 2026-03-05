@@ -39,6 +39,9 @@ public class OrderTrackingActivity extends AppCompatActivity {
 
         // Toolbar
         ImageView btnBack = findViewById(R.id.btn_back);
+        TextView tvToolbarTitle = findViewById(R.id.tv_toolbar_title);
+        if (tvToolbarTitle != null)
+            tvToolbarTitle.setText("Track Order");
         btnBack.setOnClickListener(v -> finish());
 
         // Status text

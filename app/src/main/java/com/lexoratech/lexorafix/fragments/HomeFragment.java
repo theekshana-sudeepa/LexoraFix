@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
                                 categories.add(cat);
                             }
                         }
-                        categoryAdapter = new CategoryAdapter(requireContext(), categories);
+                        categoryAdapter = new CategoryAdapter(requireContext(), categories, true);
                         categoryAdapter.setOnCategoryClickListener(category -> {
                             ProductListFragment fragment = ProductListFragment.newInstance(
                                     category.getDocumentId(), category.getName());

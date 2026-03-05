@@ -56,7 +56,7 @@ public class BookServiceActivity extends AppCompatActivity {
         if (serviceType == null)
             serviceType = "General";
 
-        TextView tvTitle = findViewById(R.id.tv_title);
+        TextView tvTitle = findViewById(R.id.tv_toolbar_title);
         TextView tvServiceType = findViewById(R.id.tv_service_type);
         ImageView btnBack = findViewById(R.id.btn_back);
         tilDate = findViewById(R.id.til_date);
@@ -71,7 +71,8 @@ public class BookServiceActivity extends AppCompatActivity {
         MaterialButton btnCurrentLocation = findViewById(R.id.btn_current_location);
         MaterialButton btnChooseMap = findViewById(R.id.btn_choose_map);
 
-        tvTitle.setText("Book " + serviceType);
+        if (tvTitle != null)
+            tvTitle.setText("Book " + serviceType);
         tvServiceType.setText(serviceType + " Service");
 
         btnBack.setOnClickListener(v -> finish());

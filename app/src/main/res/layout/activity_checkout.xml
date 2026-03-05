@@ -8,40 +8,13 @@
     android:orientation="vertical">
 
     <!-- Action Bar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="@color/colorSurface"
-        android:elevation="4dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="16dp">
+    <include layout="@layout/layout_action_bar" />
 
-        <ImageView
-            android:id="@+id/btn_back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/cd_back"
-            android:padding="8dp"
-            android:src="@drawable/ic_back"
-            app:tint="@color/textPrimary" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            android:text="@string/checkout"
-            android:textColor="@color/textPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -122,6 +95,42 @@
                             android:layout_height="wrap_content"
                             android:inputType="textPostalAddress"
                             android:imeOptions="actionNext" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Province Dropdown -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_province"
+                        style="@style/LexoraDropdownStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_sm"
+                        android:hint="Province">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/act_province"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:focusable="false"
+                            android:cursorVisible="false" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- District Dropdown -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_district"
+                        style="@style/LexoraDropdownStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_sm"
+                        android:hint="District">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/act_district"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:focusable="false"
+                            android:cursorVisible="false" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- City + Postal Code side by side -->
@@ -244,6 +253,42 @@
                                 android:imeOptions="actionNext" />
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <!-- Billing Province Dropdown -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_province"
+                            style="@style/LexoraDropdownStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_sm"
+                            android:hint="Province">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/act_billing_province"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:focusable="false"
+                                android:cursorVisible="false" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Billing District Dropdown -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_billing_district"
+                            style="@style/LexoraDropdownStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_sm"
+                            android:hint="District">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/act_billing_district"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:focusable="false"
+                                android:cursorVisible="false" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -325,7 +370,7 @@
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <!-- Payment Processing Overlay -->
     <FrameLayout
@@ -404,11 +449,11 @@
                     android:layout_height="wrap_content"
                     android:text="LKR 0.00"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:maxLines="1"
                     app:autoSizeTextType="uniform"
-                    app:autoSizeMinTextSize="14sp"
-                    app:autoSizeMaxTextSize="24sp"
+                    app:autoSizeMinTextSize="12sp"
+                    app:autoSizeMaxTextSize="18sp"
                     android:fontFamily="sans-serif-medium"
                     android:textStyle="bold" />
             </LinearLayout>

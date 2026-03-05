@@ -2,7 +2,10 @@ package com.lexoratech.lexorafix.activities;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.lexoratech.lexorafix.R;
 import com.lexoratech.lexorafix.data.FirestoreHelper;
+import com.lexoratech.lexorafix.data.LocationData;
 import com.lexoratech.lexorafix.data.SharedPreferencesManager;
 import com.lexoratech.lexorafix.data.StorageHelper;
 import com.lexoratech.lexorafix.models.User;
@@ -27,7 +31,8 @@ import java.util.Map;
 public class EditProfileActivity extends AppCompatActivity {
 
     private TextInputEditText etName, etPhone, etAddress, etAddress2, etCity, etPostal;
-    private TextInputLayout tilName, tilPhone, tilAddress;
+    private TextInputLayout tilName, tilPhone, tilAddress, tilProvince, tilDistrict;
+    private AutoCompleteTextView actProvince, actDistrict;
     private MaterialButton btnSave;
     private String firebaseUid;
 
@@ -98,6 +103,9 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         ImageView btnBack = findViewById(R.id.btn_back);
+        TextView tvToolbarTitle = findViewById(R.id.tv_toolbar_title);
+        if (tvToolbarTitle != null)
+            tvToolbarTitle.setText("Edit Profile");
         etName = findViewById(R.id.et_name);
         etPhone = findViewById(R.id.et_phone);
         etAddress = findViewById(R.id.et_address);
@@ -107,6 +115,10 @@ public class EditProfileActivity extends AppCompatActivity {
         tilName = findViewById(R.id.til_name);
         tilPhone = findViewById(R.id.til_phone);
         tilAddress = findViewById(R.id.til_address);
+        tilProvince = findViewById(R.id.til_province);
+        tilDistrict = findViewById(R.id.til_district);
+        actProvince = findViewById(R.id.act_province);
+        actDistrict = findViewById(R.id.act_district);
         btnSave = findViewById(R.id.btn_save);
         ivProfilePhoto = findViewById(R.id.iv_profile_photo);
         android.view.View tvChangePhoto = findViewById(R.id.tv_change_photo);
@@ -116,6 +128,9 @@ public class EditProfileActivity extends AppCompatActivity {
         tvChangePhoto.setOnClickListener(pickImageListener);
 
         btnBack.setOnClickListener(v -> finish());
+
+        // ── Province / District cascading dropdowns ─────────────────────
+        setupProvinceDistrictDropdowns();
 
         SharedPreferencesManager prefs = SharedPreferencesManager.getInstance(this);
         firebaseUid = prefs.getFirebaseUid();
@@ -139,6 +154,16 @@ public class EditProfileActivity extends AppCompatActivity {
                                 etAddress.setText(user.getAddress());
                             if (user.getAddressLine2() != null)
                                 etAddress2.setText(user.getAddressLine2());
+
+                            // Pre-fill province → then district
+                            if (user.getProvince() != null && !user.getProvince().isEmpty()) {
+                                actProvince.setText(user.getProvince(), false);
+                                populateDistrictDropdown(user.getProvince());
+                                if (user.getDistrict() != null && !user.getDistrict().isEmpty()) {
+                                    actDistrict.setText(user.getDistrict(), false);
+                                }
+                            }
+
                             if (user.getCity() != null)
                                 etCity.setText(user.getCity());
                             if (user.getPostalCode() != null)
@@ -166,6 +191,27 @@ public class EditProfileActivity extends AppCompatActivity {
         btnSave.setOnClickListener(v -> saveProfile());
     }
 
+    /** Set up the province dropdown and wire cascading district logic. */
+    private void setupProvinceDistrictDropdowns() {
+        ArrayAdapter<String> provinceAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_dropdown_item_1line, LocationData.getProvinces());
+        actProvince.setAdapter(provinceAdapter);
+
+        actProvince.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedProvince = (String) parent.getItemAtPosition(position);
+            populateDistrictDropdown(selectedProvince);
+            actDistrict.setText("", false); // reset district on province change
+        });
+    }
+
+    /** Populate district dropdown for the given province. */
+    private void populateDistrictDropdown(String province) {
+        String[] districts = LocationData.getDistricts(province);
+        ArrayAdapter<String> districtAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_dropdown_item_1line, districts);
+        actDistrict.setAdapter(districtAdapter);
+    }
+
     private void saveProfile() {
         tilName.setError(null);
         tilPhone.setError(null);
@@ -175,6 +221,8 @@ public class EditProfileActivity extends AppCompatActivity {
         String phone = etPhone.getText() != null ? etPhone.getText().toString().trim() : "";
         String address = etAddress.getText() != null ? etAddress.getText().toString().trim() : "";
         String address2 = etAddress2.getText() != null ? etAddress2.getText().toString().trim() : "";
+        String province = actProvince.getText() != null ? actProvince.getText().toString().trim() : "";
+        String district = actDistrict.getText() != null ? actDistrict.getText().toString().trim() : "";
         String city = etCity.getText() != null ? etCity.getText().toString().trim() : "";
         String postal = etPostal.getText() != null ? etPostal.getText().toString().trim() : "";
 
@@ -202,7 +250,8 @@ public class EditProfileActivity extends AppCompatActivity {
                     new StorageHelper.StorageCallback() {
                         @Override
                         public void onSuccess(String downloadUrl) {
-                            executeFirestoreUpdate(name, phone, address, address2, city, postal, downloadUrl);
+                            executeFirestoreUpdate(name, phone, address, address2, province, district, city, postal,
+                                    downloadUrl);
                         }
 
                         @Override
@@ -214,18 +263,21 @@ public class EditProfileActivity extends AppCompatActivity {
                         }
                     });
         } else {
-            executeFirestoreUpdate(name, phone, address, address2, city, postal, existingPhotoUrl);
+            executeFirestoreUpdate(name, phone, address, address2, province, district, city, postal, existingPhotoUrl);
         }
     }
 
     private void executeFirestoreUpdate(String name, String phone,
-            String address, String address2, String city, String postal, String photoUrl) {
+            String address, String address2, String province, String district,
+            String city, String postal, String photoUrl) {
         btnSave.setText("Saving profile...");
         Map<String, Object> updates = new HashMap<>();
         updates.put("name", name);
         updates.put("phone", phone);
         updates.put("address", address);
         updates.put("addressLine2", address2);
+        updates.put("province", province);
+        updates.put("district", district);
         updates.put("city", city);
         updates.put("postalCode", postal);
         if (photoUrl != null) {
