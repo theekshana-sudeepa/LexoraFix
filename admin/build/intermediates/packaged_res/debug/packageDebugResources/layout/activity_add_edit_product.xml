@@ -119,6 +119,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:hint="Product Name"
+                app:boxBackgroundColor="#0DFFFFFF"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="1dp"
                 app:boxStrokeColor="#6C63FF"
                 app:hintTextColor="#8888AA"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -138,6 +145,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:hint="Description"
+                app:boxBackgroundColor="#0DFFFFFF"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="1dp"
                 app:boxStrokeColor="#6C63FF"
                 app:hintTextColor="#8888AA"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -165,7 +179,14 @@
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
                     android:hint="Price (LKR)"
-                    app:boxStrokeColor="#6C63FF"
+                    app:boxBackgroundColor="#0DFFFFFF"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:boxStrokeColor="#6C63FF"
                     app:hintTextColor="#8888AA"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -184,7 +205,14 @@
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
                     android:hint="Stock"
-                    app:boxStrokeColor="#6C63FF"
+                    app:boxBackgroundColor="#0DFFFFFF"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:boxStrokeColor="#6C63FF"
                     app:hintTextColor="#8888AA"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -343,7 +371,7 @@
                 android:textAllCaps="false"
                 android:textSize="16sp"
                 android:backgroundTint="#6C63FF"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="16dp" />
 
         </LinearLayout>
     </ScrollView>

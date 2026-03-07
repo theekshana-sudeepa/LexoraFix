@@ -1,41 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- ========== Night / Dark Theme ========== -->
-    <style name="Theme.LexoraFix" parent="Theme.MaterialComponents.NoActionBar">
-        <!-- Primary Colors -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
-
-        <!-- Secondary Colors -->
-        <item name="colorSecondary">@color/colorSecondary</item>
-        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
-        <item name="colorOnSecondary">#000000</item>
-
-        <!-- Background & Surface -->
-        <item name="android:colorBackground">@color/colorBackground</item>
-        <item name="colorSurface">@color/colorSurface</item>
-        <item name="colorOnSurface">@color/colorOnSurface</item>
-        <item name="colorError">@color/colorError</item>
-
-        <!-- System Bars — Dark status bar with light icons -->
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    <!-- ========== Night / Dark Theme Override ========== -->
+    <!-- We inherit perfectly from the DayNight base theme provided in values/themes.xml 
+         We ONLY override the status bar flags here to tell Android the background is dark -->
+    <style name="Theme.LexoraFix" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:navigationBarColor">@color/colorSurface</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">false</item>
-
-        <!-- Window Transitions -->
-        <item name="android:windowActivityTransitions">true</item>
-        <item name="android:windowEnterTransition">@android:transition/fade</item>
-        <item name="android:windowExitTransition">@android:transition/fade</item>
-
-        <!-- Text Colors -->
-        <item name="android:textColorPrimary">@color/textPrimary</item>
-        <item name="android:textColorSecondary">@color/textSecondary</item>
-        <item name="android:textColorHint">@color/textHint</item>
-
-        <!-- Ripple -->
-        <item name="colorControlHighlight">@color/ripple</item>
     </style>
 
     <!-- ========== Splash Theme (Night) ========== -->
@@ -50,5 +22,4 @@
         <item name="android:windowIsFloating">false</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
-
 </resources>

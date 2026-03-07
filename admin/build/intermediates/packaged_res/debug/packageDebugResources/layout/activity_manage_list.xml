@@ -128,6 +128,7 @@
             app:icon="@drawable/ic_add"
             app:iconTint="#FFFFFF"
             app:backgroundTint="#6C63FF"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
             android:visibility="gone" />
 
     </FrameLayout>

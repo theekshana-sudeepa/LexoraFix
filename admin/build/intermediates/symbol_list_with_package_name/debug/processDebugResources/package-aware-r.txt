@@ -3343,6 +3343,7 @@ id card_bookings
 id card_categories
 id card_orders
 id card_products
+id card_revenue_hero
 id card_users
 id carryVelocity
 id center
@@ -3481,6 +3482,7 @@ id homeAsUp
 id honorRequest
 id horizontal
 id horizontal_only
+id hsv_metrics
 id icon
 id icon_group
 id icon_only
@@ -3516,9 +3518,9 @@ id line3
 id linear
 id listMode
 id list_item
-id ll_dashboard_content
 id ll_dashboard_header
 id ll_login_container
+id ll_quick_actions
 id m3_side_sheet
 id marquee
 id masked
@@ -3819,10 +3821,12 @@ id tv_low_stock
 id tv_name
 id tv_notes
 id tv_order_id
+id tv_overview_title
 id tv_payment_status
 id tv_price
 id tv_product_name
 id tv_quantity
+id tv_quick_actions_title
 id tv_review_text
 id tv_role
 id tv_service_type

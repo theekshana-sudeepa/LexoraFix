@@ -4,9 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="1dp"
-    app:cardBackgroundColor="@color/cardBackground"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="@color/colorSurface"
+    app:strokeWidth="0dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground">
@@ -18,13 +19,21 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/iv_icon"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_category"
-            android:contentDescription="@string/cd_category_icon" />
+        <!-- Circular icon background -->
+        <FrameLayout
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_category_icon_circle_soft">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_category"
+                android:contentDescription="@string/cd_category_icon" />
+        </FrameLayout>
 
         <TextView
             android:id="@+id/tv_name"

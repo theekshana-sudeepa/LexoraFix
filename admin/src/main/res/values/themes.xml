@@ -33,7 +33,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:letterSpacing">0.05</item>
         <item name="android:textStyle">bold</item>
-        <item name="cornerRadius">12dp</item>
+        <item name="cornerRadius">16dp</item>
         <item name="android:minHeight">54dp</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:fontFamily">@font/poppins</item>
@@ -57,20 +57,21 @@
     <style name="AdminCardStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/adminCardBackground</item>
         <item name="cardCornerRadius">16dp</item>
-        <item name="cardElevation">0dp</item>
-        <item name="strokeColor">@color/adminDivider</item>
-        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="strokeWidth">0dp</item>
     </style>
 
     <!-- Admin TextInput Style -->
     <style name="AdminTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxCornerRadiusTopStart">12dp</item>
-        <item name="boxCornerRadiusTopEnd">12dp</item>
-        <item name="boxCornerRadiusBottomStart">12dp</item>
-        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxCornerRadiusTopStart">16dp</item>
+        <item name="boxCornerRadiusTopEnd">16dp</item>
+        <item name="boxCornerRadiusBottomStart">16dp</item>
+        <item name="boxCornerRadiusBottomEnd">16dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
         <item name="boxStrokeColor">@color/adminPrimary</item>
         <item name="hintTextColor">@color/adminPrimary</item>
-        <item name="boxBackgroundColor">@color/adminSurfaceLight</item>
+        <item name="boxBackgroundColor">#0DFFFFFF</item>
     </style>
 
     <!-- ========== Admin Navigation Drawer Style ========== -->

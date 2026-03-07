@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- ========== Night Mode Color Overrides ========== -->
+    <!-- ========== Premium Color Palette (Deep Slate Dark Mode) ========== -->
 
     <!-- Primary — Lighter Coral for dark backgrounds -->
     <color name="colorPrimary">#FF8F65</color>
-    <color name="colorPrimaryDark">#1A1A2E</color>
+    <color name="colorPrimaryDark">#0F172A</color> <!-- Match Slate background for system bars -->
     <color name="colorPrimaryLight">#FFB088</color>
     <color name="colorPrimaryVariant">#FF6B35</color>
 
@@ -17,16 +17,16 @@
     <!-- Accent -->
     <color name="colorAccent">#FF8F65</color>
 
-    <!-- Surface & Background — True Dark -->
-    <color name="colorBackground">#121212</color>
-    <color name="colorSurface">#1E1E1E</color>
-    <color name="colorSurfaceVariant">#2A2A2A</color>
-    <color name="colorOnSurface">#E0E0E0</color>
+    <!-- Surface & Background — Premium Deep Slate -->
+    <color name="colorBackground">#0F172A</color> <!-- Deep Slate Background -->
+    <color name="colorSurface">#1E293B</color>    <!-- Slightly lighter Slate for Cards -->
+    <color name="colorSurfaceVariant">#334155</color>
+    <color name="colorOnSurface">#F8FAFC</color>  <!-- Crisp White Text -->
 
     <!-- Text Colors — Light on dark -->
-    <color name="textPrimary">#E8E8E8</color>
-    <color name="textSecondary">#A0A0A0</color>
-    <color name="textHint">#6B6B6B</color>
+    <color name="textPrimary">#F8FAFC</color>
+    <color name="textSecondary">#94A3B8</color>
+    <color name="textHint">#64748B</color>
     <color name="textOnPrimary">#FFFFFF</color>
     <color name="textOnSecondary">#000000</color>
 
@@ -35,8 +35,8 @@
     <color name="colorWarning">#FBBF24</color>
     <color name="colorError">#F87171</color>
     <color name="colorInfo">#60A5FA</color>
-    <color name="colorDivider">#333333</color>
-    <color name="splashBackground">#1A1A2E</color>
+    <color name="colorDivider">#334155</color>   <!-- Slate Border -->
+    <color name="splashBackground">#0F172A</color>
 
     <!-- Gradient — Subtle on dark -->
     <color name="gradientStart">#FF6B35</color>
@@ -46,13 +46,13 @@
     <color name="gradientTealStart">#00A88C</color>
     <color name="gradientTealEnd">#00C9A7</color>
 
-    <color name="gradientDarkStart">#0D0D1A</color>
-    <color name="gradientDarkEnd">#1A1A2E</color>
+    <color name="gradientDarkStart">#0F172A</color>
+    <color name="gradientDarkEnd">#1E293B</color>
 
-    <!-- Card & Elevation — Dark cards -->
-    <color name="cardBackground">#1E1E1E</color>
-    <color name="cardStroke">#333333</color>
-    <color name="divider">#333333</color>
+    <!-- Card & Elevation — Dark Slate cards -->
+    <color name="cardBackground">#1E293B</color>
+    <color name="cardStroke">#334155</color>
+    <color name="divider">#334155</color>
     <color name="ripple">#33FF8F65</color>
 
     <!-- Standard -->
@@ -69,9 +69,9 @@
 
     <!-- Star -->
     <color name="starActive">#FBBF24</color>
-    <color name="starInactive">#404040</color>
+    <color name="starInactive">#334155</color>
 
     <!-- Shimmer -->
-    <color name="shimmerBase">#2A2A2A</color>
-    <color name="shimmerHighlight">#333333</color>
+    <color name="shimmerBase">#1E293B</color>
+    <color name="shimmerHighlight">#334155</color>
 </resources>

@@ -203,12 +203,16 @@
             <!-- Find Service Centers -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_find_centers"
-                style="@style/LexoraButtonOutlined"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/nearby_centers"
-                android:drawableStart="@drawable/ic_location" />
+                app:backgroundTint="@color/ripple"
+                app:cornerRadius="16dp"
+                android:textColor="@color/colorPrimary"
+                app:icon="@drawable/ic_location"
+                app:iconTint="@color/colorPrimary" />
 
             <!-- My Bookings -->
             <TextView

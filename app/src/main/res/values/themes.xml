@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- ========== Base Theme ========== -->
-    <style name="Theme.LexoraFix" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.LexoraFix" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Global Font -->
         <item name="android:fontFamily">@font/poppins</item>
 
@@ -22,8 +22,11 @@
         <item name="colorError">@color/colorError</item>
 
         <!-- System Bars -->
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:navigationBarColor">@color/colorSurface</item>
+        <!-- The 'windowLightStatusBar' flags should ideally be true in Light mode and false in Night, 
+             but typically Android's DayNight handles this automatically if omitted, 
+             or we set them via color overrides. Setting to true by default for Light mode. -->
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">true</item>
 

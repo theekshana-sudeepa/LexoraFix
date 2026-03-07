@@ -324,25 +324,29 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_add_cart"
-            style="@style/LexoraButtonOutlined"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="@string/add_to_cart"
             android:textSize="15sp"
-            app:strokeColor="@color/colorPrimary"
+            app:backgroundTint="@color/ripple"
+            app:cornerRadius="16dp"
             android:textColor="@color/colorPrimary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_buy_now"
-            style="@style/LexoraButtonPrimary"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_weight="1.2"
             android:layout_marginStart="8dp"
             android:text="Buy Now"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:cornerRadius="16dp"
+            app:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

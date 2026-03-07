@@ -17,6 +17,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.lexoratech.lexorafix.admin.R;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import androidx.appcompat.app.AppCompatDelegate;
+
 public class AdminLoginActivity extends AppCompatActivity {
 
     private TextInputEditText etEmail, etPassword;
@@ -27,6 +31,9 @@ public class AdminLoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences prefs = getSharedPreferences("admin_prefs", Context.MODE_PRIVATE);
+        AppCompatDelegate.setDefaultNightMode(prefs.getBoolean("dark_mode", true) ? AppCompatDelegate.MODE_NIGHT_YES
+                : AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
 

@@ -27,6 +27,9 @@ import com.lexoratech.lexorafix.admin.R;
 import com.lexoratech.lexorafix.admin.services.AdminOrderListenerService;
 
 import java.util.Locale;
+import android.content.Context;
+import android.content.SharedPreferences;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class AdminDashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,6 +48,9 @@ public class AdminDashboardActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences prefs = getSharedPreferences("admin_prefs", Context.MODE_PRIVATE);
+        AppCompatDelegate.setDefaultNightMode(prefs.getBoolean("dark_mode", true) ? AppCompatDelegate.MODE_NIGHT_YES
+                : AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
 
@@ -195,7 +201,7 @@ public class AdminDashboardActivity extends AppCompatActivity
     }
 
     private void applyEntranceAnimations() {
-        android.widget.LinearLayout contentLayout = findViewById(R.id.ll_dashboard_content);
+        android.widget.LinearLayout contentLayout = findViewById(R.id.ll_quick_actions);
         if (contentLayout != null) {
             android.view.animation.LayoutAnimationController controller = android.view.animation.AnimationUtils
                     .loadLayoutAnimation(this, R.anim.layout_animation_fall_down);

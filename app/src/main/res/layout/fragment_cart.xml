@@ -95,12 +95,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         app:cardBackgroundColor="@color/cardBackground"
-        app:cardElevation="8dp"
+        app:cardElevation="10dp"
         app:cardCornerRadius="24dp"
-        app:strokeColor="@color/cardStroke"
-        app:strokeWidth="1dp">
+        app:strokeWidth="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -143,6 +142,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_checkout"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="56dp"
                 android:text="@string/checkout"

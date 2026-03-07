@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_header"
+            android:background="@drawable/bg_gradient_header_home"
             android:gravity="center"
             android:orientation="vertical"
             android:paddingTop="32dp"
@@ -314,18 +314,17 @@
             <!-- Logout Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_logout"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="32dp"
                 android:text="@string/logout"
                 android:textAllCaps="false"
-                android:textColor="@color/colorError"
+                android:textColor="#D32F2F"
                 android:textSize="16sp"
                 app:cornerRadius="16dp"
-                app:strokeColor="@color/colorError"
-                app:strokeWidth="2dp" />
+                app:backgroundTint="#26F44336" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
