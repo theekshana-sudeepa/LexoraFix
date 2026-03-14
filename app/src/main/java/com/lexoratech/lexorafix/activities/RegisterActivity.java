@@ -8,7 +8,14 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -259,16 +266,39 @@ public class RegisterActivity extends AppCompatActivity {
             user.sendEmailVerification();
         }
         FirebaseAuthHelper.getInstance().signOut();
-        new androidx.appcompat.app.AlertDialog.Builder(this)
-                .setTitle("Verify Your Email")
-                .setMessage(
-                        "We've sent a verification link to your email address. Please verify your email before logging in.")
-                .setPositiveButton("OK", (dialog, which) -> {
-                    finish();
-                    overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                })
-                .setCancelable(false)
-                .show();
+        
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_signup_success);
+        
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setLayout(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // Important for rounded corners
+        }
+        
+        dialog.setCancelable(false);
+        
+        android.widget.ImageView ivIcon = dialog.findViewById(R.id.iv_success_icon);
+        if (ivIcon != null) {
+            // Optional: add a pop-in animation to the checkmark for a premium feel
+            ivIcon.setScaleX(0f);
+            ivIcon.setScaleY(0f);
+            ivIcon.animate().scaleX(1.3f).scaleY(1.3f).setDuration(300).withEndAction(() -> {
+                ivIcon.animate().scaleX(1f).scaleY(1f).setDuration(150).start();
+            }).start();
+        }
+        
+        MaterialButton btnOk = dialog.findViewById(R.id.btn_dialog_ok);
+        if (btnOk != null) {
+            btnOk.setOnClickListener(v -> {
+                dialog.dismiss();
+                finish();
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            });
+        }
+        
+        dialog.show();
     }
 
     // ========== Common ==========

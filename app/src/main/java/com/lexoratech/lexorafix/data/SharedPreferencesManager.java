@@ -13,6 +13,7 @@ public class SharedPreferencesManager {
     private static final String KEY_LAST_ADDRESS = "last_address";
     private static final String KEY_FIRST_LAUNCH = "first_launch";
     private static final String KEY_NOTIFICATIONS_ENABLED = "notifications_enabled";
+    private static final String KEY_BIOMETRIC_ENABLED = "biometric_enabled";
 
     private final SharedPreferences prefs;
     private final SharedPreferences.Editor editor;
@@ -61,6 +62,8 @@ public class SharedPreferencesManager {
         editor.remove(KEY_USER_NAME);
         editor.remove(KEY_USER_EMAIL);
         editor.putBoolean(KEY_IS_LOGGED_IN, false);
+        // Turn off biometric auth on explicit logout so next user doesn't inherit it
+        editor.putBoolean(KEY_BIOMETRIC_ENABLED, false);
         editor.apply();
     }
 
@@ -92,6 +95,15 @@ public class SharedPreferencesManager {
 
     public void setNotificationsEnabled(boolean enabled) {
         editor.putBoolean(KEY_NOTIFICATIONS_ENABLED, enabled);
+        editor.apply();
+    }
+
+    public boolean isBiometricEnabled() {
+        return prefs.getBoolean(KEY_BIOMETRIC_ENABLED, false);
+    }
+
+    public void setBiometricEnabled(boolean enabled) {
+        editor.putBoolean(KEY_BIOMETRIC_ENABLED, enabled);
         editor.apply();
     }
 

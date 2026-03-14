@@ -36,6 +36,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.android.material.materialswitch.MaterialSwitch;
+import com.lexoratech.lexorafix.utils.BiometricHelper;
+
 public class ProfileFragment extends Fragment {
 
     private static final String TAG = "ProfileFragment";
@@ -91,6 +94,46 @@ public class ProfileFragment extends Fragment {
                         .addToBackStack(null)
                         .commit();
             });
+        }
+
+        // Biometric Toggle Setup
+        MaterialSwitch switchBiometric = view.findViewById(R.id.switch_biometric);
+        if (switchBiometric != null) {
+            boolean isAvailable = BiometricHelper.isBiometricAvailable(requireContext());
+            View cardBiometricLogin = view.findViewById(R.id.card_biometric_login);
+            
+            if (!isAvailable) {
+                if (cardBiometricLogin != null) cardBiometricLogin.setVisibility(View.GONE);
+            } else {
+                switchBiometric.setChecked(prefs.isBiometricEnabled());
+                switchBiometric.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    if (isChecked) {
+                        // User trying to enable, we must verify them first
+                        buttonView.setChecked(false); // keep it off until verified
+                        BiometricHelper.showBiometricPrompt(requireActivity(), "Enable Biometric Login", "Verify your identity to enable biometric authentication.", new BiometricHelper.BiometricCallback() {
+                            @Override
+                            public void onSuccess() {
+                                prefs.setBiometricEnabled(true);
+                                buttonView.setChecked(true); // actually turn it on
+                                Toast.makeText(requireContext(), "Biometric Login enabled", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onError(String error) {
+                                Toast.makeText(requireContext(), "Verification failed: " + error, Toast.LENGTH_LONG).show();
+                            }
+
+                            @Override
+                            public void onCancelled() {
+                                Toast.makeText(requireContext(), "Verification cancelled", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else {
+                        // User turning it off
+                        prefs.setBiometricEnabled(false);
+                    }
+                });
+            }
         }
 
         // Order history — from Firestore with real-time updates + notifications

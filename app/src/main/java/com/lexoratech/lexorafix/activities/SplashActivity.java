@@ -97,7 +97,7 @@ public class SplashActivity extends AppCompatActivity {
                                 user.getName() != null ? user.getName() : "",
                                 user.getEmail() != null ? user.getEmail() : email);
                     }
-                    goToMain();
+                    gateKeepWithBiometric(prefs);
                 }
 
                 @Override
@@ -105,12 +105,35 @@ public class SplashActivity extends AppCompatActivity {
                     if (!prefs.isLoggedIn()) {
                         prefs.saveLoginSession(uid, "", email);
                     }
-                    goToMain();
+                    gateKeepWithBiometric(prefs);
                 }
             });
         } else {
             // No Firebase user — go to login
             goToLogin();
+        }
+    }
+
+    private void gateKeepWithBiometric(SharedPreferencesManager prefs) {
+        if (prefs.isBiometricEnabled() && com.lexoratech.lexorafix.utils.BiometricHelper.isBiometricAvailable(this)) {
+            com.lexoratech.lexorafix.utils.BiometricHelper.showBiometricPrompt(this, "Unlock LexoraFix", "Verify your identity or use your PIN to continue.", new com.lexoratech.lexorafix.utils.BiometricHelper.BiometricCallback() {
+                @Override
+                public void onSuccess() {
+                    goToMain();
+                }
+
+                @Override
+                public void onError(String error) {
+                    android.widget.Toast.makeText(SplashActivity.this, "Authentication failed. Try again.", android.widget.Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onCancelled() {
+                    finishAffinity(); // Exit app if cancelled
+                }
+            });
+        } else {
+            goToMain();
         }
     }
 
