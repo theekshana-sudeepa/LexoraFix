@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="#1A1A2E"
+    android:background="@color/adminBackground"
     android:orientation="vertical">
 
     <!-- Toolbar -->
@@ -27,15 +27,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Order Details"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/adminTextPrimary"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#2A2A4E" />
+        android:background="@color/adminDivider" />
 
     <!-- Progress Bar -->
     <ProgressBar
@@ -64,9 +65,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Order #--"
-                android:textColor="#6C63FF"
+                android:textColor="@color/adminPrimary"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins" />
 
             <TextView
                 android:id="@+id/tv_timestamp"
@@ -74,17 +76,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="--"
-                android:textColor="#8888AA"
-                android:textSize="12sp" />
+                android:textColor="@color/adminTextSecondary"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins" />
 
             <!-- Customer Info Card -->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="#16213E"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
+                app:cardBackgroundColor="@color/adminCardBackground"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/adminDivider">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -96,8 +101,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Customer Information"
-                        android:textColor="#6C63FF"
+                        android:textColor="@color/adminPrimary"
                         android:textSize="14sp"
+                        android:fontFamily="@font/poppins"
                         android:textStyle="bold" />
 
                     <TextView
@@ -106,7 +112,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="Name: --"
-                        android:textColor="#FFFFFF"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/adminTextPrimary"
                         android:textSize="14sp" />
 
                     <TextView
@@ -114,8 +121,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins"
                         android:text="Email: --"
-                        android:textColor="#CCCCEE"
+                        android:textColor="@color/adminTextSecondary"
                         android:textSize="13sp" />
 
                     <TextView
@@ -124,10 +132,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Address: --"
-                        android:textColor="#CCCCEE"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/adminTextSecondary"
                         android:textSize="13sp" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Order Items -->
             <TextView
@@ -136,7 +145,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="8dp"
                 android:text="Order Items"
-                android:textColor="#FFFFFF"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/adminTextPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -147,31 +157,41 @@
                 android:nestedScrollingEnabled="false" />
 
             <!-- Total -->
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:gravity="end"
-                android:padding="8dp"
-                android:background="#16213E">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                app:cardBackgroundColor="@color/adminSurfaceLight"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/adminDivider">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Total: "
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:gravity="end"
+                    android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/tv_total"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="LKR 0.00"
-                    android:textColor="#FF9800"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total: "
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/adminTextPrimary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LKR 0.00"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/adminWarning"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Status Update -->
             <TextView
@@ -180,7 +200,8 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:text="Update Status"
-                android:textColor="#FFFFFF"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/adminTextPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -188,7 +209,7 @@
                 android:id="@+id/spinner_status"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="#16213E"
+                android:background="@drawable/bg_input_admin"
                 android:padding="8dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -197,8 +218,9 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
                 android:text="Update Status"
+                android:fontFamily="@font/poppins"
                 android:textAllCaps="false"
-                android:backgroundTint="#4CAF50"
+                app:backgroundTint="@color/adminSuccess"
                 app:cornerRadius="16dp" />
         </LinearLayout>
     </ScrollView>

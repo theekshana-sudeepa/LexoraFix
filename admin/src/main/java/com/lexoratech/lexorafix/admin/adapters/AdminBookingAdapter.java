@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import android.widget.LinearLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lexoratech.lexorafix.admin.R;
@@ -113,12 +117,7 @@ public class AdminBookingAdapter extends RecyclerView.Adapter<AdminBookingAdapte
         holder.itemView.setOnClickListener(v -> {
             int pos = holder.getAdapterPosition();
             if (pos != RecyclerView.NO_POSITION && context instanceof ManageBookingsActivity) {
-                new AlertDialog.Builder(context)
-                        .setTitle("Update Booking Status")
-                        .setItems(statuses,
-                                (dialog, which) -> ((ManageBookingsActivity) context).updateBookingStatus(pos,
-                                        statuses[which]))
-                        .show();
+                showBookingStatusDialog(context, pos);
             }
         });
     }
@@ -174,5 +173,50 @@ public class AdminBookingAdapter extends RecyclerView.Adapter<AdminBookingAdapte
             tvLocation = itemView.findViewById(R.id.tv_location);
             layoutLocation = itemView.findViewById(R.id.layout_location);
         }
+    }
+    private void showBookingStatusDialog(Context context, int pos) {
+        BottomSheetDialog dialog = new BottomSheetDialog(context);
+        View view = LayoutInflater.from(context).inflate(R.layout.dialog_booking_status, null);
+        dialog.setContentView(view);
+        
+        // Ensure transparent background around the top curved corners
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().findViewById(com.google.android.material.R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
+        }
+
+        LinearLayout llOptions = view.findViewById(R.id.ll_status_options);
+
+        for (String s : statuses) {
+            View optionView = LayoutInflater.from(context).inflate(R.layout.item_status_option, llOptions, false);
+            TextView tvName = optionView.findViewById(R.id.tv_status_name);
+            
+            View vBg = optionView.findViewById(R.id.v_icon_bg);
+
+            tvName.setText(s);
+
+            // Set standard icon mappings and tint backgrounds based on the statuses
+            if (s.equals("Completed")) {
+                vBg.setBackgroundResource(R.drawable.bg_icon_tint_green);
+                
+            } else if (s.equals("Cancelled")) {
+                vBg.setBackgroundResource(R.drawable.bg_icon_tint_red);
+                
+            } else if (s.equals("In Progress")) {
+                vBg.setBackgroundResource(R.drawable.bg_icon_tint_orange);
+                
+            } else {
+                vBg.setBackgroundResource(R.drawable.bg_icon_tint_blue);
+                
+            }
+
+            optionView.setOnClickListener(v -> {
+                dialog.dismiss();
+                ((ManageBookingsActivity) context).updateBookingStatus(pos, s);
+            });
+
+            llOptions.addView(optionView);
+        }
+
+        dialog.show();
     }
 }

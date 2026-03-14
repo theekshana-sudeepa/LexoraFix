@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.lexoratech.lexorafix.admin.R;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import androidx.appcompat.app.AppCompatDelegate;
+import com.lexoratech.lexorafix.admin.utils.ThemeUtils;
 
 public class AdminLoginActivity extends AppCompatActivity {
 
@@ -31,9 +31,7 @@ public class AdminLoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences prefs = getSharedPreferences("admin_prefs", Context.MODE_PRIVATE);
-        AppCompatDelegate.setDefaultNightMode(prefs.getBoolean("dark_mode", true) ? AppCompatDelegate.MODE_NIGHT_YES
-                : AppCompatDelegate.MODE_NIGHT_NO);
+        ThemeUtils.applyTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
 
@@ -56,6 +54,11 @@ public class AdminLoginActivity extends AppCompatActivity {
         applyEntranceAnimations();
 
         btnLogin.setOnClickListener(v -> attemptLogin());
+        
+        TextView tvRegister = findViewById(R.id.tv_register_worker);
+        tvRegister.setOnClickListener(v -> {
+            startActivity(new Intent(AdminLoginActivity.this, WorkerRegistrationActivity.class));
+        });
     }
 
     private void applyEntranceAnimations() {
@@ -128,11 +131,21 @@ public class AdminLoginActivity extends AppCompatActivity {
                     if ("admin".equals(role)) {
                         startActivity(new Intent(this, AdminDashboardActivity.class));
                         finish();
+                    } else if ("worker".equals(role)) {
+                        boolean emailVerified = doc.contains("emailVerified") && Boolean.TRUE.equals(doc.getBoolean("emailVerified"));
+                        boolean adminApproved = doc.contains("adminApproved") && Boolean.TRUE.equals(doc.getBoolean("adminApproved"));
+
+                        if (emailVerified && adminApproved) {
+                            startActivity(new Intent(this, WorkerDashboardActivity.class));
+                        } else {
+                            startActivity(new Intent(this, WorkerPendingActivity.class));
+                        }
+                        finish();
                     } else {
                         setLoading(false);
                         auth.signOut();
                         Toast.makeText(this,
-                                "Access denied. Admin privileges required.",
+                                "Access denied. Admin or Worker privileges required.",
                                 Toast.LENGTH_LONG).show();
                     }
                 })
@@ -140,7 +153,7 @@ public class AdminLoginActivity extends AppCompatActivity {
                     setLoading(false);
                     auth.signOut();
                     Toast.makeText(this,
-                            "Failed to verify admin role: " + e.getMessage(),
+                            "Failed to verify role: " + e.getMessage(),
                             Toast.LENGTH_LONG).show();
                 });
     }

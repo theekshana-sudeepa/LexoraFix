@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0F172A"> <!-- Deep Slate Background -->
+    android:background="@color/adminBackground"> <!-- Deep Slate Background -->
 
     <!-- Ambient Glow Top Right -->
     <View
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lexora Admin"
-                android:textColor="#F8FAFC"
+                android:textColor="@color/adminTextPrimary"
                 android:textSize="32sp"
                 android:textStyle="bold"
                 android:letterSpacing="-0.02" />
@@ -74,7 +74,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="40dp"
                 android:text="Secure Workspace Entry"
-                android:textColor="#94A3B8"
+                android:textColor="@color/adminTextSecondary"
                 android:textSize="15sp"
                 android:letterSpacing="0.05"
                 android:textAllCaps="true" />
@@ -115,7 +115,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
-                            android:textColor="#F8FAFC"
+                            android:textColor="@color/adminTextPrimary"
                             android:textSize="16sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,7 +135,7 @@
                         app:boxStrokeWidth="1dp"
                         app:boxStrokeWidthFocused="2dp"
                         app:endIconMode="password_toggle"
-                        app:endIconTint="#94A3B8"
+                        app:endIconTint="@color/adminTextSecondary"
                         app:hintTextColor="#818CF8">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -143,7 +143,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
-                            android:textColor="#F8FAFC"
+                            android:textColor="@color/adminTextPrimary"
                             android:textSize="16sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -164,6 +164,18 @@
                         app:cornerRadius="14dp"
                         app:elevation="4dp"
                         app:rippleColor="#818CF8" />
+
+                    <TextView
+                        android:id="@+id/tv_register_worker"
+                        android:fontFamily="@font/poppins"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:gravity="center"
+                        android:text="New staff? Register as Worker"
+                        android:textColor="@color/adminTextSecondary"
+                        android:textSize="14sp"
+                        android:padding="8dp" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

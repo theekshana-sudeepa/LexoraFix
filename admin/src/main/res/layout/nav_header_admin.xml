@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:background="@drawable/gradient_admin_toolbar"
+    android:layout_height="220dp"
+    android:background="@drawable/bg_premium_hero_card"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:padding="24dp"
+    android:paddingHorizontal="24dp"
+    android:paddingBottom="24dp"
+    android:paddingTop="24dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:contentDescription="Admin Profile"
         android:src="@drawable/ic_profile"
-        android:background="@drawable/bg_status_badge_admin"
+        android:background="@drawable/bg_circle_primary_light"
         android:padding="16dp" />
 
     <TextView
@@ -22,7 +24,7 @@
         android:layout_marginTop="16dp"
         android:text="Administrator"
         android:fontFamily="@font/poppins"
-        android:textColor="#F8FAFC"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -32,6 +34,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
         android:text="admin@lexorafix.com"
-        android:textColor="#CBD5E1"
+        android:textColor="#E0E7FF"
         android:textSize="14sp" />
 </LinearLayout>

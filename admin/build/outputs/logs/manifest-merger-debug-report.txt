@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-44:12
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-63:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-63:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-63:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-63:12
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.13/transforms/dc838bed77f01a0f5670a134a4b7c708/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/theekshanasudeepa/.gradle/caches/8.13/transforms/c98649441b7c12cf4b3fc142fd885fbd/transformed/constraintlayout-2.2.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] /Users/theekshanasudeepa/.gradle/caches/8.13/transforms/bc8c6e30b7fd165e04e716e614d429e4/transformed/appcompat-resources-1.7.0/AndroidManifest.xml:2:1-7:12
@@ -123,8 +123,8 @@ MERGED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasud
 	android:name
 		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:6:22-74
 application
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-43:19
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-43:19
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-62:19
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-62:19
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.13/transforms/dc838bed77f01a0f5670a134a4b7c708/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.13/transforms/dc838bed77f01a0f5670a134a4b7c708/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/theekshanasudeepa/.gradle/caches/8.13/transforms/c98649441b7c12cf4b3fc142fd885fbd/transformed/constraintlayout-2.2.0/AndroidManifest.xml:7:5-20
@@ -194,117 +194,149 @@ MERGED from [com.google.android.play:core-common:2.0.3] /Users/theekshanasudeepa
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.0] /Users/theekshanasudeepa/.gradle/caches/8.13/transforms/5ec0bc2e2200f23ac02e5eabef8a74c1/transformed/core-1.13.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:13:9-35
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:14:9-35
 	android:label
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:12:9-41
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:13:9-41
 	android:roundIcon
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:11:9-54
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:12:9-54
 	android:icon
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:10:9-43
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:11:9-43
 	android:allowBackup
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:9:9-35
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:14:9-49
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:15:9-49
+	android:name
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:9:9-41
 activity#com.lexoratech.lexorafix.admin.activities.AdminLoginActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:16:9-23:20
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:17:9-24:20
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:18:13-36
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:19:13-36
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:17:13-58
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:18:13-58
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:19:13-22:29
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:20:13-23:29
 action#android.intent.action.MAIN
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:20:17-69
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:21:17-69
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:20:25-66
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:21:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:21:17-77
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:22:17-77
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:21:27-74
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:22:27-74
+activity#com.lexoratech.lexorafix.admin.activities.WorkerRegistrationActivity
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:26:9-30:56
+	android:screenOrientation
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:29:13-49
+	android:exported
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:28:13-37
+	android:theme
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:30:13-53
+	android:name
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:27:13-66
+activity#com.lexoratech.lexorafix.admin.activities.WorkerPendingActivity
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:32:9-36:56
+	android:screenOrientation
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:35:13-49
+	android:exported
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:34:13-37
+	android:theme
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:36:13-53
+	android:name
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:33:13-61
+activity#com.lexoratech.lexorafix.admin.activities.WorkerDashboardActivity
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:38:9-42:56
+	android:screenOrientation
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:41:13-49
+	android:exported
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:40:13-37
+	android:theme
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:42:13-53
+	android:name
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:39:13-63
 activity#com.lexoratech.lexorafix.admin.activities.AdminDashboardActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:25:9-96
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:44:9-96
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:25:69-93
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:44:69-93
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:25:19-68
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:44:19-68
 activity#com.lexoratech.lexorafix.admin.activities.ManageUsersActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:26:9-93
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:45:9-93
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:26:66-90
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:45:66-90
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:26:19-65
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:45:19-65
 activity#com.lexoratech.lexorafix.admin.activities.ManageOrdersActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:27:9-94
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:46:9-94
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:27:67-91
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:46:67-91
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:27:19-66
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:46:19-66
 activity#com.lexoratech.lexorafix.admin.activities.ManageBookingsActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:28:9-96
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:47:9-96
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:28:69-93
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:47:69-93
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:28:19-68
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:47:19-68
 activity#com.lexoratech.lexorafix.admin.activities.ManageProductsActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:29:9-96
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:48:9-96
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:29:69-93
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:48:69-93
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:29:19-68
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:48:19-68
 activity#com.lexoratech.lexorafix.admin.activities.AddEditProductActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:30:9-96
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:49:9-96
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:30:69-93
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:49:69-93
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:30:19-68
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:49:19-68
 activity#com.lexoratech.lexorafix.admin.activities.ManageCategoriesActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:31:9-98
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:50:9-98
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:31:71-95
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:50:71-95
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:31:19-70
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:50:19-70
 activity#com.lexoratech.lexorafix.admin.activities.AddEditCategoryActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:32:9-97
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:51:9-97
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:32:70-94
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:51:70-94
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:32:19-69
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:51:19-69
 activity#com.lexoratech.lexorafix.admin.activities.ManageServiceCentersActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:33:9-102
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:52:9-102
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:33:75-99
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:52:75-99
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:33:19-74
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:52:19-74
 activity#com.lexoratech.lexorafix.admin.activities.AddEditServiceCenterActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:34:9-102
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:53:9-102
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:34:75-99
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:53:75-99
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:34:19-74
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:53:19-74
 activity#com.lexoratech.lexorafix.admin.activities.OrderDetailActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:35:9-93
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:54:9-93
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:35:66-90
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:54:66-90
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:35:19-65
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:54:19-65
 activity#com.lexoratech.lexorafix.admin.activities.AdminProductReviewsActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:36:9-101
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:55:9-101
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:36:74-98
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:55:74-98
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:36:19-73
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:55:19-73
 activity#com.lexoratech.lexorafix.admin.activities.AdminSettingsActivity
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:37:9-95
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:56:9-95
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:37:68-92
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:56:68-92
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:37:19-67
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:56:19-67
 service#com.lexoratech.lexorafix.admin.services.AdminOrderListenerService
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:39:9-41:40
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:58:9-60:40
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:41:13-37
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:60:13-37
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:40:13-63
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:59:13-63
 uses-sdk
 INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml

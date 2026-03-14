@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Pattern/texture placeholder (just a slight gradient for now) -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="16dp" />
+            <gradient
+                android:angle="0"
+                android:startColor="#202A45"
+                android:endColor="#101A35"
+                android:type="linear" />
+        </shape>
+    </item>
+    
+    <!-- Top-left glowing accent -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="16dp" />
+            <gradient
+                android:angle="315"
+                android:startColor="#40FF9800"
+                android:endColor="#00FF9800"
+                android:type="linear" />
+        </shape>
+    </item>
+</layer-list>

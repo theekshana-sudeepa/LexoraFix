@@ -3,85 +3,110 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="2dp"
-    app:strokeColor="#E0E0E0"
-    app:strokeWidth="1dp">
+    android:layout_marginBottom="12dp"
+    android:layout_marginHorizontal="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/adminCardBackground"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/adminDivider">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <TextView
-            android:id="@+id/tv_center_name"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Center Name"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/btn_edit"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="8dp"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/tv_center_address"
-            android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_center_name"
+                    android:fontFamily="@font/poppins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Center Name"
+                    android:textColor="@color/adminTextPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_center_address"
+                    android:fontFamily="@font/poppins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Center Address"
+                    android:textColor="@color/adminTextSecondary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_center_phone"
+                    android:fontFamily="@font/poppins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Phone Number"
+                    android:textColor="@color/adminTextSecondary"
+                    android:textSize="14sp"
+                    android:drawablePadding="6dp"
+                    app:drawableStartCompat="@drawable/ic_phone"
+                    app:drawableTint="@color/adminTextHint" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:background="@color/adminDivider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Center Address"
-            android:textColor="#757575"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/btn_edit"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_center_name"
-            android:layout_marginEnd="8dp"/>
+            android:orientation="horizontal"
+            android:gravity="end">
 
-        <TextView
-            android:id="@+id/tv_center_phone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Phone Number"
-            android:textColor="#757575"
-            android:textSize="14sp"
-            android:drawablePadding="4dp"
-            app:drawableStartCompat="@drawable/ic_phone"
-            app:drawableTint="#1976D2"
-            app:layout_constraintEnd_toStartOf="@+id/btn_edit"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_center_address"
-            android:layout_marginEnd="8dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_edit"
+                android:fontFamily="@font/poppins"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Edit"
+                android:textSize="12sp"
+                android:textColor="@color/adminIconBlue"
+                app:icon="@drawable/ic_edit"
+                app:iconTint="@color/adminIconBlue"
+                app:backgroundTint="@color/adminTintBlue"
+                app:cornerRadius="12dp" />
 
-        <ImageView
-            android:id="@+id/btn_edit"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:padding="8dp"
-            android:src="@drawable/ic_edit"
-            app:tint="#1976D2"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:layout_constraintEnd_toStartOf="@+id/btn_delete"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="8dp"/>
-
-        <ImageView
-            android:id="@+id/btn_delete"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:padding="8dp"
-            android:src="@drawable/ic_delete"
-            app:tint="#D32F2F"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_delete"
+                android:fontFamily="@font/poppins"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textSize="12sp"
+                android:textColor="@color/adminIconRed"
+                app:icon="@drawable/ic_delete"
+                app:iconTint="@color/adminIconRed"
+                app:backgroundTint="@color/adminTintRed"
+                app:cornerRadius="12dp" />
+        </LinearLayout>
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

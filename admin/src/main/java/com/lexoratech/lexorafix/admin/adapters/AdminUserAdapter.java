@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.firestore.SetOptions;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lexoratech.lexorafix.admin.R;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +45,24 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
         Map<String, Object> user = users.get(position);
         holder.tvName.setText(getStr(user, "name", "Unknown"));
         holder.tvEmail.setText(getStr(user, "email", "--"));
-        holder.tvRole.setText(getStr(user, "role", "customer"));
+        
+        String role = getStr(user, "role", "customer");
+        holder.tvRole.setText(role);
+        
+        // Colorize role badge
+        if ("admin".equalsIgnoreCase(role)) {
+            holder.tvRole.setTextColor(ContextCompat.getColor(context, R.color.adminIconBlue));
+            ((com.google.android.material.card.MaterialCardView)holder.tvRole.getParent()).setStrokeColor(
+                    ContextCompat.getColor(context, R.color.adminTintBlue));
+        } else if ("worker".equalsIgnoreCase(role)) {
+             holder.tvRole.setTextColor(ContextCompat.getColor(context, R.color.adminWarning));
+             ((com.google.android.material.card.MaterialCardView)holder.tvRole.getParent()).setStrokeColor(
+                     ContextCompat.getColor(context, R.color.adminTintOrange));       
+        } else {
+             holder.tvRole.setTextColor(ContextCompat.getColor(context, R.color.adminIconPurple));
+             ((com.google.android.material.card.MaterialCardView)holder.tvRole.getParent()).setStrokeColor(
+                     ContextCompat.getColor(context, R.color.adminTintPurple));
+        }
 
         String uid = getStr(user, "uid", "--");
         holder.tvUid.setText("UID: " + uid);
@@ -51,48 +70,83 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
         String status = getStr(user, "status", "Active");
         holder.tvStatus.setText(status);
 
-        if ("Banned".equals(status)) {
-            holder.tvStatus.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_red_dark));
-            holder.btnBan.setText("Unban User");
-            holder.btnBan.setTextColor(ContextCompat.getColor(context, android.R.color.holo_green_dark));
-            holder.btnBan.setStrokeColor(
-                    ColorStateList.valueOf(ContextCompat.getColor(context, android.R.color.holo_green_dark)));
+        if ("worker".equals(role) && !Boolean.TRUE.equals(user.get("adminApproved"))) {
+            // Worker is pending approval
+            holder.cardStatus.setCardBackgroundColor(ContextCompat.getColor(context, R.color.adminWarning));
+            holder.btnBan.setText("Approve Worker");
+            holder.btnBan.setTextColor(ContextCompat.getColor(context, R.color.adminIconOrange));
+            holder.btnBan.setBackgroundTintList(
+                    ColorStateList.valueOf(ContextCompat.getColor(context, R.color.adminTintOrange)));
+            holder.btnBan.setStrokeWidth(0);
+
+            holder.btnBan.setOnClickListener(v -> {
+                holder.btnBan.setEnabled(false);
+                holder.btnBan.setText("Approving...");
+
+                Map<String, Object> updates = new HashMap<>();
+                updates.put("adminApproved", true);
+                updates.put("status", "Active");
+
+                FirebaseFirestore.getInstance().collection("users").document(uid)
+                        .set(updates, SetOptions.merge())
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(context, "Worker Approved", Toast.LENGTH_SHORT).show();
+                            user.put("adminApproved", true);
+                            user.put("status", "Active");
+                            notifyItemChanged(position);
+                        })
+                        .addOnFailureListener(e -> {
+                            holder.btnBan.setEnabled(true);
+                            holder.btnBan.setText("Approve Worker");
+                            Toast.makeText(context, "Failed to approve", Toast.LENGTH_SHORT).show();
+                        });
+            });
+
         } else {
-            holder.tvStatus.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_green_dark));
-            holder.btnBan.setText("Ban User");
-            holder.btnBan.setTextColor(ContextCompat.getColor(context, android.R.color.holo_red_dark));
-            holder.btnBan.setStrokeColor(
-                    ColorStateList.valueOf(ContextCompat.getColor(context, android.R.color.holo_red_dark)));
+            // Standard ban/unban logic
+            if ("Banned".equals(status)) {
+                holder.cardStatus.setCardBackgroundColor(ContextCompat.getColor(context, R.color.adminError));
+                holder.btnBan.setText("Unban User");
+                holder.btnBan.setTextColor(ContextCompat.getColor(context, R.color.adminIconGreen));
+                holder.btnBan.setBackgroundTintList(
+                        ColorStateList.valueOf(ContextCompat.getColor(context, R.color.adminTintGreen)));
+                holder.btnBan.setStrokeWidth(0);
+            } else {
+                holder.cardStatus.setCardBackgroundColor(ContextCompat.getColor(context, R.color.adminSuccess));
+                holder.btnBan.setText("Ban User");
+                holder.btnBan.setTextColor(ContextCompat.getColor(context, R.color.adminIconRed));
+                holder.btnBan.setBackgroundTintList(
+                        ColorStateList.valueOf(ContextCompat.getColor(context, R.color.adminTintRed)));
+                holder.btnBan.setStrokeWidth(0);
+            }
+
+            holder.btnBan.setOnClickListener(v -> {
+                boolean isBanning = "Active".equals(status);
+                String newStatus = isBanning ? "Banned" : "Active";
+
+                holder.btnBan.setEnabled(false);
+                holder.btnBan.setText("Updating...");
+
+                FirebaseFirestore.getInstance().collection("users").document(uid)
+                        .set(java.util.Collections.singletonMap("status", newStatus), SetOptions.merge())
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(context, "User " + newStatus, Toast.LENGTH_SHORT).show();
+                            user.put("status", newStatus);
+                            notifyItemChanged(position);
+
+                            String email = getStr(user, "email", "");
+                            String name = getStr(user, "name", "User");
+                            if (!email.isEmpty()) {
+                                com.lexoratech.lexorafix.admin.network.EmailHelper.getInstance()
+                                        .sendBanStatusEmail(email, name, "Banned".equals(newStatus));
+                            }
+                        })
+                        .addOnFailureListener(e -> {
+                            holder.btnBan.setEnabled(true);
+                            Toast.makeText(context, "Failed to update status", Toast.LENGTH_SHORT).show();
+                        });
+            });
         }
-
-        holder.btnBan.setOnClickListener(v -> {
-            boolean isBanning = "Active".equals(status);
-            String newStatus = isBanning ? "Banned" : "Active";
-
-            holder.btnBan.setEnabled(false);
-            holder.btnBan.setText("Updating...");
-
-            FirebaseFirestore.getInstance().collection("users").document(uid)
-                    .set(java.util.Collections.singletonMap("status", newStatus), SetOptions.merge())
-                    .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(context, "User " + newStatus, Toast.LENGTH_SHORT).show();
-                        // Update local map to reflect UI immediately without full refresh
-                        user.put("status", newStatus);
-                        notifyItemChanged(position);
-
-                        // Send Email Notification
-                        String email = getStr(user, "email", "");
-                        String name = getStr(user, "name", "User");
-                        if (!email.isEmpty()) {
-                            com.lexoratech.lexorafix.admin.network.EmailHelper.getInstance()
-                                    .sendBanStatusEmail(email, name, "Banned".equals(newStatus));
-                        }
-                    })
-                    .addOnFailureListener(e -> {
-                        holder.btnBan.setEnabled(true);
-                        Toast.makeText(context, "Failed to update status", Toast.LENGTH_SHORT).show();
-                    });
-        });
     }
 
     @Override
@@ -108,6 +162,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvName, tvEmail, tvRole, tvUid, tvStatus;
         MaterialButton btnBan;
+        MaterialCardView cardStatus;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -117,6 +172,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
             tvUid = itemView.findViewById(R.id.tv_uid);
             tvStatus = itemView.findViewById(R.id.tv_status);
             btnBan = itemView.findViewById(R.id.btn_ban);
+            cardStatus = itemView.findViewById(R.id.card_status);
         }
     }
 }

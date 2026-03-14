@@ -28,8 +28,7 @@ import com.lexoratech.lexorafix.admin.services.AdminOrderListenerService;
 
 import java.util.Locale;
 import android.content.Context;
-import android.content.SharedPreferences;
-import androidx.appcompat.app.AppCompatDelegate;
+import com.lexoratech.lexorafix.admin.utils.ThemeUtils;
 
 public class AdminDashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,9 +47,7 @@ public class AdminDashboardActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences prefs = getSharedPreferences("admin_prefs", Context.MODE_PRIVATE);
-        AppCompatDelegate.setDefaultNightMode(prefs.getBoolean("dark_mode", true) ? AppCompatDelegate.MODE_NIGHT_YES
-                : AppCompatDelegate.MODE_NIGHT_NO);
+        ThemeUtils.applyTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
 
@@ -60,7 +57,6 @@ public class AdminDashboardActivity extends AppCompatActivity
         tvTotalProducts = findViewById(R.id.tv_total_products);
         tvTotalCategories = findViewById(R.id.tv_total_categories);
         tvTotalRevenue = findViewById(R.id.tv_total_revenue);
-        tvLowStock = findViewById(R.id.tv_low_stock);
 
         // Drawer Setup
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -88,27 +84,7 @@ public class AdminDashboardActivity extends AppCompatActivity
             });
         }
 
-        // Card click navigation (stat cards)
-        findViewById(R.id.card_users).setOnClickListener(v -> {
-            startActivity(new Intent(this, ManageUsersActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
-        findViewById(R.id.card_orders).setOnClickListener(v -> {
-            startActivity(new Intent(this, ManageOrdersActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
-        findViewById(R.id.card_bookings).setOnClickListener(v -> {
-            startActivity(new Intent(this, ManageBookingsActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
-        findViewById(R.id.card_products).setOnClickListener(v -> {
-            startActivity(new Intent(this, ManageProductsActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
-        findViewById(R.id.card_categories).setOnClickListener(v -> {
-            startActivity(new Intent(this, ManageCategoriesActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
+
 
         // Quick action buttons
         findViewById(R.id.qa_add_product).setOnClickListener(v -> {
@@ -140,10 +116,7 @@ public class AdminDashboardActivity extends AppCompatActivity
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
 
-        android.view.View btnMigrate = findViewById(R.id.qa_migrate_data);
-        if (btnMigrate != null) {
-            btnMigrate.setOnClickListener(v -> migrateMockDataToFirestore());
-        }
+
 
         // Sign out
         findViewById(R.id.btn_logout).setOnClickListener(v -> {
@@ -160,65 +133,10 @@ public class AdminDashboardActivity extends AppCompatActivity
         applyEntranceAnimations();
     }
 
-    private void migrateMockDataToFirestore() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // The 5 static service centers from assets/data.json
-        Object[][] mockCenters = {
-                { 1, "LexoraFix Main Hub - Colombo", "123 Galle Road, Colombo 03", "+94112345678", 6.9271, 79.8612,
-                        "Main service center with full tool repair and installation services" },
-                { 2, "LexoraFix Kandy Center", "45 Peradeniya Road, Kandy", "+94812345678", 7.2906, 80.6337,
-                        "Service center covering central province" },
-                { 3, "LexoraFix Galle Branch", "78 Main Street, Galle Fort", "+94912345678", 6.0324, 80.2170,
-                        "Southern province service branch" },
-                { 4, "LexoraFix Negombo", "12 Lewis Place, Negombo", "+94312345678", 7.2083, 79.8358,
-                        "Western coast service point" },
-                { 5, "LexoraFix Jaffna", "56 Hospital Road, Jaffna", "+94212345678", 9.6615, 80.0255,
-                        "Northern province service center" }
-        };
-
-        android.widget.Toast.makeText(this, "Starting migration...", android.widget.Toast.LENGTH_SHORT).show();
-
-        for (Object[] center : mockCenters) {
-            java.util.Map<String, Object> data = new java.util.HashMap<>();
-            data.put("id", center[0]);
-            data.put("name", center[1]);
-            data.put("address", center[2]);
-            data.put("phone", center[3]);
-            data.put("latitude", center[4]);
-            data.put("longitude", center[5]);
-            data.put("description", center[6]);
-
-            db.collection("service_centers")
-                    .add(data)
-                    .addOnSuccessListener(doc -> Log.d(TAG, "Migrated: " + center[1]))
-                    .addOnFailureListener(e -> Log.e(TAG, "Failed migration: " + center[1], e));
-        }
-
-        android.widget.Toast
-                .makeText(this, "Migration tasks queued. Check logs/Firestore.", android.widget.Toast.LENGTH_LONG)
-                .show();
-    }
 
     private void applyEntranceAnimations() {
-        android.widget.LinearLayout contentLayout = findViewById(R.id.ll_quick_actions);
-        if (contentLayout != null) {
-            android.view.animation.LayoutAnimationController controller = android.view.animation.AnimationUtils
-                    .loadLayoutAnimation(this, R.anim.layout_animation_fall_down);
-            contentLayout.setLayoutAnimation(controller);
-        }
-
-        android.view.View header = findViewById(R.id.ll_dashboard_header);
-        if (header != null) {
-            header.setAlpha(0f);
-            header.setTranslationY(-50f);
-            header.animate()
-                    .alpha(1f)
-                    .translationY(0f)
-                    .setDuration(600)
-                    .setInterpolator(new android.view.animation.DecelerateInterpolator(2f))
-                    .start();
-        }
+        // We'll apply layout animations later if requested in a refined way
     }
 
     private void requestNotificationPermissionAndStartService() {
@@ -295,7 +213,7 @@ public class AdminDashboardActivity extends AppCompatActivity
                                 }
                             }
                         }
-                        tvTotalRevenue.setText(String.format(Locale.getDefault(), "LKR %.2f", totalRevenue));
+                        animateRevenueText(totalRevenue);
                     }
                 });
 
@@ -332,16 +250,6 @@ public class AdminDashboardActivity extends AppCompatActivity
                 });
 
         // Low stock count (<= 5)
-        db.collection("products").whereLessThanOrEqualTo("stock", 5).get()
-                .addOnSuccessListener(q -> {
-                    if (tvLowStock != null)
-                        tvLowStock.setText(String.valueOf(q.size()));
-                })
-                .addOnFailureListener(e -> {
-                    if (tvLowStock != null)
-                        tvLowStock.setText("--");
-                });
-
         // Categories count
         db.collection("categories").get()
                 .addOnSuccessListener(q -> tvTotalCategories.setText(String.valueOf(q.size())))
@@ -349,6 +257,28 @@ public class AdminDashboardActivity extends AppCompatActivity
                     Log.w(TAG, "Categories count failed: " + e.getMessage());
                     tvTotalCategories.setText("--");
                 });
+    }
+
+    private void animateRevenueText(double targetRevenue) {
+        // Parse current revenue if possible, or start from 0
+        double currentVal = 0;
+        try {
+            String currentText = tvTotalRevenue.getText().toString();
+            if (currentText.startsWith("LKR ")) {
+                currentVal = Double.parseDouble(currentText.substring(4).replaceAll(",", ""));
+            }
+        } catch (Exception ignored) {}
+
+        if (currentVal == targetRevenue) return;
+
+        android.animation.ValueAnimator animator = android.animation.ValueAnimator.ofFloat((float) currentVal, (float) targetRevenue);
+        animator.setDuration(1200); // 1.2s smooth animation
+        animator.setInterpolator(new android.view.animation.DecelerateInterpolator());
+        animator.addUpdateListener(animation -> {
+            float animatedValue = (float) animation.getAnimatedValue();
+            tvTotalRevenue.setText(String.format(java.util.Locale.getDefault(), "LKR %,.2f", animatedValue));
+        });
+        animator.start();
     }
 
     @Override
@@ -374,10 +304,11 @@ public class AdminDashboardActivity extends AppCompatActivity
                 startActivity(new Intent(this, ManageOrdersActivity.class));
             } else if (id == R.id.nav_bookings) {
                 startActivity(new Intent(this, ManageBookingsActivity.class));
+            } else if (id == R.id.nav_service_centers) {
+                startActivity(new Intent(this, ManageServiceCentersActivity.class));
             } else if (id == R.id.nav_settings) {
                 startActivity(new Intent(this, AdminSettingsActivity.class));
-            } else if (id == R.id.nav_migrate) {
-                migrateMockDataToFirestore();
+
             } else if (id == R.id.nav_logout) {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(this, AdminLoginActivity.class));
@@ -385,7 +316,7 @@ public class AdminDashboardActivity extends AppCompatActivity
             }
 
             // Apply fade transition
-            if (id != R.id.nav_dashboard && id != R.id.nav_migrate) {
+            if (id != R.id.nav_dashboard) {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         }, 250);

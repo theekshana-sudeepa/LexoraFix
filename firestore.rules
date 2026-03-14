@@ -17,6 +17,11 @@ service cloud.firestore {
         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
     }
 
+    function isWorker() {
+      return request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "worker";
+    }
+
     // ----- Users -----
     match /users/{uid} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
@@ -60,13 +65,14 @@ service cloud.firestore {
     }
 
     // ----- Top-level Bookings -----
-    // Customers can CREATE bookings (dual-write from BookServiceActivity)
-    // Admins can read/update all bookings
+    // Customers can CREATE bookings
+    // Workers can READ all bookings (to see available jobs) and UPDATE bookings (to accept/change status)
+    // Admins can do everything
     match /bookings/{bookingId} {
       allow create: if request.auth != null;
       allow read: if request.auth != null && 
-        (isAdmin() || resource.data.firebaseUid == request.auth.uid);
-      allow update: if isAdmin();
+        (isAdmin() || isWorker() || resource.data.firebaseUid == request.auth.uid);
+      allow update: if isAdmin() || isWorker();
     }
 
     // ----- User subcollection orders -----

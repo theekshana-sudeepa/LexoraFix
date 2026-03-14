@@ -101,20 +101,20 @@ public class HomeFragment extends Fragment {
         RecyclerView rvFeatured = view.findViewById(R.id.rv_featured);
         rvFeatured.setLayoutManager(new GridLayoutManager(requireContext(), 2));
 
-        // See All clicks
-        TextView tvSeeAllCategories = view.findViewById(R.id.tv_see_all_categories);
-        TextView tvSeeAllFeatured = view.findViewById(R.id.tv_see_all_featured);
+        // See All clicks (Now LinearLayouts containing the text and arrow)
+        View llSeeAllCategories = view.findViewById(R.id.ll_see_all_categories);
+        View llSeeAllFeatured = view.findViewById(R.id.ll_see_all_featured);
 
-        if (tvSeeAllCategories != null) {
-            tvSeeAllCategories.setOnClickListener(v -> {
+        if (llSeeAllCategories != null) {
+            llSeeAllCategories.setOnClickListener(v -> {
                 if (requireActivity() instanceof MainActivity) {
                     ((MainActivity) requireActivity()).navigateToCategories();
                 }
             });
         }
 
-        if (tvSeeAllFeatured != null) {
-            tvSeeAllFeatured.setOnClickListener(v -> {
+        if (llSeeAllFeatured != null) {
+            llSeeAllFeatured.setOnClickListener(v -> {
                 ProductListFragment fragment = ProductListFragment.newInstance(null, "All Products");
                 requireActivity().getSupportFragmentManager()
                         .beginTransaction()

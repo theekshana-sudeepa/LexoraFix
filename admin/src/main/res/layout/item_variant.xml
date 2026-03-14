@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#16213E"
+    android:background="@drawable/bg_input_admin"
     android:padding="12dp"
     android:layout_marginBottom="8dp">
 
@@ -21,15 +21,22 @@
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:hint="Variant Label (e.g. Black, 45Ah)"
-            app:boxStrokeColor="#6C63FF"
-            app:hintTextColor="#8888AA"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeColor="@color/adminPrimary"
+            app:hintTextColor="@color/adminPrimary"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_variant_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/adminTextPrimary"
                 android:textSize="14sp"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -57,15 +64,22 @@
             android:layout_weight="1"
             android:layout_marginEnd="6dp"
             android:hint="Price"
-            app:boxStrokeColor="#6C63FF"
-            app:hintTextColor="#8888AA"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeColor="@color/adminPrimary"
+            app:hintTextColor="@color/adminPrimary"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_variant_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/adminTextPrimary"
                 android:textSize="14sp"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -76,15 +90,22 @@
             android:layout_weight="1"
             android:layout_marginHorizontal="6dp"
             android:hint="Stock"
-            app:boxStrokeColor="#6C63FF"
-            app:hintTextColor="#8888AA"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeColor="@color/adminPrimary"
+            app:hintTextColor="@color/adminPrimary"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_variant_stock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/adminTextPrimary"
                 android:textSize="14sp"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -95,15 +116,22 @@
             android:layout_weight="1"
             android:layout_marginStart="6dp"
             android:hint="SKU"
-            app:boxStrokeColor="#6C63FF"
-            app:hintTextColor="#8888AA"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeColor="@color/adminPrimary"
+            app:hintTextColor="@color/adminPrimary"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_variant_sku"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/adminTextPrimary"
                 android:textSize="14sp"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>

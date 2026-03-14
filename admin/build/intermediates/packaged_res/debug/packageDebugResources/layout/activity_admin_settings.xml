@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    android:background="#0F172A">
+    android:background="@color/adminBackground">
 
     <!-- Top App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0F172A"
+        android:background="@color/adminBackground"
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="System Settings"
-                android:textColor="#F8FAFC"
+                android:textColor="@color/adminTextPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
@@ -56,7 +56,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#1E293B"
+                app:cardBackgroundColor="@color/adminCardBackground"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
@@ -67,41 +67,54 @@
                     android:orientation="vertical"
                     android:padding="4dp">
 
-                    <!-- Theme Toggle -->
+                    <!-- Theme Selection (System, Light, Dark) -->
                     <LinearLayout
+                        android:id="@+id/ll_theme_selector"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:padding="16dp"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
                         
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_edit"
-                            app:tint="#94A3B8" />
+                            app:tint="@color/adminTextSecondary" />
 
-                        <TextView
-                            android:fontFamily="@font/poppins"
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:layout_marginStart="16dp"
-                            android:text="Dark Theme"
-                            android:textColor="#F8FAFC"
-                            android:textSize="16sp" />
+                            android:orientation="vertical">
 
-                        <androidx.appcompat.widget.SwitchCompat
-                            android:id="@+id/switch_theme"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checked="true" />
+                            <TextView
+                                android:fontFamily="@font/poppins"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="App Theme"
+                                android:textColor="@color/adminTextPrimary"
+                                android:textSize="16sp" />
+                                
+                            <TextView
+                                android:id="@+id/tv_theme_status"
+                                android:fontFamily="@font/poppins"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="System Default"
+                                android:textColor="@color/adminTextHint"
+                                android:textSize="12sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#334155"
+                        android:background="@color/adminDivider"
                         android:layout_marginHorizontal="16dp" />
 
                     <!-- Push Notifications -->
@@ -116,7 +129,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_dashboard_orders_premium"
-                            app:tint="#94A3B8" />
+                            app:tint="@color/adminTextSecondary" />
 
                         <TextView
                             android:fontFamily="@font/poppins"
@@ -125,7 +138,7 @@
                             android:layout_weight="1"
                             android:layout_marginStart="16dp"
                             android:text="Push Notifications"
-                            android:textColor="#F8FAFC"
+                            android:textColor="@color/adminTextPrimary"
                             android:textSize="16sp" />
 
                         <androidx.appcompat.widget.SwitchCompat
@@ -153,7 +166,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#1E293B"
+                app:cardBackgroundColor="@color/adminCardBackground"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
@@ -190,7 +203,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Maintenance Mode"
-                                android:textColor="#F8FAFC"
+                                android:textColor="@color/adminTextPrimary"
                                 android:textSize="16sp" />
                                 
                             <TextView
@@ -198,7 +211,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Blocks customer app access"
-                                android:textColor="#64748B"
+                                android:textColor="@color/adminTextHint"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
@@ -222,7 +235,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="LexoraFix Admin Core"
-                    android:textColor="#334155"
+                    android:textColor="@color/adminDivider"
                     android:textSize="14sp"
                     android:textStyle="bold"/>
                     
@@ -231,7 +244,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Version 1.0.0"
-                    android:textColor="#334155"
+                    android:textColor="@color/adminDivider"
                     android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>

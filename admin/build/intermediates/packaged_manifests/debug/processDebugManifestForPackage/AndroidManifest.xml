@@ -22,6 +22,7 @@
     <uses-permission android:name="com.lexoratech.lexorafix.admin.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
+        android:name="com.lexoratech.lexorafix.admin.AdminApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
@@ -40,6 +41,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.lexoratech.lexorafix.admin.activities.WorkerRegistrationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.LexoraAdmin" />
+        <activity
+            android:name="com.lexoratech.lexorafix.admin.activities.WorkerPendingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.LexoraAdmin" />
+        <activity
+            android:name="com.lexoratech.lexorafix.admin.activities.WorkerDashboardActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.LexoraAdmin" />
         <activity
             android:name="com.lexoratech.lexorafix.admin.activities.AdminDashboardActivity"
             android:exported="false" />

@@ -15,9 +15,9 @@
         <item name="colorOnSurface">@color/adminTextPrimary</item>
         <item name="colorError">@color/adminError</item>
         <item name="android:statusBarColor">@color/adminBackground</item>
-        <item name="android:navigationBarColor">@color/adminSurface</item>
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">false</item>
+        <item name="android:navigationBarColor">@color/adminBackground</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">true</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:textColorPrimary">@color/adminTextPrimary</item>
         <item name="android:textColorSecondary">@color/adminTextSecondary</item>
@@ -76,9 +76,9 @@
 
     <!-- ========== Admin Navigation Drawer Style ========== -->
     <style name="AdminNavDrawerStyle" parent="Widget.MaterialComponents.NavigationView">
-        <item name="android:background">#1E293B</item>
-        <item name="itemTextColor">#CBD5E1</item>
-        <item name="itemIconTint">#CBD5E1</item>
+        <item name="android:background">@color/adminCardBackground</item>
+        <item name="itemTextColor">@color/adminTextPrimary</item>
+        <item name="itemIconTint">@color/adminTextPrimary</item>
         <item name="itemShapeFillColor">@color/admin_nav_item_bg</item>
         <item name="itemShapeAppearanceOverlay">@style/AdminNavDrawerShape</item>
     </style>

@@ -4,38 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="#0F172A"
+    android:background="@color/adminBackground"
     android:orientation="vertical">
 
-    <!-- Premium Gradient Toolbar -->
+    <!-- Premium SaaS Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient_admin_toolbar"
+        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp">
+        android:paddingHorizontal="24dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="24dp">
 
         <ImageView
             android:id="@+id/btn_back"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_circle_primary_light"
+            android:padding="12dp"
             android:src="@drawable/ic_back"
-            app:tint="#F8FAFC" />
+            app:tint="@color/adminPrimary" />
 
         <TextView
             android:fontFamily="@font/poppins"
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="20dp"
             android:layout_weight="1"
             android:text="Manage"
-            android:textColor="#F8FAFC"
-            android:textSize="20sp"
+            android:textColor="@color/adminTextPrimary"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
@@ -55,7 +55,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#1E293B" />
+        android:background="@color/adminCardBackground" />
 
     <!-- Content with SwipeRefresh and FAB -->
     <FrameLayout
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="No items found"
-                android:textColor="#94A3B8"
+                android:textColor="@color/adminTextSecondary"
                 android:textSize="16sp" />
 
             <TextView
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Pull down to refresh"
-                android:textColor="#64748B"
+                android:textColor="@color/adminTextHint"
                 android:textSize="13sp" />
         </LinearLayout>
 
@@ -121,15 +121,18 @@
             android:id="@+id/fab_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
+            android:layout_gravity="bottom|center_horizontal"
             android:layout_margin="24dp"
             android:text="Add New"
             android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:paddingHorizontal="20dp"
             app:icon="@drawable/ic_add"
             app:iconTint="#FFFFFF"
-            app:backgroundTint="#6C63FF"
+            app:backgroundTint="@color/adminPrimary"
             app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:elevation="4dp" />
 
     </FrameLayout>
 </LinearLayout>

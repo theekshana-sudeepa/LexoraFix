@@ -23,4 +23,8 @@ public class ServiceBooking {
     private String notes;
     private String status;
     private String timestamp;
+    // Worker details (populated when a worker accepts the booking)
+    private String assignedWorkerName;
+    private String assignedWorkerPhone;
+    private String assignedWorkerEmail;
 }

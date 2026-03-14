@@ -28,6 +28,12 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        // Override any process-wide overrides created by the Admin app,
+        // ensuring the main customer app always follows system Dark Mode.
+        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(
+                androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                
         setContentView(R.layout.activity_splash);
 
         ImageView logo = findViewById(R.id.splash_logo);

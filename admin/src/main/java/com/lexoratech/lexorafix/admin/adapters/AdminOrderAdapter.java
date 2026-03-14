@@ -51,7 +51,7 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Vi
         // Status with color-coded badge
         String status = getStr(order, "status", "Unknown");
         holder.tvStatus.setText(status);
-        setStatusBadgeColor(holder.tvStatus, status);
+        setStatusBadgeColor(holder.tvStatus, holder.cardStatus, status);
 
         // Customer info
         String customerName = getStr(order, "userName", "");
@@ -113,30 +113,37 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Vi
         });
     }
 
-    private void setStatusBadgeColor(TextView tv, String status) {
-        int color;
+    private void setStatusBadgeColor(TextView tv, com.google.android.material.card.MaterialCardView card, String status) {
+        Context ctx = tv.getContext();
+        int textColorResId;
+        int tintColorResId;
+
         switch (status) {
             case "Delivered":
-                color = 0xFF4CAF50;
+                textColorResId = R.color.adminSuccess;
+                tintColorResId = R.color.adminTintGreen;
                 break;
             case "Cancelled":
-                color = 0xFFF44336;
+                textColorResId = R.color.adminError;
+                tintColorResId = R.color.adminTintRed;
                 break;
             case "Processing":
             case "Shipped":
-                color = 0xFFFF9800;
+                textColorResId = R.color.adminWarning;
+                tintColorResId = R.color.adminTintOrange;
                 break;
             case "Confirmed":
-                color = 0xFF2196F3;
+                textColorResId = R.color.adminInfo;
+                tintColorResId = R.color.adminTintBlue;
                 break;
             default:
-                color = 0xFF6C63FF;
+                textColorResId = R.color.adminPrimary;
+                tintColorResId = R.color.adminTintPurple;
                 break;
         }
-        tv.setTextColor(0xFFFFFFFF);
-        if (tv.getBackground() instanceof GradientDrawable) {
-            ((GradientDrawable) tv.getBackground().mutate()).setColor(color);
-        }
+
+        tv.setTextColor(androidx.core.content.ContextCompat.getColor(ctx, textColorResId));
+        card.setCardBackgroundColor(androidx.core.content.ContextCompat.getColor(ctx, tintColorResId));
     }
 
     @Override
@@ -152,11 +159,13 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Vi
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvOrderId, tvStatus, tvCustomerName, tvCustomerEmail,
                 tvPaymentStatus, tvTotal, tvItemCount, tvAddress;
+        com.google.android.material.card.MaterialCardView cardStatus;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvOrderId = itemView.findViewById(R.id.tv_order_id);
             tvStatus = itemView.findViewById(R.id.tv_status);
+            cardStatus = itemView.findViewById(R.id.card_status);
             tvCustomerName = itemView.findViewById(R.id.tv_customer_name);
             tvCustomerEmail = itemView.findViewById(R.id.tv_customer_email);
             tvPaymentStatus = itemView.findViewById(R.id.tv_payment_status);

@@ -10,28 +10,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/spacing_md">
+        android:paddingBottom="@dimen/spacing_xl">
 
-        <!-- ═══════════ Hero Banner ═══════════ -->
+        <!-- ═══════════ Hero Banner (Curved) ═══════════ -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Gradient background -->
+            <!-- Premium Curved Background -->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:background="@drawable/bg_gradient_header_home" />
+                android:layout_height="220dp"
+                android:background="@drawable/bg_header_curved" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingHorizontal="20dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="40dp">
+                android:paddingHorizontal="24dp"
+                android:paddingTop="32dp"
+                android:paddingBottom="64dp">
 
-                <!-- Top Row: greeting + map icon -->
+                <!-- Top Row: Greeting + Map/Filter Icon -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -48,82 +48,208 @@
                             android:id="@+id/tv_greeting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Hello!"
-                            android:textColor="#FFFFFF"
-                            android:textStyle="bold"
-                            android:textSize="14sp" />
+                            android:text="Welcome!"
+                            android:textColor="#E0FFFFFF"
+                            android:fontFamily="sans-serif-medium"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="@string/app_name"
+                            android:text="Find Everything\nYou Need."
                             android:textColor="@color/white"
-                            android:textSize="28sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Discover amazing products"
-                            android:textColor="#F0F0F0"
-                            android:textSize="14sp" />
+                            android:textSize="26sp"
+                            android:fontFamily="sans-serif-black"
+                            android:lineSpacingExtra="4dp" />
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/iv_map"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/bg_circle_semi_transparent"
-                        android:contentDescription="Service Centers"
-                        android:padding="12dp"
-                        android:src="@drawable/ic_location"
-                        app:tint="@color/white" />
+                    <!-- Profile / Map Button -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        app:cardCornerRadius="26dp"
+                        app:cardBackgroundColor="#33FFFFFF"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="#4DFFFFFF"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            android:id="@+id/iv_map"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="14dp"
+                            android:src="@drawable/ic_location"
+                            android:contentDescription="Map"
+                            app:tint="@color/white" />
+                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
-            </LinearLayout>
 
-            <!-- Search Bar — overlaps bottom of banner -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="140dp"
-                app:cardCornerRadius="26dp"
-                app:cardElevation="8dp"
-                app:cardBackgroundColor="@color/colorSurface">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <!-- Modern Search Bar (Pill shaped inside hero) -->
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:boxStrokeWidth="0dp"
-                    app:boxStrokeWidthFocused="0dp"
-                    app:boxBackgroundColor="@android:color/transparent"
-                    app:startIconDrawable="@drawable/ic_search"
-                    app:startIconTint="@color/colorPrimary"
-                    app:hintEnabled="false">
+                    android:layout_height="56dp"
+                    android:layout_marginTop="24dp"
+                    app:cardCornerRadius="28dp"
+                    app:cardElevation="12dp"
+                    app:cardBackgroundColor="@color/colorSurface"
+                    app:strokeWidth="0dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_search"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="@android:color/transparent"
-                        android:hint="@string/search_products"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:textSize="14sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </com.google.android.material.card.MaterialCardView>
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_search"
+                            app:tint="@color/textSecondary" />
+
+                        <EditText
+                            android:id="@+id/et_search"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:background="@null"
+                            android:hint="Search premium tools..."
+                            android:textColorHint="@color/textSecondary"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="15sp"
+                            android:inputType="text"
+                            android:maxLines="1" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="24dp"
+                            android:layout_marginHorizontal="12dp"
+                            android:background="@color/colorDivider" />
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_filter"
+                            app:tint="@color/colorPrimary" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
         </FrameLayout>
+
+        <!-- ═══════════ Promotional Banner Carousel ═══════════ -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-24dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="24dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Promo Card 1 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="280dp"
+                    android:layout_height="140dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="8dp"
+                    app:strokeWidth="0dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_banner_promo">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="20dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_status_badge"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp"
+                                android:text="SUMMER SALE"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Get 30% Off on\nPower Tools!"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Promo Card 2 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="280dp"
+                    android:layout_height="140dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="8dp"
+                    app:strokeWidth="0dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_banner_promo">
+                        <!-- Reverse the angle for variety using transparent black overlay -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#66000000" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="20dp"
+                            android:gravity="center_vertical">
+                            
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="NEW ARRIVALS"
+                                android:textColor="#E0E0E0"
+                                android:textSize="12sp"
+                                android:fontFamily="sans-serif-medium"
+                                android:letterSpacing="0.1" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Professional\nRepair Kits"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:fontFamily="sans-serif-black" />
+                        </LinearLayout>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <!-- ═══════════ Categories Section ═══════════ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:paddingHorizontal="20dp"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal="24dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -131,38 +257,54 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/all_categories"
+                android:text="Categories"
                 android:textColor="@color/textPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="22sp"
+                android:fontFamily="sans-serif-black" />
 
-            <TextView
-                android:id="@+id/tv_see_all_categories"
+            <LinearLayout
+                android:id="@+id/ll_see_all_categories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="@dimen/spacing_xs"
-                android:text="See All"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:padding="4dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tv_see_all_categories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See All"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/ic_arrow_right"
+                    app:tint="@color/colorPrimary" />
+            </LinearLayout>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_categories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:clipToPadding="false"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp" />
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp" />
 
         <!-- ═══════════ Featured Products Section ═══════════ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:paddingHorizontal="20dp"
+            android:layout_marginTop="36dp"
+            android:paddingHorizontal="24dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -170,31 +312,47 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/featured_products"
+                android:text="Top Picks For You"
                 android:textColor="@color/textPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="22sp"
+                android:fontFamily="sans-serif-black" />
 
-            <TextView
-                android:id="@+id/tv_see_all_featured"
+            <LinearLayout
+                android:id="@+id/ll_see_all_featured"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="@dimen/spacing_xs"
-                android:text="See All"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:padding="4dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tv_see_all_featured"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See All"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/ic_arrow_right"
+                    app:tint="@color/colorPrimary" />
+            </LinearLayout>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_featured"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:clipToPadding="false"
             android:nestedScrollingEnabled="false"
-            android:paddingHorizontal="12dp" />
+            android:paddingHorizontal="16dp" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

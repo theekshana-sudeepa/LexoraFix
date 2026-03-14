@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Admin Dark Premium Theme overriding base light configurations -->
+    <style name="Theme.LexoraAdmin" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Global Font -->
+        <item name="android:fontFamily">@font/poppins</item>
+
+        <item name="colorPrimary">@color/adminPrimary</item>
+        <item name="colorPrimaryVariant">@color/adminPrimaryDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/adminSecondary</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:colorBackground">@color/adminBackground</item>
+        <item name="colorSurface">@color/adminSurface</item>
+        <item name="colorOnSurface">@color/adminTextPrimary</item>
+        <item name="colorError">@color/adminError</item>
+        <item name="android:statusBarColor">@color/adminBackground</item>
+        <item name="android:navigationBarColor">@color/adminBackground</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">false</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:textColorPrimary">@color/adminTextPrimary</item>
+        <item name="android:textColorSecondary">@color/adminTextSecondary</item>
+        <item name="android:textColorHint">@color/adminTextHint</item>
+        <item name="colorControlHighlight">@color/adminRipple</item>
+    </style>
+</resources>

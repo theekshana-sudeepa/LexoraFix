@@ -114,9 +114,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    // Navigate to cart tab programmatically (used by shake gesture)
+    // Navigate to cart tab programmatically (used by shake gesture previously)
     public void navigateToCart() {
         bottomNav.setSelectedItemId(R.id.nav_cart);
+    }
+
+    // Navigate to services tab programmatically (used by shake gesture)
+    public void navigateToServices() {
+        bottomNav.setSelectedItemId(R.id.nav_services);
     }
 
     // Navigate to categories tab programmatically
@@ -152,8 +157,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 long currentTime = System.currentTimeMillis();
                 if (currentTime - lastShakeTime > SHAKE_COOLDOWN) {
                     lastShakeTime = currentTime;
-                    Toast.makeText(this, "🛒 Shake detected! Opening cart...", Toast.LENGTH_SHORT).show();
-                    navigateToCart();
+                    Toast.makeText(this, "🛠 Shake detected! Opening Services...", Toast.LENGTH_SHORT).show();
+                    navigateToServices();
                 }
             }
         }

@@ -146,7 +146,7 @@ public class BookServiceActivity extends AppCompatActivity {
         }
 
         int userId = 1; // Local DB legacy support
-        ServiceBooking booking = new ServiceBooking(0, userId, "", serviceType, date, time, notes, "Confirmed", "");
+        ServiceBooking booking = new ServiceBooking(0, userId, "", serviceType, date, time, notes, "Confirmed", "", null, null, null);
 
         DatabaseHelper db = DatabaseHelper.getInstance(this);
         long id = db.addBooking(booking);
