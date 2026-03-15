@@ -75,7 +75,7 @@ public class NotificationHelper {
      */
     public void showOrderConfirmation(String orderId) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ORDERS)
-                .setSmallIcon(R.drawable.ic_notifications)
+                .setSmallIcon(R.drawable.ic_stat_logo)
                 .setContentTitle("Order Confirmed! \uD83C\uDF89")
                 .setContentText("Your order #" + orderId + " has been placed successfully.")
                 .setStyle(new NotificationCompat.BigTextStyle()
@@ -98,7 +98,7 @@ public class NotificationHelper {
      */
     public void showBookingConfirmation(String bookingId, String serviceType) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_BOOKINGS)
-                .setSmallIcon(R.drawable.ic_notifications)
+                .setSmallIcon(R.drawable.ic_stat_logo)
                 .setContentTitle("Booking Confirmed! ✅")
                 .setContentText(serviceType + " service has been booked successfully.")
                 .setStyle(new NotificationCompat.BigTextStyle()
@@ -125,7 +125,7 @@ public class NotificationHelper {
         String text = "Your order #" + orderId + " is now " + newStatus;
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ORDERS)
-                .setSmallIcon(R.drawable.ic_notifications)
+                .setSmallIcon(R.drawable.ic_stat_logo)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
@@ -146,7 +146,7 @@ public class NotificationHelper {
      */
     public void showServiceReminder(String title, String message) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_REMINDERS)
-                .setSmallIcon(R.drawable.ic_notifications)
+                .setSmallIcon(R.drawable.ic_stat_logo)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -179,7 +179,7 @@ public class NotificationHelper {
         }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_REMINDERS)
-                .setSmallIcon(R.drawable.ic_notifications)
+                .setSmallIcon(R.drawable.ic_stat_logo)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
@@ -200,7 +200,7 @@ public class NotificationHelper {
      */
     public void showAccountBannedNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_REMINDERS)
-                .setSmallIcon(R.drawable.ic_notifications)
+                .setSmallIcon(R.drawable.ic_stat_logo)
                 .setContentTitle("Account Suspended 🚫")
                 .setContentText("Your LexoraFix account has been suspended by an administrator.")
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(
@@ -226,7 +226,7 @@ public class NotificationHelper {
         String text = "Your " + serviceType + " booking is now " + newStatus;
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_BOOKINGS)
-                .setSmallIcon(R.drawable.ic_notifications)
+                .setSmallIcon(R.drawable.ic_stat_logo)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(text))

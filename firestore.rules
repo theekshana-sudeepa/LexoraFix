@@ -85,6 +85,7 @@ service cloud.firestore {
     match /users/{uid}/bookings/{bookingId} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
       allow read, write: if isAdmin();
+      allow write: if isWorker(); // Workers sync status updates to customer subcollection
     }
 
     // ----- Collection group queries (for admin) -----

@@ -38,15 +38,6 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <!-- App Logo -->
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_marginEnd="12dp"
-                        android:src="@drawable/ic_logo_foreground"
-                        app:tint="@color/white"
-                        android:contentDescription="Lexora Fix Logo" />
-
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -73,26 +64,42 @@
                             android:lineSpacingExtra="4dp" />
                     </LinearLayout>
 
-                    <!-- Notifications Button -->
-                    <com.google.android.material.card.MaterialCardView
+                    <!-- Notifications Button with Badge -->
+                    <FrameLayout
                         android:layout_width="46dp"
                         android:layout_height="46dp"
-                        android:layout_marginEnd="8dp"
-                        app:cardCornerRadius="23dp"
-                        app:cardBackgroundColor="#33FFFFFF"
-                        app:strokeWidth="1dp"
-                        app:strokeColor="#4DFFFFFF"
-                        app:cardElevation="0dp">
+                        android:layout_marginEnd="8dp">
 
-                        <ImageView
-                            android:id="@+id/iv_notifications"
+                        <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:padding="12dp"
-                            android:src="@drawable/ic_notifications"
-                            android:contentDescription="Notifications"
-                            app:tint="@color/white" />
-                    </com.google.android.material.card.MaterialCardView>
+                            app:cardCornerRadius="23dp"
+                            app:cardBackgroundColor="#33FFFFFF"
+                            app:strokeWidth="1dp"
+                            app:strokeColor="#4DFFFFFF"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:id="@+id/iv_notifications"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="12dp"
+                                android:src="@drawable/ic_notifications"
+                                android:contentDescription="Notifications"
+                                app:tint="@color/white" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Badge Dot -->
+                        <View
+                            android:id="@+id/notification_badge"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_gravity="top|end"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:background="@drawable/bg_notification_dot"
+                            android:visibility="gone" />
+                    </FrameLayout>
 
                     <!-- Profile / Map Button -->
                     <com.google.android.material.card.MaterialCardView

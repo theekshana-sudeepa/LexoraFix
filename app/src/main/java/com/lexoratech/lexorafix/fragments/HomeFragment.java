@@ -58,6 +58,19 @@ public class HomeFragment extends Fragment {
             startActivity(new Intent(requireContext(), MapActivity.class));
         });
 
+        // Notification bell — navigates to Services tab (bookings)
+        ImageView ivNotifications = view.findViewById(R.id.iv_notifications);
+        View notificationBadge = view.findViewById(R.id.notification_badge);
+        ivNotifications.setOnClickListener(v -> {
+            // Navigate to Services tab where bookings and status updates live
+            if (requireActivity() instanceof MainActivity) {
+                ((MainActivity) requireActivity()).navigateToServices();
+            }
+        });
+
+        // Show badge dot if there are active bookings
+        checkForActiveBookings(notificationBadge);
+
         // Categories RecyclerView
         RecyclerView rvCategories = view.findViewById(R.id.rv_categories);
         rvCategories.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -258,5 +271,32 @@ public class HomeFragment extends Fragment {
             }
             productAdapter.updateList(filtered);
         }
+    }
+
+    /**
+     * Check if the user has any active (non-completed) bookings.
+     * If so, show the red notification badge dot on the bell icon.
+     */
+    private void checkForActiveBookings(View badgeView) {
+        if (badgeView == null) return;
+        String uid = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() != null
+                ? com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser().getUid()
+                : null;
+        if (uid == null) return;
+
+        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                .collection("users").document(uid)
+                .collection("bookings")
+                .whereNotEqualTo("status", "Completed")
+                .limit(1)
+                .get()
+                .addOnSuccessListener(snapshot -> {
+                    if (isAdded() && !snapshot.isEmpty()) {
+                        badgeView.setVisibility(View.VISIBLE);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    // Silent — don't show badge if we can't check
+                });
     }
 }

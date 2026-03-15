@@ -297,7 +297,7 @@ public class CheckoutActivity extends AppCompatActivity {
     /** Set up cascading province → district dropdowns for a given pair. */
     private void setupProvinceDistrictDropdowns(AutoCompleteTextView provinceView, AutoCompleteTextView districtView) {
         ArrayAdapter<String> provinceAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_dropdown_item_1line, LocationData.getProvinces());
+                this, R.layout.item_dropdown, LocationData.getProvinces());
         provinceView.setAdapter(provinceAdapter);
 
         provinceView.setOnItemClickListener((parent, view, position, id) -> {
@@ -311,7 +311,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private void populateDistrictDropdown(AutoCompleteTextView districtView, String province) {
         String[] districts = LocationData.getDistricts(province);
         ArrayAdapter<String> districtAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_dropdown_item_1line, districts);
+                this, R.layout.item_dropdown, districts);
         districtView.setAdapter(districtAdapter);
     }
 

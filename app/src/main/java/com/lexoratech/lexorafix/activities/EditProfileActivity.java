@@ -194,7 +194,7 @@ public class EditProfileActivity extends AppCompatActivity {
     /** Set up the province dropdown and wire cascading district logic. */
     private void setupProvinceDistrictDropdowns() {
         ArrayAdapter<String> provinceAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_dropdown_item_1line, LocationData.getProvinces());
+                this, R.layout.item_dropdown, LocationData.getProvinces());
         actProvince.setAdapter(provinceAdapter);
 
         actProvince.setOnItemClickListener((parent, view, position, id) -> {
@@ -208,7 +208,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private void populateDistrictDropdown(String province) {
         String[] districts = LocationData.getDistricts(province);
         ArrayAdapter<String> districtAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_dropdown_item_1line, districts);
+                this, R.layout.item_dropdown, districts);
         actDistrict.setAdapter(districtAdapter);
     }
 

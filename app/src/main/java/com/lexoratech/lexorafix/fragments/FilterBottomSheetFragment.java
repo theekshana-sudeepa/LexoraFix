@@ -135,22 +135,19 @@ public class FilterBottomSheetFragment extends BottomSheetDialogFragment {
 
     private void buildCategoryChips(ChipGroup group) {
         group.removeAllViews();
+        LayoutInflater inflater = LayoutInflater.from(requireContext());
 
         // "All" chip
-        Chip allChip = new Chip(requireContext());
+        Chip allChip = (Chip) inflater.inflate(R.layout.item_category_chip, group, false);
         allChip.setText("All");
-        allChip.setCheckable(true);
         allChip.setTag(""); // empty doc id means "All"
-        applyChipStyle(allChip);
         group.addView(allChip);
 
         // One chip per Firestore category
         for (Category cat : categories) {
-            Chip chip = new Chip(requireContext());
+            Chip chip = (Chip) inflater.inflate(R.layout.item_category_chip, group, false);
             chip.setText(cat.getName());
-            chip.setCheckable(true);
             chip.setTag(cat.getDocumentId());
-            applyChipStyle(chip);
             group.addView(chip);
         }
 
@@ -166,13 +163,6 @@ public class FilterBottomSheetFragment extends BottomSheetDialogFragment {
                 }
             }
         }
-    }
-
-    private void applyChipStyle(Chip chip) {
-        // Programmatically mirror the XML style attributes
-        chip.setChipBackgroundColorResource(R.color.colorSurface);
-        chip.setCheckedIconVisible(false);
-        chip.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
     }
 
     private String getSelectedCategoryDocId(ChipGroup group) {

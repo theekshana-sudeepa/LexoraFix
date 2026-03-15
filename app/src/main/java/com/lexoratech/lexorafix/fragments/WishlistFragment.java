@@ -45,9 +45,11 @@ public class WishlistFragment extends Fragment {
         rvWishlist = view.findViewById(R.id.rv_wishlist);
         layoutEmpty = view.findViewById(R.id.layout_empty);
         progressBar = view.findViewById(R.id.progress_bar);
-        ImageView ivBack = view.findViewById(R.id.iv_back);
+        ImageView btnBack = view.findViewById(R.id.btn_back);
+        android.widget.TextView tvToolbarTitle = view.findViewById(R.id.tv_toolbar_title);
+        if (tvToolbarTitle != null) tvToolbarTitle.setText("My Wishlist");
 
-        ivBack.setOnClickListener(v -> {
+        btnBack.setOnClickListener(v -> {
             if (getParentFragmentManager().getBackStackEntryCount() > 0) {
                 getParentFragmentManager().popBackStack();
             }
