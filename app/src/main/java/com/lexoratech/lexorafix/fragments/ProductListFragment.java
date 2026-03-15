@@ -134,32 +134,18 @@ public class ProductListFragment extends Fragment {
                 });
 
         // ── Load products from Firestore ──
-        String finalCategoryDocId = categoryDocId;
-        if (finalCategoryDocId != null && !finalCategoryDocId.isEmpty()) {
-            FirestoreHelper.getInstance().getProductsByCategory(finalCategoryDocId,
-                    new FirestoreHelper.FirestoreCallback<com.google.firebase.firestore.QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(com.google.firebase.firestore.QuerySnapshot result) {
-                            setAdapter(rvProducts, result);
-                        }
+        // Always load ALL products from Firestore so the bottom sheet filter can change categories locally
+        FirestoreHelper.getInstance().getAllProducts(
+                new FirestoreHelper.FirestoreCallback<com.google.firebase.firestore.QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(com.google.firebase.firestore.QuerySnapshot result) {
+                        setAdapter(rvProducts, result);
+                    }
 
-                        @Override
-                        public void onError(String message) {
-                        }
-                    });
-        } else {
-            FirestoreHelper.getInstance().getAllProducts(
-                    new FirestoreHelper.FirestoreCallback<com.google.firebase.firestore.QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(com.google.firebase.firestore.QuerySnapshot result) {
-                            setAdapter(rvProducts, result);
-                        }
-
-                        @Override
-                        public void onError(String message) {
-                        }
-                    });
-        }
+                    @Override
+                    public void onError(String message) {
+                    }
+                });
 
         updateFilterBadge();
         return view;

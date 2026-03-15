@@ -1,5 +1,13 @@
 [
     {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_logout.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_logout.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_admin_dashboard.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_admin_dashboard.xml"
+    },
+    {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_store.xml.flat",
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/drawable/ic_store.xml"
     },
@@ -36,12 +44,12 @@
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/drawable/ic_dashboard_migrate_premium.xml"
     },
     {
-        "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_status_active_modern.xml.flat",
-        "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/drawable/bg_status_active_modern.xml"
-    },
-    {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_phone.xml.flat",
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/drawable/ic_phone.xml"
+    },
+    {
+        "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_status_active_modern.xml.flat",
+        "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/drawable/bg_status_active_modern.xml"
     },
     {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/layout_item_order_detail_product.xml.flat",
@@ -70,6 +78,10 @@
     {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_dashboard_products_premium.xml.flat",
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/drawable/ic_dashboard_products_premium.xml"
+    },
+    {
+        "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_admin_header_curved.xml.flat",
+        "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/drawable/bg_admin_header_curved.xml"
     },
     {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_dashboard_categories_premium.xml.flat",
@@ -204,6 +216,10 @@
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_review.xml"
     },
     {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_admin_product.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_product.xml"
+    },
+    {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/layout_item_admin_booking.xml.flat",
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_booking.xml"
     },
@@ -252,12 +268,12 @@
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/menu/menu_admin_drawer.xml"
     },
     {
-        "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_status_badge_admin.xml.flat",
-        "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/drawable/bg_status_badge_admin.xml"
-    },
-    {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_admin_launcher_background.xml.flat",
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/drawable/ic_admin_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_status_badge_admin.xml.flat",
+        "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/drawable/bg_status_badge_admin.xml"
     },
     {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_arrow_forward.xml.flat",
@@ -266,6 +282,10 @@
     {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/layout_activity_worker_pending.xml.flat",
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-main-46:/layout/activity_worker_pending.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_worker_dashboard.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_worker_dashboard.xml"
     },
     {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.13/com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_menu.xml.flat",

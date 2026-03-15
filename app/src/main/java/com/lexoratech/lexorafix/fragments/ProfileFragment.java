@@ -36,7 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.android.material.materialswitch.MaterialSwitch;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.lexoratech.lexorafix.utils.BiometricHelper;
 
 public class ProfileFragment extends Fragment {
@@ -97,7 +97,7 @@ public class ProfileFragment extends Fragment {
         }
 
         // Biometric Toggle Setup
-        MaterialSwitch switchBiometric = view.findViewById(R.id.switch_biometric);
+        SwitchMaterial switchBiometric = view.findViewById(R.id.switch_biometric);
         if (switchBiometric != null) {
             boolean isAvailable = BiometricHelper.isBiometricAvailable(requireContext());
             View cardBiometricLogin = view.findViewById(R.id.card_biometric_login);

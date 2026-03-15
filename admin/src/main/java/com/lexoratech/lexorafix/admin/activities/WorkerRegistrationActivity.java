@@ -52,9 +52,32 @@ public class WorkerRegistrationActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(v -> attemptRegistration());
         
         TextView tvBackToLogin = findViewById(R.id.tv_back_to_login);
-        tvBackToLogin.setOnClickListener(v -> {
-            finish();
-        });
+        tvBackToLogin.setOnClickListener(v -> finish());
+        
+        applyEntranceAnimations();
+    }
+
+    private void applyEntranceAnimations() {
+        View logo = findViewById(R.id.iv_logo);
+        View title = findViewById(R.id.tv_title);
+        View subtitle = findViewById(R.id.tv_subtitle);
+        View registerBox = findViewById(R.id.cv_register_box);
+
+        View[] views = new View[] { logo, title, subtitle, registerBox };
+
+        for (int i = 0; i < views.length; i++) {
+            if (views[i] != null) {
+                views[i].setAlpha(0f);
+                views[i].setTranslationY(80f);
+                views[i].animate()
+                        .alpha(1f)
+                        .translationY(0f)
+                        .setDuration(600)
+                        .setStartDelay(i * 100L) // Staggered delay
+                        .setInterpolator(new android.view.animation.DecelerateInterpolator(2f))
+                        .start();
+            }
+        }
     }
 
     private void attemptRegistration() {

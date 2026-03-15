@@ -62,7 +62,7 @@ public class AdminLoginActivity extends AppCompatActivity {
     }
 
     private void applyEntranceAnimations() {
-        View logo = findViewById(R.id.tv_logo_icon);
+        View logo = findViewById(R.id.iv_admin_logo);
         View title = findViewById(R.id.tv_title);
         View subtitle = findViewById(R.id.tv_subtitle);
         View loginBox = findViewById(R.id.cv_login_box);

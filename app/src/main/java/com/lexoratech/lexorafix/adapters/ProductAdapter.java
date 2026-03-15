@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.snackbar.Snackbar;
 import com.lexoratech.lexorafix.R;
 import com.lexoratech.lexorafix.data.DatabaseHelper;
 import com.lexoratech.lexorafix.models.CartItem;
@@ -105,22 +106,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         holder.btnAddCart.setOnClickListener(v -> {
             if (product.getStock() <= 0) {
-                Toast.makeText(context, "Product is out of stock.", Toast.LENGTH_SHORT).show();
+                Snackbar.make(v, "Product is out of stock.", Snackbar.LENGTH_SHORT).show();
                 return;
             }
             DatabaseHelper db = DatabaseHelper.getInstance(context);
             int userId = 1; // Local DB legacy support
             int currentCartQty = db.getProductQuantityInCart(product.getId(), userId);
             if (currentCartQty >= product.getStock()) {
-                Toast.makeText(context, "Cannot add more. Only " + product.getStock() + " available in stock.",
-                        Toast.LENGTH_LONG).show();
+                Snackbar.make(v, "Cannot add more. Only " + product.getStock() + " available in stock.", Snackbar.LENGTH_LONG).show();
                 return;
             }
 
             CartItem cartItem = new CartItem(0, product.getId(), product.getName(),
                     product.getPrice(), 1, product.getImageUrl());
             db.addToCart(cartItem, userId);
-            Toast.makeText(context, product.getName() + " added to cart", Toast.LENGTH_SHORT).show();
+            Snackbar.make(v, product.getName() + " added to cart! 🛒", Snackbar.LENGTH_LONG)
+                    .setAction("CHECKOUT", view -> {
+                        context.startActivity(new android.content.Intent(context, com.lexoratech.lexorafix.activities.CheckoutActivity.class));
+                    }).show();
         });
     }
 

@@ -40,6 +40,7 @@ color adminWarning
 color admin_nav_item_bg
 color black
 color white
+drawable bg_admin_header_curved
 drawable bg_circle_primary_light
 drawable bg_glow_blue
 drawable bg_glow_orange
@@ -73,6 +74,7 @@ drawable ic_delete
 drawable ic_edit
 drawable ic_email
 drawable ic_location
+drawable ic_logout
 drawable ic_menu
 drawable ic_phone
 drawable ic_profile
@@ -103,6 +105,7 @@ id btn_save
 id btn_update_status
 id card_status
 id cv_login_box
+id cv_register_box
 id drawer_layout
 id empty_state
 id et_address
@@ -123,7 +126,9 @@ id et_variant_price
 id et_variant_sku
 id et_variant_stock
 id fab_add
+id iv_admin_logo
 id iv_category
+id iv_logo
 id iv_product
 id iv_product_1
 id iv_product_2
@@ -196,7 +201,6 @@ id tv_featured
 id tv_header_email
 id tv_item_count
 id tv_location
-id tv_logo_icon
 id tv_logout
 id tv_name
 id tv_notes

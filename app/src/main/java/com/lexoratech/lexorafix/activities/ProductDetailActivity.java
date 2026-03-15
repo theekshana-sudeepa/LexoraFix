@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
 import androidx.viewpager2.widget.ViewPager2;
@@ -315,7 +316,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 selectedQuantity++;
                 tvQuantity.setText(String.valueOf(selectedQuantity));
             } else {
-                Toast.makeText(this, "Maximum stock reached", Toast.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(android.R.id.content), "Maximum stock reached", Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -370,7 +371,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             });
         } else {
             ivWishlist.setOnClickListener(
-                    v -> Toast.makeText(this, "Please login to save favorites", Toast.LENGTH_SHORT).show());
+                    v -> Snackbar.make(findViewById(android.R.id.content), "Please login to save favorites", Snackbar.LENGTH_SHORT).show());
         }
 
         btnAddCart.setOnClickListener(v -> addToCartIfStockAvailable(false));
@@ -486,7 +487,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         int currentCartQty = db.getProductQuantityInCart(product.getId(), userId);
         if (currentCartQty + selectedQuantity > maxStock) {
             String msg = "Cannot add more. Only " + maxStock + " available in stock.";
-            Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+            Snackbar.make(findViewById(android.R.id.content), msg, Snackbar.LENGTH_LONG).show();
             return;
         }
 
@@ -504,7 +505,10 @@ public class ProductDetailActivity extends AppCompatActivity {
             String itemName = product.getName();
             if (variantLabel != null)
                 itemName += " (" + variantLabel + ")";
-            Toast.makeText(this, itemName + " x" + selectedQuantity + " added to cart! 🛒", Toast.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), itemName + " x" + selectedQuantity + " added to cart! 🛒", Snackbar.LENGTH_LONG)
+                    .setAction("CHECKOUT", v -> {
+                        startActivity(new Intent(ProductDetailActivity.this, CheckoutActivity.class));
+                    }).show();
         }
     }
 

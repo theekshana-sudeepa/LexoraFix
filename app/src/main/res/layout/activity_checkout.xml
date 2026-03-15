@@ -97,41 +97,51 @@
                             android:imeOptions="actionNext" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Province Dropdown -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/til_province"
-                        style="@style/LexoraDropdownStyle"
+                    <!-- Province and District side by side -->
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/spacing_sm"
-                        android:hint="Province">
+                        android:orientation="horizontal">
 
-                        <AutoCompleteTextView
-                            android:id="@+id/act_province"
-                            android:layout_width="match_parent"
+                        <!-- Province Dropdown -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_province"
+                            style="@style/LexoraDropdownStyle"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:inputType="none"
-                            android:focusable="false"
-                            android:cursorVisible="false" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:hint="Province">
 
-                    <!-- District Dropdown -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/til_district"
-                        style="@style/LexoraDropdownStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_sm"
-                        android:hint="District">
+                            <AutoCompleteTextView
+                                android:id="@+id/act_province"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:focusable="false"
+                                android:cursorVisible="false" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                        <AutoCompleteTextView
-                            android:id="@+id/act_district"
-                            android:layout_width="match_parent"
+                        <!-- District Dropdown -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_district"
+                            style="@style/LexoraDropdownStyle"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:inputType="none"
-                            android:focusable="false"
-                            android:cursorVisible="false" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:hint="District">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/act_district"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:focusable="false"
+                                android:cursorVisible="false" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
 
                     <!-- City + Postal Code side by side -->
                     <LinearLayout
@@ -253,41 +263,51 @@
                                 android:imeOptions="actionNext" />
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <!-- Billing Province Dropdown -->
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/til_billing_province"
-                            style="@style/LexoraDropdownStyle"
+                        <!-- Billing Province and District side by side -->
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/spacing_sm"
-                            android:hint="Province">
+                            android:orientation="horizontal">
 
-                            <AutoCompleteTextView
-                                android:id="@+id/act_billing_province"
-                                android:layout_width="match_parent"
+                            <!-- Billing Province Dropdown -->
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/til_billing_province"
+                                style="@style/LexoraDropdownStyle"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:inputType="none"
-                                android:focusable="false"
-                                android:cursorVisible="false" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                                android:layout_weight="1"
+                                android:layout_marginEnd="6dp"
+                                android:hint="Province">
 
-                        <!-- Billing District Dropdown -->
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/til_billing_district"
-                            style="@style/LexoraDropdownStyle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/spacing_sm"
-                            android:hint="District">
+                                <AutoCompleteTextView
+                                    android:id="@+id/act_billing_province"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="none"
+                                    android:focusable="false"
+                                    android:cursorVisible="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
-                            <AutoCompleteTextView
-                                android:id="@+id/act_billing_district"
-                                android:layout_width="match_parent"
+                            <!-- Billing District Dropdown -->
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/til_billing_district"
+                                style="@style/LexoraDropdownStyle"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:inputType="none"
-                                android:focusable="false"
-                                android:cursorVisible="false" />
-                        </com.google.android.material.textfield.TextInputLayout>
+                                android:layout_weight="1"
+                                android:layout_marginStart="6dp"
+                                android:hint="District">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/act_billing_district"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="none"
+                                    android:focusable="false"
+                                    android:cursorVisible="false" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"

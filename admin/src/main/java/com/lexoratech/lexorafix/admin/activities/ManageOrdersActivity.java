@@ -22,6 +22,7 @@ import com.lexoratech.lexorafix.admin.R;
 import com.lexoratech.lexorafix.admin.adapters.AdminOrderAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -129,6 +130,28 @@ public class ManageOrdersActivity extends AppCompatActivity {
                 orderList.add(data);
             }
         }
+        
+        // Ensure robust local sorting (descending) regardless of Firestore indices
+        Collections.sort(orderList, (a, b) -> {
+            Object tsA = a.get("timestamp");
+            Object tsB = b.get("timestamp");
+            long timeA = 0, timeB = 0;
+
+            if (tsA instanceof Timestamp) timeA = ((Timestamp) tsA).getSeconds();
+            else if (tsA instanceof Long) timeA = (Long) tsA;
+
+            if (tsB instanceof Timestamp) timeB = ((Timestamp) tsB).getSeconds();
+            else if (tsB instanceof Long) timeB = (Long) tsB;
+
+            int cmp = Long.compare(timeB, timeA);
+            if (cmp == 0) {
+                String idA = (String) a.get("_documentId");
+                String idB = (String) b.get("_documentId");
+                if (idA != null && idB != null) return idB.compareTo(idA);
+            }
+            return cmp;
+        });
+        
         Log.d(TAG, "Loaded " + orderList.size() + " orders");
         adapter.notifyDataSetChanged();
 

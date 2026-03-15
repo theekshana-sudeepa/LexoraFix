@@ -11,6 +11,13 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +31,8 @@ import com.lexoratech.lexorafix.network.NetworkHelper;
 public class SplashActivity extends AppCompatActivity {
 
     private static final int SPLASH_DURATION = 2500;
+    private static final int PERMISSION_REQUEST_CODE = 101;
+    private boolean isNavigating = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +84,40 @@ public class SplashActivity extends AppCompatActivity {
                 /* Will use cached data */ }
         });
 
-        // Navigate after splash duration
-        new Handler(Looper.getMainLooper()).postDelayed(this::navigateToNextScreen, SPLASH_DURATION);
+        // Ask for permissions on first run
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, PERMISSION_REQUEST_CODE);
+                // Do not navigate automatically, wait for onRequestPermissionsResult
+                return;
+            }
+        }
+
+        // Fast-path routing: If we already have a saved session, we don't need to force the user
+        // to stare at the splash branding for 2.5 seconds every time they open the app.
+        SharedPreferencesManager prefs = SharedPreferencesManager.getInstance(this);
+        if (prefs.isLoggedIn() && FirebaseAuth.getInstance().getCurrentUser() != null) {
+            // Already logged in - route instantly after data load starts
+            new Handler(Looper.getMainLooper()).postDelayed(this::navigateSafely, 200);
+        } else {
+            // New user or unauthenticated, show the full branding pause
+            new Handler(Looper.getMainLooper()).postDelayed(this::navigateSafely, SPLASH_DURATION);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            // Permission answered (granted or denied), now move to next screen after a short delay
+            new Handler(Looper.getMainLooper()).postDelayed(this::navigateSafely, 1000);
+        }
+    }
+
+    private void navigateSafely() {
+        if (isNavigating) return;
+        isNavigating = true;
+        navigateToNextScreen();
     }
 
     private void navigateToNextScreen() {

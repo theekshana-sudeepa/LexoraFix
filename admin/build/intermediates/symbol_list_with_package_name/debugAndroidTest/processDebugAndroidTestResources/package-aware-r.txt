@@ -1,0 +1,3 @@
+com.lexoratech.lexorafix.admin.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

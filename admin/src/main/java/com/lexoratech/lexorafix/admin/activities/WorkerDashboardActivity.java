@@ -183,9 +183,22 @@ public class WorkerDashboardActivity extends AppCompatActivity {
                 Object tsA = a.get("timestamp");
                 Object tsB = b.get("timestamp");
                 long timeA = 0, timeB = 0;
+                
                 if (tsA instanceof Timestamp) timeA = ((Timestamp) tsA).getSeconds();
+                else if (tsA instanceof Long) timeA = (Long) tsA;
+                
                 if (tsB instanceof Timestamp) timeB = ((Timestamp) tsB).getSeconds();
-                return Long.compare(timeB, timeA); // Descending
+                else if (tsB instanceof Long) timeB = (Long) tsB;
+                
+                int cmp = Long.compare(timeB, timeA); // Descending
+                if (cmp == 0) {
+                    String idA = (String) a.get("_documentId");
+                    String idB = (String) b.get("_documentId");
+                    if (idA != null && idB != null) {
+                        return idB.compareTo(idA); // Descending
+                    }
+                }
+                return cmp;
             });
 
             // Check if new bookings arrived (only on Available tab)

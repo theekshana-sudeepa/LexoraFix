@@ -20,6 +20,7 @@ import com.lexoratech.lexorafix.admin.R;
 import com.lexoratech.lexorafix.admin.adapters.AdminBookingAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -134,6 +135,28 @@ public class ManageBookingsActivity extends AppCompatActivity {
                 bookingList.add(data);
             }
         }
+        
+        // Ensure robust local sorting (descending)
+        Collections.sort(bookingList, (a, b) -> {
+            Object tsA = a.get("timestamp");
+            Object tsB = b.get("timestamp");
+            long timeA = 0, timeB = 0;
+
+            if (tsA instanceof com.google.firebase.Timestamp) timeA = ((com.google.firebase.Timestamp) tsA).getSeconds();
+            else if (tsA instanceof Long) timeA = (Long) tsA;
+
+            if (tsB instanceof com.google.firebase.Timestamp) timeB = ((com.google.firebase.Timestamp) tsB).getSeconds();
+            else if (tsB instanceof Long) timeB = (Long) tsB;
+
+            int cmp = Long.compare(timeB, timeA);
+            if (cmp == 0) {
+                String idA = (String) a.get("_documentId");
+                String idB = (String) b.get("_documentId");
+                if (idA != null && idB != null) return idB.compareTo(idA);
+            }
+            return cmp;
+        });
+        
         Log.d(TAG, "Loaded " + bookingList.size() + " bookings");
         adapter.notifyDataSetChanged();
 

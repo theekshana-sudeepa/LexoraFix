@@ -41,19 +41,12 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <TextView
-                android:fontFamily="@font/poppins"
-                android:id="@+id/tv_logo_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/iv_admin_logo"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
                 android:layout_marginBottom="16dp"
-                android:text="✦"
-                android:textColor="#818CF8"
-                android:textSize="56sp"
-                android:shadowColor="#4338CA"
-                android:shadowDx="0"
-                android:shadowDy="0"
-                android:shadowRadius="24" />
+                android:src="@drawable/ic_admin_logo_foreground" />
 
             <TextView
                 android:fontFamily="@font/poppins"
