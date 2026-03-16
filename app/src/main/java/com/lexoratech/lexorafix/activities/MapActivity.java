@@ -32,6 +32,7 @@ import com.lexoratech.lexorafix.adapters.ServiceCenterAdapter;
 import com.lexoratech.lexorafix.models.ServiceCenter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -45,6 +46,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private static final String TAG = "MapActivity";
     private static final int LOCATION_PERMISSION_REQUEST = 102;
     private TextView tvLocation;
+    private TextView tvCenterCount;
     private GoogleMap mMap;
     private List<ServiceCenter> centers = new ArrayList<>();
     private ServiceCenterAdapter adapter;
@@ -57,13 +59,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         ImageView btnBack = findViewById(R.id.btn_back);
         tvLocation = findViewById(R.id.tv_location);
+        tvCenterCount = findViewById(R.id.tv_center_count);
         RecyclerView rvCenters = findViewById(R.id.rv_centers);
 
         btnBack.setOnClickListener(v -> finish());
 
         // Setup RecyclerView
         rvCenters.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ServiceCenterAdapter(this, centers);
+        adapter = new ServiceCenterAdapter(this, centers, null);
         rvCenters.setAdapter(adapter);
 
         // Fetch centers from Firestore, then request location to render map
@@ -93,7 +96,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                             }
                         }
                     }
+                    // Sort by distance if we already have user location
+                    sortCentersByDistance();
                     adapter.notifyDataSetChanged();
+                    updateCenterCount();
                     updateMapMarkers();
                 })
                 .addOnFailureListener(e -> {
@@ -181,11 +187,39 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private void handleNewLocation(Location location) {
         userLocation = location;
         tvLocation.setText(String.format(Locale.getDefault(),
-                "📍 Your location: %.4f, %.4f", location.getLatitude(), location.getLongitude()));
+                "%.4f, %.4f", location.getLatitude(), location.getLongitude()));
 
         if (mMap != null) {
             LatLng userLatLng = new LatLng(location.getLatitude(), location.getLongitude());
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 13));
+        }
+
+        // Update adapter with user location for distance calculation
+        adapter.setUserLocation(location);
+
+        // Re-sort centers by distance
+        sortCentersByDistance();
+        adapter.notifyDataSetChanged();
+    }
+
+    private void sortCentersByDistance() {
+        if (userLocation == null || centers.isEmpty()) return;
+
+        Collections.sort(centers, (a, b) -> {
+            float[] distA = new float[1];
+            float[] distB = new float[1];
+            Location.distanceBetween(userLocation.getLatitude(), userLocation.getLongitude(),
+                    a.getLatitude(), a.getLongitude(), distA);
+            Location.distanceBetween(userLocation.getLatitude(), userLocation.getLongitude(),
+                    b.getLatitude(), b.getLongitude(), distB);
+            return Float.compare(distA[0], distB[0]);
+        });
+    }
+
+    private void updateCenterCount() {
+        if (tvCenterCount != null) {
+            int count = centers.size();
+            tvCenterCount.setText(count + (count == 1 ? " center" : " centers"));
         }
     }
 
@@ -202,7 +236,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         .position(pos)
                         .title(center.getName())
                         .snippet(center.getAddress() + " | 📞 " + center.getPhone())
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
             }
         }
     }

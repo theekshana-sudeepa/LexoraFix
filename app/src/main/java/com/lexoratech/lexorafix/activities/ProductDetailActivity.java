@@ -505,10 +505,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             String itemName = product.getName();
             if (variantLabel != null)
                 itemName += " (" + variantLabel + ")";
-            Snackbar.make(findViewById(android.R.id.content), itemName + " x" + selectedQuantity + " added to cart! 🛒", Snackbar.LENGTH_LONG)
-                    .setAction("CHECKOUT", v -> {
-                        startActivity(new Intent(ProductDetailActivity.this, CheckoutActivity.class));
-                    }).show();
+            Toast.makeText(ProductDetailActivity.this, "Added to cart", Toast.LENGTH_SHORT).show();
         }
     }
 

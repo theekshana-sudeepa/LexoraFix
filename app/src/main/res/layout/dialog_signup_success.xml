@@ -63,6 +63,17 @@
             android:gravity="center"
             android:layout_marginBottom="32dp" />
 
+        <!-- Biometric Switch -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_biometric"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enable Fingerprint Login"
+            android:textColor="@color/textPrimary"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp"
+            android:visibility="gone" />
+
         <!-- Action Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_dialog_ok"

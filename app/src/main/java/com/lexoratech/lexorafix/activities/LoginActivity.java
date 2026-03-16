@@ -73,6 +73,52 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
             overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         });
+        
+        setupBiometricLogin();
+    }
+    
+    // ========== Biometric Sign-In ==========
+    
+    private void setupBiometricLogin() {
+        android.widget.ImageButton btnBiometric = findViewById(R.id.btn_biometric_login);
+        
+        com.lexoratech.lexorafix.data.SecurePreferencesManager securePrefs = com.lexoratech.lexorafix.data.SecurePreferencesManager.getInstance(this);
+        String savedEmail = securePrefs.getSavedEmail();
+        String savedPassword = securePrefs.getSavedPassword();
+        boolean isBiometricsEnabled = SharedPreferencesManager.getInstance(this).isBiometricEnabled();
+        boolean isHardwareAvailable = com.lexoratech.lexorafix.utils.BiometricHelper.isBiometricAvailable(this);
+        
+        // Only show button if hardware works, user opted in previously, and we possess secure cached credentials
+        if (isHardwareAvailable && isBiometricsEnabled && !TextUtils.isEmpty(savedEmail) && !TextUtils.isEmpty(savedPassword)) {
+            btnBiometric.setVisibility(View.VISIBLE);
+            btnBiometric.setOnClickListener(v -> attemptBiometricLogin(savedEmail, savedPassword));
+        } else {
+            btnBiometric.setVisibility(View.GONE);
+        }
+    }
+    
+    private void attemptBiometricLogin(String email, String password) {
+        com.lexoratech.lexorafix.utils.BiometricHelper.showBiometricPrompt(this, "Sign In", "Use your fingerprint to log into LexoraFix.", new com.lexoratech.lexorafix.utils.BiometricHelper.BiometricCallback() {
+            @Override
+            public void onSuccess() {
+                // Set the UI fields just for visual completeness
+                etEmail.setText(email);
+                etPassword.setText(password);
+                
+                // Trigger the normal login flow programmatically
+                attemptLogin();
+            }
+
+            @Override
+            public void onError(String error) {
+                Toast.makeText(LoginActivity.this, "Biometric sign-in failed. Please use your password.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled() {
+                // User backed out, do nothing
+            }
+        });
     }
 
     // ========== Google Sign-In ==========

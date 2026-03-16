@@ -38,10 +38,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        // Override any process-wide overrides created by the Admin app,
-        // ensuring the main customer app always follows system Dark Mode.
-        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(
-                androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        // Apply user's selected Dark Mode preference via ThemeUtils
+        com.lexoratech.lexorafix.utils.ThemeUtils.applyTheme(this);
                 
         setContentView(R.layout.activity_splash);
 
@@ -162,10 +160,16 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void gateKeepWithBiometric(SharedPreferencesManager prefs) {
-        if (prefs.isBiometricEnabled() && com.lexoratech.lexorafix.utils.BiometricHelper.isBiometricAvailable(this)) {
+        // Only show biometric prompt if user explicitly logged out (or first login).
+        // If they just backgrounded and reopened the app, skip it.
+        if (prefs.isBiometricEnabled()
+                && prefs.needsBiometricReauth()
+                && com.lexoratech.lexorafix.utils.BiometricHelper.isBiometricAvailable(this)) {
             com.lexoratech.lexorafix.utils.BiometricHelper.showBiometricPrompt(this, "Unlock LexoraFix", "Verify your identity or use your PIN to continue.", new com.lexoratech.lexorafix.utils.BiometricHelper.BiometricCallback() {
                 @Override
                 public void onSuccess() {
+                    // Clear the reauth flag so reopening won't ask again
+                    prefs.setNeedsBiometricReauth(false);
                     goToMain();
                 }
 

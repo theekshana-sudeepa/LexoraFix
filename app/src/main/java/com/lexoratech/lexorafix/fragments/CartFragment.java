@@ -178,6 +178,7 @@ public class CartFragment extends Fragment implements CartAdapter.OnCartActionLi
     @Override
     public void onRemoveItem(CartItem item) {
         db.removeCartItem(item.getId());
+        android.widget.Toast.makeText(requireContext(), "Removed from cart", android.widget.Toast.LENGTH_SHORT).show();
         loadCart();
     }
 }

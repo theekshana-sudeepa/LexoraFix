@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.13.2" type="partial_results">
+    <map id="NotificationPermission">
+        <location id="class"
+            file="$GRADLE_USER_HOME/caches/8.13/transforms/174469c3f09cede56adb387040c7e6f6/transformed/firebase-messaging-24.1.0/jars/classes.jar"/>
+        <entry
+            name="className"
+            string="com/google/firebase/messaging/DisplayNotification"/>
+        <entry
+            name="source"
+            boolean="true"/>
+    </map>
+    <map id="UnsafeImplicitIntentLaunch">
+            <map id="actionsSent">
+                    <map id="android.intent.action.VIEW (used to start an activity)">
+                        <location id="0"
+                            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
+                            line="97"
+                            column="33"
+                            startOffset="3698"
+                            endLine="97"
+                            endColumn="79"
+                            endOffset="3744"/>
+                        <location id="1"
+                            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
+                            line="108"
+                            column="40"
+                            startOffset="4241"
+                            endLine="108"
+                            endColumn="86"
+                            endOffset="4287"/>
+                    </map>
+            </map>
+    </map>
+    <map id="UnsafeIntentLaunch">
+            <map id="unprotected">
+                <entry
+                    name="com.lexoratech.lexorafix.admin.activities.AdminLoginActivity"
+                    boolean="true"/>
+            </map>
+    </map>
+    <map id="UnusedResources">
+        <location id="R.color.adminAccent"
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="8"
+            column="12"
+            startOffset="301"
+            endLine="8"
+            endColumn="30"
+            endOffset="319"/>
+        <location id="R.color.adminGradientEnd"
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="28"
+            column="12"
+            startOffset="1038"
+            endLine="28"
+            endColumn="35"
+            endOffset="1061"/>
+        <location id="R.color.adminGradientStart"
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="27"
+            column="12"
+            startOffset="985"
+            endLine="27"
+            endColumn="37"
+            endOffset="1010"/>
+        <location id="R.color.black"
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="48"
+            column="12"
+            startOffset="1855"
+            endLine="48"
+            endColumn="24"
+            endOffset="1867"/>
+        <location id="R.drawable.gradient_admin_toolbar"
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/drawable/gradient_admin_toolbar.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="8"
+            endColumn="9"
+            endOffset="261"/>
+        <location id="R.drawable.ic_dashboard_migrate_premium"
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_dashboard_migrate_premium.xml"
+            line="1"
+            column="1"
+            startOffset="0"
+            endLine="10"
+            endColumn="10"
+            endOffset="547"/>
+        <location id="R.style.AdminButtonOutlined"
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/values/themes.xml"
+            line="42"
+            column="12"
+            startOffset="2262"
+            endLine="42"
+            endColumn="38"
+            endOffset="2288"/>
+        <location id="R.style.AdminButtonPrimary"
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/values/themes.xml"
+            line="29"
+            column="12"
+            startOffset="1618"
+            endLine="29"
+            endColumn="37"
+            endOffset="1643"/>
+        <location id="R.style.AdminCardStyle"
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/values/themes.xml"
+            line="57"
+            column="12"
+            startOffset="3002"
+            endLine="57"
+            endColumn="33"
+            endOffset="3023"/>
+        <location id="R.style.AdminTextInputStyle"
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/values/themes.xml"
+            line="65"
+            column="12"
+            startOffset="3344"
+            endLine="65"
+            endColumn="38"
+            endOffset="3370"/>
+        <entry
+            name="model"
+            string="anim[item_animation_fall_down(U),layout_animation_fall_down(U)],array[com_google_android_gms_fonts_certs(U),com_google_android_gms_fonts_certs_dev(U),com_google_android_gms_fonts_certs_prod(U)],attr[colorControlNormal(R),selectableItemBackgroundBorderless(R),selectableItemBackground(R),actionBarSize(R)],color[admin_nav_item_bg(U),adminBackground(U),adminPrimaryLight(U),adminTintBlue(U),adminTintGreen(U),adminTintOrange(U),adminTintPurple(U),adminTintRed(U),adminSurfaceLight(U),adminDivider(U),adminHeroGradientEnd(U),adminHeroGradientStart(U),adminRipple(U),adminCardBackground(U),adminPrimary(U),adminTextPrimary(U),white(U),adminError(U),adminTextSecondary(U),adminSurface(U),adminIconBlue(U),adminIconOrange(U),adminIconGreen(U),adminIconPurple(U),adminIconRed(U),adminTextHint(U),adminWarning(U),adminSuccess(U),adminPrimaryDark(U),adminSecondary(U),adminAccent(D),adminInfo(U),adminGradientStart(D),adminGradientEnd(D),black(D)],drawable[bg_admin_header_curved(U),bg_circle_primary_light(U),bg_glow_blue(U),bg_glow_orange(U),bg_glow_purple(U),bg_icon_tint_blue(U),bg_icon_tint_green(U),bg_icon_tint_orange(U),bg_icon_tint_purple(U),bg_icon_tint_red(U),bg_input_admin(U),bg_premium_hero_card(U),bg_saas_card(U),bg_spinner_saas(U),bg_status_active_modern(U),bg_status_badge_admin(U),gradient_admin_toolbar(D),ic_add(U),ic_admin_launcher_background(U),ic_admin_launcher_background_1(R),ic_admin_logo_foreground(U),ic_admin_settings(U),ic_arrow_forward(U),ic_back(U),ic_dashboard_bookings_premium(U),ic_dashboard_categories_premium(U),ic_dashboard_centers_premium(U),ic_dashboard_migrate_premium(D),ic_dashboard_orders_premium(U),ic_dashboard_products_premium(U),ic_dashboard_users_premium(U),ic_delete(U),ic_edit(U),ic_email(U),ic_location(U),ic_logout(U),ic_menu(U),ic_phone(U),ic_profile(U),ic_store(U)],font[poppins(U)],id[btn_back(U),tv_title(U),iv_category(U),btn_pick_image(U),til_name(U),et_name(U),til_description(D),et_description(U),til_icon(D),et_icon(U),progress_bar(U),btn_save(U),scroll_view(U),iv_product_1(U),btn_clear_1(U),iv_product_2(U),btn_clear_2(U),iv_product_3(U),btn_clear_3(U),til_price(U),et_price(U),et_stock(U),spinner_category(U),spinner_status(U),switch_featured(U),rv_variant_options(U),btn_add_option(U),btn_generate_combinations(U),btn_add_variant(U),rv_variants(U),til_phone(U),et_phone(U),til_address(D),et_address(U),til_latitude(D),et_latitude(U),til_longitude(D),et_longitude(U),drawer_layout(U),btn_menu(U),tv_total_revenue(U),tv_total_users(U),tv_total_orders(U),tv_total_bookings(U),tv_total_products(U),tv_total_categories(U),qa_add_product(U),qa_add_category(U),qa_manage_orders(U),qa_manage_bookings(U),qa_manage_products(U),qa_manage_users(U),qa_manage_service_centers(U),btn_logout(U),nav_view_admin(U),ll_login_container(D),iv_admin_logo(U),tv_subtitle(U),cv_login_box(U),til_email(U),et_email(U),til_password(U),et_password(U),btn_login(U),tv_register_worker(U),rv_reviews(U),tv_empty(U),toolbar(U),ll_theme_selector(U),tv_theme_status(U),switch_notifications(U),switch_maintenance(U),tv_count(U),swipe_refresh(U),rv_list(U),empty_state(U),tv_empty_message(U),fab_add(U),tv_order_id(U),tv_timestamp(U),tv_customer_name(U),tv_customer_email(U),tv_address(U),rv_items(U),tv_total(U),btn_update_status(U),tv_worker_email(U),tab_layout(U),rv_worker_tasks(U),tv_empty_icon(U),iv_status_icon(U),tv_status_title(U),tv_status_message(U),btn_action(U),btn_resend(U),tv_logout(U),iv_logo(U),cv_register_box(U),btn_register(U),tv_back_to_login(U),ll_status_options(U),tv_service_type(U),tv_status(U),tv_date(U),tv_notes(U),layout_location(U),tv_location(U),tv_name(U),tv_description(U),btn_edit(U),btn_delete(U),card_status(U),tv_payment_status(U),tv_item_count(U),iv_product(U),tv_price(U),tv_stock(U),tv_featured(U),btn_reviews(U),tv_user_name(U),btn_delete_review(U),rating_bar(U),tv_review_text(U),tv_email(U),tv_role(U),tv_uid(U),btn_ban(U),tv_product_name(U),tv_variant_label(U),tv_quantity(U),tv_subtotal(U),tv_center_name(U),tv_center_address(U),tv_center_phone(U),v_icon_bg(U),tv_status_name(U),et_variant_label(U),btn_delete_variant(U),et_variant_price(U),et_variant_stock(U),et_variant_sku(U),et_option_name(U),btn_delete_option(U),et_option_values(U),tv_service_name(U),tv_category(U),tv_header_email(U),nav_dashboard(U),nav_products(U),nav_categories(U),nav_orders(U),nav_bookings(U),nav_users(U),nav_service_centers(U),nav_settings(U),nav_logout(U),design_bottom_sheet(R)],layout[activity_add_edit_category(U),activity_add_edit_product(U),activity_add_edit_service_center(U),activity_admin_dashboard(U),nav_header_admin(U),activity_admin_login(U),activity_admin_product_reviews(U),activity_admin_settings(U),activity_manage_list(U),activity_order_detail(U),activity_worker_dashboard(U),activity_worker_pending(U),activity_worker_registration(U),dialog_booking_status(U),item_admin_booking(U),item_admin_category(U),item_admin_order(U),item_admin_product(U),item_admin_review(U),item_admin_user(U),item_order_detail_product(U),item_service_center(U),item_status_option(U),item_variant(U),item_variant_option(U),item_worker_booking(U)],menu[menu_admin_drawer(U)],mipmap[ic_launcher(U),ic_launcher_round(U)],string[app_name(U)],style[Theme_LexoraAdmin(U),Widget_MaterialComponents_TextInputLayout_OutlinedBox(R),Widget_MaterialComponents_Button_TextButton(R),Widget_MaterialComponents_Button_UnelevatedButton(R),AdminNavDrawerStyle(U),ShapeAppearance_Material3_Corner_Full(R),Widget_MaterialComponents_Button_UnelevatedButton_Icon(R),ThemeOverlay_AppCompat_Dark(R),Theme_MaterialComponents_DayNight_NoActionBar(R),AdminButtonPrimary(D),Widget_MaterialComponents_Button(E),AdminButtonOutlined(D),Widget_MaterialComponents_Button_OutlinedButton(E),AdminCardStyle(D),Widget_MaterialComponents_CardView(E),AdminTextInputStyle(D),Widget_MaterialComponents_NavigationView(R),AdminNavDrawerShape(U),ShapeAppearance_MaterialComponents_MediumComponent(R)];1^0,2^3^4,2d^a^b,31^c,32^d,33^e,34^f,35^10,36^11^12,37^13^14,38^15^16^12,39^12,3e^3f,4d^5,4e^5,51^5,52^5,53^5,54^2,f2^a^2d^43^17^54^18^16^12^19^111,f3^a^2d^43^17^54^18^16^12^11^6^1a^111^1b^39^1c^112^f^113,f4^a^2d^43^17^54^18^16^12^111,f5^a^2c^6^50^54^40^37^18^38^31^4a^1d^1b^33^48^1e^32^44^1f^34^49^20^45^3d^53^46^21^12^7^1a^f6^10c^114,f6^37^117^2d^52^54^19,f7^a^30^2e^40^54^18^1b^111,f9^a^8^54^18^16^7^4c^1b^22^12^48^41,fa^a^2d^43^17^54^18^3b^16^1^1b^22^3d^115,fb^a^54^18^12^17^1b^16^11^23^36^24,fc^a^54^18^1b^2d^4f^1a^38^17^f^16,fd^a^2f^4d^23^54^18^1b^17^112^1a,fe^a^30^54^18^1b^111,ff^16^12^54^18^1b,100^7^16^12^17^54^18^3b^52^1b^3a^4e^b^42,101^7^16^12^a^54^18^1b^4c^116^4b,102^7^16^12^54^18^e^23^1b^24^22^1d,103^7^16^12^11^54^18^23^1b^24^1c^20^f^116^1d^c^4c^21^10^4b,104^6,105^7^16^12^54^18^1b^f^20^24^1c^22^21^10^113,106^16^12^54^18^23^1b,107^7^16^12^54^18^1b^51^22^1d^c^4c^116^21^10^4b,108^7^12^2d^54^18,109^36^17^111^18^6,10a^36^17^111^18^6,10b^16^12^54^18^e^23^1b^22^17,10c^4a^53^45^48^44^46^41^42,10d^3e^40,10e^3e^40,110^118^54^17^25^19^26^a^1c^18^1a^1b^22^15,114^120^16^18^9^121,119^11a^17^19^54,11b^11c^17^54,11d^11e^16,11f^111^17,121^122;;;"/>
+    </map>
+
+</incidents>

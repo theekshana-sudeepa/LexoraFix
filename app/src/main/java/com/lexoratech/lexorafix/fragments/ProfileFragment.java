@@ -38,6 +38,7 @@ import java.util.Map;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.lexoratech.lexorafix.utils.BiometricHelper;
+import com.lexoratech.lexorafix.utils.ThemeUtils;
 
 public class ProfileFragment extends Fragment {
 
@@ -134,6 +135,15 @@ public class ProfileFragment extends Fragment {
                     }
                 });
             }
+        }
+
+        // Theme Toggle Setup
+        View cardThemeToggle = view.findViewById(R.id.card_theme_toggle);
+        TextView tvThemeStatus = view.findViewById(R.id.tv_theme_status);
+        if (cardThemeToggle != null && tvThemeStatus != null) {
+            updateThemeStatusText(tvThemeStatus, ThemeUtils.getThemeMode(requireContext()));
+            
+            cardThemeToggle.setOnClickListener(v -> showThemePickerDialog(tvThemeStatus));
         }
 
         // Order history — from Firestore with real-time updates + notifications
@@ -320,5 +330,70 @@ public class ProfileFragment extends Fragment {
             orderListener.remove();
             orderListener = null;
         }
+    }
+
+    private void updateThemeStatusText(TextView tvThemeStatus, int mode) {
+        if (tvThemeStatus == null) return;
+        switch (mode) {
+            case ThemeUtils.THEME_LIGHT:
+                tvThemeStatus.setText("Light Theme");
+                break;
+            case ThemeUtils.THEME_DARK:
+                tvThemeStatus.setText("Dark Theme");
+                break;
+            case ThemeUtils.THEME_SYSTEM:
+            default:
+                tvThemeStatus.setText("System Default");
+                break;
+        }
+    }
+
+    private void showThemePickerDialog(TextView tvThemeStatus) {
+        com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog = 
+                new com.google.android.material.bottomsheet.BottomSheetDialog(requireContext());
+        android.view.View dialogView = android.view.LayoutInflater.from(requireContext())
+                .inflate(R.layout.dialog_theme_selector, null);
+        bottomSheetDialog.setContentView(dialogView);
+
+        // Ensure transparent background for rounded corners
+        android.view.View bottomSheet = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+        if (bottomSheet != null) {
+            bottomSheet.setBackgroundResource(android.R.color.transparent);
+        }
+
+        android.widget.LinearLayout llSystem = dialogView.findViewById(R.id.ll_theme_system);
+        android.widget.LinearLayout llLight = dialogView.findViewById(R.id.ll_theme_light);
+        android.widget.LinearLayout llDark = dialogView.findViewById(R.id.ll_theme_dark);
+        
+        android.widget.ImageView ivCheckSystem = dialogView.findViewById(R.id.iv_check_system);
+        android.widget.ImageView ivCheckLight = dialogView.findViewById(R.id.iv_check_light);
+        android.widget.ImageView ivCheckDark = dialogView.findViewById(R.id.iv_check_dark);
+
+        int currentSelection = ThemeUtils.getThemeMode(requireContext());
+        
+        if (currentSelection == ThemeUtils.THEME_SYSTEM) ivCheckSystem.setVisibility(android.view.View.VISIBLE);
+        else if (currentSelection == ThemeUtils.THEME_LIGHT) ivCheckLight.setVisibility(android.view.View.VISIBLE);
+        else if (currentSelection == ThemeUtils.THEME_DARK) ivCheckDark.setVisibility(android.view.View.VISIBLE);
+
+        android.view.View.OnClickListener listener = v -> {
+            int selectedTheme = ThemeUtils.THEME_SYSTEM;
+            if (v.getId() == R.id.ll_theme_light) selectedTheme = ThemeUtils.THEME_LIGHT;
+            else if (v.getId() == R.id.ll_theme_dark) selectedTheme = ThemeUtils.THEME_DARK;
+
+            ThemeUtils.setThemeMode(requireContext(), selectedTheme);
+            updateThemeStatusText(tvThemeStatus, selectedTheme);
+            ThemeUtils.applyTheme(requireContext());
+            bottomSheetDialog.dismiss();
+
+            if (getActivity() != null) {
+                getActivity().recreate();
+            }
+        };
+
+        llSystem.setOnClickListener(listener);
+        llLight.setOnClickListener(listener);
+        llDark.setOnClickListener(listener);
+
+        bottomSheetDialog.show();
     }
 }

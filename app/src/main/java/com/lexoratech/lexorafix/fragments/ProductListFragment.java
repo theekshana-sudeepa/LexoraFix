@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -89,7 +91,7 @@ public class ProductListFragment extends Fragment {
         });
 
         // ── Filter icon ──
-        ivFilter.setOnClickListener(v -> showFilterSheet());
+        ivFilter.setOnClickListener(v -> openFilterDrawer());
 
         // ── Search bar ──
         android.widget.EditText etSearchProduct = view.findViewById(R.id.et_search_product);
@@ -158,10 +160,10 @@ public class ProductListFragment extends Fragment {
     }
 
     // ══════════════════════════════════════════════════
-    // Filter Bottom Sheet
+    // Filter Panel
     // ══════════════════════════════════════════════════
 
-    private void showFilterSheet() {
+    private void openFilterDrawer() {
         FilterBottomSheetFragment sheet = new FilterBottomSheetFragment();
         sheet.setCategories(allCategories);
         sheet.setCurrentFilters(filterMinPrice, filterMaxPrice, filterSort,
@@ -175,8 +177,25 @@ public class ProductListFragment extends Fragment {
             filterInStockOnly = inStockOnly;
             applyFilters();
             updateFilterBadge();
+            
+            if (getView() != null) {
+                DrawerLayout drawer = getView().findViewById(R.id.drawer_layout);
+                if (drawer != null) {
+                    drawer.closeDrawer(GravityCompat.START);
+                }
+            }
         });
-        sheet.show(getChildFragmentManager(), "FilterSheet");
+
+        getChildFragmentManager().beginTransaction()
+                .replace(R.id.filter_container, sheet)
+                .commit();
+
+        if (getView() != null) {
+            DrawerLayout drawer = getView().findViewById(R.id.drawer_layout);
+            if (drawer != null) {
+                drawer.openDrawer(GravityCompat.START);
+            }
+        }
     }
 
     // ══════════════════════════════════════════════════

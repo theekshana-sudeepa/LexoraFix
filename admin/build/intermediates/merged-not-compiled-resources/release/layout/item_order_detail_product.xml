@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:layout_marginHorizontal="2dp"
+    app:cardBackgroundColor="@color/adminCardBackground"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/adminDivider">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+
+        <!-- Product Image -->
+        <ImageView
+            android:id="@+id/iv_product"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Product"
+            android:src="@android:drawable/ic_menu_gallery" />
+
+        <!-- Item Details -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product"
+                android:textColor="@color/adminTextPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <!-- Variant label (e.g. 12V / 35Ah) — hidden when not applicable -->
+            <TextView
+                android:id="@+id/tv_variant_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Variant"
+                android:textColor="@color/adminWarning"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins"
+                android:textStyle="italic"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LKR 0.00"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/adminTextSecondary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  ×  "
+                    android:textColor="@color/adminTextSecondary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Qty: 0"
+                    android:textColor="@color/adminTextSecondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Subtotal -->
+        <TextView
+            android:id="@+id/tv_subtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LKR 0.00"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/adminWarning"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

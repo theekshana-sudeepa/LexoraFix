@@ -120,10 +120,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             CartItem cartItem = new CartItem(0, product.getId(), product.getName(),
                     product.getPrice(), 1, product.getImageUrl());
             db.addToCart(cartItem, userId);
-            Snackbar.make(v, product.getName() + " added to cart! 🛒", Snackbar.LENGTH_LONG)
-                    .setAction("CHECKOUT", view -> {
-                        context.startActivity(new android.content.Intent(context, com.lexoratech.lexorafix.activities.CheckoutActivity.class));
-                    }).show();
+            Toast.makeText(context, "Added to cart", Toast.LENGTH_SHORT).show();
         });
     }
 

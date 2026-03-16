@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/adminBackground"
+    android:orientation="vertical">
+
+    <!-- Premium SaaS Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="24dp">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_circle_primary_light"
+            android:padding="12dp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/adminPrimary" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins"
+            android:text="Add Product"
+            android:textColor="@color/adminTextPrimary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="40dp">
+
+            <!-- Images Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="@color/adminCardBackground"
+                app:cardCornerRadius="24dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/adminDivider"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Product Images"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/adminTextPrimary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <!-- Image 1 -->
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:layout_marginEnd="12dp"
+                                app:cardBackgroundColor="@color/adminSurfaceLight"
+                                app:cardCornerRadius="16dp"
+                                app:cardElevation="0dp">
+                                <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                    <ImageView android:id="@+id/iv_product_1" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerInside" android:src="@android:drawable/ic_menu_gallery"  />
+                                    <ImageButton android:id="@+id/btn_clear_1" android:layout_width="32dp" android:layout_height="32dp" android:layout_gravity="top|end" android:layout_margin="4dp" android:src="@android:drawable/ic_menu_close_clear_cancel" android:background="?selectableItemBackgroundBorderless" android:visibility="gone" app:tint="@color/adminError"/>
+                                </FrameLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <!-- Image 2 -->
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:layout_marginEnd="12dp"
+                                app:cardBackgroundColor="@color/adminSurfaceLight"
+                                app:cardCornerRadius="16dp"
+                                app:cardElevation="0dp">
+                                <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                    <ImageView android:id="@+id/iv_product_2" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerInside" android:src="@android:drawable/ic_menu_gallery"  />
+                                    <ImageButton android:id="@+id/btn_clear_2" android:layout_width="32dp" android:layout_height="32dp" android:layout_gravity="top|end" android:layout_margin="4dp" android:src="@android:drawable/ic_menu_close_clear_cancel" android:background="?selectableItemBackgroundBorderless" android:visibility="gone" app:tint="@color/adminError"/>
+                                </FrameLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <!-- Image 3 -->
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                app:cardBackgroundColor="@color/adminSurfaceLight"
+                                app:cardCornerRadius="16dp"
+                                app:cardElevation="0dp">
+                                <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                                    <ImageView android:id="@+id/iv_product_3" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerInside" android:src="@android:drawable/ic_menu_gallery"  />
+                                    <ImageButton android:id="@+id/btn_clear_3" android:layout_width="32dp" android:layout_height="32dp" android:layout_gravity="top|end" android:layout_margin="4dp" android:src="@android:drawable/ic_menu_close_clear_cancel" android:background="?selectableItemBackgroundBorderless" android:visibility="gone" app:tint="@color/adminError"/>
+                                </FrameLayout>
+                            </androidx.cardview.widget.CardView>
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Details Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="@color/adminCardBackground"
+                app:cardCornerRadius="24dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/adminDivider"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="24dp"
+                    android:paddingHorizontal="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Product Details"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/adminTextPrimary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="20dp" />
+
+                    <!-- Name -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Product Name"
+                        app:boxBackgroundColor="@android:color/transparent"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeWidth="1dp"
+                        app:boxStrokeWidthFocused="2dp"
+                        app:boxStrokeColor="@color/adminPrimary"
+                        app:hintTextColor="@color/adminPrimary"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:textSize="14sp"
+                            android:textColor="@color/adminTextPrimary"
+                            android:inputType="textCapWords" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Description -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Description (Markdown Supported)"
+                        app:boxBackgroundColor="@android:color/transparent"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxStrokeWidth="1dp"
+                        app:boxStrokeWidthFocused="2dp"
+                        app:boxStrokeColor="@color/adminPrimary"
+                        app:hintTextColor="@color/adminPrimary"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:textSize="14sp"
+                            android:textColor="@color/adminTextPrimary"
+                            android:inputType="textMultiLine"
+                            android:minLines="3" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Price & Stock Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_price"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            android:hint="Base Price (LKR)"
+                            app:boxBackgroundColor="@android:color/transparent"
+                            app:boxCornerRadiusBottomEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxStrokeWidth="1dp"
+                            app:boxStrokeWidthFocused="2dp"
+                            app:boxStrokeColor="@color/adminPrimary"
+                            app:hintTextColor="@color/adminPrimary"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_price"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="numberDecimal"
+                                android:fontFamily="@font/poppins"
+                                android:textSize="14sp"
+                                android:textColor="@color/adminTextPrimary" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:hint="Base Stock"
+                            app:boxBackgroundColor="@android:color/transparent"
+                            app:boxCornerRadiusBottomEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxStrokeWidth="1dp"
+                            app:boxStrokeWidthFocused="2dp"
+                            app:boxStrokeColor="@color/adminPrimary"
+                            app:hintTextColor="@color/adminPrimary"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_stock"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:fontFamily="@font/poppins"
+                                android:textSize="14sp"
+                                android:textColor="@color/adminTextPrimary" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <!-- Category Spinner Container -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="16dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Category"
+                            android:fontFamily="@font/poppins"
+                            android:textSize="12sp"
+                            android:textColor="@color/adminTextSecondary"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="4dp"/>
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:background="@drawable/bg_spinner_saas">
+                            <Spinner
+                                android:id="@+id/spinner_category"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingHorizontal="12dp"
+                                android:background="@android:color/transparent"
+                                android:popupBackground="@color/adminCardBackground"/>
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <!-- Status Spinner Container -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="16dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Status"
+                            android:fontFamily="@font/poppins"
+                            android:textSize="12sp"
+                            android:textColor="@color/adminTextSecondary"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="4dp"/>
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:background="@drawable/bg_spinner_saas">
+                            <Spinner
+                                android:id="@+id/spinner_status"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingHorizontal="12dp"
+                                android:background="@android:color/transparent"
+                                android:popupBackground="@color/adminCardBackground" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <!-- Featured -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Featured Product"
+                                android:fontFamily="@font/poppins"
+                                android:textColor="@color/adminTextPrimary"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Show on home screen spotlight"
+                                android:fontFamily="@font/poppins"
+                                android:textColor="@color/adminTextSecondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switch_featured"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:thumbTint="@color/adminSurface"
+                            app:trackTint="@color/adminPrimary" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Variants Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                app:cardBackgroundColor="@color/adminCardBackground"
+                app:cardCornerRadius="24dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/adminDivider"
+                app:cardElevation="0dp">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="24dp"
+                    android:paddingHorizontal="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Variant Generation (Optional)"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/adminTextPrimary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+                    
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Define properties to automatically create variant combinations."
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/adminTextSecondary"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Variant Option Types -->
+                    <LinearLayout
+                        android:id="@+id/rv_variant_options"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="end"
+                        android:layout_marginTop="8dp">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:fontFamily="@font/poppins"
+                            android:id="@+id/btn_add_option"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+ Add Base Property"
+                            android:textColor="@color/adminPrimary"
+                            android:textAllCaps="false" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_generate_combinations"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="24dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Generate Combinations"
+                        android:textColor="@color/adminPrimary"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:textAllCaps="false"
+                        app:backgroundTint="@color/adminTintPurple"
+                        app:strokeWidth="0dp"
+                        app:cornerRadius="12dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/adminDivider"
+                        android:layout_marginBottom="24dp" />
+
+                    <!-- Variants List Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Combinations"
+                            android:fontFamily="@font/poppins"
+                            android:textColor="@color/adminTextPrimary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:fontFamily="@font/poppins"
+                            android:id="@+id/btn_add_variant"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+ Add Manual"
+                            android:textColor="@color/adminPrimary"
+                            android:textAllCaps="false" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_variants"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="16dp"
+                android:visibility="gone" />
+
+            <!-- Save Button -->
+            <com.google.android.material.button.MaterialButton
+                android:fontFamily="@font/poppins"
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Save Product"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/adminPrimary"
+                app:cornerRadius="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -35,6 +35,8 @@ import com.lexoratech.lexorafix.data.FirebaseAuthHelper;
 import com.lexoratech.lexorafix.data.FirestoreHelper;
 import com.lexoratech.lexorafix.data.SharedPreferencesManager;
 import com.lexoratech.lexorafix.models.User;
+import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.lexoratech.lexorafix.utils.BiometricHelper;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -289,12 +291,51 @@ public class RegisterActivity extends AppCompatActivity {
             }).start();
         }
         
+        SwitchMaterial switchBiometric = dialog.findViewById(R.id.switch_biometric);
+        boolean isBiometricAvailable = BiometricHelper.isBiometricAvailable(this);
+        if (isBiometricAvailable && switchBiometric != null) {
+            switchBiometric.setVisibility(View.VISIBLE);
+        }
+
         MaterialButton btnOk = dialog.findViewById(R.id.btn_dialog_ok);
         if (btnOk != null) {
             btnOk.setOnClickListener(v -> {
-                dialog.dismiss();
-                finish();
-                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                if (switchBiometric != null && switchBiometric.isChecked()) {
+                    // Try to authenticate right now to "register" it
+                    BiometricHelper.showBiometricPrompt(this, "Confirm Fingerprint", "Verify your biometric to enable quick login.", new BiometricHelper.BiometricCallback() {
+                        @Override
+                        public void onSuccess() {
+                            // Save preference
+                            SharedPreferencesManager.getInstance(RegisterActivity.this).setBiometricEnabled(true);
+                            
+                            // Securely cache credentials for future LoginActivity auto-login
+                            String currentEmail = getText(etEmail);
+                            String currentPassword = getText(etPassword);
+                            com.lexoratech.lexorafix.data.SecurePreferencesManager.getInstance(RegisterActivity.this)
+                                    .saveCredentials(currentEmail, currentPassword);
+
+                            dialog.dismiss();
+                            finish();
+                            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                        }
+
+                        @Override
+                        public void onError(String error) {
+                            Toast.makeText(RegisterActivity.this, "Authentication failed. Leaving biometric disabled.", Toast.LENGTH_SHORT).show();
+                            switchBiometric.setChecked(false);
+                        }
+
+                        @Override
+                        public void onCancelled() {
+                            switchBiometric.setChecked(false);
+                        }
+                    });
+                } else {
+                    // Biometric not opted in, proceed normally
+                    dialog.dismiss();
+                    finish();
+                    overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                }
             });
         }
         

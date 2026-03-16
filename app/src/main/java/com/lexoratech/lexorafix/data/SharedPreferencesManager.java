@@ -14,6 +14,7 @@ public class SharedPreferencesManager {
     private static final String KEY_FIRST_LAUNCH = "first_launch";
     private static final String KEY_NOTIFICATIONS_ENABLED = "notifications_enabled";
     private static final String KEY_BIOMETRIC_ENABLED = "biometric_enabled";
+    private static final String KEY_NEEDS_BIOMETRIC_REAUTH = "needs_biometric_reauth";
 
     private final SharedPreferences prefs;
     private final SharedPreferences.Editor editor;
@@ -38,6 +39,8 @@ public class SharedPreferencesManager {
         editor.putString(KEY_USER_NAME, name);
         editor.putString(KEY_USER_EMAIL, email);
         editor.putBoolean(KEY_IS_LOGGED_IN, true);
+        // First login after registration/sign-in should require biometric verification
+        editor.putBoolean(KEY_NEEDS_BIOMETRIC_REAUTH, true);
         editor.apply();
     }
 
@@ -64,7 +67,12 @@ public class SharedPreferencesManager {
         editor.putBoolean(KEY_IS_LOGGED_IN, false);
         // Turn off biometric auth on explicit logout so next user doesn't inherit it
         editor.putBoolean(KEY_BIOMETRIC_ENABLED, false);
+        // Mark that next login should require biometric re-verification
+        editor.putBoolean(KEY_NEEDS_BIOMETRIC_REAUTH, true);
         editor.apply();
+        
+        // Clear secure cached credentials
+        SecurePreferencesManager.getInstance(instance.prefs.getAll().isEmpty() ? null : null).clearCredentials();
     }
 
     // ========== ADDRESS ==========
@@ -104,6 +112,15 @@ public class SharedPreferencesManager {
 
     public void setBiometricEnabled(boolean enabled) {
         editor.putBoolean(KEY_BIOMETRIC_ENABLED, enabled);
+        editor.apply();
+    }
+
+    public boolean needsBiometricReauth() {
+        return prefs.getBoolean(KEY_NEEDS_BIOMETRIC_REAUTH, true);
+    }
+
+    public void setNeedsBiometricReauth(boolean needed) {
+        editor.putBoolean(KEY_NEEDS_BIOMETRIC_REAUTH, needed);
         editor.apply();
     }
 

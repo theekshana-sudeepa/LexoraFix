@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import androidx.fragment.app.Fragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -26,7 +26,7 @@ import java.util.Locale;
  * Bottom sheet for filtering products by price range, sort order, category,
  * minimum rating, and stock availability.
  */
-public class FilterBottomSheetFragment extends BottomSheetDialogFragment {
+public class FilterBottomSheetFragment extends Fragment {
 
     public interface FilterListener {
         void onFiltersApplied(float minPrice, float maxPrice, String sortOrder,
@@ -117,7 +117,6 @@ public class FilterBottomSheetFragment extends BottomSheetDialogFragment {
                 listener.onFiltersApplied(prices.get(0), prices.get(1), sort,
                         catDocId, minRating, inStockOnly);
             }
-            dismiss();
         });
 
         // ── Reset ──

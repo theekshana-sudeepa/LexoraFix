@@ -116,8 +116,9 @@ dependencies {
     implementation("com.sun.mail:android-mail:1.6.7")
     implementation("com.sun.mail:android-activation:1.6.7")
 
-    // Biometric
+    // Biometric & Security
     implementation("androidx.biometric:biometric:1.2.0-alpha05")
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
 
     // Lombok — annotation-driven getters/setters/constructors for model classes
     compileOnly("org.projectlombok:lombok:1.18.34")

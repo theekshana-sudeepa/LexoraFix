@@ -33,46 +33,57 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="24dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingHorizontal="16dp"
+            android:paddingTop="12dp">
 
             <!-- Installation -->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_installation"
-                style="@style/LexoraCardStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/cardBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="20dp"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="24dp"
                     android:gravity="center_vertical">
 
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/bg_circle_primary"
-                        android:padding="12dp"
-                        android:src="@drawable/ic_services"
-                        app:tint="@color/white"
-                        android:contentDescription="Installation" />
+                    <FrameLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_circle_primary">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_services"
+                            app:tint="@color/white"
+                            android:contentDescription="Installation" />
+                    </FrameLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="20dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -80,52 +91,67 @@
                             android:layout_height="wrap_content"
                             android:text="@string/installation_service"
                             android:textColor="@color/textPrimary"
-                            android:textSize="16sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="6dp"
                             android:text="Professional tool &amp; fixture installation"
                             android:textColor="@color/textSecondary"
-                            android:textSize="13sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
+                    
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_arrow_right"
+                        app:tint="@color/colorSecondary"
+                        android:layout_marginStart="8dp" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Repair -->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_repair"
-                style="@style/LexoraCardStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/cardBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="20dp"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="24dp"
                     android:gravity="center_vertical">
 
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/bg_circle_primary"
-                        android:padding="12dp"
-                        android:src="@drawable/ic_services"
-                        app:tint="@color/white"
-                        android:contentDescription="Repair" />
+                    <FrameLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_circle_primary">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_services"
+                            app:tint="@color/white"
+                            android:contentDescription="Repair" />
+                    </FrameLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="20dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -133,52 +159,67 @@
                             android:layout_height="wrap_content"
                             android:text="@string/repair_service"
                             android:textColor="@color/textPrimary"
-                            android:textSize="16sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="6dp"
                             android:text="Expert repair for all home tools"
                             android:textColor="@color/textSecondary"
-                            android:textSize="13sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
+                    
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_arrow_right"
+                        app:tint="@color/colorSecondary"
+                        android:layout_marginStart="8dp" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Maintenance -->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_maintenance"
-                style="@style/LexoraCardStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="24dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground">
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/cardBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="20dp"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="24dp"
                     android:gravity="center_vertical">
 
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/bg_circle_primary"
-                        android:padding="12dp"
-                        android:src="@drawable/ic_services"
-                        app:tint="@color/white"
-                        android:contentDescription="Maintenance" />
+                    <FrameLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_circle_primary">
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_services"
+                            app:tint="@color/white"
+                            android:contentDescription="Maintenance" />
+                    </FrameLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="20dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -186,30 +227,37 @@
                             android:layout_height="wrap_content"
                             android:text="@string/maintenance_service"
                             android:textColor="@color/textPrimary"
-                            android:textSize="16sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="6dp"
                             android:text="Regular maintenance &amp; check-ups"
                             android:textColor="@color/textSecondary"
-                            android:textSize="13sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
+                    
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_arrow_right"
+                        app:tint="@color/colorSecondary"
+                        android:layout_marginStart="8dp" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Find Service Centers -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_find_centers"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginTop="16dp"
                 android:text="@string/nearby_centers"
-                app:backgroundTint="@color/ripple"
                 app:cornerRadius="16dp"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="1.5dp"
                 android:textColor="@color/colorPrimary"
                 app:icon="@drawable/ic_location"
                 app:iconTint="@color/colorPrimary" />
@@ -218,12 +266,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:text="@string/my_bookings"
                 android:textColor="@color/textPrimary"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginBottom="16dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_bookings"
