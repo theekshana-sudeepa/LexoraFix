@@ -70,6 +70,14 @@ public class ReviewBottomSheetFragment extends BottomSheetDialogFragment {
             btnSubmit.setEnabled(false);
             btnSubmit.setText("Submitting...");
 
+            if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+                if (getContext() != null) {
+                    Toast.makeText(requireContext(), "Please login to submit a review", Toast.LENGTH_SHORT).show();
+                }
+                btnSubmit.setEnabled(true);
+                btnSubmit.setText("Submit Review");
+                return;
+            }
             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             String userName = SharedPreferencesManager.getInstance(requireContext()).getUserName();
 

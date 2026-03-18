@@ -231,7 +231,7 @@ public class ProductListFragment extends Fragment {
             }
 
             // 4) Stock availability
-            if (filterInStockOnly && p.getStock() <= 0)
+            if (filterInStockOnly && p.getEffectiveStock() <= 0)
                 continue;
 
             // Product passed all filters

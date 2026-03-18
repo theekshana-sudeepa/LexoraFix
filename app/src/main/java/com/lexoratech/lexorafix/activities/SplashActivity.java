@@ -154,6 +154,38 @@ public class SplashActivity extends AppCompatActivity {
         if (firebaseUser != null) {
             String uid = firebaseUser.getUid();
             String email = firebaseUser.getEmail() != null ? firebaseUser.getEmail() : "";
+            
+            // Check for Deep Link from Push Notification
+            Intent startingIntent = getIntent();
+            if (startingIntent != null && startingIntent.getExtras() != null) {
+                String type = startingIntent.getStringExtra("type");
+                String bookingId = startingIntent.getStringExtra("bookingId");
+                if ("chat_message".equals(type) && bookingId != null) {
+                    
+                    String senderRole = startingIntent.getStringExtra("senderRole");
+                    String senderName = startingIntent.getStringExtra("senderName");
+                    
+                    Intent chatIntent = new Intent();
+                    // If the sender was a worker, we (the recipient) must be the customer
+                    if ("worker".equals(senderRole)) {
+                        chatIntent.setClass(SplashActivity.this, ChatActivity.class);
+                        chatIntent.putExtra("BOOKING_ID", bookingId);
+                        chatIntent.putExtra("WORKER_NAME", senderName != null ? senderName : "Worker");
+                    } else {
+                        // We are the worker (running the admin app, but SplashActivity is shared or the customer app received it).
+                        // Create an implicit intent or use the component name.
+                        chatIntent.setClassName(SplashActivity.this, "com.lexoratech.lexorafix.admin.activities.WorkerChatActivity");
+                        chatIntent.putExtra("BOOKING_ID", bookingId);
+                        chatIntent.putExtra("CUSTOMER_NAME", senderName != null ? senderName : "Customer");
+                    }
+                    
+                    // Start MainActivity first so the back stack is preserved, then ChatActivity
+                    Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivities(new Intent[]{mainIntent, chatIntent});
+                    finish();
+                    return;
+                }
+            }
 
             // Always check status on app launch to intercept mid-session bans
             FirestoreHelper.getInstance().getUserProfile(uid, new FirestoreHelper.FirestoreCallback<User>() {
@@ -183,8 +215,8 @@ public class SplashActivity extends AppCompatActivity {
                 }
             });
         } else {
-            // No Firebase user — go to login
-            goToLogin();
+            // No Firebase user — go to main (guest browsing)
+            goToMain();
         }
     }
 

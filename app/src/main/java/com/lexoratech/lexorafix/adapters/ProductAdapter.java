@@ -65,7 +65,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.tvName.setText(product.getName());
         holder.tvPrice.setText(String.format(Locale.getDefault(), "LKR %.2f", product.getPrice()));
 
-        if (product.getStock() > 0) {
+        int effectiveStock = product.getEffectiveStock();
+        if (effectiveStock > 0) {
             holder.tvStock.setText(R.string.in_stock);
             holder.tvStock.setTextColor(context.getResources().getColor(R.color.colorSuccess, null));
         } else {
@@ -112,15 +113,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         });
 
         holder.btnAddCart.setOnClickListener(v -> {
-            if (product.getStock() <= 0) {
+            int stock = product.getEffectiveStock();
+            if (stock <= 0) {
                 Snackbar.make(v, "Product is out of stock.", Snackbar.LENGTH_SHORT).show();
                 return;
             }
             DatabaseHelper db = DatabaseHelper.getInstance(context);
             int userId = 1; // Local DB legacy support
             int currentCartQty = db.getProductQuantityInCart(product.getId(), userId);
-            if (currentCartQty >= product.getStock()) {
-                Snackbar.make(v, "Cannot add more. Only " + product.getStock() + " available in stock.", Snackbar.LENGTH_LONG).show();
+            if (currentCartQty >= stock) {
+                Snackbar.make(v, "Cannot add more. Only " + stock + " available in stock.", Snackbar.LENGTH_LONG).show();
                 return;
             }
 

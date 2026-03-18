@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -41,7 +43,7 @@ public class WorkerDashboardActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefresh;
     private View emptyState;
     private TextView tvWorkerEmail, tvEmptyMessage, tvEmptyIcon;
-    private ImageView btnLogout;
+    private ImageView btnLogout, btnProfile;
     private TabLayout tabLayout;
 
     private WorkerBookingAdapter adapter;
@@ -116,12 +118,14 @@ public class WorkerDashboardActivity extends AppCompatActivity {
         tvEmptyMessage = findViewById(R.id.tv_empty_message);
         tvEmptyIcon = findViewById(R.id.tv_empty_icon);
         btnLogout = findViewById(R.id.btn_logout);
+        btnProfile = findViewById(R.id.btn_profile);
         btnFilter = findViewById(R.id.btn_filter);
         tabLayout = findViewById(R.id.tab_layout);
 
         tvWorkerEmail.setText(auth.getCurrentUser().getEmail());
 
         btnFilter.setOnClickListener(v -> showFilterMenu());
+        btnProfile.setOnClickListener(v -> showEditPhoneDialog());
     }
 
     private void setupRecyclerView() {
@@ -328,5 +332,58 @@ public class WorkerDashboardActivity extends AppCompatActivity {
         if (snapshotListener != null) {
             snapshotListener.remove();
         }
+    }
+
+    private void showEditPhoneDialog() {
+        com.google.android.material.bottomsheet.BottomSheetDialog dialog =
+                new com.google.android.material.bottomsheet.BottomSheetDialog(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_edit_phone, null);
+        dialog.setContentView(view);
+
+        TextView tvCurrentPhone = view.findViewById(R.id.tv_current_phone);
+        EditText etPhone = view.findViewById(R.id.et_phone);
+        com.google.android.material.button.MaterialButton btnSave = view.findViewById(R.id.btn_save_phone);
+
+        // Load current phone from Firestore
+        String uid = auth.getCurrentUser().getUid();
+        db.collection("users").document(uid).get().addOnSuccessListener(doc -> {
+            String currentPhone = doc.getString("phone");
+            if (currentPhone != null && !currentPhone.isEmpty()) {
+                tvCurrentPhone.setText(currentPhone);
+                etPhone.setText(currentPhone);
+                etPhone.setSelection(currentPhone.length());
+            } else {
+                tvCurrentPhone.setText("Not set");
+            }
+        });
+
+        btnSave.setOnClickListener(v -> {
+            String phone = etPhone.getText().toString().trim();
+            if (phone.isEmpty()) {
+                etPhone.setError("Please enter a phone number");
+                return;
+            }
+            if (phone.length() < 7) {
+                etPhone.setError("Phone number too short");
+                return;
+            }
+
+            btnSave.setEnabled(false);
+            btnSave.setText("Saving...");
+
+            db.collection("users").document(uid)
+                    .update("phone", phone)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(this, "Phone number updated ✅", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    })
+                    .addOnFailureListener(e -> {
+                        btnSave.setEnabled(true);
+                        btnSave.setText("Save Phone Number");
+                        Toast.makeText(this, "Failed to update: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+        });
+
+        dialog.show();
     }
 }

@@ -1,6 +1,8 @@
 package com.lexoratech.lexorafix.admin.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import com.lexoratech.lexorafix.admin.activities.WorkerChatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,8 +88,22 @@ public class WorkerBookingAdapter extends RecyclerView.Adapter<WorkerBookingAdap
             holder.btnAction.setBackgroundTintList(
                     android.content.res.ColorStateList.valueOf(ContextCompat.getColor(context, R.color.adminPrimary)));
             holder.btnAction.setOnClickListener(v -> acceptBooking(holder, booking, docId, position));
+            holder.btnChat.setVisibility(View.GONE);
         } else {
             setupStatusButton(holder, status, booking, docId, position);
+            // Show chat button on My Jobs tab for accepted/in-progress bookings
+            if ("Accepted".equals(status) || "In Progress".equals(status)) {
+                holder.btnChat.setVisibility(View.VISIBLE);
+                holder.btnChat.setOnClickListener(v -> {
+                    Intent chatIntent = new Intent(context, WorkerChatActivity.class);
+                    chatIntent.putExtra(WorkerChatActivity.EXTRA_BOOKING_ID, docId);
+                    chatIntent.putExtra(WorkerChatActivity.EXTRA_CUSTOMER_NAME, getStr(booking, "userName", "Customer"));
+                    chatIntent.putExtra(WorkerChatActivity.EXTRA_SERVICE_TYPE, getStr(booking, "serviceType", "Service"));
+                    context.startActivity(chatIntent);
+                });
+            } else {
+                holder.btnChat.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -259,7 +275,7 @@ public class WorkerBookingAdapter extends RecyclerView.Adapter<WorkerBookingAdap
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvServiceName, tvCategory, tvCustomerName, tvAddress, tvDescription, tvStatus;
         MaterialCardView cardStatus;
-        MaterialButton btnAction;
+        MaterialButton btnAction, btnChat;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -271,6 +287,7 @@ public class WorkerBookingAdapter extends RecyclerView.Adapter<WorkerBookingAdap
             tvStatus = itemView.findViewById(R.id.tv_status);
             cardStatus = itemView.findViewById(R.id.card_status);
             btnAction = itemView.findViewById(R.id.btn_action);
+            btnChat = itemView.findViewById(R.id.btn_chat);
         }
     }
 }

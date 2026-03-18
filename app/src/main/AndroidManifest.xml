@@ -59,6 +59,11 @@
         <activity android:name=".activities.BookServiceActivity" android:exported="false" />
         <activity android:name=".activities.LocationPickerActivity" android:exported="false" />
 
+        <!-- Chat -->
+        <activity android:name=".activities.ChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- Map Activity -->
         <activity android:name=".activities.MapActivity" android:exported="false" />
 

@@ -1,6 +1,6 @@
 const { onDocumentUpdated, onDocumentCreated } = require("firebase-functions/v2/firestore");
 const { initializeApp } = require("firebase-admin/app");
-const { getFirestore } = require("firebase-admin/firestore");
+const { getFirestore, FieldValue } = require("firebase-admin/firestore");
 const { getMessaging } = require("firebase-admin/messaging");
 
 initializeApp();
@@ -119,6 +119,18 @@ exports.onBookingStatusChange = onDocumentUpdated("bookings/{bookingId}", async 
           token: customerToken,
         });
         console.log(`Notified customer ${customerUid}`);
+
+        // Add to customer's in-app NotificationFragment
+        await getFirestore().collection("users").doc(customerUid).collection("notifications").add({
+            title: title,
+            message: body,
+            type: "booking_update",
+            timestamp: FieldValue.serverTimestamp(),
+            read: false,
+            bookingId: bookingId
+        });
+        console.log(`Logged booking update notification for customer ${customerUid}`);
+
       } catch (error) {
         console.error("Error notifying customer:", error);
       }
@@ -160,5 +172,114 @@ exports.onBookingStatusChange = onDocumentUpdated("bookings/{bookingId}", async 
     }
   }
 
+  return null;
+});
+
+exports.onChatMessage = onDocumentCreated("chats/{chatId}/messages/{messageId}", async (event) => {
+  const messageData = event.data.data();
+  if (!messageData) return null;
+
+  const chatId = event.params.chatId;
+  const senderId = messageData.senderId;
+  const senderName = messageData.senderName || "Someone";
+  const messageText = messageData.text || "New message";
+
+  try {
+    // 1. Get the chat document to find participants and booking info
+    const chatDoc = await getFirestore().collection("chats").doc(chatId).get();
+    if (!chatDoc.exists) return null;
+
+    const chatData = chatDoc.data();
+    const participants = chatData.participants || [];
+    const customerName = chatData.customerName || "Customer";
+    const workerName = chatData.workerName || "Worker";
+    const bookingId = chatData.bookingId || "";
+
+    // 2. Identify the recipient (the participant who is NOT the sender)
+    let recipientId = null;
+    let senderRole = "worker"; // Default assumption, will verify below
+    
+    // We expect the chat document to have `participants` array, or we can look up booking
+    if (participants.length > 0) {
+      recipientId = participants.find(id => id !== senderId);
+    } 
+    
+    // Fallback logic if participants array is missing or incomplete
+    if (!recipientId && bookingId) {
+      const bookingDoc = await getFirestore().collection("bookings").doc(bookingId).get();
+      if (bookingDoc.exists) {
+         const bookingData = bookingDoc.data();
+         if (senderId === bookingData.assignedWorkerId) {
+             recipientId = bookingData.firebaseUid; // FIXED: It's firebaseUid in LexoraFix, not customerId
+             senderRole = "worker";
+         } else if (senderId === bookingData.firebaseUid) {
+             recipientId = bookingData.assignedWorkerId;
+             senderRole = "customer";
+         }
+      }
+    }
+
+    if (!recipientId) {
+        console.log(`Could not identify recipient for message ${event.params.messageId} in chat ${chatId}`);
+        return null;
+    }
+
+    // 3. Get the recipient's FCM tokens
+    const recipientDoc = await getFirestore().collection("users").doc(recipientId).get();
+    if (!recipientDoc.exists) return null;
+
+    const recipientData = recipientDoc.data();
+    const tokens = recipientData.fcmTokens || (recipientData.fcmToken ? [recipientData.fcmToken] : []);
+
+    if (tokens.length === 0) {
+      console.log(`No FCM tokens found for user ${recipientId}`);
+      return null;
+    }
+
+    // 4. Construct Notification Payload
+    const title = senderName;
+    const body = messageText;
+
+    const payload = {
+      notification: {
+        title: title,
+        body: body,
+      },
+      data: {
+        type: "chat_message",
+        chatId: chatId,
+        bookingId: bookingId,
+        senderId: senderId,
+        senderName: senderName,
+        senderRole: senderRole
+      },
+      tokens: tokens,
+    };
+
+    // 5. Send FCM
+    const response = await getMessaging().sendMulticast(payload);
+    console.log(`Sent chat notification from ${senderName}. Success: ${response.successCount}, Failures: ${response.failureCount}`);
+
+    // === BONUS: Log to Customer's NotificationFragment if Recipient is Customer ===
+    // We identify a customer if the recipient role is customer. The senderRole above gives us a hint.
+    if (senderRole === "worker") {
+        // Log this notification to the recipient's notifications sub-collection
+        await getFirestore().collection("users").doc(recipientId).collection("notifications").add({
+            title: title,
+            message: body,
+            type: "chat_message",
+            timestamp: FieldValue.serverTimestamp(),
+            read: false,
+            bookingId: bookingId,
+            chatId: chatId,
+            senderId: senderId
+        });
+        console.log(`Logged chat notification for customer ${recipientId}`);
+    }
+
+  } catch (error) {
+    console.error("Error sending chat notification:", error);
+  }
+  
   return null;
 });

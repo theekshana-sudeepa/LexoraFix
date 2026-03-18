@@ -154,6 +154,7 @@ public class WishlistFragment extends Fragment {
 
                 @Override
                 public void onWishlistClick(Product product, boolean isAdding) {
+                    if (FirebaseAuth.getInstance().getCurrentUser() == null) return;
                     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     FirestoreHelper.getInstance().toggleWishlist(uid, product.getDocumentId(), isAdding,
                             new FirestoreHelper.FirestoreCallback<Void>() {

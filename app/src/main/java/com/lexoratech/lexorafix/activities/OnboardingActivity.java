@@ -113,7 +113,7 @@ public class OnboardingActivity extends AppCompatActivity {
 
     private void completeOnboarding() {
         SharedPreferencesManager.getInstance(getApplicationContext()).setFirstLaunchDone();
-        Intent intent = new Intent(OnboardingActivity.this, LoginActivity.class);
+        Intent intent = new Intent(OnboardingActivity.this, MainActivity.class);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();

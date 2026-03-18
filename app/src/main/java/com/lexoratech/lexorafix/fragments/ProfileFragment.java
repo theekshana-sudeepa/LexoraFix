@@ -58,6 +58,42 @@ public class ProfileFragment extends Fragment {
         btnEditProfile.setOnClickListener(v -> startActivity(new Intent(requireContext(), EditProfileActivity.class)));
 
         SharedPreferencesManager prefs = SharedPreferencesManager.getInstance(requireContext());
+
+        // ── Guest Mode Detection ──
+        com.google.firebase.auth.FirebaseUser currentUser = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser();
+        boolean isGuest = (currentUser == null);
+
+        if (isGuest) {
+            tvName.setText("Guest User");
+            tvEmail.setText("Sign in to access your account");
+            if (tvPhone != null) tvPhone.setText("—");
+            if (tvAddress != null) tvAddress.setText("—");
+            btnEditProfile.setVisibility(View.GONE);
+
+            // Hide user-specific account rows
+            View btnWishlist = view.findViewById(R.id.btn_wishlist);
+            View btnOrders = view.findViewById(R.id.btn_orders);
+            View btnBookings = view.findViewById(R.id.btn_bookings);
+            View cardBiometricLogin = view.findViewById(R.id.card_biometric_login);
+            if (btnWishlist != null) btnWishlist.setVisibility(View.GONE);
+            if (btnOrders != null) btnOrders.setVisibility(View.GONE);
+            if (btnBookings != null) btnBookings.setVisibility(View.GONE);
+            if (cardBiometricLogin != null) cardBiometricLogin.setVisibility(View.GONE);
+
+            // Convert logout button to login button
+            btnLogout.setText("Login / Sign Up");
+            btnLogout.setIconResource(R.drawable.ic_profile);
+            btnLogout.setOnClickListener(v -> {
+                Intent intent = new Intent(requireContext(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                if (getActivity() != null) getActivity().finish();
+            });
+
+            return view;
+        }
+
+        // ── Logged-in user flow below ──
         tvName.setText(prefs.getUserName());
         tvEmail.setText(prefs.getUserEmail());
 

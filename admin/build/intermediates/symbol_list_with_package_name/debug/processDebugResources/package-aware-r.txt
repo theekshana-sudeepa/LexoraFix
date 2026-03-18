@@ -3069,6 +3069,7 @@ drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
 drawable bg_admin_header_curved
+drawable bg_chat_input
 drawable bg_circle_primary_light
 drawable bg_glow_blue
 drawable bg_glow_orange
@@ -3079,8 +3080,12 @@ drawable bg_icon_tint_orange
 drawable bg_icon_tint_purple
 drawable bg_icon_tint_red
 drawable bg_input_admin
+drawable bg_message_received
+drawable bg_message_sent
 drawable bg_premium_hero_card
+drawable bg_quick_reply_chip
 drawable bg_saas_card
+drawable bg_send_button
 drawable bg_spinner_saas
 drawable bg_status_active_modern
 drawable bg_status_badge_admin
@@ -3166,6 +3171,7 @@ drawable ic_password
 drawable ic_phone
 drawable ic_profile
 drawable ic_search_black_24
+drawable ic_send
 drawable ic_store
 drawable indeterminate_static
 drawable m3_avd_hide_password
@@ -3352,6 +3358,8 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id btnCallUser
+id btnSend
 id btn_action
 id btn_add_option
 id btn_add_variant
@@ -3359,6 +3367,7 @@ id btn_back
 id btn_ban
 id btn_biometric_login
 id btn_cancel
+id btn_chat
 id btn_clear_1
 id btn_clear_2
 id btn_clear_3
@@ -3374,10 +3383,12 @@ id btn_login
 id btn_logout
 id btn_menu
 id btn_pick_image
+id btn_profile
 id btn_register
 id btn_resend
 id btn_reviews
 id btn_save
+id btn_save_phone
 id btn_send_reset
 id btn_update_status
 id buttonPanel
@@ -3468,6 +3479,7 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id escape
+id etMessage
 id et_address
 id et_description
 id et_email
@@ -3556,6 +3568,7 @@ id jumpToEnd
 id jumpToStart
 id labeled
 id layout
+id layoutEmptyChat
 id layout_location
 id left
 id leftToRight
@@ -3713,6 +3726,8 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id rvMessages
+id rvQuickReplies
 id rv_items
 id rv_list
 id rv_reviews
@@ -3835,6 +3850,7 @@ id titleDividerNoCustom
 id title_template
 id toggle
 id toolbar
+id toolbarChat
 id top
 id topPanel
 id touch_outside
@@ -3849,6 +3865,11 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvChatBookingInfo
+id tvChatRecipientName
+id tvMessageText
+id tvMessageTime
+id tvQuickReply
 id tv_address
 id tv_back_to_login
 id tv_category
@@ -3856,6 +3877,7 @@ id tv_center_address
 id tv_center_name
 id tv_center_phone
 id tv_count
+id tv_current_phone
 id tv_customer_email
 id tv_customer_name
 id tv_date
@@ -4058,6 +4080,7 @@ layout activity_admin_product_reviews
 layout activity_admin_settings
 layout activity_manage_list
 layout activity_order_detail
+layout activity_worker_chat
 layout activity_worker_dashboard
 layout activity_worker_pending
 layout activity_worker_registration
@@ -4080,6 +4103,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_booking_status
+layout dialog_edit_phone
 layout dialog_forgot_password
 layout fingerprint_dialog_layout
 layout ime_base_split_test_activity
@@ -4090,7 +4114,10 @@ layout item_admin_order
 layout item_admin_product
 layout item_admin_review
 layout item_admin_user
+layout item_message_received
+layout item_message_sent
 layout item_order_detail_product
+layout item_quick_reply
 layout item_service_center
 layout item_status_option
 layout item_variant

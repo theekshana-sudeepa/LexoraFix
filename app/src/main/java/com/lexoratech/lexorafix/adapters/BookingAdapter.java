@@ -116,6 +116,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         TextView tvWorkerName = view.findViewById(R.id.tv_dialog_worker_name);
         TextView tvWorkerPhone = view.findViewById(R.id.tv_dialog_worker_phone);
         MaterialButton btnCallWorker = view.findViewById(R.id.btn_call_worker);
+        MaterialButton btnChatWorker = view.findViewById(R.id.btn_chat_worker);
         MaterialButton btnRateWorker = view.findViewById(R.id.btn_rate_worker);
 
         tvServiceType.setText(booking.getServiceType());
@@ -149,6 +150,16 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
                 btnCallWorker.setEnabled(false);
                 btnCallWorker.setText("No phone available");
             }
+
+            // Chat with Worker button
+            btnChatWorker.setOnClickListener(v -> {
+                dialog.dismiss();
+                Intent chatIntent = new Intent(context, com.lexoratech.lexorafix.activities.ChatActivity.class);
+                chatIntent.putExtra(com.lexoratech.lexorafix.activities.ChatActivity.EXTRA_BOOKING_ID, booking.getOrderId());
+                chatIntent.putExtra(com.lexoratech.lexorafix.activities.ChatActivity.EXTRA_WORKER_NAME, workerName);
+                chatIntent.putExtra(com.lexoratech.lexorafix.activities.ChatActivity.EXTRA_SERVICE_TYPE, booking.getServiceType());
+                context.startActivity(chatIntent);
+            });
 
             // Show Rate Worker button if completed and not rated
             if ("Completed".equals(booking.getStatus())) {

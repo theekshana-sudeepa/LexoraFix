@@ -53,7 +53,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // Only show notification if we have content
         if (!title.isEmpty() || !body.isEmpty()) {
-            showNotification(title, body);
+            showNotification(title, body, remoteMessage.getData());
         }
     }
 
@@ -64,13 +64,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         updateTokenInFirestore(token);
     }
 
-    private void showNotification(String title, String body) {
+    private void showNotification(String title, String body, java.util.Map<String, String> data) {
         // Tap action — opens the app at SplashActivity which routes appropriately
         Intent intent = new Intent(this, SplashActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        
+        // Pass all data payload items as extras for deep linking
+        if (data != null) {
+            for (java.util.Map.Entry<String, String> entry : data.entrySet()) {
+                intent.putExtra(entry.getKey(), entry.getValue());
+            }
+        }
+        
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 this, 0, intent,
-                PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Build notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)

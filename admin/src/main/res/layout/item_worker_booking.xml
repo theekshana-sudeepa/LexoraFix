@@ -147,5 +147,22 @@
             android:insetBottom="0dp"
             app:cornerRadius="12dp" />
 
+        <!-- Chat Button (shown on My Jobs tab) -->
+        <com.google.android.material.button.MaterialButton
+            android:fontFamily="@font/poppins"
+            android:id="@+id/btn_chat"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
+            android:text="💬  Chat with Customer"
+            android:textAllCaps="false"
+            android:textColor="@color/adminPrimary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:strokeColor="@color/adminPrimary"
+            app:cornerRadius="12dp" />
+
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

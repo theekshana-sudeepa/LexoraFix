@@ -83,6 +83,22 @@ public class Product {
         return variantOptions != null && !variantOptions.isEmpty();
     }
 
+    /**
+     * Returns the real available stock, accounting for variants.
+     * - Products WITH variants: sum of all variant stocks (base stock is ignored)
+     * - Products WITHOUT variants: base product stock
+     */
+    public int getEffectiveStock() {
+        if (hasVariants()) {
+            int total = 0;
+            for (ProductVariant v : variants) {
+                total += v.getStock();
+            }
+            return total;
+        }
+        return stock;
+    }
+
     // ========== Firestore Serialization ==========
 
     public Map<String, Object> toMap() {

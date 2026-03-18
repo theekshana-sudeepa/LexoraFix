@@ -128,6 +128,7 @@ public class BookingsFragment extends Fragment {
                             booking.setAssignedWorkerName(doc.getString("assignedWorkerName"));
                             booking.setAssignedWorkerPhone(doc.getString("assignedWorkerPhone"));
                             booking.setAssignedWorkerEmail(doc.getString("assignedWorkerEmail"));
+                            booking.setOrderId(doc.getId()); // Critical for chat room ID matching!
                             allBookings.add(booking);
                         }
                         applySort();

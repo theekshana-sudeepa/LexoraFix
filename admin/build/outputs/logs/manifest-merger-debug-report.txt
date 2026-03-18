@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-63:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-63:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-63:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-63:12
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-66:12
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/723696d02c972d14913cd8a4cbed0df6/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/d676669ba4050059e2fde379b7fef88b/transformed/constraintlayout-2.2.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.biometric:biometric:1.1.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/698a9c89bd043a7d31365a124a447295/transformed/biometric-1.1.0/AndroidManifest.xml:17:1-29:12
@@ -123,8 +123,8 @@ MERGED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasud
 	android:name
 		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:6:22-74
 application
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-62:19
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-62:19
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-65:19
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-65:19
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/723696d02c972d14913cd8a4cbed0df6/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/723696d02c972d14913cd8a4cbed0df6/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/d676669ba4050059e2fde379b7fef88b/transformed/constraintlayout-2.2.0/AndroidManifest.xml:7:5-20
@@ -331,12 +331,20 @@ ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/ma
 		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:56:68-92
 	android:name
 		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:56:19-67
-service#com.lexoratech.lexorafix.admin.services.AdminOrderListenerService
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:58:9-60:40
+activity#com.lexoratech.lexorafix.admin.activities.WorkerChatActivity
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:57:9-59:58
+	android:windowSoftInputMode
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:59:13-55
 	android:exported
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:60:13-37
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:58:13-37
 	android:name
-		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:59:13-63
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:57:19-64
+service#com.lexoratech.lexorafix.admin.services.AdminOrderListenerService
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:61:9-63:40
+	android:exported
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:63:13-37
+	android:name
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:62:13-63
 uses-sdk
 INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml

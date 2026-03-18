@@ -97,6 +97,10 @@
         <activity
             android:name="com.lexoratech.lexorafix.admin.activities.AdminSettingsActivity"
             android:exported="false" />
+        <activity
+            android:name="com.lexoratech.lexorafix.admin.activities.WorkerChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <service
             android:name="com.lexoratech.lexorafix.admin.services.AdminOrderListenerService"

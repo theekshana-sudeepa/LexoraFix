@@ -169,8 +169,9 @@ public class ProductDetailActivity extends AppCompatActivity {
             tvImageIndicator.setVisibility(View.GONE);
         }
 
-        if (product.getStock() > 0) {
-            tvStock.setText(getString(R.string.in_stock) + " (" + product.getStock() + " available)");
+        int effectiveStock = product.getEffectiveStock();
+        if (effectiveStock > 0) {
+            tvStock.setText(getString(R.string.in_stock) + " (" + effectiveStock + " available)");
             tvStock.setTextColor(getResources().getColor(R.color.colorSuccess, null));
             btnAddCart.setEnabled(true);
             btnBuyNow.setEnabled(true);

@@ -28,6 +28,10 @@
         "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_variant.xml"
     },
     {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_quick_reply_chip.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_quick_reply_chip.xml"
+    },
+    {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_admin_user.xml.flat",
         "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_user.xml"
     },
@@ -36,12 +40,20 @@
         "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_status_option.xml"
     },
     {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_quick_reply.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_quick_reply.xml"
+    },
+    {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_back.xml.flat",
         "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_back.xml"
     },
     {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/font_poppins.xml.flat",
         "source": "com.lexoratech.lexorafix.admin-main-46:/font/poppins.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_message_sent.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_message_sent.xml"
     },
     {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_dialog_forgot_password.xml.flat",
@@ -60,6 +72,10 @@
         "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_variant_option.xml"
     },
     {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_message_received.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_message_received.xml"
+    },
+    {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_admin_order.xml.flat",
         "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_order.xml"
     },
@@ -70,6 +86,10 @@
     {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_dashboard_users_premium.xml.flat",
         "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_dashboard_users_premium.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_worker_chat.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_worker_chat.xml"
     },
     {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_glow_purple.xml.flat",
@@ -128,6 +148,10 @@
         "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/gradient_admin_toolbar.xml"
     },
     {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_message_sent.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_message_sent.xml"
+    },
+    {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_admin_launcher_background.xml.flat",
         "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_admin_launcher_background.xml"
     },
@@ -156,6 +180,10 @@
         "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_store.xml"
     },
     {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_send.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_send.xml"
+    },
+    {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_admin_category.xml.flat",
         "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_category.xml"
     },
@@ -182,6 +210,10 @@
     {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_service_center.xml.flat",
         "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_service_center.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_message_received.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_message_received.xml"
     },
     {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_glow_blue.xml.flat",
@@ -224,6 +256,14 @@
         "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_icon_tint_green.xml"
     },
     {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_send_button.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_send_button.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_chat_input.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_chat_input.xml"
+    },
+    {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_saas_card.xml.flat",
         "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_saas_card.xml"
     },
@@ -250,6 +290,10 @@
     {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_icon_tint_blue.xml.flat",
         "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_icon_tint_blue.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_dialog_edit_phone.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/dialog_edit_phone.xml"
     },
     {
         "merged": "com.lexoratech.lexorafix.admin-debug-44:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",

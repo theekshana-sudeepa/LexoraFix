@@ -9,7 +9,7 @@
     <!-- Handle drag indicator -->
     <View
         android:id="@+id/dragHandle"
-        android:layout_width="40dp"
+        android:layout_width="48dp"
         android:layout_height="4dp"
         android:background="#E2E8F0"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,11 +20,11 @@
         android:id="@+id/textRateTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="sans-serif-medium"
         android:text="Rate Your Worker"
         android:textColor="@color/textPrimary"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,8 +51,8 @@
         android:numStars="5"
         android:stepSize="1.0"
         android:rating="5.0"
-        android:progressTint="@color/starActive"
-        android:secondaryProgressTint="@color/starActive"
+        android:progressTint="#FFB300"
+        android:secondaryProgressTint="#FFB300"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textRateSubtitle" />
@@ -64,16 +64,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:hint="Leave a review (Optional)"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
-        app:boxCornerRadiusTopStart="12dp"
+        app:boxStrokeColor="@color/divider"
+        app:hintTextColor="@color/textSecondary"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusTopStart="16dp"
         app:layout_constraintTop_toBottomOf="@+id/ratingBarWorker">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputReviewText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/textPrimary"
             android:lines="3"
             android:maxLines="5"
             android:inputType="textMultiLine" />
@@ -81,15 +84,16 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSubmitRating"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="56dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:text="Submit Rating"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/textPrimary"
         android:textSize="16sp"
-        app:cornerRadius="12dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutReviewText" />
 
