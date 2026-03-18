@@ -27,4 +27,9 @@ public class ServiceBooking {
     private String assignedWorkerName;
     private String assignedWorkerPhone;
     private String assignedWorkerEmail;
+    
+    // Ratings
+    private Float rating;
+    private String reviewText;
+    private Boolean isRated;
 }

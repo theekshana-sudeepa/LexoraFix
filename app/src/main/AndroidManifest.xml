@@ -40,6 +40,7 @@
         </activity>
 
         <!-- Auth Activities -->
+        <activity android:name=".activities.OnboardingActivity" android:exported="false" />
         <activity android:name=".activities.LoginActivity" android:exported="false" />
         <activity android:name=".activities.RegisterActivity" android:exported="false" />
         <activity android:name=".activities.ForgotPasswordActivity" android:exported="false" />

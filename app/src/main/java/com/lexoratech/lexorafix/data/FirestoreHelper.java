@@ -425,6 +425,29 @@ public class FirestoreHelper {
 
     // ========== ADMIN OPERATIONS ==========
 
+    /**
+     * Submit a star rating and review for a completed booking.
+     */
+    public void submitBookingRating(String uid, String bookingId, float rating, String reviewText, FirestoreCallback<Void> callback) {
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("rating", rating);
+        updates.put("reviewText", reviewText);
+        updates.put("isRated", true);
+
+        // Update user subcollection
+        db.collection(COLLECTION_USERS).document(uid)
+                .collection(COLLECTION_BOOKINGS).document(bookingId)
+                .update(updates)
+                .addOnSuccessListener(aVoid -> {
+                    // Update top-level bookings
+                    db.collection(COLLECTION_BOOKINGS).document(bookingId)
+                            .update(updates)
+                            .addOnSuccessListener(aVoid2 -> callback.onSuccess(null))
+                            .addOnFailureListener(e -> callback.onError(e.getMessage()));
+                })
+                .addOnFailureListener(e -> callback.onError(e.getMessage()));
+    }
+
     public void getAllUsers(FirestoreCallback<QuerySnapshot> callback) {
         db.collection(COLLECTION_USERS)
                 .get()

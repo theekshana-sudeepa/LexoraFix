@@ -434,7 +434,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public String placeOrder(int userId, String address, double totalPrice) {
         SQLiteDatabase db = getWritableDatabase();
-        String orderId = "LF" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        String orderId = "LF" + UUID.randomUUID().toString().substring(0, 8).toUpperCase(java.util.Locale.ROOT);
 
         List<CartItem> cartItems = getCartItems(userId);
 

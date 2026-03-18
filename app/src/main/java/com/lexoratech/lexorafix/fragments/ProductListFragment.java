@@ -212,7 +212,7 @@ public class ProductListFragment extends Fragment {
 
             // 1) Text search
             if (!searchQuery.isEmpty()) {
-                String q = searchQuery.toLowerCase().trim();
+                String q = searchQuery.toLowerCase(java.util.Locale.getDefault()).trim();
                 boolean nameMatch = p.getName() != null && p.getName().toLowerCase().contains(q);
                 boolean descMatch = p.getDescription() != null && p.getDescription().toLowerCase().contains(q);
                 if (!nameMatch && !descMatch)

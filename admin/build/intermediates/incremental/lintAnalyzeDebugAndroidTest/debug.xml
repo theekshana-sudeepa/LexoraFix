@@ -6,7 +6,7 @@
     debuggable="true"
     mergedManifest="build/intermediates/merged_manifest/debug/processDebugMainManifest/AndroidManifest.xml"
     partialResultsDir="build/intermediates/android_test_lint_partial_results/debug/lintAnalyzeDebugAndroidTest/out"
-    desugaredMethodsFiles="/Users/theekshanasudeepa/.gradle/caches/8.13/transforms/61b519fa8dfe7ee978e66277b032e30d/transformed/D8BackportedDesugaredMethods.txt">
+    desugaredMethodsFiles="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/14853d90b9585f6310457e6fc957ae35/transformed/D8BackportedDesugaredMethods.txt">
   <buildFeatures
       namespacing="REQUIRED"/>
   <sourceProviders>
@@ -25,6 +25,6 @@
       type="INSTRUMENTATION_TEST"
       applicationId="com.lexoratech.lexorafix.admin.test"
       generatedResourceFolders="build/generated/res/resValues/androidTest/debug"
-      desugaredMethodsFiles="/Users/theekshanasudeepa/.gradle/caches/8.13/transforms/61b519fa8dfe7ee978e66277b032e30d/transformed/D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/14853d90b9585f6310457e6fc957ae35/transformed/D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

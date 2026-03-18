@@ -245,7 +245,7 @@ public class NotificationHelper {
     private String getStatusEmoji(String status) {
         if (status == null)
             return "";
-        switch (status.toLowerCase()) {
+        switch (status.toLowerCase(java.util.Locale.ROOT)) {
             case "confirmed":
                 return "\uD83D\uDCE6";
             case "processing":
@@ -264,7 +264,7 @@ public class NotificationHelper {
     private String getBookingStatusEmoji(String status) {
         if (status == null)
             return "";
-        switch (status.toLowerCase()) {
+        switch (status.toLowerCase(java.util.Locale.ROOT)) {
             case "confirmed":
                 return "✅";
             case "in progress":

@@ -116,6 +116,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         TextView tvWorkerName = view.findViewById(R.id.tv_dialog_worker_name);
         TextView tvWorkerPhone = view.findViewById(R.id.tv_dialog_worker_phone);
         MaterialButton btnCallWorker = view.findViewById(R.id.btn_call_worker);
+        MaterialButton btnRateWorker = view.findViewById(R.id.btn_rate_worker);
 
         tvServiceType.setText(booking.getServiceType());
         tvDateTime.setText(booking.getDate() + " at " + booking.getTime());
@@ -147,6 +148,32 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             if (workerPhone == null || workerPhone.isEmpty()) {
                 btnCallWorker.setEnabled(false);
                 btnCallWorker.setText("No phone available");
+            }
+
+            // Show Rate Worker button if completed and not rated
+            if ("Completed".equals(booking.getStatus())) {
+                boolean isRated = booking.getIsRated() != null && booking.getIsRated();
+                if (!isRated) {
+                    btnRateWorker.setVisibility(View.VISIBLE);
+                    btnRateWorker.setOnClickListener(v -> {
+                        dialog.dismiss();
+                        if (context instanceof androidx.fragment.app.FragmentActivity) {
+                            com.lexoratech.lexorafix.fragments.RateWorkerBottomSheetFragment rateFragment =
+                                    com.lexoratech.lexorafix.fragments.RateWorkerBottomSheetFragment.newInstance(
+                                            booking.getOrderId(),
+                                            () -> {
+                                                booking.setIsRated(true);
+                                                notifyDataSetChanged();
+                                            }
+                                    );
+                            rateFragment.show(((androidx.fragment.app.FragmentActivity) context).getSupportFragmentManager(), "RateWorkerBottomSheet");
+                        }
+                    });
+                } else {
+                    btnRateWorker.setVisibility(View.VISIBLE);
+                    btnRateWorker.setText("⭐ Rated " + (booking.getRating() != null ? booking.getRating() : "5.0"));
+                    btnRateWorker.setEnabled(false);
+                }
             }
         }
 

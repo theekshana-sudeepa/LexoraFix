@@ -71,7 +71,7 @@ public class AdminNotificationHelper {
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         String title = "New Order! \uD83D\uDCE6";
-        String text = customerName + " placed an order — LKR " + String.format("%.2f", total);
+        String text = customerName + " placed an order — LKR " + String.format(java.util.Locale.US, "%.2f", total);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_NEW_ORDERS)
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
@@ -177,7 +177,7 @@ public class AdminNotificationHelper {
 
     private String getStatusEmoji(String status) {
         if (status == null) return "";
-        switch (status.toLowerCase()) {
+        switch (status.toLowerCase(java.util.Locale.ROOT)) {
             case "confirmed": return "\uD83D\uDCE6";
             case "processing": return "⚙️";
             case "shipped": return "\uD83D\uDE9A";
@@ -189,7 +189,7 @@ public class AdminNotificationHelper {
 
     private String getBookingStatusEmoji(String status) {
         if (status == null) return "";
-        switch (status.toLowerCase()) {
+        switch (status.toLowerCase(java.util.Locale.ROOT)) {
             case "confirmed": return "✅";
             case "in progress": return "🔧";
             case "completed": return "🎉";

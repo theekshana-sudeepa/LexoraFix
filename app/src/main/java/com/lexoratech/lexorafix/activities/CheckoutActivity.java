@@ -746,7 +746,7 @@ public class CheckoutActivity extends AppCompatActivity {
                             .append("<span style='color:#E0E0E0;'>").append(displayName)
                             .append(" × ").append(item.getQuantity()).append("</span>")
                             .append("<span style='color:#10B981;font-weight:bold;'>LKR ")
-                            .append(String.format("%.2f", item.getSubtotal())).append("</span></div>");
+                            .append(String.format(java.util.Locale.US, "%.2f", item.getSubtotal())).append("</span></div>");
                 }
                 String itemsHtmlStr = itemsHtml.toString();
 

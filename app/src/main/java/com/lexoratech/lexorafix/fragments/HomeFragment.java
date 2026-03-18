@@ -273,7 +273,7 @@ public class HomeFragment extends Fragment {
         } else {
             List<Product> filtered = new ArrayList<>();
             for (Product p : allProducts) {
-                if (p.getName().toLowerCase().contains(query.toLowerCase())) {
+                if (p.getName().toLowerCase(java.util.Locale.getDefault()).contains(query.toLowerCase(java.util.Locale.getDefault()))) {
                     filtered.add(p);
                 }
             }

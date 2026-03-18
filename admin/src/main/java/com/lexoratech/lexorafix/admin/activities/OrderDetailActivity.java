@@ -105,7 +105,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                     tvCustomerName.setText(customerName != null ? customerName : "N/A");
                     tvCustomerEmail.setText(customerEmail != null ? customerEmail : "N/A");
                     tvAddress.setText(address != null ? address : "N/A");
-                    tvTotal.setText(String.format("LKR %.2f", total));
+                    tvTotal.setText(String.format(java.util.Locale.US, "LKR %.2f", total));
                     tvTimestamp.setText(timeStr);
 
                     // Set current status in spinner

@@ -1,167 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.13.2">
-
-    <issue
-        id="DefaultLocale"
-        severity="Warning"
-        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
-        category="Correctness"
-        priority="6"
-        summary="Implied default locale in case conversion"
-        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` **without specifying an explicit locale** is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is **not** `I`.&#xA;&#xA;If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.ROOT)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
-        url="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        urls="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        errorLine1="        String text = customerName + &quot; placed an order — LKR &quot; + String.format(&quot;%.2f&quot;, total);"
-        errorLine2="                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/notifications/AdminNotificationHelper.java"
-            line="74"
-            column="66"/>
-    </issue>
-
-    <issue
-        id="DefaultLocale"
-        severity="Warning"
-        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`."
-        category="Correctness"
-        priority="6"
-        summary="Implied default locale in case conversion"
-        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` **without specifying an explicit locale** is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is **not** `I`.&#xA;&#xA;If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.ROOT)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
-        url="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        urls="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        errorLine1="        switch (status.toLowerCase()) {"
-        errorLine2="                       ~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/notifications/AdminNotificationHelper.java"
-            line="180"
-            column="24"/>
-    </issue>
-
-    <issue
-        id="DefaultLocale"
-        severity="Warning"
-        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`."
-        category="Correctness"
-        priority="6"
-        summary="Implied default locale in case conversion"
-        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` **without specifying an explicit locale** is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is **not** `I`.&#xA;&#xA;If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.ROOT)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
-        url="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        urls="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        errorLine1="        switch (status.toLowerCase()) {"
-        errorLine2="                       ~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/notifications/AdminNotificationHelper.java"
-            line="192"
-            column="24"/>
-    </issue>
-
-    <issue
-        id="DefaultLocale"
-        severity="Warning"
-        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
-        category="Correctness"
-        priority="6"
-        summary="Implied default locale in case conversion"
-        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` **without specifying an explicit locale** is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is **not** `I`.&#xA;&#xA;If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.ROOT)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
-        url="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        urls="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        errorLine1="                + &quot;&lt;h2 style=&apos;color:#FF6B35;margin:0;&apos;>Total: LKR &quot; + String.format(&quot;%.2f&quot;, total) + &quot;&lt;/h2>&lt;/div>&quot;"
-        errorLine2="                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/network/EmailHelper.java"
-            line="75"
-            column="71"/>
-    </issue>
-
-    <issue
-        id="DefaultLocale"
-        severity="Warning"
-        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
-        category="Correctness"
-        priority="6"
-        summary="Implied default locale in case conversion"
-        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` **without specifying an explicit locale** is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is **not** `I`.&#xA;&#xA;If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.ROOT)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
-        url="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        urls="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        errorLine1="        String subject = &quot;🛒 New Order #&quot; + orderId + &quot; — LexoraFix (LKR &quot; + String.format(&quot;%.2f&quot;, total) + &quot;)&quot;;"
-        errorLine2="                                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/network/EmailHelper.java"
-            line="124"
-            column="78"/>
-    </issue>
-
-    <issue
-        id="DefaultLocale"
-        severity="Warning"
-        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
-        category="Correctness"
-        priority="6"
-        summary="Implied default locale in case conversion"
-        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` **without specifying an explicit locale** is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is **not** `I`.&#xA;&#xA;If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.ROOT)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
-        url="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        urls="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        errorLine1="                + &quot;&lt;h2 style=&apos;color:#10B981;margin:0;font-size:24px;&apos;>LKR &quot; + String.format(&quot;%.2f&quot;, total) + &quot;&lt;/h2>&quot;"
-        errorLine2="                                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/network/EmailHelper.java"
-            line="155"
-            column="79"/>
-    </issue>
-
-    <issue
-        id="DefaultLocale"
-        severity="Warning"
-        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
-        category="Correctness"
-        priority="6"
-        summary="Implied default locale in case conversion"
-        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` **without specifying an explicit locale** is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is **not** `I`.&#xA;&#xA;If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.ROOT)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
-        url="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        urls="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        errorLine1="                    tvTotal.setText(String.format(&quot;LKR %.2f&quot;, total));"
-        errorLine2="                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/OrderDetailActivity.java"
-            line="108"
-            column="37"/>
-    </issue>
-
-    <issue
-        id="DefaultLocale"
-        severity="Warning"
-        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
-        category="Correctness"
-        priority="6"
-        summary="Implied default locale in case conversion"
-        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` **without specifying an explicit locale** is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is **not** `I`.&#xA;&#xA;If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.ROOT)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
-        url="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        urls="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        errorLine1="        holder.tvPrice.setText(String.format(&quot;LKR %.2f&quot;, price));"
-        errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/OrderItemAdapter.java"
-            line="50"
-            column="32"/>
-    </issue>
-
-    <issue
-        id="DefaultLocale"
-        severity="Warning"
-        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
-        category="Correctness"
-        priority="6"
-        summary="Implied default locale in case conversion"
-        explanation="Calling `String#toLowerCase()` or `#toUpperCase()` **without specifying an explicit locale** is a common source of bugs. The reason for that is that those methods will use the current locale on the user&apos;s device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for `i` is **not** `I`.&#xA;&#xA;If you want the methods to just perform ASCII replacement, for example to convert an enum name, call `String#toUpperCase(Locale.ROOT)` instead. If you really want to use the current locale, call `String#toUpperCase(Locale.getDefault())` instead."
-        url="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        urls="https://developer.android.com/reference/java/util/Locale.html#default_locale"
-        errorLine1="        holder.tvSubtotal.setText(String.format(&quot;LKR %.2f&quot;, price * qty));"
-        errorLine2="                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/OrderItemAdapter.java"
-            line="52"
-            column="35"/>
-    </issue>
+<issues format="6" by="lint 8.7.3">
 
     <issue
         id="OldTargetApi"
@@ -170,14 +8,14 @@
         category="Correctness"
         priority="6"
         summary="Target SDK attribute is not targeting latest version"
-        explanation="When your application or sdk runs on a version of Android that is more recent than your `targetSdkVersion` specifies that it has been tested with, various compatibility modes kick in. This ensures that your application continues to work, but it may look out of place. For example, if the `targetSdkVersion` is less than 14, your app may get an option button in the UI.&#xA;&#xA;To fix this issue, set the `targetSdkVersion` to the highest available value. Then test your app to make sure everything works correctly. You may want to consult the compatibility notes to see what changes apply to each version you are adding support for: https://developer.android.com/reference/android/os/Build.VERSION_CODES.html as well as follow this guide:&#xA;https://developer.android.com/distribute/best-practices/develop/target-sdk.html"
+        explanation="When your application runs on a version of Android that is more recent than your `targetSdkVersion` specifies that it has been tested with, various compatibility modes kick in. This ensures that your application continues to work, but it may look out of place. For example, if the `targetSdkVersion` is less than 14, your app may get an option button in the UI.&#xA;&#xA;To fix this issue, set the `targetSdkVersion` to the highest available value. Then test your app to make sure everything works correctly. You may want to consult the compatibility notes to see what changes apply to each version you are adding support for: https://developer.android.com/reference/android/os/Build.VERSION_CODES.html as well as follow this guide:&#xA;https://developer.android.com/distribute/best-practices/develop/target-sdk.html"
         url="https://developer.android.com/distribute/best-practices/develop/target-sdk.html"
         urls="https://developer.android.com/distribute/best-practices/develop/target-sdk.html,https://developer.android.com/reference/android/os/Build.VERSION_CODES.html"
         errorLine1="        targetSdk = 35"
         errorLine2="        ~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="20"
+            line="21"
             column="9"/>
     </issue>
 
@@ -200,19 +38,579 @@
     </issue>
 
     <issue
+        id="AndroidGradlePluginVersion"
+        severity="Warning"
+        message="A newer version of com.android.application than 8.7.3 is available: 9.1.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Android Gradle Plugin Version"
+        explanation="This detector looks for usage of the Android Gradle Plugin where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="agp = &quot;8.7.3&quot;"
+        errorLine2="      ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="2"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        severity="Warning"
+        message="A newer version of com.android.application than 8.7.3 is available: 9.1.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Android Gradle Plugin Version"
+        explanation="This detector looks for usage of the Android Gradle Plugin where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="agp = &quot;8.7.3&quot;"
+        errorLine2="      ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="2"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        severity="Warning"
+        message="A newer version of com.android.application than 8.7.3 is available: 9.1.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Android Gradle Plugin Version"
+        explanation="This detector looks for usage of the Android Gradle Plugin where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="agp = &quot;8.7.3&quot;"
+        errorLine2="      ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="2"
+            column="7"/>
+    </issue>
+
+    <issue
         id="GradleDependency"
         severity="Warning"
-        message="A newer version of `compileSdkVersion` than 35 is available: 36"
+        message="A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0"
         category="Correctness"
         priority="4"
         summary="Obsolete Gradle Dependency"
         explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
-        errorLine1="    compileSdk = 35"
-        errorLine2="    ~~~~~~~~~~~~~~~">
+        errorLine1="junitVersion = &quot;1.2.1&quot;"
+        errorLine2="               ~~~~~~~">
         <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="11"
-            column="5"/>
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="5"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="junitVersion = &quot;1.2.1&quot;"
+        errorLine2="               ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="5"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="junitVersion = &quot;1.2.1&quot;"
+        errorLine2="               ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="5"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.6.1 is available: 3.7.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="espressoCore = &quot;3.6.1&quot;"
+        errorLine2="               ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="6"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.6.1 is available: 3.7.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="espressoCore = &quot;3.6.1&quot;"
+        errorLine2="               ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="6"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.6.1 is available: 3.7.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="espressoCore = &quot;3.6.1&quot;"
+        errorLine2="               ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="6"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.7.1"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="appcompat = &quot;1.7.0&quot;"
+        errorLine2="            ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="7"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.7.1"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="appcompat = &quot;1.7.0&quot;"
+        errorLine2="            ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="7"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.7.1"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="appcompat = &quot;1.7.0&quot;"
+        errorLine2="            ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="7"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.android.material:material than 1.12.0 is available: 1.13.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="material = &quot;1.12.0&quot;"
+        errorLine2="           ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="8"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.android.material:material than 1.12.0 is available: 1.13.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="material = &quot;1.12.0&quot;"
+        errorLine2="           ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="8"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.android.material:material than 1.12.0 is available: 1.13.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="material = &quot;1.12.0&quot;"
+        errorLine2="           ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="8"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.constraintlayout:constraintlayout than 2.2.0 is available: 2.2.1"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="constraintlayout = &quot;2.2.0&quot;"
+        errorLine2="                   ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="9"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.constraintlayout:constraintlayout than 2.2.0 is available: 2.2.1"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="constraintlayout = &quot;2.2.0&quot;"
+        errorLine2="                   ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="9"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.constraintlayout:constraintlayout than 2.2.0 is available: 2.2.1"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="constraintlayout = &quot;2.2.0&quot;"
+        errorLine2="                   ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="9"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.recyclerview:recyclerview than 1.3.2 is available: 1.4.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="recyclerview = &quot;1.3.2&quot;"
+        errorLine2="               ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="10"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.recyclerview:recyclerview than 1.3.2 is available: 1.4.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="recyclerview = &quot;1.3.2&quot;"
+        errorLine2="               ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="10"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.recyclerview:recyclerview than 1.3.2 is available: 1.4.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="recyclerview = &quot;1.3.2&quot;"
+        errorLine2="               ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="10"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.android.gms:play-services-maps than 19.0.0 is available: 20.0.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="playServicesMaps = &quot;19.0.0&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="14"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.android.gms:play-services-maps than 19.0.0 is available: 20.0.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="playServicesMaps = &quot;19.0.0&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="14"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.android.gms:play-services-maps than 19.0.0 is available: 20.0.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="playServicesMaps = &quot;19.0.0&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="14"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.android.gms:play-services-auth than 21.3.0 is available: 21.5.1"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="playServicesAuth = &quot;21.3.0&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="16"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.android.gms:play-services-auth than 21.3.0 is available: 21.5.1"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="playServicesAuth = &quot;21.3.0&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="16"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.android.gms:play-services-auth than 21.3.0 is available: 21.5.1"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="playServicesAuth = &quot;21.3.0&quot;"
+        errorLine2="                   ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="16"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.firebase:firebase-bom than 33.7.0 is available: 34.10.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="firebaseBom = &quot;33.7.0&quot;"
+        errorLine2="              ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="17"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.firebase:firebase-bom than 33.7.0 is available: 34.10.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="firebaseBom = &quot;33.7.0&quot;"
+        errorLine2="              ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="17"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.firebase:firebase-bom than 33.7.0 is available: 34.10.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="firebaseBom = &quot;33.7.0&quot;"
+        errorLine2="              ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="17"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.swiperefreshlayout:swiperefreshlayout than 1.1.0 is available: 1.2.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="swiperefreshlayout = &quot;1.1.0&quot;"
+        errorLine2="                     ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="19"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.swiperefreshlayout:swiperefreshlayout than 1.1.0 is available: 1.2.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="swiperefreshlayout = &quot;1.1.0&quot;"
+        errorLine2="                     ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="19"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.swiperefreshlayout:swiperefreshlayout than 1.1.0 is available: 1.2.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="swiperefreshlayout = &quot;1.1.0&quot;"
+        errorLine2="                     ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="19"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.gms.google-services than 4.4.2 is available: 4.4.4"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="googleServices = &quot;4.4.2&quot;"
+        errorLine2="                 ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="20"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.gms.google-services than 4.4.2 is available: 4.4.4"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="googleServices = &quot;4.4.2&quot;"
+        errorLine2="                 ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="20"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of com.google.gms.google-services than 4.4.2 is available: 4.4.4"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="googleServices = &quot;4.4.2&quot;"
+        errorLine2="                 ~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="20"
+            column="18"/>
     </issue>
 
     <issue
@@ -270,73 +668,9 @@
     </issue>
 
     <issue
-        id="NewerVersionAvailable"
-        severity="Warning"
-        message="A newer version of com.sun.mail:android-mail than 1.6.7 is available: 1.6.8"
-        category="Correctness"
-        priority="4"
-        summary="Newer Library Versions Available"
-        explanation="This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the `GradleDependency` check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also **much** slower."
-        errorLine1="    implementation(&quot;com.sun.mail:android-mail:1.6.7&quot;)"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="85"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        severity="Warning"
-        message="A newer version of com.sun.mail:android-activation than 1.6.7 is available: 1.6.8"
-        category="Correctness"
-        priority="4"
-        summary="Newer Library Versions Available"
-        explanation="This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the `GradleDependency` check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also **much** slower."
-        errorLine1="    implementation(&quot;com.sun.mail:android-activation:1.6.7&quot;)"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="86"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        severity="Warning"
-        message="A newer version of org.projectlombok:lombok than 1.18.34 is available: 1.18.44"
-        category="Correctness"
-        priority="4"
-        summary="Newer Library Versions Available"
-        explanation="This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the `GradleDependency` check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also **much** slower."
-        errorLine1="    compileOnly(&quot;org.projectlombok:lombok:1.18.34&quot;)"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="89"
-            column="17"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        severity="Warning"
-        message="A newer version of org.projectlombok:lombok than 1.18.34 is available: 1.18.44"
-        category="Correctness"
-        priority="4"
-        summary="Newer Library Versions Available"
-        explanation="This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the `GradleDependency` check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also **much** slower."
-        errorLine1="    annotationProcessor(&quot;org.projectlombok:lombok:1.18.34&quot;)"
-        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="90"
-            column="25"/>
-    </issue>
-
-    <issue
         id="DiscouragedApi"
         severity="Warning"
-        message="Fixed screen orientations will be ignored in most cases, starting from Android 16. Android is moving toward a model where apps are expected to adapt to various orientations, display sizes, and aspect ratios."
+        message="Should not restrict activity to fixed orientation. This may not be suitable for different form factors, causing the app to be letterboxed."
         category="Correctness"
         priority="2"
         summary="Using discouraged APIs"
@@ -352,7 +686,7 @@
     <issue
         id="DiscouragedApi"
         severity="Warning"
-        message="Fixed screen orientations will be ignored in most cases, starting from Android 16. Android is moving toward a model where apps are expected to adapt to various orientations, display sizes, and aspect ratios."
+        message="Should not restrict activity to fixed orientation. This may not be suitable for different form factors, causing the app to be letterboxed."
         category="Correctness"
         priority="2"
         summary="Using discouraged APIs"
@@ -368,7 +702,7 @@
     <issue
         id="DiscouragedApi"
         severity="Warning"
-        message="Fixed screen orientations will be ignored in most cases, starting from Android 16. Android is moving toward a model where apps are expected to adapt to various orientations, display sizes, and aspect ratios."
+        message="Should not restrict activity to fixed orientation. This may not be suitable for different form factors, causing the app to be letterboxed."
         category="Correctness"
         priority="2"
         summary="Using discouraged APIs"
@@ -390,7 +724,7 @@
         summary="Spelling error"
         explanation="This check looks through the string definitions, and if it finds any words that look like likely misspellings, they are flagged."
         errorLine1="            W1532rZ7kF/1fB2gEAAAAEABAMGA1UdJwEB/wQFMAMBAf8wEwYDVR0lBAwwCgYIKwYBBQUHAwMw"
-        errorLine2="                           ~~~~~~~~~~~~~~">
+        errorLine2="                           ^">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/font_certs.xml"
             line="12"
@@ -406,7 +740,7 @@
         summary="Spelling error"
         explanation="This check looks through the string definitions, and if it finds any words that look like likely misspellings, they are flagged."
         errorLine1="            YW5jZUNlcnQuY3J0MB0GA1UdDgQWBBS+8Lg1/ZpXf+o4R3J9f14O7zFf5TAfBgNVHSMEGDAWgBR4"
-        errorLine2="                               ~~~">
+        errorLine2="                               ^">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/font_certs.xml"
             line="15"
@@ -422,7 +756,7 @@
         summary="Spelling error"
         explanation="This check looks through the string definitions, and if it finds any words that look like likely misspellings, they are flagged."
         errorLine1="            YW5jZUNlcnQuY3J0MB0GA1UdDgQWBBS+8Lg1/ZpXf+o4R3J9f14O7zFf5TAfBgNVHSMEGDAWgBR4"
-        errorLine2="                                             ~~~">
+        errorLine2="                                             ^">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/font_certs.xml"
             line="15"
@@ -438,7 +772,7 @@
         summary="Spelling error"
         explanation="This check looks through the string definitions, and if it finds any words that look like likely misspellings, they are flagged."
         errorLine1="            Z6YjP7H2wF70f0J7o3w03yN1Q2/lW3aH8c7yN/4/WJ0d/+D273K0aE/+yZ8vzv+Y9U4D957O/l9X"
-        errorLine2="                                 ~~~">
+        errorLine2="                                 ^">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/font_certs.xml"
             line="18"
@@ -454,7 +788,7 @@
         summary="Spelling error"
         explanation="This check looks through the string definitions, and if it finds any words that look like likely misspellings, they are flagged."
         errorLine1="            W1532rZ7kF/1fB2gEAAAAEABAMGA1UdJwEB/wQFMAMBAf8wEwYDVR0lBAwwCgYIKwYBBQUHAwMw"
-        errorLine2="                           ~~~~~~~~~~~~~~">
+        errorLine2="                           ^">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/font_certs.xml"
             line="32"
@@ -470,7 +804,7 @@
         summary="Spelling error"
         explanation="This check looks through the string definitions, and if it finds any words that look like likely misspellings, they are flagged."
         errorLine1="            YW5jZUNlcnQuY3J0MB0GA1UdDgQWBBS+8Lg1/ZpXf+o4R3J9f14O7zFf5TAfBgNVHSMEGDAWgBR4"
-        errorLine2="                               ~~~">
+        errorLine2="                               ^">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/font_certs.xml"
             line="35"
@@ -486,7 +820,7 @@
         summary="Spelling error"
         explanation="This check looks through the string definitions, and if it finds any words that look like likely misspellings, they are flagged."
         errorLine1="            YW5jZUNlcnQuY3J0MB0GA1UdDgQWBBS+8Lg1/ZpXf+o4R3J9f14O7zFf5TAfBgNVHSMEGDAWgBR4"
-        errorLine2="                                             ~~~">
+        errorLine2="                                             ^">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/font_certs.xml"
             line="35"
@@ -502,7 +836,7 @@
         summary="Spelling error"
         explanation="This check looks through the string definitions, and if it finds any words that look like likely misspellings, they are flagged."
         errorLine1="            Z6YjP7H2wF70f0J7o3w03yN1Q2/lW3aH8c7yN/4/WJ0d/+D273K0aE/+yZ8vzv+Y9U4D957O/l9X"
-        errorLine2="                                 ~~~">
+        errorLine2="                                 ^">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/font_certs.xml"
             line="38"
@@ -521,7 +855,7 @@
         errorLine2="    ~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="89"
+            line="99"
             column="5"/>
     </issue>
 
@@ -585,7 +919,7 @@
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageBookingsActivity.java"
-            line="161"
+            line="196"
             column="9"/>
     </issue>
 
@@ -617,7 +951,7 @@
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageOrdersActivity.java"
-            line="156"
+            line="192"
             column="9"/>
     </issue>
 
@@ -629,12 +963,12 @@
         priority="8"
         summary="Invalidating All RecyclerView Data"
         explanation="The `RecyclerView` adapter&apos;s `onNotifyDataSetChanged` method does not specify what about the data set has changed, forcing any observers to assume that all existing items and structure may no longer be valid. `LayoutManager`s will be forced to fully rebind and relayout all visible views."
-        errorLine1="                    adapter.notifyDataSetChanged();"
-        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="        adapter.notifyDataSetChanged();"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageProductsActivity.java"
-            line="101"
-            column="21"/>
+            line="170"
+            column="9"/>
     </issue>
 
     <issue
@@ -661,12 +995,12 @@
         priority="8"
         summary="Invalidating All RecyclerView Data"
         explanation="The `RecyclerView` adapter&apos;s `onNotifyDataSetChanged` method does not specify what about the data set has changed, forcing any observers to assume that all existing items and structure may no longer be valid. `LayoutManager`s will be forced to fully rebind and relayout all visible views."
-        errorLine1="                    adapter.notifyDataSetChanged();"
-        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="        adapter.notifyDataSetChanged();"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageUsersActivity.java"
-            line="57"
-            column="21"/>
+            line="116"
+            column="9"/>
     </issue>
 
     <issue
@@ -681,7 +1015,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="167"
+            line="174"
             column="17"/>
     </issue>
 
@@ -693,12 +1027,12 @@
         priority="8"
         summary="Invalidating All RecyclerView Data"
         explanation="The `RecyclerView` adapter&apos;s `onNotifyDataSetChanged` method does not specify what about the data set has changed, forcing any observers to assume that all existing items and structure may no longer be valid. `LayoutManager`s will be forced to fully rebind and relayout all visible views."
-        errorLine1="            adapter.notifyDataSetChanged();"
-        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="        adapter.notifyDataSetChanged();"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="213"
-            column="13"/>
+            line="258"
+            column="9"/>
     </issue>
 
     <issue
@@ -760,22 +1094,6 @@
         errorLine1="    &lt;LinearLayout"
         errorLine2="     ~~~~~~~~~~~~">
         <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_product_reviews.xml"
-            line="10"
-            column="6"/>
-    </issue>
-
-    <issue
-        id="UseCompoundDrawables"
-        severity="Warning"
-        message="This tag and its children can be replaced by one `&lt;TextView/>` and a compound drawable"
-        category="Performance"
-        priority="6"
-        summary="Node can be replaced by a `TextView` with compound drawables"
-        explanation="A `LinearLayout` which contains an `ImageView` and a `TextView` can be more efficiently handled as a compound drawable (a single TextView, using the `drawableTop`, `drawableLeft`, `drawableRight` and/or `drawableBottom` attributes to draw one or more images adjacent to the text).&#xA;&#xA;If the two widgets are offset from each other with margins, this can be replaced with a `drawablePadding` attribute.&#xA;&#xA;There&apos;s a lint quickfix to perform this conversion in the Eclipse plugin."
-        errorLine1="    &lt;LinearLayout"
-        errorLine2="     ~~~~~~~~~~~~">
-        <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_order_detail.xml"
             line="11"
             column="6"/>
@@ -811,6 +1129,38 @@
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_review.xml"
             line="17"
             column="10"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        severity="Warning"
+        message="Very long vector path (923 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        category="Performance"
+        priority="5"
+        summary="Long vector paths"
+        explanation="Using long vector paths is bad for performance. There are several ways to make the `pathData` shorter:&#xA;* Using less precision&#xA;* Removing some minor details&#xA;* Using the Android Studio vector conversion tool&#xA;* Rasterizing the image (converting to PNG)"
+        errorLine1="      android:pathData=&quot;M19.14,12.94c0.04,-0.3 0.06,-0.61 0.06,-0.94c0,-0.32 -0.02,-0.64 -0.06,-0.94l2.03,-1.58c0.18,-0.14 0.23,-0.41 0.12,-0.61l-1.92,-3.32c-0.12,-0.22 -0.37,-0.29 -0.59,-0.22l-2.39,0.96c-0.5,-0.38 -1.03,-0.7 -1.62,-0.94l-0.36,-2.54c-0.04,-0.24 -0.24,-0.41 -0.48,-0.41h-3.84c-0.24,0 -0.43,0.17 -0.47,0.41l-0.36,2.54c-0.59,0.24 -1.13,0.56 -1.62,0.94l-2.39,-0.96c-0.22,-0.08 -0.47,0 -0.59,0.22L2.73,8.87c-0.11,0.2 -0.06,0.47 0.12,0.61l2.03,1.58c-0.04,0.3 -0.06,0.62 -0.06,0.94c0,0.32 0.02,0.64 0.06,0.94l-2.03,1.58c-0.18,0.14 -0.23,0.41 -0.12,0.61l1.92,3.32c0.12,0.22 0.37,0.29 0.59,0.22l2.39,-0.96c0.5,0.38 1.03,0.7 1.62,0.94l0.36,2.54c0.05,0.24 0.24,0.41 0.48,0.41h3.84c0.24,0 0.43,-0.17 0.47,-0.41l0.36,-2.54c0.59,-0.24 1.13,-0.56 1.62,-0.94l2.39,0.96c0.22,0.08 0.47,0 0.59,-0.22l1.92,-3.32c0.11,-0.2 0.06,-0.47 -0.12,-0.61L19.14,12.94zM12,15.6c-1.98,0 -3.6,-1.62 -3.6,-3.6s1.62,-3.6 3.6,-3.6s3.6,1.62 3.6,3.6S13.98,15.6 12,15.6z&quot;/>"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/drawable/ic_admin_settings.xml"
+            line="8"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        severity="Warning"
+        message="Very long vector path (1537 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        category="Performance"
+        priority="5"
+        summary="Long vector paths"
+        explanation="Using long vector paths is bad for performance. There are several ways to make the `pathData` shorter:&#xA;* Using less precision&#xA;* Removing some minor details&#xA;* Using the Android Studio vector conversion tool&#xA;* Rasterizing the image (converting to PNG)"
+        errorLine1="        android:pathData=&quot;M17.81,4.47c-0.08,0 -0.16,-0.02 -0.23,-0.06C15.66,3.42 14,3 12,3c-2.14,0 -3.99,0.47 -5.92,1.52C5.66,4.75 5.17,4.58 4.93,4.16C4.7,3.74 4.87,3.25 5.29,3.02C7.5,1.82 9.61,1.25 12.13,1.25c2.32,0 4.22,0.48 6.42,1.61c0.41,0.21 0.58,0.73 0.36,1.14C18.73,4.32 18.28,4.47 17.81,4.47zM6.92,19.34c-0.12,0 -0.25,-0.02 -0.37,-0.06c-5.26,-2.08 -5.63,-7.43 -5.63,-7.53c0,-0.46 0.37,-0.83 0.83,-0.83s0.83,0.37 0.83,0.83c0,0.01 0.3,4.6 4.95,6.43c0.43,0.17 0.64,0.65 0.47,1.08C7.81,19.06 7.37,19.34 6.92,19.34zM22.06,12.27c-0.46,0 -0.83,-0.37 -0.83,-0.83c0,-3.2 -1.41,-6.66 -4.01,-8.53c-0.38,-0.27 -0.46,-0.78 -0.19,-1.15c0.27,-0.38 0.78,-0.46 1.15,-0.19c3.08,2.21 4.73,6.23 4.73,9.88C22.89,11.9 22.52,12.27 22.06,12.27zM20.25,20.02c-0.19,0 -0.38,-0.06 -0.54,-0.19c-0.37,-0.3 -0.42,-0.84 -0.11,-1.2c2.05,-2.5 3.12,-5.93 2.9,-9.29c-0.03,-0.46 0.32,-0.85 0.78,-0.88c0.46,-0.03 0.85,0.32 0.88,0.78c0.26,3.95 -1,7.99 -3.4,10.92C20.62,19.83 20.44,20.02 20.25,20.02zM12,22.75c-3.13,0 -5.88,-1.72 -7.14,-4.47c-0.19,-0.42 -0.01,-0.92 0.41,-1.11c0.42,-0.19 0.92,-0.01 1.11,0.41c0.97,2.1 3.09,3.42 5.5,3.42c1.78,0 3.8,-0.95 5.5,-3.36c0.66,-0.93 1.12,-1.97 1.39,-3.09c0.1,-0.45 0.55,-0.73 1,-0.63c0.45,0.1 0.73,0.55 0.63,1C20.05,16.4 19.46,17.7 18.61,18.9C16.59,21.75 14.28,22.75 12,22.75zM15.42,7.21c-0.1,0 -0.21,-0.02 -0.32,-0.06c-1,-0.39 -2.03,-0.57 -3.1,-0.57s-2.1,0.18 -3.1,0.57c-0.43,0.17 -0.9,-0.05 -1.07,-0.48c-0.17,-0.43 0.05,-0.9 0.48,-1.07c1.19,-0.47 2.42,-0.69 3.69,-0.69s2.5,0.22 3.69,0.69c0.43,0.17 0.65,0.64 0.48,1.07C16.03,7.02 15.73,7.21 15.42,7.21z&quot; />"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/drawable/ic_fingerprint.xml"
+            line="9"
+            column="27"/>
     </issue>
 
     <issue
@@ -853,44 +1203,12 @@
         priority="3"
         summary="Missing `baselineAligned` attribute"
         explanation="When a `LinearLayout` is used to distribute the space proportionally between nested layouts, the baseline alignment property should be turned off to make the layout computation faster."
-        errorLine1="                &lt;LinearLayout"
-        errorLine2="                 ~~~~~~~~~~~~">
+        errorLine1="            &lt;LinearLayout"
+        errorLine2="             ~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="384"
-            column="18"/>
-    </issue>
-
-    <issue
-        id="DisableBaselineAlignment"
-        severity="Warning"
-        message="Set `android:baselineAligned=&quot;false&quot;` on this element for better performance"
-        category="Performance"
-        priority="3"
-        summary="Missing `baselineAligned` attribute"
-        explanation="When a `LinearLayout` is used to distribute the space proportionally between nested layouts, the baseline alignment property should be turned off to make the layout computation faster."
-        errorLine1="                &lt;LinearLayout"
-        errorLine2="                 ~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="453"
-            column="18"/>
-    </issue>
-
-    <issue
-        id="DisableBaselineAlignment"
-        severity="Warning"
-        message="Set `android:baselineAligned=&quot;false&quot;` on this element for better performance"
-        category="Performance"
-        priority="3"
-        summary="Missing `baselineAligned` attribute"
-        explanation="When a `LinearLayout` is used to distribute the space proportionally between nested layouts, the baseline alignment property should be turned off to make the layout computation faster."
-        errorLine1="                &lt;LinearLayout"
-        errorLine2="                 ~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="523"
-            column="18"/>
+            line="362"
+            column="14"/>
     </issue>
 
     <issue
@@ -976,13 +1294,13 @@
     <issue
         id="Overdraw"
         severity="Warning"
-        message="Possible overdraw: Root element paints background `@color/adminBackground` with a theme that also paints a background (inferred theme is `@style/Theme.LexoraAdmin`)"
+        message="Possible overdraw: Root element paints background `#0A0A0A` with a theme that also paints a background (inferred theme is `@style/Theme.LexoraAdmin`)"
         category="Performance"
         priority="3"
         summary="Overdraw: Painting regions more than once"
         explanation="If you set a background drawable on a root view, then you should use a custom theme where the theme background is null. Otherwise, the theme background will be painted first, only to have your custom background completely cover it; this is called &quot;overdraw&quot;.&#xA;&#xA;NOTE: This detector relies on figuring out which layouts are associated with which activities based on scanning the Java code, and it&apos;s currently doing that using an inexact pattern matching algorithm. Therefore, it can incorrectly conclude which activity the layout is associated with and then wrongly complain that a background-theme is hidden.&#xA;&#xA;If you want your custom background on multiple pages, then you should consider making a custom theme with your custom background and just using that theme instead of a root element background.&#xA;&#xA;Of course it&apos;s possible that your custom drawable is translucent and you want it to be mixed with the background. However, you will get better performance if you pre-mix the background with your drawable and use that resulting image or color as a custom theme background instead."
-        errorLine1="    android:background=&quot;@color/adminBackground&quot;> &lt;!-- Deep Slate Background -->"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="    android:background=&quot;#0A0A0A&quot;> &lt;!-- Very dark premium background -->"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
             line="6"
@@ -992,16 +1310,16 @@
     <issue
         id="Overdraw"
         severity="Warning"
-        message="Possible overdraw: Root element paints background `#1A1A2E` with a theme that also paints a background (inferred theme is `@style/Theme.LexoraAdmin`)"
+        message="Possible overdraw: Root element paints background `@color/adminBackground` with a theme that also paints a background (inferred theme is `@style/Theme.LexoraAdmin`)"
         category="Performance"
         priority="3"
         summary="Overdraw: Painting regions more than once"
         explanation="If you set a background drawable on a root view, then you should use a custom theme where the theme background is null. Otherwise, the theme background will be painted first, only to have your custom background completely cover it; this is called &quot;overdraw&quot;.&#xA;&#xA;NOTE: This detector relies on figuring out which layouts are associated with which activities based on scanning the Java code, and it&apos;s currently doing that using an inexact pattern matching algorithm. Therefore, it can incorrectly conclude which activity the layout is associated with and then wrongly complain that a background-theme is hidden.&#xA;&#xA;If you want your custom background on multiple pages, then you should consider making a custom theme with your custom background and just using that theme instead of a root element background.&#xA;&#xA;Of course it&apos;s possible that your custom drawable is translucent and you want it to be mixed with the background. However, you will get better performance if you pre-mix the background with your drawable and use that resulting image or color as a custom theme background instead."
-        errorLine1="    android:background=&quot;#1A1A2E&quot;"
-        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="    android:background=&quot;@color/adminBackground&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_product_reviews.xml"
-            line="6"
+            line="7"
             column="5"/>
     </issue>
 
@@ -1125,7 +1443,7 @@
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests =true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests =true.&#xA;,"
-        errorLine1="    &lt;color name=&quot;adminAccent&quot;>#FF6B9D&lt;/color>"
+        errorLine1="    &lt;color name=&quot;adminAccent&quot;>#06B6D4&lt;/color>"
         errorLine2="           ~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/colors.xml"
@@ -1141,7 +1459,7 @@
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests =true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests =true.&#xA;,"
-        errorLine1="    &lt;color name=&quot;adminGradientStart&quot;>#6C63FF&lt;/color>"
+        errorLine1="    &lt;color name=&quot;adminGradientStart&quot;>#1E3A8A&lt;/color>"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/colors.xml"
@@ -1157,7 +1475,7 @@
         priority="3"
         summary="Unused resources"
         explanation="Unused resources make applications larger and slow down builds.&#xA;&#xA;&#xA;The unused resource check can ignore tests. If you want to include resources that are only referenced from tests, consider packaging them in a test source set instead.&#xA;&#xA;You can include test sources in the unused resource check by setting the system property lint.unused-resources.include-tests =true, and to exclude them (usually for performance reasons), use lint.unused-resources.exclude-tests =true.&#xA;,"
-        errorLine1="    &lt;color name=&quot;adminGradientEnd&quot;>#A78BFA&lt;/color>"
+        errorLine1="    &lt;color name=&quot;adminGradientEnd&quot;>#2563EB&lt;/color>"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/values/colors.xml"
@@ -1285,22 +1603,6 @@
         priority="2"
         summary="Unnecessary parent layout"
         explanation="A layout with children that has no siblings, is not a scrollview or a root layout, and does not have a background, can be removed and have its children moved directly into the parent for a flatter and more efficient layout hierarchy."
-        errorLine1="                    &lt;LinearLayout"
-        errorLine2="                     ~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_settings.xml"
-            line="181"
-            column="22"/>
-    </issue>
-
-    <issue
-        id="UselessParent"
-        severity="Warning"
-        message="This `LinearLayout` layout or its `LinearLayout` parent is unnecessary"
-        category="Performance"
-        priority="2"
-        summary="Unnecessary parent layout"
-        explanation="A layout with children that has no siblings, is not a scrollview or a root layout, and does not have a background, can be removed and have its children moved directly into the parent for a flatter and more efficient layout hierarchy."
         errorLine1="            &lt;LinearLayout"
         errorLine2="             ~~~~~~~~~~~~">
         <location
@@ -1413,11 +1715,27 @@
         priority="4"
         summary="Use TOML Version Catalog Instead"
         explanation="If your project is using a `libs.versions.toml` file, you should place all Gradle dependencies in the TOML file. This lint check looks for version declarations outside of the TOML file and suggests moving them (and in the IDE, provides a quickfix to performing the operation automatically)."
+        errorLine1="    implementation(&quot;androidx.biometric:biometric:1.1.0&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
+            line="78"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="UseTomlInstead"
+        severity="Warning"
+        message="Use version catalog instead"
+        category="Productivity"
+        priority="4"
+        summary="Use TOML Version Catalog Instead"
+        explanation="If your project is using a `libs.versions.toml` file, you should place all Gradle dependencies in the TOML file. This lint check looks for version declarations outside of the TOML file and suggests moving them (and in the IDE, provides a quickfix to performing the operation automatically)."
         errorLine1="    implementation(&quot;com.sun.mail:android-mail:1.6.7&quot;)"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="85"
+            line="95"
             column="20"/>
     </issue>
 
@@ -1433,7 +1751,7 @@
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="86"
+            line="96"
             column="20"/>
     </issue>
 
@@ -1449,7 +1767,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="89"
+            line="99"
             column="17"/>
     </issue>
 
@@ -1465,7 +1783,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="90"
+            line="100"
             column="25"/>
     </issue>
 
@@ -1641,29 +1959,11 @@
         explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
         url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
         urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        errorLine1="                            &lt;ImageView"
-        errorLine2="                             ~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="96"
-            column="30"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        severity="Warning"
-        message="Missing `contentDescription` attribute on image"
-        category="Accessibility"
-        priority="3"
-        summary="Image without `contentDescription`"
-        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
-        url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
         errorLine1="                        &lt;ImageView"
         errorLine2="                         ~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="182"
+            line="167"
             column="26"/>
     </issue>
 
@@ -1681,7 +1981,7 @@
         errorLine2="                         ~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="220"
+            line="205"
             column="26"/>
     </issue>
 
@@ -1699,7 +1999,7 @@
         errorLine2="                         ~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="258"
+            line="243"
             column="26"/>
     </issue>
 
@@ -1717,7 +2017,7 @@
         errorLine2="                         ~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="296"
+            line="281"
             column="26"/>
     </issue>
 
@@ -1735,7 +2035,7 @@
         errorLine2="                         ~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="333"
+            line="318"
             column="26"/>
     </issue>
 
@@ -1749,12 +2049,12 @@
         explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
         url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
         urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        errorLine1="                        &lt;ImageView"
-        errorLine2="                         ~~~~~~~~~">
+        errorLine1="                    &lt;ImageView"
+        errorLine2="                     ~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="404"
-            column="26"/>
+            line="384"
+            column="22"/>
     </issue>
 
     <issue
@@ -1767,12 +2067,12 @@
         explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
         url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
         urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        errorLine1="                        &lt;ImageView"
-        errorLine2="                         ~~~~~~~~~">
+        errorLine1="                    &lt;ImageView"
+        errorLine2="                     ~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="435"
-            column="26"/>
+            line="415"
+            column="22"/>
     </issue>
 
     <issue
@@ -1785,12 +2085,12 @@
         explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
         url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
         urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        errorLine1="                        &lt;ImageView"
-        errorLine2="                         ~~~~~~~~~">
+        errorLine1="                    &lt;ImageView"
+        errorLine2="                     ~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="474"
-            column="26"/>
+            line="446"
+            column="22"/>
     </issue>
 
     <issue
@@ -1803,84 +2103,12 @@
         explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
         url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
         urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        errorLine1="                        &lt;ImageView"
-        errorLine2="                         ~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="505"
-            column="26"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        severity="Warning"
-        message="Missing `contentDescription` attribute on image"
-        category="Accessibility"
-        priority="3"
-        summary="Image without `contentDescription`"
-        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
-        url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        errorLine1="                        &lt;ImageView"
-        errorLine2="                         ~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="544"
-            column="26"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        severity="Warning"
-        message="Missing `contentDescription` attribute on image"
-        category="Accessibility"
-        priority="3"
-        summary="Image without `contentDescription`"
-        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
-        url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        errorLine1="                        &lt;ImageView"
-        errorLine2="                         ~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="575"
-            column="26"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        severity="Warning"
-        message="Missing `contentDescription` attribute on image"
-        category="Accessibility"
-        priority="3"
-        summary="Image without `contentDescription`"
-        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
-        url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        errorLine1="                        &lt;ImageView"
-        errorLine2="                         ~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="606"
-            column="26"/>
-    </issue>
-
-    <issue
-        id="ContentDescription"
-        severity="Warning"
-        message="Missing `contentDescription` attribute on image"
-        category="Accessibility"
-        priority="3"
-        summary="Image without `contentDescription`"
-        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
-        url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
-        errorLine1="            &lt;ImageView"
-        errorLine2="             ~~~~~~~~~">
+        errorLine1="                &lt;ImageView"
+        errorLine2="                 ~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
-            line="44"
-            column="14"/>
+            line="55"
+            column="18"/>
     </issue>
 
     <issue
@@ -1947,6 +2175,24 @@
         explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
         url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
         urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
+        errorLine1="                        &lt;ImageView"
+        errorLine2="                         ~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_settings.xml"
+            line="238"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        severity="Warning"
+        message="Missing `contentDescription` attribute on image"
+        category="Accessibility"
+        priority="3"
+        summary="Image without `contentDescription`"
+        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
+        url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
+        urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
         errorLine1="        &lt;ImageView"
         errorLine2="         ~~~~~~~~~">
         <location
@@ -1968,8 +2214,44 @@
         errorLine1="        &lt;ImageView"
         errorLine2="         ~~~~~~~~~">
         <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_manage_list.xml"
+            line="54"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        severity="Warning"
+        message="Missing `contentDescription` attribute on image"
+        category="Accessibility"
+        priority="3"
+        summary="Image without `contentDescription`"
+        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
+        url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
+        urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
+        errorLine1="        &lt;ImageView"
+        errorLine2="         ~~~~~~~~~">
+        <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml"
             line="43"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        severity="Warning"
+        message="Missing `contentDescription` attribute on image"
+        category="Accessibility"
+        priority="3"
+        summary="Image without `contentDescription`"
+        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
+        url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
+        urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
+        errorLine1="        &lt;ImageView"
+        errorLine2="         ~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml"
+            line="53"
             column="10"/>
     </issue>
 
@@ -2217,6 +2499,78 @@
         explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
         url="https://developer.android.com/guide/topics/resources/localization.html"
         urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                            tvWorkerName.setText(&quot;Name: &quot; + (wName != null ? wName : &quot;N/A&quot;));"
+        errorLine2="                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
+            line="209"
+            column="50"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                            tvWorkerName.setText(&quot;Name: &quot; + (wName != null ? wName : &quot;N/A&quot;));"
+        errorLine2="                                                 ~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
+            line="209"
+            column="50"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                            tvWorkerPhone.setText(&quot;Phone: &quot; + (wPhone != null &amp;&amp; !wPhone.isEmpty() ? wPhone : &quot;Not Provided&quot;));"
+        errorLine2="                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
+            line="210"
+            column="51"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                            tvWorkerPhone.setText(&quot;Phone: &quot; + (wPhone != null &amp;&amp; !wPhone.isEmpty() ? wPhone : &quot;Not Provided&quot;));"
+        errorLine2="                                                  ~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
+            line="210"
+            column="51"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
         errorLine1="        holder.tvOrderId.setText(&quot;Order #&quot; + getStr(order, &quot;orderId&quot;, docId));"
         errorLine2="                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -2419,7 +2773,7 @@
         errorLine2="                                      ~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AdminSettingsActivity.java"
-            line="115"
+            line="124"
             column="39"/>
     </issue>
 
@@ -2437,7 +2791,7 @@
         errorLine2="                                      ~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AdminSettingsActivity.java"
-            line="118"
+            line="127"
             column="39"/>
     </issue>
 
@@ -2455,7 +2809,7 @@
         errorLine2="                                      ~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AdminSettingsActivity.java"
-            line="122"
+            line="131"
             column="39"/>
     </issue>
 
@@ -2617,7 +2971,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageBookingsActivity.java"
-            line="50"
+            line="53"
             column="25"/>
     </issue>
 
@@ -2671,7 +3025,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageOrdersActivity.java"
-            line="52"
+            line="55"
             column="25"/>
     </issue>
 
@@ -2689,7 +3043,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageProductsActivity.java"
-            line="44"
+            line="47"
             column="25"/>
     </issue>
 
@@ -2707,7 +3061,7 @@
         errorLine2="                           ~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageProductsActivity.java"
-            line="62"
+            line="66"
             column="28"/>
     </issue>
 
@@ -2761,7 +3115,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageUsersActivity.java"
-            line="34"
+            line="37"
             column="25"/>
     </issue>
 
@@ -3695,7 +4049,7 @@
         errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="72"
+            line="73"
             column="33"/>
     </issue>
 
@@ -3711,7 +4065,7 @@
         errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="80"
+            line="81"
             column="33"/>
     </issue>
 
@@ -3727,7 +4081,7 @@
         errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="127"
+            line="112"
             column="33"/>
     </issue>
 
@@ -3743,7 +4097,7 @@
         errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="139"
+            line="124"
             column="33"/>
     </issue>
 
@@ -3759,7 +4113,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="155"
+            line="140"
             column="17"/>
     </issue>
 
@@ -3775,7 +4129,7 @@
         errorLine2="                            ~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="196"
+            line="181"
             column="29"/>
     </issue>
 
@@ -3791,7 +4145,7 @@
         errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="206"
+            line="191"
             column="29"/>
     </issue>
 
@@ -3807,7 +4161,7 @@
         errorLine2="                            ~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="234"
+            line="219"
             column="29"/>
     </issue>
 
@@ -3823,7 +4177,7 @@
         errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="244"
+            line="229"
             column="29"/>
     </issue>
 
@@ -3839,7 +4193,7 @@
         errorLine2="                            ~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="272"
+            line="257"
             column="29"/>
     </issue>
 
@@ -3855,7 +4209,7 @@
         errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="282"
+            line="267"
             column="29"/>
     </issue>
 
@@ -3871,7 +4225,7 @@
         errorLine2="                            ~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="310"
+            line="295"
             column="29"/>
     </issue>
 
@@ -3887,7 +4241,7 @@
         errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="320"
+            line="305"
             column="29"/>
     </issue>
 
@@ -3903,7 +4257,7 @@
         errorLine2="                            ~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="347"
+            line="332"
             column="29"/>
     </issue>
 
@@ -3919,7 +4273,7 @@
         errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="357"
+            line="342"
             column="29"/>
     </issue>
 
@@ -3935,40 +4289,24 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="371"
+            line="356"
             column="17"/>
     </issue>
 
     <issue
         id="HardcodedText"
         severity="Warning"
-        message="Hardcoded string &quot;Add Product&quot;, should use `@string` resource"
+        message="Hardcoded string &quot;Add Item&quot;, should use `@string` resource"
         category="Internationalization"
         priority="5"
         summary="Hardcoded text"
         explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                            android:text=&quot;Add Product&quot;"
-        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="                        android:text=&quot;Add Item&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="415"
-            column="29"/>
-    </issue>
-
-    <issue
-        id="HardcodedText"
-        severity="Warning"
-        message="Hardcoded string &quot;Add Category&quot;, should use `@string` resource"
-        category="Internationalization"
-        priority="5"
-        summary="Hardcoded text"
-        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                            android:text=&quot;Add Category&quot;"
-        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="446"
-            column="29"/>
+            line="395"
+            column="25"/>
     </issue>
 
     <issue
@@ -3979,12 +4317,12 @@
         priority="5"
         summary="Hardcoded text"
         explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                            android:text=&quot;Orders&quot;"
-        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="                        android:text=&quot;Orders&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="485"
-            column="29"/>
+            line="426"
+            column="25"/>
     </issue>
 
     <issue
@@ -3995,156 +4333,156 @@
         priority="5"
         summary="Hardcoded text"
         explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                            android:text=&quot;Bookings&quot;"
+        errorLine1="                        android:text=&quot;Bookings&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
+            line="457"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Administrator&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                android:text=&quot;Administrator&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
+            line="68"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Welcome back to the command center.&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                android:text=&quot;Welcome back to the command center.&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
+            line="81"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Email Address&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                        android:text=&quot;Email Address&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
+            line="107"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;admin@lexora.com&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                            android:hint=&quot;admin@lexora.com&quot;"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
+            line="134"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Password&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                        android:text=&quot;Password&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
+            line="146"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;••••••••&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                            android:hint=&quot;••••••••&quot;"
         errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="516"
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
+            line="176"
             column="29"/>
     </issue>
 
     <issue
         id="HardcodedText"
         severity="Warning"
-        message="Hardcoded string &quot;Catalog&quot;, should use `@string` resource"
+        message="Hardcoded string &quot;Authenticate &amp; Enter&quot;, should use `@string` resource"
         category="Internationalization"
         priority="5"
         summary="Hardcoded text"
         explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                            android:text=&quot;Catalog&quot;"
-        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="                            android:text=&quot;Authenticate &amp;amp; Enter&quot;"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="555"
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
+            line="200"
             column="29"/>
     </issue>
 
     <issue
         id="HardcodedText"
         severity="Warning"
-        message="Hardcoded string &quot;Users&quot;, should use `@string` resource"
+        message="Hardcoded string &quot;Sign in with Fingerprint&quot;, should use `@string` resource"
         category="Internationalization"
         priority="5"
         summary="Hardcoded text"
         explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                            android:text=&quot;Users&quot;"
-        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="                            android:contentDescription=&quot;Sign in with Fingerprint&quot;"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="586"
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
+            line="217"
             column="29"/>
     </issue>
 
     <issue
         id="HardcodedText"
         severity="Warning"
-        message="Hardcoded string &quot;Centers&quot;, should use `@string` resource"
+        message="Hardcoded string &quot;Forgot Password?&quot;, should use `@string` resource"
         category="Internationalization"
         priority="5"
         summary="Hardcoded text"
         explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                            android:text=&quot;Centers&quot;"
-        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="                android:text=&quot;Forgot Password?&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="617"
-            column="29"/>
-    </issue>
-
-    <issue
-        id="HardcodedText"
-        severity="Warning"
-        message="Hardcoded string &quot;Sign Out Safely&quot;, should use `@string` resource"
-        category="Internationalization"
-        priority="5"
-        summary="Hardcoded text"
-        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                android:text=&quot;Sign Out Safely&quot;"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_dashboard.xml"
-            line="644"
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
+            line="243"
             column="17"/>
-    </issue>
-
-    <issue
-        id="HardcodedText"
-        severity="Warning"
-        message="Hardcoded string &quot;Lexora Admin&quot;, should use `@string` resource"
-        category="Internationalization"
-        priority="5"
-        summary="Hardcoded text"
-        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                android:text=&quot;Lexora Admin&quot;"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
-            line="56"
-            column="17"/>
-    </issue>
-
-    <issue
-        id="HardcodedText"
-        severity="Warning"
-        message="Hardcoded string &quot;Secure Workspace Entry&quot;, should use `@string` resource"
-        category="Internationalization"
-        priority="5"
-        summary="Hardcoded text"
-        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                android:text=&quot;Secure Workspace Entry&quot;"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
-            line="69"
-            column="17"/>
-    </issue>
-
-    <issue
-        id="HardcodedText"
-        severity="Warning"
-        message="Hardcoded string &quot;Administrator Email&quot;, should use `@string` resource"
-        category="Internationalization"
-        priority="5"
-        summary="Hardcoded text"
-        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                        android:hint=&quot;Administrator Email&quot;"
-        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
-            line="95"
-            column="25"/>
-    </issue>
-
-    <issue
-        id="HardcodedText"
-        severity="Warning"
-        message="Hardcoded string &quot;Secure Password&quot;, should use `@string` resource"
-        category="Internationalization"
-        priority="5"
-        summary="Hardcoded text"
-        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                        android:hint=&quot;Secure Password&quot;"
-        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
-            line="121"
-            column="25"/>
-    </issue>
-
-    <issue
-        id="HardcodedText"
-        severity="Warning"
-        message="Hardcoded string &quot;Authenticate&quot;, should use `@string` resource"
-        category="Internationalization"
-        priority="5"
-        summary="Hardcoded text"
-        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                        android:text=&quot;Authenticate&quot;"
-        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
-            line="152"
-            column="25"/>
     </issue>
 
     <issue
@@ -4155,12 +4493,12 @@
         priority="5"
         summary="Hardcoded text"
         explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="                        android:text=&quot;New staff? Register as Worker&quot;"
-        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        errorLine1="                android:text=&quot;New staff? Register as Worker&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_login.xml"
-            line="168"
-            column="25"/>
+            line="258"
+            column="17"/>
     </issue>
 
     <issue
@@ -4171,11 +4509,11 @@
         priority="5"
         summary="Hardcoded text"
         explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
-        errorLine1="            android:contentDescription=&quot;Back&quot; />"
+        errorLine1="            android:contentDescription=&quot;Back&quot;"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_product_reviews.xml"
-            line="22"
+            line="28"
             column="13"/>
     </issue>
 
@@ -4191,7 +4529,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_product_reviews.xml"
-            line="29"
+            line="38"
             column="13"/>
     </issue>
 
@@ -4207,7 +4545,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_product_reviews.xml"
-            line="57"
+            line="67"
             column="13"/>
     </issue>
 
@@ -4342,6 +4680,38 @@
     <issue
         id="HardcodedText"
         severity="Warning"
+        message="Hardcoded string &quot;Biometric Authentication&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                                android:text=&quot;Biometric Authentication&quot;"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_settings.xml"
+            line="255"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Require fingerprint on app launch&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                                android:text=&quot;Require fingerprint on app launch&quot;"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_settings.xml"
+            line="263"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
         message="Hardcoded string &quot;LexoraFix Admin Core&quot;, should use `@string` resource"
         category="Internationalization"
         priority="5"
@@ -4351,7 +4721,7 @@
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_settings.xml"
-            line="237"
+            line="287"
             column="21"/>
     </issue>
 
@@ -4367,7 +4737,7 @@
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_settings.xml"
-            line="246"
+            line="296"
             column="21"/>
     </issue>
 
@@ -4399,7 +4769,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_manage_list.xml"
-            line="95"
+            line="107"
             column="17"/>
     </issue>
 
@@ -4415,7 +4785,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_manage_list.xml"
-            line="104"
+            line="116"
             column="17"/>
     </issue>
 
@@ -4431,7 +4801,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_manage_list.xml"
-            line="113"
+            line="125"
             column="17"/>
     </issue>
 
@@ -4447,7 +4817,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_manage_list.xml"
-            line="126"
+            line="138"
             column="13"/>
     </issue>
 
@@ -4703,7 +5073,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml"
-            line="72"
+            line="82"
             column="13"/>
     </issue>
 
@@ -4719,7 +5089,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml"
-            line="77"
+            line="87"
             column="13"/>
     </issue>
 
@@ -4735,7 +5105,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml"
-            line="120"
+            line="130"
             column="17"/>
     </issue>
 
@@ -4751,7 +5121,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml"
-            line="129"
+            line="139"
             column="17"/>
     </issue>
 
@@ -4847,7 +5217,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_registration.xml"
-            line="37"
+            line="47"
             column="17"/>
     </issue>
 
@@ -4863,7 +5233,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_registration.xml"
-            line="45"
+            line="55"
             column="17"/>
     </issue>
 
@@ -4879,7 +5249,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_registration.xml"
-            line="57"
+            line="67"
             column="17"/>
     </issue>
 
@@ -4895,7 +5265,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_registration.xml"
-            line="82"
+            line="94"
             column="25"/>
     </issue>
 
@@ -4911,7 +5281,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_registration.xml"
-            line="108"
+            line="120"
             column="25"/>
     </issue>
 
@@ -4927,7 +5297,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_registration.xml"
-            line="134"
+            line="146"
             column="25"/>
     </issue>
 
@@ -4943,7 +5313,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_registration.xml"
-            line="160"
+            line="172"
             column="25"/>
     </issue>
 
@@ -4959,7 +5329,39 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_registration.xml"
-            line="191"
+            line="203"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Or continue with&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                            android:text=&quot;Or continue with&quot;"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_registration.xml"
+            line="228"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Google&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                        android:text=&quot;Google&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_registration.xml"
+            line="248"
             column="25"/>
     </issue>
 
@@ -4975,7 +5377,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_registration.xml"
-            line="205"
+            line="269"
             column="25"/>
     </issue>
 
@@ -5009,6 +5411,134 @@
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_booking_status.xml"
             line="32"
             column="9"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Assigned Worker Details&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="            android:text=&quot;Assigned Worker Details&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_booking_status.xml"
+            line="52"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Name: Loading...&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="            android:text=&quot;Name: Loading...&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_booking_status.xml"
+            line="64"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Phone: Loading...&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="            android:text=&quot;Phone: Loading...&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_booking_status.xml"
+            line="74"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Reset Password&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="            android:text=&quot;Reset Password&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_forgot_password.xml"
+            line="24"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Enter the email address associated with your admin account to receive a reset link.&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="            android:text=&quot;Enter the email address associated with your admin account to receive a reset link.&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_forgot_password.xml"
+            line="35"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;admin@lexora.com&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                android:hint=&quot;admin@lexora.com&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_forgot_password.xml"
+            line="59"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Cancel&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                android:text=&quot;Cancel&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_forgot_password.xml"
+            line="84"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;Send Link&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="                android:text=&quot;Send Link&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_forgot_password.xml"
+            line="99"
+            column="17"/>
     </issue>
 
     <issue
@@ -5455,7 +5985,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_product.xml"
-            line="157"
+            line="159"
             column="17"/>
     </issue>
 
@@ -5471,7 +6001,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_product.xml"
-            line="164"
+            line="169"
             column="17"/>
     </issue>
 
@@ -5487,7 +6017,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_product.xml"
-            line="174"
+            line="181"
             column="17"/>
     </issue>
 
@@ -5503,7 +6033,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_product.xml"
-            line="181"
+            line="191"
             column="17"/>
     </issue>
 
@@ -5519,7 +6049,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_product.xml"
-            line="190"
+            line="202"
             column="17"/>
     </issue>
 
@@ -5535,7 +6065,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_admin_product.xml"
-            line="197"
+            line="212"
             column="17"/>
     </issue>
 

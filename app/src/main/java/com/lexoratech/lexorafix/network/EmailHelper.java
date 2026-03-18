@@ -72,7 +72,7 @@ public class EmailHelper {
                 + "<h3 style='color:#1A1A2E;margin-top:0;'>Order Summary</h3>"
                 + (itemsHtml != null ? itemsHtml : "")
                 + "<div style='border-top:2px solid #2563EB;margin-top:16px;padding-top:16px;text-align:right;'>"
-                + "<h2 style='color:#2563EB;margin:0;'>Total: LKR " + String.format("%.2f", total) + "</h2></div>"
+                + "<h2 style='color:#2563EB;margin:0;'>Total: LKR " + String.format(java.util.Locale.US, "%.2f", total) + "</h2></div>"
                 + "<p style='color:#6B7280;font-size:14px;margin-top:24px;'>Thank you for shopping with LexoraFix! Your order is being processed and you'll receive updates soon.</p>"
                 + "</div>"
                 + "<div style='background:#f9fafb;padding:16px;text-align:center;border-top:1px solid #e5e7eb;'>"
@@ -121,7 +121,7 @@ public class EmailHelper {
         if (adminEmail == null || adminEmail.isEmpty())
             return;
 
-        String subject = "🛒 New Order #" + orderId + " — LexoraFix (LKR " + String.format("%.2f", total) + ")";
+        String subject = "🛒 New Order #" + orderId + " — LexoraFix (LKR " + String.format(java.util.Locale.US, "%.2f", total) + ")";
         String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
                 + "<body style='font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px;'>"
                 + "<div style='max-width:600px;margin:0 auto;background:#1A1A2E;border-radius:12px;overflow:hidden;'>"
@@ -152,7 +152,7 @@ public class EmailHelper {
                 // Total
                 + "<div style='background:#0D3B1E;border:1px solid #10B981;border-radius:8px;padding:16px;text-align:center;'>"
                 + "<p style='color:#9CA3AF;margin:0 0 4px;font-size:13px;'>Total Amount</p>"
-                + "<h2 style='color:#10B981;margin:0;font-size:24px;'>LKR " + String.format("%.2f", total) + "</h2>"
+                + "<h2 style='color:#10B981;margin:0;font-size:24px;'>LKR " + String.format(java.util.Locale.US, "%.2f", total) + "</h2>"
                 + "<p style='color:#6B7280;margin:4px 0 0;font-size:12px;'>💳 PayHere — Paid</p></div>"
                 // Footer
                 + "<p style='color:#6B7280;margin:20px 0 0;font-size:12px;text-align:center;'>"

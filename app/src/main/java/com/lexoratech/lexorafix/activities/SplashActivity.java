@@ -140,6 +140,15 @@ public class SplashActivity extends AppCompatActivity {
 
     private void navigateToNextScreen() {
         SharedPreferencesManager prefs = SharedPreferencesManager.getInstance(this);
+
+        if (prefs.isFirstLaunch()) {
+            Intent intent = new Intent(SplashActivity.this, OnboardingActivity.class);
+            startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
+            return;
+        }
+
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (firebaseUser != null) {

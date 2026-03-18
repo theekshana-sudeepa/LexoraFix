@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.7.3" type="incidents">
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of com.android.application than 8.7.3 is available: 9.1.0">
+        <fix-replace
+            description="Change to 9.1.0"
+            family="Update versions"
+            oldString="8.7.3"
+            replacement="9.1.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="2"
+            column="7"
+            startOffset="17"
+            endLine="2"
+            endColumn="14"
+            endOffset="24"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0">
+        <fix-replace
+            description="Change to 1.3.0"
+            family="Update versions"
+            oldString="1.2.1"
+            replacement="1.3.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="5"
+            column="16"
+            startOffset="75"
+            endLine="5"
+            endColumn="23"
+            endOffset="82"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.6.1 is available: 3.7.0">
+        <fix-replace
+            description="Change to 3.7.0"
+            family="Update versions"
+            oldString="3.6.1"
+            replacement="3.7.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="6"
+            column="16"
+            startOffset="98"
+            endLine="6"
+            endColumn="23"
+            endOffset="105"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.7.1">
+        <fix-replace
+            description="Change to 1.7.1"
+            family="Update versions"
+            oldString="1.7.0"
+            replacement="1.7.1"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="7"
+            column="13"
+            startOffset="118"
+            endLine="7"
+            endColumn="20"
+            endOffset="125"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.material:material than 1.12.0 is available: 1.13.0">
+        <fix-replace
+            description="Change to 1.13.0"
+            family="Update versions"
+            oldString="1.12.0"
+            replacement="1.13.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="8"
+            column="12"
+            startOffset="137"
+            endLine="8"
+            endColumn="20"
+            endOffset="145"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.constraintlayout:constraintlayout than 2.2.0 is available: 2.2.1">
+        <fix-replace
+            description="Change to 2.2.1"
+            family="Update versions"
+            oldString="2.2.0"
+            replacement="2.2.1"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="9"
+            column="20"
+            startOffset="165"
+            endLine="9"
+            endColumn="27"
+            endOffset="172"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.recyclerview:recyclerview than 1.3.2 is available: 1.4.0">
+        <fix-replace
+            description="Change to 1.4.0"
+            family="Update versions"
+            oldString="1.3.2"
+            replacement="1.4.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="10"
+            column="16"
+            startOffset="188"
+            endLine="10"
+            endColumn="23"
+            endOffset="195"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.gms:play-services-maps than 19.0.0 is available: 20.0.0">
+        <fix-replace
+            description="Change to 20.0.0"
+            family="Update versions"
+            oldString="19.0.0"
+            replacement="20.0.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="14"
+            column="20"
+            startOffset="271"
+            endLine="14"
+            endColumn="28"
+            endOffset="279"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.gms:play-services-auth than 21.3.0 is available: 21.5.1">
+        <fix-replace
+            description="Change to 21.5.1"
+            family="Update versions"
+            oldString="21.3.0"
+            replacement="21.5.1"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="16"
+            column="20"
+            startOffset="331"
+            endLine="16"
+            endColumn="28"
+            endOffset="339"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.firebase:firebase-bom than 33.7.0 is available: 34.10.0">
+        <fix-replace
+            description="Change to 34.10.0"
+            family="Update versions"
+            oldString="33.7.0"
+            replacement="34.10.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="17"
+            column="15"
+            startOffset="354"
+            endLine="17"
+            endColumn="23"
+            endOffset="362"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.swiperefreshlayout:swiperefreshlayout than 1.1.0 is available: 1.2.0">
+        <fix-replace
+            description="Change to 1.2.0"
+            family="Update versions"
+            oldString="1.1.0"
+            replacement="1.2.0"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="19"
+            column="22"
+            startOffset="401"
+            endLine="19"
+            endColumn="29"
+            endOffset="408"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.gms.google-services than 4.4.2 is available: 4.4.4">
+        <fix-replace
+            description="Change to 4.4.4"
+            family="Update versions"
+            oldString="4.4.2"
+            replacement="4.4.4"
+            priority="0"/>
+        <location
+            file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
+            line="20"
+            column="18"
+            startOffset="426"
+            endLine="20"
+            endColumn="25"
+            endOffset="433"/>
+    </incident>
+
+</incidents>

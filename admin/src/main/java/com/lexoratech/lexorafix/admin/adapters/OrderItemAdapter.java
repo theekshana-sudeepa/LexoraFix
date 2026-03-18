@@ -47,9 +47,9 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.View
         int qty = qtyObj instanceof Number ? ((Number) qtyObj).intValue() : 0;
 
         holder.tvName.setText(productName != null ? productName : "Product");
-        holder.tvPrice.setText(String.format("LKR %.2f", price));
+        holder.tvPrice.setText(String.format(java.util.Locale.US, "LKR %.2f", price));
         holder.tvQuantity.setText("Qty: " + qty);
-        holder.tvSubtotal.setText(String.format("LKR %.2f", price * qty));
+        holder.tvSubtotal.setText(String.format(java.util.Locale.US, "LKR %.2f", price * qty));
 
         // Show variant label (e.g. "12V / 35Ah") when present
         Object varObj = item.get("variantLabel");

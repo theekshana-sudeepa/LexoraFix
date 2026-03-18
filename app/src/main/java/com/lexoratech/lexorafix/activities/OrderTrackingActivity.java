@@ -167,7 +167,7 @@ public class OrderTrackingActivity extends AppCompatActivity {
 
     private void updateStatusBadgeColor(String status) {
         int colorRes;
-        switch (status.toLowerCase()) {
+        switch (status.toLowerCase(java.util.Locale.ROOT)) {
             case "delivered":
                 colorRes = R.color.colorSuccess;
                 break;
@@ -206,7 +206,7 @@ public class OrderTrackingActivity extends AppCompatActivity {
         lineProcessingShipped.setBackgroundColor(inactive);
         lineShippedDelivered.setBackgroundColor(inactive);
 
-        switch (status.toLowerCase()) {
+        switch (status.toLowerCase(java.util.Locale.ROOT)) {
             case "delivered":
                 setStepColor(iconDelivered, delivered);
                 lineShippedDelivered.setBackgroundColor(delivered);

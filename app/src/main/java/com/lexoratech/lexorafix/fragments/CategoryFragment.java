@@ -109,7 +109,7 @@ public class CategoryFragment extends Fragment {
         if (query.trim().isEmpty()) {
             filteredList.addAll(allCategories);
         } else {
-            String lowerQuery = query.toLowerCase();
+            String lowerQuery = query.toLowerCase(java.util.Locale.getDefault());
             for (Category item : allCategories) {
                 if (item.getName() != null && item.getName().toLowerCase().contains(lowerQuery)) {
                     filteredList.add(item);
