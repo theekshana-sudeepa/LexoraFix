@@ -59,6 +59,10 @@ public class CartFragment extends Fragment implements CartAdapter.OnCartActionLi
         loadCart();
 
         btnCheckout.setOnClickListener(v -> {
+            if (com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() == null) {
+                startActivity(new Intent(requireContext(), com.lexoratech.lexorafix.activities.LoginActivity.class));
+                return;
+            }
             if (cartItems != null && !cartItems.isEmpty()) {
                 startActivity(new Intent(requireContext(), CheckoutActivity.class));
             }

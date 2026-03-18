@@ -48,8 +48,8 @@ import java.util.UUID;
  */
 public class AddEditProductActivity extends AppCompatActivity {
 
-    private TextInputEditText etName, etDescription, etPrice, etStock;
-    private TextInputLayout tilName, tilPrice;
+    private TextInputEditText etName, etDescription;
+    private TextInputLayout tilName;
     private Spinner spinnerCategory, spinnerStatus;
     private SwitchMaterial switchFeatured;
 
@@ -112,9 +112,6 @@ public class AddEditProductActivity extends AppCompatActivity {
         tilName = findViewById(R.id.til_name);
         etName = findViewById(R.id.et_name);
         etDescription = findViewById(R.id.et_description);
-        tilPrice = findViewById(R.id.til_price);
-        etPrice = findViewById(R.id.et_price);
-        etStock = findViewById(R.id.et_stock);
         spinnerCategory = findViewById(R.id.spinner_category);
         spinnerStatus = findViewById(R.id.spinner_status);
         switchFeatured = findViewById(R.id.switch_featured);
@@ -357,13 +354,7 @@ public class AddEditProductActivity extends AppCompatActivity {
         etName.setText(getStr(data, "name"));
         etDescription.setText(getStr(data, "description"));
 
-        Object priceObj = data.get("price");
-        if (priceObj instanceof Number)
-            etPrice.setText(String.valueOf(((Number) priceObj).doubleValue()));
-
-        Object stockObj = data.get("stock");
-        if (stockObj instanceof Number)
-            etStock.setText(String.valueOf(((Number) stockObj).intValue()));
+        // BaseModel stock is no longer used UI-side; variants hold the stock.
 
         Object featObj = data.get("featured");
         if (featObj instanceof Boolean)
@@ -457,38 +448,10 @@ public class AddEditProductActivity extends AppCompatActivity {
 
     private void saveProduct() {
         tilName.setError(null);
-        tilPrice.setError(null);
 
         String name = getText(etName);
         String description = getText(etDescription);
-        String priceStr = getText(etPrice);
-        String stockStr = getText(etStock);
-
-        if (TextUtils.isEmpty(name)) {
-            tilName.setError("Required");
-            return;
-        }
-        if (TextUtils.isEmpty(priceStr)) {
-            tilPrice.setError("Required");
-            return;
-        }
-
-        double price;
-        try {
-            price = Double.parseDouble(priceStr);
-        } catch (NumberFormatException e) {
-            tilPrice.setError("Invalid price");
-            return;
-        }
-
-        int stockVal = 0;
-        if (!TextUtils.isEmpty(stockStr)) {
-            try {
-                stockVal = Integer.parseInt(stockStr);
-            } catch (NumberFormatException ignored) {
-            }
-        }
-        final int stock = stockVal;
+        int stock = 0; // Legacy base stock set to 0. Real stock is pulled from variants.
 
         boolean featured = switchFeatured.isChecked();
         int catIndex = spinnerCategory.getSelectedItemPosition();
@@ -497,7 +460,7 @@ public class AddEditProductActivity extends AppCompatActivity {
 
         setLoading(true);
         List<String> finalUrls = new ArrayList<>();
-        uploadImageSlot(0, name, description, price, stock, featured, categoryDocId, catIndex, productStatus,
+        uploadImageSlot(0, name, description, 0.0, stock, featured, categoryDocId, catIndex, productStatus,
                 finalUrls);
     }
 

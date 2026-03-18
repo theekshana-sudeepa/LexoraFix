@@ -316,7 +316,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         });
 
         btnPlus.setOnClickListener(v -> {
-            int maxStock = selectedVariant != null ? selectedVariant.getStock() : product.getStock();
+            int maxStock = selectedVariant != null ? selectedVariant.getStock() : product.getEffectiveStock();
             if (selectedQuantity < maxStock) {
                 selectedQuantity++;
                 tvQuantity.setText(String.valueOf(selectedQuantity));
@@ -393,8 +393,21 @@ public class ProductDetailActivity extends AppCompatActivity {
                     v -> Snackbar.make(findViewById(android.R.id.content), "Please login to save favorites", Snackbar.LENGTH_SHORT).show());
         }
 
-        btnAddCart.setOnClickListener(v -> showVariantConfirmDialog(false));
-        btnBuyNow.setOnClickListener(v -> showVariantConfirmDialog(true));
+        btnAddCart.setOnClickListener(v -> {
+            if (com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() == null) {
+                startActivity(new Intent(this, LoginActivity.class));
+                return;
+            }
+            showVariantConfirmDialog(false);
+        });
+
+        btnBuyNow.setOnClickListener(v -> {
+            if (com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() == null) {
+                startActivity(new Intent(this, LoginActivity.class));
+                return;
+            }
+            showVariantConfirmDialog(true);
+        });
 
         // Start listening to reviews
         attachReviewsListener();
@@ -424,7 +437,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private void updatePriceStock(TextView tvPrice, TextView tvStock,
             MaterialButton btnAddCart, MaterialButton btnBuyNow) {
         double price = selectedVariant != null ? selectedVariant.getPrice() : product.getPrice();
-        int stock = selectedVariant != null ? selectedVariant.getStock() : product.getStock();
+        int stock = selectedVariant != null ? selectedVariant.getStock() : product.getEffectiveStock();
         tvPrice.setText(String.format(Locale.getDefault(), "LKR %.2f", price));
         if (stock > 0) {
             tvStock.setText(getString(R.string.in_stock) + " (" + stock + " available)");
@@ -588,7 +601,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         // Initialize price and stock inside dialog
         updatePriceStock(tvProductPrice, tvProductStock, null, null);
-        btnConfirm.setEnabled(selectedVariant != null ? selectedVariant.getStock() > 0 : product.getStock() > 0);
+        btnConfirm.setEnabled(selectedVariant != null ? selectedVariant.getStock() > 0 : product.getEffectiveStock() > 0);
 
         // Qty Listeners inside Dialog
         btnQtyMinus.setOnClickListener(v -> {
@@ -600,7 +613,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         btnQtyPlus.setOnClickListener(v -> {
             // Find max stock for the selected variant *in the dialog*
-            int currentMax = product.getStock();
+            int currentMax = product.getEffectiveStock();
             if (product.hasVariantOptions()) {
                 List<String> temp = new ArrayList<>(selectedOptionValues);
                 selectedOptionValues.clear();
@@ -734,7 +747,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         DatabaseHelper db = DatabaseHelper.getInstance(this);
         int userId = 1; // Local DB legacy support
 
-        int maxStock = selectedVariant != null ? selectedVariant.getStock() : product.getStock();
+        int maxStock = selectedVariant != null ? selectedVariant.getStock() : product.getEffectiveStock();
         double effectivePrice = selectedVariant != null ? selectedVariant.getPrice() : product.getPrice();
         String variantLabel = selectedVariant != null ? selectedVariant.getLabel() : null;
 

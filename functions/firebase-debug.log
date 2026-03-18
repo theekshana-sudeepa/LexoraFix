@@ -1,0 +1,92 @@
+[debug] [2026-03-18T07:05:13.211Z] ----------------------------------------------------------------------
+[debug] [2026-03-18T07:05:13.212Z] Command:       /Users/theekshanasudeepa/.nvm/versions/node/v22.18.0/bin/node /Users/theekshanasudeepa/.nvm/versions/node/v22.18.0/bin/firebase deploy --only functions
+[debug] [2026-03-18T07:05:13.212Z] CLI Version:   15.10.0
+[debug] [2026-03-18T07:05:13.212Z] Platform:      darwin
+[debug] [2026-03-18T07:05:13.212Z] Node Version:  v22.18.0
+[debug] [2026-03-18T07:05:13.212Z] Time:          Wed Mar 18 2026 12:35:13 GMT+0530 (India Standard Time)
+[debug] [2026-03-18T07:05:13.213Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-03-18T07:05:14.252Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-18T07:05:14.252Z] > authorizing via signed-in user (lexoratech@gmail.com)
+[debug] [2026-03-18T07:05:14.252Z] [iam] checking project lexorafix for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2026-03-18T07:05:14.253Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:14.253Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:14.254Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix:testIamPermissions [none]
+[debug] [2026-03-18T07:05:14.254Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix:testIamPermissions  x-goog-user-project=lexorafix
+[debug] [2026-03-18T07:05:14.254Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-03-18T07:05:15.546Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix:testIamPermissions 200
+[debug] [2026-03-18T07:05:15.546Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-03-18T07:05:15.546Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:15.546Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:15.546Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/lexorafix/serviceAccounts/lexorafix@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2026-03-18T07:05:15.546Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/lexorafix/serviceAccounts/lexorafix@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-03-18T07:05:17.020Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/lexorafix/serviceAccounts/lexorafix@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2026-03-18T07:05:17.020Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/lexorafix/serviceAccounts/lexorafix@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'lexorafix'...
+[info] 
+[info] i  deploying functions 
+[debug] [2026-03-18T07:05:17.023Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:17.023Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:17.023Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix [none]
+[debug] [2026-03-18T07:05:17.346Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix 200
+[debug] [2026-03-18T07:05:17.347Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix {"projectNumber":"32443902058","projectId":"lexorafix","lifecycleState":"ACTIVE","name":"LexoraFix","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2026-02-18T13:49:43.504302Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2026-03-18T07:05:17.350Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:17.350Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:17.350Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/lexorafix/adminSdkConfig [none]
+[debug] [2026-03-18T07:05:18.182Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/lexorafix/adminSdkConfig 200
+[debug] [2026-03-18T07:05:18.183Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/lexorafix/adminSdkConfig {"projectId":"lexorafix","storageBucket":"lexorafix.firebasestorage.app"}
+[debug] [2026-03-18T07:05:18.183Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:18.184Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:18.184Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/lexorafix/configs [none]
+[debug] [2026-03-18T07:05:19.564Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/lexorafix/configs 200
+[debug] [2026-03-18T07:05:19.564Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/lexorafix/configs {}
+[debug] [2026-03-18T07:05:19.565Z] Validating nodejs source
+[warn] ⚠  functions: Runtime Node.js 20 will be deprecated on 2026-04-30 and will be decommissioned on 2026-10-30, after which you will not be able to deploy without upgrading. Consider upgrading now to avoid disruption. See https://cloud.google.com/functions/docs/runtime-support for full details on the lifecycle policy 
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] ⚠  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2026-03-18T07:05:20.363Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "LexoraFix Cloud Functions for push notifications",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^5.0.0"
+  },
+  "private": true
+}
+[debug] [2026-03-18T07:05:20.363Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2026-03-18T07:05:20.364Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-03-18T07:05:20.368Z] Found firebase-functions binary at '/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8275
+
+[debug] [2026-03-18T07:05:20.525Z] Got response from /__/functions.yaml {"endpoints":{"onBookingCreated":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"bookings/{bookingId}"},"retry":false},"entryPoint":"onBookingCreated"},"onBookingStatusChange":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.updated","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"bookings/{bookingId}"},"retry":false},"entryPoint":"onBookingStatusChange"},"onChatMessage":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"chats/{chatId}/messages/{messageId}"},"retry":false},"entryPoint":"onChatMessage"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] i  extensions: ensuring required API firebaseextensions.googleapis.com is enabled... 
+[debug] [2026-03-18T07:05:24.549Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-03-18T07:05:24.549Z] > authorizing via signed-in user (lexoratech@gmail.com)
+[debug] [2026-03-18T07:05:24.549Z] [iam] checking project lexorafix for permissions ["firebase.projects.get","firebaseextensions.instances.list"]
+[debug] [2026-03-18T07:05:24.549Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:24.549Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:24.549Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix:testIamPermissions [none]
+[debug] [2026-03-18T07:05:24.549Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix:testIamPermissions  x-goog-user-project=lexorafix
+[debug] [2026-03-18T07:05:24.549Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2026-03-18T07:05:26.051Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix:testIamPermissions 200
+[debug] [2026-03-18T07:05:26.051Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/lexorafix:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2026-03-18T07:05:26.052Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:26.052Z] Checked if tokens are valid: true, expires at: 1773819579012
+[debug] [2026-03-18T07:05:26.052Z] >>> [apiv2][query] GET https://firebaseextensions.googleapis.com/v1beta/projects/lexorafix/instances pageSize=100&pageToken=

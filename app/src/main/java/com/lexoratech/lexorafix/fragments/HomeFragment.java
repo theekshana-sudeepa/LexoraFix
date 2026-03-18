@@ -189,7 +189,7 @@ public class HomeFragment extends Fragment {
                         allProducts.clear();
                         for (DocumentSnapshot doc : result.getDocuments()) {
                             Product p = Product.fromMap(doc.getData());
-                            if (p != null && p.getStock() > 0) {
+                            if (p != null && p.getEffectiveStock() > 0) {
                                 p.setDocumentId(doc.getId());
                                 allProducts.add(p);
                             }
@@ -202,7 +202,7 @@ public class HomeFragment extends Fragment {
                                         public void onSuccess(com.google.firebase.firestore.QuerySnapshot result) {
                                             for (DocumentSnapshot doc : result.getDocuments()) {
                                                 Product p = Product.fromMap(doc.getData());
-                                                if (p != null && p.getStock() > 0) {
+                                                if (p != null && p.getEffectiveStock() > 0) {
                                                     p.setDocumentId(doc.getId());
                                                     allProducts.add(p);
                                                 }

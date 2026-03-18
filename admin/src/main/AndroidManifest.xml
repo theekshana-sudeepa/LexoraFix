@@ -62,5 +62,13 @@
             android:name=".services.AdminOrderListenerService"
             android:exported="false" />
 
+        <service
+            android:name=".services.MyFirebaseMessagingService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
     </application>
 </manifest>

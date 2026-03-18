@@ -221,66 +221,7 @@
                             android:minLines="3" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Price & Stock Row -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="16dp">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/til_price"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="8dp"
-                            android:hint="Base Price (LKR)"
-                            app:boxBackgroundColor="@android:color/transparent"
-                            app:boxCornerRadiusBottomEnd="12dp"
-                            app:boxCornerRadiusBottomStart="12dp"
-                            app:boxCornerRadiusTopEnd="12dp"
-                            app:boxCornerRadiusTopStart="12dp"
-                            app:boxStrokeWidth="1dp"
-                            app:boxStrokeWidthFocused="2dp"
-                            app:boxStrokeColor="@color/adminPrimary"
-                            app:hintTextColor="@color/adminPrimary"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_price"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="numberDecimal"
-                                android:fontFamily="@font/poppins"
-                                android:textSize="14sp"
-                                android:textColor="@color/adminTextPrimary" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="8dp"
-                            android:hint="Base Stock"
-                            app:boxBackgroundColor="@android:color/transparent"
-                            app:boxCornerRadiusBottomEnd="12dp"
-                            app:boxCornerRadiusBottomStart="12dp"
-                            app:boxCornerRadiusTopEnd="12dp"
-                            app:boxCornerRadiusTopStart="12dp"
-                            app:boxStrokeWidth="1dp"
-                            app:boxStrokeWidthFocused="2dp"
-                            app:boxStrokeColor="@color/adminPrimary"
-                            app:hintTextColor="@color/adminPrimary"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_stock"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="number"
-                                android:fontFamily="@font/poppins"
-                                android:textSize="14sp"
-                                android:textColor="@color/adminTextPrimary" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
+                    <!-- Base Stock removed. Managed in Variants -->
 
                     <!-- Category Spinner Container -->
                     <LinearLayout

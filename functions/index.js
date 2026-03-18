@@ -34,14 +34,15 @@ exports.onBookingCreated = onDocumentCreated("bookings/{bookingId}", async (even
   }
 
   const message = {
-    notification: {
+    data: {
       title: "🔔 New Job Available!",
       body: `${customerName} booked a ${serviceType} service. Tap to accept!`,
-    },
-    data: {
       type: "new_booking",
       bookingId: event.params.bookingId,
       serviceType: serviceType,
+    },
+    android: {
+      priority: "high"
     },
     tokens: tokens,
   };
@@ -110,12 +111,14 @@ exports.onBookingStatusChange = onDocumentUpdated("bookings/{bookingId}", async 
 
       try {
         await getMessaging().send({
-          notification: { title, body },
           data: {
+            title: title,
+            body: body,
             type: "status_update",
             bookingId: bookingId,
             newStatus: newStatus,
           },
+          android: { priority: "high" },
           token: customerToken,
         });
         console.log(`Notified customer ${customerUid}`);
@@ -155,14 +158,13 @@ exports.onBookingStatusChange = onDocumentUpdated("bookings/{bookingId}", async 
     if (tokens.length > 0) {
       try {
         await getMessaging().sendEachForMulticast({
-          notification: {
+          data: {
             title: "📋 Job Taken",
             body: `The ${serviceType} job has been accepted by another worker.`,
-          },
-          data: {
             type: "booking_taken",
             bookingId: bookingId,
           },
+          android: { priority: "high" },
           tokens: tokens,
         });
         console.log(`Notified ${tokens.length} other workers about taken job`);
@@ -241,11 +243,9 @@ exports.onChatMessage = onDocumentCreated("chats/{chatId}/messages/{messageId}",
     const body = messageText;
 
     const payload = {
-      notification: {
+      data: {
         title: title,
         body: body,
-      },
-      data: {
         type: "chat_message",
         chatId: chatId,
         bookingId: bookingId,
@@ -253,6 +253,7 @@ exports.onChatMessage = onDocumentCreated("chats/{chatId}/messages/{messageId}",
         senderName: senderName,
         senderRole: senderRole
       },
+      android: { priority: "high" },
       tokens: tokens,
     };
 

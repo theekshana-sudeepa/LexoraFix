@@ -105,6 +105,13 @@
         <service
             android:name="com.lexoratech.lexorafix.admin.services.AdminOrderListenerService"
             android:exported="false" />
+        <service
+            android:name="com.lexoratech.lexorafix.admin.services.MyFirebaseMessagingService"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"

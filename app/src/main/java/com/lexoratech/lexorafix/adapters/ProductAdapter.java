@@ -113,6 +113,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         });
 
         holder.btnAddCart.setOnClickListener(v -> {
+            if (com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() == null) {
+                context.startActivity(new android.content.Intent(context, com.lexoratech.lexorafix.activities.LoginActivity.class));
+                return;
+            }
             int stock = product.getEffectiveStock();
             if (stock <= 0) {
                 Snackbar.make(v, "Product is out of stock.", Snackbar.LENGTH_SHORT).show();

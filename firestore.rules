@@ -28,28 +28,28 @@ service cloud.firestore {
       allow read, write: if isAdmin();
     }
 
-    // ----- Products (auth users read & update stock, admin full writes) -----
+    // ----- Products (anyone can read for guest browsing, auth users update stock, admin full writes) -----
     match /products/{productId} {
-      allow read: if request.auth != null;
+      allow read: if true;
       allow update: if request.auth != null;
       allow write: if isAdmin();
       
       // Allow customers to leave reviews
       match /reviews/{reviewId} {
-        allow read: if request.auth != null;
+        allow read: if true;
         allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
       }
     }
 
-    // ----- Categories (auth users read, admin writes) -----
+    // ----- Categories (anyone can read for guest browsing, admin writes) -----
     match /categories/{categoryId} {
-      allow read: if request.auth != null;
+      allow read: if true;
       allow write: if isAdmin();
     }
 
-    // ----- Service Centers (auth users read, admin writes) -----
+    // ----- Service Centers (anyone can read for guest browsing, admin writes) -----
     match /service_centers/{centerId} {
-      allow read: if request.auth != null;
+      allow read: if true;
       allow write: if isAdmin();
     }
 

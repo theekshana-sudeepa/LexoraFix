@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-66:12
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-74:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-74:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-74:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-74:12
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/723696d02c972d14913cd8a4cbed0df6/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/d676669ba4050059e2fde379b7fef88b/transformed/constraintlayout-2.2.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.biometric:biometric:1.1.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/698a9c89bd043a7d31365a124a447295/transformed/biometric-1.1.0/AndroidManifest.xml:17:1-29:12
@@ -123,8 +123,8 @@ MERGED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasud
 	android:name
 		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:6:22-74
 application
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-65:19
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-65:19
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-73:19
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-73:19
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/723696d02c972d14913cd8a4cbed0df6/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/723696d02c972d14913cd8a4cbed0df6/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/d676669ba4050059e2fde379b7fef88b/transformed/constraintlayout-2.2.0/AndroidManifest.xml:7:5-20
@@ -345,6 +345,18 @@ ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/ma
 		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:63:13-37
 	android:name
 		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:62:13-63
+service#com.lexoratech.lexorafix.admin.services.MyFirebaseMessagingService
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:65:9-71:19
+	android:exported
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:67:13-36
+	android:name
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:66:13-64
+intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:68:13-70:29
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:69:17-78
+	android:name
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:69:25-75
 uses-sdk
 INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml
@@ -735,14 +747,6 @@ ADDED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasude
 		ADDED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/5cf9bfe4d142122c37ca777a0c271308/transformed/firebase-messaging-24.1.0/AndroidManifest.xml:48:13-43
 	android:name
 		ADDED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/5cf9bfe4d142122c37ca777a0c271308/transformed/firebase-messaging-24.1.0/AndroidManifest.xml:47:13-82
-intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/5cf9bfe4d142122c37ca777a0c271308/transformed/firebase-messaging-24.1.0/AndroidManifest.xml:50:13-52:29
-	android:priority
-		ADDED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/5cf9bfe4d142122c37ca777a0c271308/transformed/firebase-messaging-24.1.0/AndroidManifest.xml:50:28-51
-action#com.google.firebase.MESSAGING_EVENT
-ADDED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/5cf9bfe4d142122c37ca777a0c271308/transformed/firebase-messaging-24.1.0/AndroidManifest.xml:51:17-78
-	android:name
-		ADDED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/5cf9bfe4d142122c37ca777a0c271308/transformed/firebase-messaging-24.1.0/AndroidManifest.xml:51:25-75
 meta-data#com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar
 ADDED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/5cf9bfe4d142122c37ca777a0c271308/transformed/firebase-messaging-24.1.0/AndroidManifest.xml:57:13-59:85
 	android:value

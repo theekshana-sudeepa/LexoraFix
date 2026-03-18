@@ -139,9 +139,7 @@ id et_option_name
 id et_option_values
 id et_password
 id et_phone
-id et_price
 id et_reset_email
-id et_stock
 id et_variant_label
 id et_variant_price
 id et_variant_sku
@@ -203,7 +201,6 @@ id til_longitude
 id til_name
 id til_password
 id til_phone
-id til_price
 id toolbar
 id toolbarChat
 id tvChatBookingInfo

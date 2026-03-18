@@ -92,6 +92,10 @@ public class ServicesFragment extends Fragment {
     }
 
     private void openBooking(String serviceType) {
+        if (com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() == null) {
+            startActivity(new Intent(requireContext(), com.lexoratech.lexorafix.activities.LoginActivity.class));
+            return;
+        }
         Intent intent = new Intent(requireContext(), BookServiceActivity.class);
         intent.putExtra("service_type", serviceType);
         startActivity(intent);

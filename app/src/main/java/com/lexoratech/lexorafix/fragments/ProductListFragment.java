@@ -254,7 +254,7 @@ public class ProductListFragment extends Fragment {
                 break;
             case "Popular":
                 // Sort by stock descending (higher stock = more popular proxy)
-                Collections.sort(products, (a, b) -> Integer.compare(b.getStock(), a.getStock()));
+                Collections.sort(products, (a, b) -> Integer.compare(b.getEffectiveStock(), a.getEffectiveStock()));
                 break;
             case "Newest":
             default:

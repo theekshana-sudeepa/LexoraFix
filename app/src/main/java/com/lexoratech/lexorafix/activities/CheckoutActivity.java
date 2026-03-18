@@ -50,10 +50,22 @@ public class CheckoutActivity extends AppCompatActivity {
     private List<CartItem> cartItems;
     private DatabaseHelper db;
     private SharedPreferencesManager prefs;
-    private double total = 0;
+    private double subtotal = 0;
+    private double deliveryFee = 0;
+    private double grandTotal = 0;
     private String pendingAddress = "";
     private android.widget.FrameLayout paymentOverlay;
     private MaterialButton btnPlaceOrder;
+
+    // Delivery charge config (fetched from Firestore)
+    private java.util.Map<String, Double> provinceRates = new java.util.HashMap<>();
+    private double freeDeliveryThreshold = 5000.0;
+    private double defaultDeliveryRate = 500.0;
+    private boolean deliveryRatesLoaded = false;
+
+    // Delivery UI views
+    private TextView tvSubtotal, tvDeliveryFee, tvDeliveryProvince, tvGrandTotal, tvFreeDeliveryMsg;
+    private android.widget.LinearLayout layoutFreeDeliveryBadge;
 
     // Structured shipping fields
     private com.google.android.material.textfield.TextInputEditText etAddress, etAddress2, etCity, etPostal;
@@ -82,6 +94,14 @@ public class CheckoutActivity extends AppCompatActivity {
         btnPlaceOrder = findViewById(R.id.btn_place_order);
         paymentOverlay = findViewById(R.id.payment_overlay);
 
+        // Price breakdown views
+        tvSubtotal = findViewById(R.id.tv_subtotal);
+        tvDeliveryFee = findViewById(R.id.tv_delivery_fee);
+        tvDeliveryProvince = findViewById(R.id.tv_delivery_province);
+        tvGrandTotal = findViewById(R.id.tv_grand_total);
+        tvFreeDeliveryMsg = findViewById(R.id.tv_free_delivery_msg);
+        layoutFreeDeliveryBadge = findViewById(R.id.layout_free_delivery_badge);
+
         btnBack.setOnClickListener(v -> finish());
 
         // ── Structured shipping fields ──────────────────────────────────
@@ -101,8 +121,8 @@ public class CheckoutActivity extends AppCompatActivity {
         layoutBilling = findViewById(R.id.layout_billing);
 
         // ── Setup province/district cascading dropdowns ─────────────────
-        setupProvinceDistrictDropdowns(actProvince, actDistrict);
-        setupProvinceDistrictDropdowns(actBillingProvince, actBillingDistrict);
+        setupProvinceDistrictDropdowns(actProvince, actDistrict, true);
+        setupProvinceDistrictDropdowns(actBillingProvince, actBillingDistrict, false);
 
         cbBillingSame.setOnCheckedChangeListener((btn, isChecked) -> layoutBilling
                 .setVisibility(isChecked ? android.view.View.GONE : android.view.View.VISIBLE));
@@ -241,6 +261,7 @@ public class CheckoutActivity extends AppCompatActivity {
         rvItems.setAdapter(adapter);
 
         updateTotal();
+        fetchDeliveryRates();
         fetchStockLimits(adapter);
 
         btnPlaceOrder.setOnClickListener(v -> {
@@ -378,7 +399,7 @@ public class CheckoutActivity extends AppCompatActivity {
     }
 
     /** Set up cascading province → district dropdowns for a given pair. */
-    private void setupProvinceDistrictDropdowns(AutoCompleteTextView provinceView, AutoCompleteTextView districtView) {
+    private void setupProvinceDistrictDropdowns(AutoCompleteTextView provinceView, AutoCompleteTextView districtView, boolean isShipping) {
         ArrayAdapter<String> provinceAdapter = new ArrayAdapter<>(
                 this, R.layout.item_dropdown, LocationData.getProvinces());
         provinceView.setAdapter(provinceAdapter);
@@ -387,6 +408,9 @@ public class CheckoutActivity extends AppCompatActivity {
             String selectedProvince = (String) parent.getItemAtPosition(position);
             populateDistrictDropdown(districtView, selectedProvince);
             districtView.setText("", false);
+            if (isShipping) {
+                recalculateDeliveryFee(selectedProvince);
+            }
         });
     }
 
@@ -396,6 +420,104 @@ public class CheckoutActivity extends AppCompatActivity {
         ArrayAdapter<String> districtAdapter = new ArrayAdapter<>(
                 this, R.layout.item_dropdown, districts);
         districtView.setAdapter(districtAdapter);
+    }
+
+    /** Fetch delivery charge configuration from Firestore. */
+    private void fetchDeliveryRates() {
+        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                .collection("system").document("deliveryCharges")
+                .get()
+                .addOnSuccessListener(doc -> {
+                    if (doc.exists()) {
+                        Number threshold = doc.getDouble("freeDeliveryThreshold");
+                        if (threshold != null) freeDeliveryThreshold = threshold.doubleValue();
+
+                        Number defRate = doc.getDouble("defaultRate");
+                        if (defRate != null) defaultDeliveryRate = defRate.doubleValue();
+
+                        @SuppressWarnings("unchecked")
+                        Map<String, Object> rates = (Map<String, Object>) doc.get("provinceRates");
+                        if (rates != null) {
+                            for (Map.Entry<String, Object> entry : rates.entrySet()) {
+                                if (entry.getValue() instanceof Number) {
+                                    provinceRates.put(entry.getKey(), ((Number) entry.getValue()).doubleValue());
+                                }
+                            }
+                        }
+                        deliveryRatesLoaded = true;
+                        Log.d(TAG, "✅ Delivery rates loaded: " + provinceRates.size() + " provinces, threshold=" + freeDeliveryThreshold);
+
+                        // If province already selected, recalculate
+                        String currentProvince = actProvince.getText() != null ? actProvince.getText().toString().trim() : "";
+                        if (!currentProvince.isEmpty()) {
+                            recalculateDeliveryFee(currentProvince);
+                        } else {
+                            deliveryFee = defaultDeliveryRate;
+                            updateTotalWithDelivery();
+                        }
+                    } else {
+                        Log.w(TAG, "No delivery charges document found, using defaults");
+                        deliveryFee = defaultDeliveryRate;
+                        deliveryRatesLoaded = true;
+                        updateTotalWithDelivery();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Failed to fetch delivery rates: " + e.getMessage());
+                    deliveryFee = defaultDeliveryRate;
+                    deliveryRatesLoaded = true;
+                    updateTotalWithDelivery();
+                });
+    }
+
+    /** Recalculate delivery fee based on the selected province. */
+    private void recalculateDeliveryFee(String province) {
+        if (provinceRates.containsKey(province)) {
+            deliveryFee = provinceRates.get(province);
+        } else {
+            deliveryFee = defaultDeliveryRate;
+        }
+
+        // Show province label
+        if (tvDeliveryProvince != null) {
+            tvDeliveryProvince.setText("(" + province + ")");
+            tvDeliveryProvince.setVisibility(android.view.View.VISIBLE);
+        }
+
+        updateTotalWithDelivery();
+    }
+
+    /** Update the price breakdown UI with subtotal, delivery, and grand total. */
+    private void updateTotalWithDelivery() {
+        // Check free delivery threshold
+        boolean isFreeDelivery = subtotal >= freeDeliveryThreshold;
+        double effectiveDelivery = isFreeDelivery ? 0 : deliveryFee;
+        grandTotal = subtotal + effectiveDelivery;
+
+        if (tvSubtotal != null)
+            tvSubtotal.setText(String.format(Locale.getDefault(), "LKR %.2f", subtotal));
+
+        if (tvDeliveryFee != null) {
+            if (isFreeDelivery) {
+                tvDeliveryFee.setText("FREE");
+                tvDeliveryFee.setTextColor(getResources().getColor(R.color.colorSuccess, null));
+            } else {
+                tvDeliveryFee.setText(String.format(Locale.getDefault(), "LKR %.2f", effectiveDelivery));
+                tvDeliveryFee.setTextColor(getResources().getColor(R.color.textPrimary, null));
+            }
+        }
+
+        if (layoutFreeDeliveryBadge != null) {
+            layoutFreeDeliveryBadge.setVisibility(isFreeDelivery ? android.view.View.VISIBLE : android.view.View.GONE);
+        }
+
+        if (tvGrandTotal != null)
+            tvGrandTotal.setText(String.format(Locale.getDefault(), "LKR %.2f", grandTotal));
+
+        // Also update the bottom bar total
+        TextView tvTotal = findViewById(R.id.tv_total_bottom);
+        if (tvTotal != null)
+            tvTotal.setText(String.format(Locale.getDefault(), "LKR %.2f", grandTotal));
     }
 
     private void fetchStockLimits(CartAdapter adapter) {
@@ -427,12 +549,11 @@ public class CheckoutActivity extends AppCompatActivity {
     }
 
     private void updateTotal() {
-        TextView tvTotal = findViewById(R.id.tv_total_bottom);
-        total = 0;
+        subtotal = 0;
         for (CartItem item : cartItems) {
-            total += item.getSubtotal();
+            subtotal += item.getSubtotal();
         }
-        tvTotal.setText(String.format(Locale.getDefault(), "LKR %.2f", total));
+        updateTotalWithDelivery();
     }
 
     private void verifyStockBeforeCheckout(String address) {
@@ -496,13 +617,13 @@ public class CheckoutActivity extends AppCompatActivity {
         Log.d(TAG, "Merchant Secret length: " +
                 (BuildConfig.PAYHERE_MERCHANT_SECRET != null ? BuildConfig.PAYHERE_MERCHANT_SECRET.length() : "NULL"));
         Log.d(TAG, "Sandbox mode: " + BuildConfig.PAYHERE_SANDBOX);
-        Log.d(TAG, "Total amount: " + total);
+        Log.d(TAG, "Total amount: " + grandTotal);
 
         InitRequest req = new InitRequest();
         req.setMerchantId(BuildConfig.PAYHERE_MERCHANT_ID);
         req.setMerchantSecret(BuildConfig.PAYHERE_MERCHANT_SECRET);
         req.setCurrency("LKR");
-        req.setAmount(total);
+        req.setAmount(grandTotal);
         req.setOrderId("LF-" + System.currentTimeMillis());
         req.setItemsDescription("LexoraFix Order (" + cartItems.size() + " items)");
         // Sandbox: empty notify URL; in production set a real server endpoint
@@ -635,7 +756,7 @@ public class CheckoutActivity extends AppCompatActivity {
         int userId = 1;
 
         // Place order in local DB
-        String orderId = db.placeOrder(userId, address, total);
+        String orderId = db.placeOrder(userId, address, grandTotal);
 
         if (orderId != null && !orderId.isEmpty()) {
             // Save address for next time
@@ -649,7 +770,10 @@ public class CheckoutActivity extends AppCompatActivity {
                 orderData.put("firebaseUid", firebaseUid);
                 orderData.put("userName", prefs.getUserName() != null ? prefs.getUserName() : "");
                 orderData.put("userEmail", prefs.getUserEmail() != null ? prefs.getUserEmail() : "");
-                orderData.put("totalPrice", total);
+                orderData.put("totalPrice", grandTotal);
+                orderData.put("subtotal", subtotal);
+                orderData.put("deliveryFee", subtotal >= freeDeliveryThreshold ? 0 : deliveryFee);
+                orderData.put("freeDelivery", subtotal >= freeDeliveryThreshold);
                 orderData.put("address", address);
                 orderData.put("status", "Confirmed");
                 orderData.put("paymentStatus", "Paid");
@@ -692,16 +816,40 @@ public class CheckoutActivity extends AppCompatActivity {
                                             .addOnSuccessListener(snapshot -> {
                                                 if (!snapshot.isEmpty()) {
                                                     String docId = snapshot.getDocuments().get(0).getId();
-                                                    firestore.collection("products").document(docId)
-                                                            .update("stock",
-                                                                    com.google.firebase.firestore.FieldValue
-                                                                            .increment(-qty))
-                                                            .addOnSuccessListener(
-                                                                    v -> Log.d(TAG,
-                                                                            "📦 Stock decremented for: " + productName))
-                                                            .addOnFailureListener(e -> Log.e(TAG,
-                                                                    "❌ Stock decrement failed for " + productName + ": "
-                                                                            + e.getMessage()));
+                                                    com.google.firebase.firestore.DocumentReference docRef = firestore.collection("products").document(docId);
+                                                    
+                                                    firestore.runTransaction(transaction -> {
+                                                        com.google.firebase.firestore.DocumentSnapshot prodSnapshot = transaction.get(docRef);
+                                                        if (!prodSnapshot.exists()) {
+                                                            throw new com.google.firebase.firestore.FirebaseFirestoreException("Product not found", com.google.firebase.firestore.FirebaseFirestoreException.Code.NOT_FOUND);
+                                                        }
+
+                                                        // Deduct base stock always to keep legacy values in sync
+                                                        long currentBaseStock = prodSnapshot.getLong("stock") != null ? prodSnapshot.getLong("stock") : 0;
+                                                        transaction.update(docRef, "stock", Math.max(0, currentBaseStock - qty));
+
+                                                        // Deduct variant stock
+                                                        String variantLabel = item.getVariantLabel();
+                                                        if (variantLabel != null && !variantLabel.isEmpty()) {
+                                                            java.util.List<java.util.Map<String, Object>> variants = (java.util.List<java.util.Map<String, Object>>) prodSnapshot.get("variants");
+                                                            if (variants != null) {
+                                                                for (java.util.Map<String, Object> v : variants) {
+                                                                    String vName = (String) v.get("name");
+                                                                    if (variantLabel.equals(vName)) {
+                                                                        long vStock = v.get("stock") != null ? ((Number) v.get("stock")).longValue() : 0;
+                                                                        v.put("stock", Math.max(0, vStock - qty));
+                                                                        break;
+                                                                    }
+                                                                }
+                                                                transaction.update(docRef, "variants", variants);
+                                                            }
+                                                        }
+                                                        return null;
+                                                    }).addOnSuccessListener(aVoid -> {
+                                                        Log.d(TAG, "📦 Stock decremented for: " + productName + (item.getVariantLabel() != null ? " (" + item.getVariantLabel() + ")" : ""));
+                                                    }).addOnFailureListener(e -> {
+                                                        Log.e(TAG, "❌ Stock decrement failed for " + productName + ": " + e.getMessage());
+                                                    });
                                                 } else {
                                                     Log.e(TAG, "❌ Product not found in Firestore: " + productName);
                                                 }
@@ -751,12 +899,12 @@ public class CheckoutActivity extends AppCompatActivity {
                 String itemsHtmlStr = itemsHtml.toString();
 
                 // Send customer confirmation
-                EmailHelper.getInstance().sendOrderConfirmation(customerEmail, orderId, total, itemsHtmlStr);
+                EmailHelper.getInstance().sendOrderConfirmation(customerEmail, orderId, grandTotal, itemsHtmlStr);
 
                 // Send rich seller/admin notification with full order details
                 EmailHelper.getInstance().sendAdminOrderNotification(
                         orderId, customerName, customerEmail, customerPhone,
-                        address, itemsHtmlStr, total);
+                        address, itemsHtmlStr, grandTotal);
             } catch (Exception e) {
                 Log.w(TAG, "Email sending failed (non-critical): " + e.getMessage());
             }
