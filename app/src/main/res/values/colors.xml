@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- ========== Premium Color Palette (Icy Light Mode) ========== -->
+    <!-- ========== Premium Color Palette (Logo-Derived Blue-Teal) ========== -->
 
-    <!-- Primary — Deep Coral -->
-    <color name="colorPrimary">#FF6B35</color>
-    <color name="colorPrimaryDark">#E55A2B</color>
-    <color name="colorPrimaryLight">#FF8F65</color>
-    <color name="colorPrimaryVariant">#E55A2B</color>
+    <!-- Primary — Vibrant Blue (from logo mid-tone) -->
+    <color name="colorPrimary">#2563EB</color>
+    <color name="colorPrimaryDark">#1D4ED8</color>
+    <color name="colorPrimaryLight">#60A5FA</color>
+    <color name="colorPrimaryVariant">#1D4ED8</color>
 
-    <!-- Secondary — Electric Teal -->
-    <color name="colorSecondary">#00C9A7</color>
-    <color name="colorSecondaryDark">#00A88C</color>
-    <color name="colorSecondaryLight">#4DDDC4</color>
-    <color name="colorSecondaryVariant">#00A88C</color>
+    <!-- Secondary — Teal (from logo's cyan end) -->
+    <color name="colorSecondary">#14B8A6</color>
+    <color name="colorSecondaryDark">#0D9488</color>
+    <color name="colorSecondaryLight">#5EEAD4</color>
+    <color name="colorSecondaryVariant">#0D9488</color>
 
     <!-- Accent -->
-    <color name="colorAccent">#FF6B35</color>
+    <color name="colorAccent">#2563EB</color>
 
     <!-- Surface & Background -->
     <color name="colorBackground">#F8FAFC</color> <!-- Soft Icy White -->
@@ -36,15 +36,15 @@
     <color name="colorError">#EF4444</color>
     <color name="colorInfo">#3B82F6</color>
     <color name="colorDivider">#E2E8F0</color>
-    <color name="splashBackground">#FF6B35</color>
+    <color name="splashBackground">#2563EB</color>
 
-    <!-- Gradient Colors -->
-    <color name="gradientStart">#FF6B35</color>
-    <color name="gradientCenter">#FF8F65</color>
-    <color name="gradientEnd">#FFB088</color>
+    <!-- Gradient Colors (Navy → Blue → Cyan) -->
+    <color name="gradientStart">#1E3A8A</color>
+    <color name="gradientCenter">#2563EB</color>
+    <color name="gradientEnd">#06B6D4</color>
 
-    <color name="gradientTealStart">#00C9A7</color>
-    <color name="gradientTealEnd">#4DDDC4</color>
+    <color name="gradientTealStart">#0D9488</color>
+    <color name="gradientTealEnd">#14B8A6</color>
 
     <color name="gradientDarkStart">#0F172A</color>
     <color name="gradientDarkEnd">#1E293B</color>
@@ -53,7 +53,7 @@
     <color name="cardBackground">#FFFFFF</color>
     <color name="cardStroke">#E2E8F0</color>
     <color name="divider">#E2E8F0</color>
-    <color name="ripple">#1AFF6B35</color>
+    <color name="ripple">#1A2563EB</color>
 
     <!-- Standard Colors -->
     <color name="white">#FFFFFF</color>

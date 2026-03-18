@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
         TextView tvGreeting = view.findViewById(R.id.tv_greeting);
         SharedPreferencesManager prefs = SharedPreferencesManager.getInstance(requireContext());
         if (prefs.isLoggedIn()) {
-            tvGreeting.setText("Hello, " + prefs.getUserName() + "!");
+            tvGreeting.setText(prefs.getUserName());
         }
 
         // Map icon
@@ -58,22 +58,25 @@ public class HomeFragment extends Fragment {
             startActivity(new Intent(requireContext(), MapActivity.class));
         });
 
-        // Notification bell — navigates to Services tab (bookings)
+        // Notification bell — navigates to NotificationFragment
         ImageView ivNotifications = view.findViewById(R.id.iv_notifications);
         View notificationBadge = view.findViewById(R.id.notification_badge);
         ivNotifications.setOnClickListener(v -> {
-            // Navigate to Services tab where bookings and status updates live
-            if (requireActivity() instanceof MainActivity) {
-                ((MainActivity) requireActivity()).navigateToServices();
-            }
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
+                            android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+                    .replace(R.id.fragment_container, new NotificationFragment())
+                    .addToBackStack(null)
+                    .commit();
         });
 
         // Show badge dot if there are active bookings
         checkForActiveBookings(notificationBadge);
 
-        // Categories RecyclerView
+        // Categories RecyclerView — 3-column grid
         RecyclerView rvCategories = view.findViewById(R.id.rv_categories);
-        rvCategories.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        rvCategories.setLayoutManager(new GridLayoutManager(requireContext(), 3));
 
         // Load categories from Firestore
         FirestoreHelper firestoreHelper = FirestoreHelper.getInstance();
@@ -110,9 +113,9 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-        // Featured Products RecyclerView
+        // Featured Products RecyclerView — vertical list with horizontal cards
         RecyclerView rvFeatured = view.findViewById(R.id.rv_featured);
-        rvFeatured.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        rvFeatured.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         // See All clicks (Now LinearLayouts containing the text and arrow)
         View llSeeAllCategories = view.findViewById(R.id.ll_see_all_categories);
@@ -139,7 +142,7 @@ public class HomeFragment extends Fragment {
             });
         }
 
-        productAdapter = new ProductAdapter(requireContext(), new ArrayList<>());
+        productAdapter = new ProductAdapter(requireContext(), new java.util.ArrayList<>(), true);
         productAdapter.setOnProductClickListener(new ProductAdapter.OnProductClickListener() {
             @Override
             public void onProductClick(Product product) {
@@ -158,6 +161,11 @@ public class HomeFragment extends Fragment {
                             new FirestoreHelper.FirestoreCallback<Void>() {
                                 @Override
                                 public void onSuccess(Void result) {
+                                    if (isAdded()) {
+                                        android.widget.Toast.makeText(requireContext(),
+                                                isAdding ? "Added to Wishlist ❤️" : "Removed from Wishlist",
+                                                android.widget.Toast.LENGTH_SHORT).show();
+                                    }
                                 }
 
                                 @Override
@@ -181,7 +189,7 @@ public class HomeFragment extends Fragment {
                         allProducts.clear();
                         for (DocumentSnapshot doc : result.getDocuments()) {
                             Product p = Product.fromMap(doc.getData());
-                            if (p != null) {
+                            if (p != null && p.getStock() > 0) {
                                 p.setDocumentId(doc.getId());
                                 allProducts.add(p);
                             }
@@ -194,7 +202,7 @@ public class HomeFragment extends Fragment {
                                         public void onSuccess(com.google.firebase.firestore.QuerySnapshot result) {
                                             for (DocumentSnapshot doc : result.getDocuments()) {
                                                 Product p = Product.fromMap(doc.getData());
-                                                if (p != null) {
+                                                if (p != null && p.getStock() > 0) {
                                                     p.setDocumentId(doc.getId());
                                                     allProducts.add(p);
                                                 }

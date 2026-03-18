@@ -23,6 +23,6 @@
         
     <!-- Inner Diamond -->
     <path
-        android:fillColor="#818CF8"
+        android:fillColor="#2563EB"
         android:pathData="M54,42 L59,54 L54,66 L49,54 Z" />
 </vector>

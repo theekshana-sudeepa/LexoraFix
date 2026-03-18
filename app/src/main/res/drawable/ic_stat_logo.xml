@@ -3,8 +3,7 @@
     android:width="24dp"
     android:height="24dp"
     android:viewportWidth="108"
-    android:viewportHeight="108"
-    android:tint="#FFFFFF">
+    android:viewportHeight="108">
 
     <!-- Wrench body -->
     <path

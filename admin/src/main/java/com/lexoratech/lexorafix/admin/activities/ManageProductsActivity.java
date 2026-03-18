@@ -31,6 +31,8 @@ public class ManageProductsActivity extends AppCompatActivity
 
     private AdminProductAdapter adapter;
     private final List<Map<String, Object>> productList = new ArrayList<>();
+    private final List<Map<String, Object>> masterProductList = new ArrayList<>();
+    private String currentFilter = "All Products";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +42,11 @@ public class ManageProductsActivity extends AppCompatActivity
         ImageView btnBack = findViewById(R.id.btn_back);
         TextView tvTitle = findViewById(R.id.tv_title);
         RecyclerView rvList = findViewById(R.id.rv_list);
+        ImageView btnFilter = findViewById(R.id.btn_filter);
 
         tvTitle.setText("Manage Products");
         btnBack.setOnClickListener(v -> finish());
+        btnFilter.setOnClickListener(v -> showFilterMenu(btnFilter));
 
         rvList.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AdminProductAdapter(this, productList);
@@ -86,22 +90,84 @@ public class ManageProductsActivity extends AppCompatActivity
         loadProducts();
     }
 
+    private void showFilterMenu(android.view.View view) {
+        androidx.appcompat.widget.PopupMenu popup = new androidx.appcompat.widget.PopupMenu(this, view);
+        popup.getMenu().add("All Products");
+        popup.getMenu().add("In Stock");
+        popup.getMenu().add("Out of Stock");
+        popup.getMenu().add("Featured");
+        popup.getMenu().add("Inactive");
+
+        popup.setOnMenuItemClickListener(item -> {
+            currentFilter = item.getTitle().toString();
+            applyFilter();
+            return true;
+        });
+        popup.show();
+    }
+
     private void loadProducts() {
         FirebaseFirestore.getInstance().collection("products")
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
-                    productList.clear();
+                    masterProductList.clear();
                     for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
                         Map<String, Object> data = doc.getData();
                         if (data != null) {
                             data.put("_documentId", doc.getId());
-                            productList.add(data);
+                            masterProductList.add(data);
                         }
                     }
-                    adapter.notifyDataSetChanged();
+                    // Sort newest first by timestamp or createdAt
+                    java.util.Collections.sort(masterProductList, (a, b) -> {
+                        Object tsA = a.get("timestamp") != null ? a.get("timestamp") : a.get("createdAt");
+                        Object tsB = b.get("timestamp") != null ? b.get("timestamp") : b.get("createdAt");
+                        long timeA = 0, timeB = 0;
+                        if (tsA instanceof com.google.firebase.Timestamp) timeA = ((com.google.firebase.Timestamp) tsA).getSeconds();
+                        else if (tsA instanceof Long) timeA = (Long) tsA;
+                        if (tsB instanceof com.google.firebase.Timestamp) timeB = ((com.google.firebase.Timestamp) tsB).getSeconds();
+                        else if (tsB instanceof Long) timeB = (Long) tsB;
+                        return Long.compare(timeB, timeA);
+                    });
+                    applyFilter();
                 })
                 .addOnFailureListener(e -> Toast.makeText(this, "Failed to load products: " + e.getMessage(),
                         Toast.LENGTH_LONG).show());
+    }
+
+    private void applyFilter() {
+        productList.clear();
+        for (Map<String, Object> product : masterProductList) {
+            boolean matches = true;
+            if ("In Stock".equals(currentFilter)) {
+                int stock = product.get("stock") instanceof Number ? ((Number) product.get("stock")).intValue() : 0;
+                matches = stock > 0;
+            } else if ("Out of Stock".equals(currentFilter)) {
+                int stock = product.get("stock") instanceof Number ? ((Number) product.get("stock")).intValue() : 0;
+                matches = stock <= 0;
+            } else if ("Featured".equals(currentFilter)) {
+                matches = Boolean.TRUE.equals(product.get("featured"));
+            } else if ("Inactive".equals(currentFilter)) {
+                matches = "inactive".equals(product.get("status"));
+            }
+            
+            if (matches) {
+                productList.add(product);
+            }
+        }
+        
+        TextView tvCount = findViewById(R.id.tv_count);
+        if (tvCount != null) {
+            tvCount.setText(String.valueOf(productList.size()));
+            tvCount.setVisibility(android.view.View.VISIBLE);
+        }
+        
+        android.widget.LinearLayout emptyState = findViewById(R.id.empty_state);
+        if (emptyState != null) {
+            emptyState.setVisibility(productList.isEmpty() ? android.view.View.VISIBLE : android.view.View.GONE);
+        }
+        
+        adapter.notifyDataSetChanged();
     }
 
     @Override

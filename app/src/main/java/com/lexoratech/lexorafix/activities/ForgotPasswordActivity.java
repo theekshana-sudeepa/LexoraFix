@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.lexoratech.lexorafix.R;
 import com.lexoratech.lexorafix.data.FirebaseAuthHelper;
 import com.lexoratech.lexorafix.data.FirestoreHelper;
@@ -56,22 +57,39 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         setLoading(true);
 
-        FirebaseAuthHelper.getInstance().sendPasswordReset(email, new FirebaseAuthHelper.AuthCallback() {
-            @Override
-            public void onSuccess() {
-                setLoading(false);
-                Toast.makeText(ForgotPasswordActivity.this,
-                        getString(R.string.reset_email_sent), Toast.LENGTH_LONG).show();
-                finish();
-            }
+        FirebaseFirestore.getInstance().collection("users")
+                .whereEqualTo("email", email)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (queryDocumentSnapshots != null && !queryDocumentSnapshots.isEmpty()) {
+                        // Email exists in the database, proceed with password reset
+                        FirebaseAuthHelper.getInstance().sendPasswordReset(email, new FirebaseAuthHelper.AuthCallback() {
+                            @Override
+                            public void onSuccess() {
+                                setLoading(false);
+                                Toast.makeText(ForgotPasswordActivity.this,
+                                        getString(R.string.reset_email_sent), Toast.LENGTH_LONG).show();
+                                finish();
+                            }
 
-            @Override
-            public void onError(String message) {
-                setLoading(false);
-                Toast.makeText(ForgotPasswordActivity.this,
-                        "Failed to send reset email. Please try again later.", Toast.LENGTH_LONG).show();
-            }
-        });
+                            @Override
+                            public void onError(String message) {
+                                setLoading(false);
+                                Toast.makeText(ForgotPasswordActivity.this,
+                                        "Failed to send reset email. Please try again later.", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else {
+                        // Email does not exist
+                        setLoading(false);
+                        tilEmail.setError("This email is not registered.");
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    setLoading(false);
+                    Toast.makeText(ForgotPasswordActivity.this,
+                            "Failed to verify email. Please try again.", Toast.LENGTH_LONG).show();
+                });
     }
 
     private void setLoading(boolean loading) {

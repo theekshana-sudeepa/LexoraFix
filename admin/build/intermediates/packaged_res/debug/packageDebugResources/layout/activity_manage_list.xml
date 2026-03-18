@@ -50,6 +50,18 @@
             android:textSize="12sp"
             android:textStyle="bold"
             android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/btn_filter"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp"
+            android:src="@drawable/ic_filter"
+            app:tint="@color/adminTextPrimary" />
     </LinearLayout>
 
     <View

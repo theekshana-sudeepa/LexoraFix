@@ -32,6 +32,8 @@ public class ManageOrdersActivity extends AppCompatActivity {
     private static final String TAG = "ManageOrders";
     private AdminOrderAdapter adapter;
     private final List<Map<String, Object>> orderList = new ArrayList<>();
+    private final List<Map<String, Object>> masterOrderList = new ArrayList<>();
+    private String currentFilter = "All Orders";
     private ListenerRegistration orderListener;
     private SwipeRefreshLayout swipeRefresh;
     private LinearLayout emptyState;
@@ -48,16 +50,18 @@ public class ManageOrdersActivity extends AppCompatActivity {
         swipeRefresh = findViewById(R.id.swipe_refresh);
         emptyState = findViewById(R.id.empty_state);
         tvCount = findViewById(R.id.tv_count);
+        ImageView btnFilter = findViewById(R.id.btn_filter);
 
         tvTitle.setText("Manage Orders");
         btnBack.setOnClickListener(v -> finish());
+        btnFilter.setOnClickListener(v -> showFilterMenu(btnFilter));
 
         rvList.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AdminOrderAdapter(this, orderList);
         rvList.setAdapter(adapter);
 
         // SwipeRefresh
-        swipeRefresh.setColorSchemeColors(0xFFFF9800, 0xFF6C63FF, 0xFF4CAF50);
+        swipeRefresh.setColorSchemeColors(0xFFFF9800, 0xFF2563EB, 0xFF4CAF50);
         swipeRefresh.setOnRefreshListener(() -> {
             if (orderListener != null) {
                 orderListener.remove();
@@ -71,6 +75,23 @@ public class ManageOrdersActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         startListening();
+    }
+
+    private void showFilterMenu(View view) {
+        androidx.appcompat.widget.PopupMenu popup = new androidx.appcompat.widget.PopupMenu(this, view);
+        popup.getMenu().add("All Orders");
+        popup.getMenu().add("Pending");
+        popup.getMenu().add("Confirmed");
+        popup.getMenu().add("Shipped");
+        popup.getMenu().add("Delivered");
+        popup.getMenu().add("Cancelled");
+
+        popup.setOnMenuItemClickListener(item -> {
+            currentFilter = item.getTitle().toString();
+            applyFilter();
+            return true;
+        });
+        popup.show();
     }
 
     @Override
@@ -122,17 +143,17 @@ public class ManageOrdersActivity extends AppCompatActivity {
     }
 
     private void populateOrders(List<DocumentSnapshot> documents) {
-        orderList.clear();
+        masterOrderList.clear();
         for (DocumentSnapshot doc : documents) {
             Map<String, Object> data = doc.getData();
             if (data != null) {
                 data.put("_documentId", doc.getId());
-                orderList.add(data);
+                masterOrderList.add(data);
             }
         }
         
         // Ensure robust local sorting (descending) regardless of Firestore indices
-        Collections.sort(orderList, (a, b) -> {
+        Collections.sort(masterOrderList, (a, b) -> {
             Object tsA = a.get("timestamp");
             Object tsB = b.get("timestamp");
             long timeA = 0, timeB = 0;
@@ -152,10 +173,24 @@ public class ManageOrdersActivity extends AppCompatActivity {
             return cmp;
         });
         
-        Log.d(TAG, "Loaded " + orderList.size() + " orders");
+        Log.d(TAG, "Loaded " + masterOrderList.size() + " total orders");
+        applyFilter();
+    }
+
+    private void applyFilter() {
+        orderList.clear();
+        for (Map<String, Object> order : masterOrderList) {
+            if ("All Orders".equals(currentFilter)) {
+                orderList.add(order);
+            } else {
+                String status = order.get("status") != null ? order.get("status").toString() : "";
+                if (status.equalsIgnoreCase(currentFilter)) {
+                    orderList.add(order);
+                }
+            }
+        }
         adapter.notifyDataSetChanged();
 
-        // Update count badge
         if (tvCount != null) {
             tvCount.setText(String.valueOf(orderList.size()));
             tvCount.setVisibility(View.VISIBLE);

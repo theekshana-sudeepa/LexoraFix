@@ -14,7 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.lexoratech.lexorafix.admin.R;
 import com.lexoratech.lexorafix.admin.utils.ThemeUtils;
@@ -29,6 +37,8 @@ public class WorkerRegistrationActivity extends AppCompatActivity {
     private MaterialButton btnRegister;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
+    private GoogleSignInClient mGoogleSignInClient;
+    private static final int RC_SIGN_IN = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +62,22 @@ public class WorkerRegistrationActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(v -> attemptRegistration());
         
         TextView tvBackToLogin = findViewById(R.id.tv_back_to_login);
-        tvBackToLogin.setOnClickListener(v -> finish());
+        tvBackToLogin.setOnClickListener(v -> {
+            startActivity(new Intent(WorkerRegistrationActivity.this, AdminLoginActivity.class));
+            finish();
+        });
+        
+        // Google Sign In Setup
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        MaterialButton btnGoogleSignUp = findViewById(R.id.btn_google_sign_up);
+        if (btnGoogleSignUp != null) {
+            btnGoogleSignUp.setOnClickListener(v -> signInWithGoogle());
+        }
         
         applyEntranceAnimations();
     }
@@ -129,6 +154,94 @@ public class WorkerRegistrationActivity extends AppCompatActivity {
                         saveWorkerToFirestore(name, email, phone);
                     });
         }
+    }
+
+    private void signInWithGoogle() {
+        setLoading(true);
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                setLoading(false);
+                Toast.makeText(this, "Google sign up failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Check if user already exists
+                        String uid = auth.getCurrentUser().getUid();
+                        FirebaseFirestore.getInstance().collection("users").document(uid).get()
+                                .addOnSuccessListener(documentSnapshot -> {
+                                    if (documentSnapshot.exists()) {
+                                        // Already registered, go to pending or dashboard
+                                        Toast.makeText(this, "Account already exists. Please login.", Toast.LENGTH_LONG).show();
+                                        setLoading(false);
+                                        auth.signOut();
+                                    } else {
+                                        String name = account.getDisplayName() != null ? account.getDisplayName() : "";
+                                        String email = account.getEmail() != null ? account.getEmail() : "";
+                                        
+                                        // Prompt for phone number
+                                        android.widget.EditText input = new android.widget.EditText(this);
+                                        input.setHint("Enter your phone number");
+                                        input.setInputType(android.text.InputType.TYPE_CLASS_PHONE);
+                                        
+                                        android.widget.LinearLayout.LayoutParams lp = new android.widget.LinearLayout.LayoutParams(
+                                                android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+                                                android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+                                        int margin = (int) (20 * getResources().getDisplayMetrics().density);
+                                        lp.setMargins(margin, margin, margin, margin);
+                                        input.setLayoutParams(lp);
+                                
+                                        android.widget.LinearLayout container = new android.widget.LinearLayout(this);
+                                        container.setPadding(margin, margin, margin, margin);
+                                        container.addView(input);
+                                        
+                                        setLoading(false); // Stop loading while waiting for user input
+                                        
+                                        new androidx.appcompat.app.AlertDialog.Builder(this)
+                                                .setTitle("Phone Number Required")
+                                                .setMessage("Please enter your phone number to complete registration.")
+                                                .setView(container)
+                                                .setCancelable(false) // Force them to enter it
+                                                .setPositiveButton("Complete Setup", (dialog, which) -> {
+                                                    String phone = input.getText().toString().trim();
+                                                    if (android.text.TextUtils.isEmpty(phone)) {
+                                                        Toast.makeText(this, "Phone number is required.", Toast.LENGTH_SHORT).show();
+                                                        auth.signOut();
+                                                    } else {
+                                                        setLoading(true);
+                                                        saveWorkerToFirestore(name, email, phone);
+                                                    }
+                                                })
+                                                .setNegativeButton("Cancel", (dialog, which) -> {
+                                                    auth.signOut();
+                                                })
+                                                .show();
+                                    }
+                                }).addOnFailureListener(e -> {
+                                    setLoading(false);
+                                    Toast.makeText(this, "Error checking account: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                });
+                    } else {
+                        setLoading(false);
+                        Toast.makeText(this, "Firebase Auth with Google failed.", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void saveWorkerToFirestore(String name, String email, String phone) {

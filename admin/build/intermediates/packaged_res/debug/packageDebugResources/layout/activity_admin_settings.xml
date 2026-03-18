@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GENERAL"
-                android:textColor="#818CF8"
+                android:textColor="#14B8A6"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="8dp"
@@ -217,6 +217,56 @@
 
                         <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/switch_maintenance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/adminDivider"
+                        android:layout_marginHorizontal="16dp" />
+
+                    <!-- Biometric Authentication -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_dashboard_users_premium"
+                            app:tint="#FCA5A5" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="16dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:fontFamily="@font/poppins"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Biometric Authentication"
+                                android:textColor="@color/adminTextPrimary"
+                                android:textSize="16sp" />
+                                
+                            <TextView
+                                android:fontFamily="@font/poppins"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Require fingerprint on app launch"
+                                android:textColor="@color/adminTextHint"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switch_biometric"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>

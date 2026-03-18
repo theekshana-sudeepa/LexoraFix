@@ -4,6 +4,7 @@ import java.io.FileInputStream
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.services)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -45,8 +46,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
     }
 
     packaging {
@@ -58,6 +63,10 @@ android {
     }
 }
 
+kotlin {
+    jvmToolchain(17)
+}
+
 dependencies {
     // AndroidX Core
     implementation(libs.appcompat)
@@ -66,6 +75,7 @@ dependencies {
     implementation(libs.recyclerview)
     implementation(libs.cardview)
     implementation(libs.swiperefreshlayout)
+    implementation("androidx.biometric:biometric:1.1.0")
 
     // Firebase
     implementation(platform(libs.firebase.bom))
@@ -88,6 +98,9 @@ dependencies {
     // Lombok — annotation-driven getters/setters/constructors for model classes
     compileOnly("org.projectlombok:lombok:1.18.34")
     annotationProcessor("org.projectlombok:lombok:1.18.34")
+
+    // Google Sign-In
+    implementation(libs.play.services.auth)
 
     // Testing
     testImplementation(libs.junit)

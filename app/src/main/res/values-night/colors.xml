@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- ========== Premium Color Palette (Deep Slate Dark Mode) ========== -->
+    <!-- ========== Premium Color Palette (Deep Slate Dark Mode — Logo Blue-Teal) ========== -->
 
-    <!-- Primary — Lighter Coral for dark backgrounds -->
-    <color name="colorPrimary">#FF8F65</color>
+    <!-- Primary — Lighter Blue for dark backgrounds -->
+    <color name="colorPrimary">#60A5FA</color>
     <color name="colorPrimaryDark">#0F172A</color> <!-- Match Slate background for system bars -->
-    <color name="colorPrimaryLight">#FFB088</color>
-    <color name="colorPrimaryVariant">#FF6B35</color>
+    <color name="colorPrimaryLight">#93C5FD</color>
+    <color name="colorPrimaryVariant">#2563EB</color>
 
     <!-- Secondary — Brighter Teal -->
-    <color name="colorSecondary">#4DDDC4</color>
-    <color name="colorSecondaryDark">#00C9A7</color>
-    <color name="colorSecondaryLight">#7AEADB</color>
-    <color name="colorSecondaryVariant">#00C9A7</color>
+    <color name="colorSecondary">#5EEAD4</color>
+    <color name="colorSecondaryDark">#14B8A6</color>
+    <color name="colorSecondaryLight">#99F6E4</color>
+    <color name="colorSecondaryVariant">#14B8A6</color>
 
     <!-- Accent -->
-    <color name="colorAccent">#FF8F65</color>
+    <color name="colorAccent">#60A5FA</color>
 
     <!-- Surface & Background — Premium Deep Slate -->
     <color name="colorBackground">#0F172A</color> <!-- Deep Slate Background -->
@@ -38,13 +38,13 @@
     <color name="colorDivider">#334155</color>   <!-- Slate Border -->
     <color name="splashBackground">#0F172A</color>
 
-    <!-- Gradient — Subtle on dark -->
-    <color name="gradientStart">#FF6B35</color>
-    <color name="gradientCenter">#E55A2B</color>
-    <color name="gradientEnd">#CC4A20</color>
+    <!-- Gradient — Blue-teal on dark -->
+    <color name="gradientStart">#1E3A8A</color>
+    <color name="gradientCenter">#2563EB</color>
+    <color name="gradientEnd">#06B6D4</color>
 
-    <color name="gradientTealStart">#00A88C</color>
-    <color name="gradientTealEnd">#00C9A7</color>
+    <color name="gradientTealStart">#0D9488</color>
+    <color name="gradientTealEnd">#14B8A6</color>
 
     <color name="gradientDarkStart">#0F172A</color>
     <color name="gradientDarkEnd">#1E293B</color>
@@ -53,7 +53,7 @@
     <color name="cardBackground">#1E293B</color>
     <color name="cardStroke">#334155</color>
     <color name="divider">#334155</color>
-    <color name="ripple">#33FF8F65</color>
+    <color name="ripple">#3360A5FA</color>
 
     <!-- Standard -->
     <color name="white">#FFFFFF</color>

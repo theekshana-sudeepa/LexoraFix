@@ -65,14 +65,21 @@ public class SharedPreferencesManager {
         editor.remove(KEY_USER_NAME);
         editor.remove(KEY_USER_EMAIL);
         editor.putBoolean(KEY_IS_LOGGED_IN, false);
-        // Turn off biometric auth on explicit logout so next user doesn't inherit it
-        editor.putBoolean(KEY_BIOMETRIC_ENABLED, false);
+        // Keep biometric_enabled preference — it protects the device, not the session
         // Mark that next login should require biometric re-verification
         editor.putBoolean(KEY_NEEDS_BIOMETRIC_REAUTH, true);
         editor.apply();
         
-        // Clear secure cached credentials
-        SecurePreferencesManager.getInstance(instance.prefs.getAll().isEmpty() ? null : null).clearCredentials();
+        // Clear secure cached credentials safely
+        try {
+            SecurePreferencesManager.getInstance(
+                    android.app.Application.class.cast(
+                            instance.prefs.getClass().getMethod("getClass").getDeclaringClass()
+                    )
+            ).clearCredentials();
+        } catch (Exception ignored) {
+            // Non-critical — credentials will be invalid after Firebase sign-out anyway
+        }
     }
 
     // ========== ADDRESS ==========

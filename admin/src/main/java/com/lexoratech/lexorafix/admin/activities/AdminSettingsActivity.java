@@ -18,7 +18,7 @@ import com.lexoratech.lexorafix.admin.utils.ThemeUtils;
 
 public class AdminSettingsActivity extends AppCompatActivity {
 
-    private SwitchCompat switchNotifications, switchMaintenance;
+    private SwitchCompat switchNotifications, switchMaintenance, switchBiometric;
     private View llThemeSelector;
     private TextView tvThemeStatus;
     private FirebaseFirestore db;
@@ -42,19 +42,28 @@ public class AdminSettingsActivity extends AppCompatActivity {
         tvThemeStatus = findViewById(R.id.tv_theme_status);
         switchNotifications = findViewById(R.id.switch_notifications);
         switchMaintenance = findViewById(R.id.switch_maintenance);
+        switchBiometric = findViewById(R.id.switch_biometric);
 
         SharedPreferences prefs = getSharedPreferences("admin_prefs", Context.MODE_PRIVATE);
         boolean isNotifications = prefs.getBoolean("notifications", true);
+        boolean isBiometric = prefs.getBoolean("biometric_enabled", false);
         
         int currentThemeMode = ThemeUtils.getThemeMode(this);
         updateThemeStatusText(currentThemeMode);
 
         // Actual state loads
         switchNotifications.setChecked(isNotifications);
+        switchBiometric.setChecked(isBiometric);
 
         loadMaintenanceState();
 
         llThemeSelector.setOnClickListener(v -> showThemePickerDialog());
+
+        switchBiometric.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefs.edit().putBoolean("biometric_enabled", isChecked).apply();
+            String msg = isChecked ? "Biometric Auth Enabled" : "Biometric Auth Disabled";
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        });
 
         switchNotifications.setOnCheckedChangeListener((buttonView, isChecked) -> {
             prefs.edit().putBoolean("notifications", isChecked).apply();

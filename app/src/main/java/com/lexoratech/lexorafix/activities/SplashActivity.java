@@ -83,12 +83,32 @@ public class SplashActivity extends AppCompatActivity {
         });
 
         // Ask for permissions on first run
+        String[] requiredPermissions;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, PERMISSION_REQUEST_CODE);
-                // Do not navigate automatically, wait for onRequestPermissionsResult
-                return;
+            requiredPermissions = new String[]{
+                    Manifest.permission.POST_NOTIFICATIONS,
+                    Manifest.permission.CALL_PHONE,
+                    Manifest.permission.CAMERA
+            };
+        } else {
+            requiredPermissions = new String[]{
+                    Manifest.permission.CALL_PHONE,
+                    Manifest.permission.CAMERA
+            };
+        }
+
+        boolean needsPermissions = false;
+        for (String permission : requiredPermissions) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                needsPermissions = true;
+                break;
             }
+        }
+
+        if (needsPermissions) {
+            ActivityCompat.requestPermissions(this, requiredPermissions, PERMISSION_REQUEST_CODE);
+            // Do not navigate automatically, wait for onRequestPermissionsResult
+            return;
         }
 
         // Fast-path routing: If we already have a saved session, we don't need to force the user

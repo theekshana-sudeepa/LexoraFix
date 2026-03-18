@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/spacing_sm"
+    android:layout_marginBottom="10dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
-    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardCornerRadius="20dp"
     app:cardElevation="2dp"
-    app:cardBackgroundColor="@color/cardBackground"
-    app:strokeColor="@color/cardStroke"
-    app:strokeWidth="1dp">
+    app:cardBackgroundColor="@color/colorSurface"
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="@dimen/spacing_md">
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="16dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -32,17 +32,17 @@
                 android:layout_height="wrap_content"
                 android:text="Order #LF123"
                 android:textColor="@color/textPrimary"
-                android:textSize="@dimen/text_body"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="3dp"
                 android:text="2024-01-01"
                 android:textColor="@color/textSecondary"
-                android:textSize="@dimen/text_caption" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_items"
@@ -51,7 +51,7 @@
                 android:layout_marginTop="2dp"
                 android:text="3 items"
                 android:textColor="@color/textSecondary"
-                android:textSize="@dimen/text_caption" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -65,19 +65,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="LKR 0.00"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/text_body"
+                android:textColor="#2563EB"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_xs"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/bg_status_badge"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="2dp"
-                android:text="Confirmed"
+                android:text="Delivered"
                 android:textColor="@color/colorSuccess"
                 android:textSize="11sp"
                 android:textStyle="bold" />
@@ -90,12 +90,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:minHeight="0dp"
-                android:paddingHorizontal="@dimen/spacing_xs"
+                android:paddingHorizontal="4dp"
                 android:paddingVertical="2dp"
                 android:text="📦 Track"
                 android:textAllCaps="false"
-                android:textColor="@color/colorSecondary"
-                android:textSize="@dimen/text_caption" />
+                android:textColor="#2563EB"
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

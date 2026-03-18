@@ -10,176 +10,167 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/spacing_xl">
+        android:paddingBottom="80dp">
 
-        <!-- ═══════════ Hero Banner (Curved) ═══════════ -->
-        <FrameLayout
+        <!-- ═══════════ Header Section (Light) ═══════════ -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="16dp">
 
-            <!-- Premium Curved Background -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:background="@drawable/bg_header_curved" />
-
+            <!-- Top Row: Greeting + Action Icons -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="24dp"
-                android:paddingTop="32dp"
-                android:paddingBottom="64dp">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <!-- Top Row: Greeting + Map/Filter Icon -->
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="0dp"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:text="Welcome back,"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="14sp" />
 
-                        <TextView
-                            android:id="@+id/tv_greeting"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Welcome!"
-                            android:textColor="#E0FFFFFF"
-                            android:fontFamily="sans-serif-medium"
-                            android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tv_greeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="User"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="Find Everything\nYou Need."
-                            android:textColor="@color/white"
-                            android:textSize="26sp"
-                            android:fontFamily="sans-serif-black"
-                            android:lineSpacingExtra="4dp" />
-                    </LinearLayout>
+                <!-- Notification Bell -->
+                <FrameLayout
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_marginEnd="8dp">
 
-                    <!-- Notifications Button with Badge -->
-                    <FrameLayout
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:layout_marginEnd="8dp">
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            app:cardCornerRadius="23dp"
-                            app:cardBackgroundColor="#33FFFFFF"
-                            app:strokeWidth="1dp"
-                            app:strokeColor="#4DFFFFFF"
-                            app:cardElevation="0dp">
-
-                            <ImageView
-                                android:id="@+id/iv_notifications"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="12dp"
-                                android:src="@drawable/ic_notifications"
-                                android:contentDescription="Notifications"
-                                app:tint="@color/white" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <!-- Badge Dot -->
-                        <View
-                            android:id="@+id/notification_badge"
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
-                            android:layout_gravity="top|end"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="4dp"
-                            android:background="@drawable/bg_notification_dot"
-                            android:visibility="gone" />
-                    </FrameLayout>
-
-                    <!-- Profile / Map Button -->
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        app:cardCornerRadius="23dp"
-                        app:cardBackgroundColor="#33FFFFFF"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="22dp"
+                        app:cardBackgroundColor="@color/colorSurface"
                         app:strokeWidth="1dp"
-                        app:strokeColor="#4DFFFFFF"
+                        app:strokeColor="@color/cardStroke"
                         app:cardElevation="0dp">
 
                         <ImageView
-                            android:id="@+id/iv_map"
+                            android:id="@+id/iv_notifications"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:padding="12dp"
-                            android:src="@drawable/ic_location"
-                            android:contentDescription="Map"
-                            app:tint="@color/white" />
+                            android:padding="10dp"
+                            android:src="@drawable/ic_notifications"
+                            android:contentDescription="Notifications"
+                            app:tint="@color/textPrimary" />
                     </com.google.android.material.card.MaterialCardView>
-                </LinearLayout>
 
-                <!-- Modern Search Bar (Pill shaped inside hero) -->
+                    <!-- Badge Dot -->
+                    <View
+                        android:id="@+id/notification_badge"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="top|end"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/bg_notification_dot"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <!-- Map / Location Button -->
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="24dp"
-                    app:cardCornerRadius="28dp"
-                    app:cardElevation="12dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:cardCornerRadius="22dp"
                     app:cardBackgroundColor="@color/colorSurface"
-                    app:strokeWidth="0dp">
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/cardStroke"
+                    app:cardElevation="0dp">
 
-                    <LinearLayout
+                    <ImageView
+                        android:id="@+id/iv_map"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:paddingHorizontal="16dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_search"
-                            app:tint="@color/textSecondary" />
-
-                        <EditText
-                            android:id="@+id/et_search"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:layout_marginStart="12dp"
-                            android:background="@null"
-                            android:hint="Search premium tools..."
-                            android:textColorHint="@color/textSecondary"
-                            android:textColor="@color/textPrimary"
-                            android:textSize="15sp"
-                            android:inputType="text"
-                            android:maxLines="1" />
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="24dp"
-                            android:layout_marginHorizontal="12dp"
-                            android:background="@color/colorDivider" />
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_filter"
-                            app:tint="@color/colorPrimary" />
-                    </LinearLayout>
+                        android:padding="10dp"
+                        android:src="@drawable/ic_location"
+                        android:contentDescription="Map"
+                        app:tint="@color/textPrimary" />
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
-        </FrameLayout>
+
+            <!-- Subtitle -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Find everything you need"
+                android:textColor="@color/textSecondary"
+                android:textSize="14sp" />
+
+            <!-- Modern Search Bar -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/colorSurface"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/cardStroke">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="16dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_search"
+                        app:tint="@color/textHint" />
+
+                    <EditText
+                        android:id="@+id/et_search"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:background="@null"
+                        android:hint="Search tools, equipment..."
+                        android:textColorHint="@color/textHint"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="14sp"
+                        android:inputType="text"
+                        android:maxLines="1" />
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_filter"
+                        app:tint="@color/textSecondary" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
 
         <!-- ═══════════ Promotional Banner Carousel ═══════════ -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-24dp"
+            android:layout_marginTop="8dp"
             android:clipToPadding="false"
             android:paddingHorizontal="24dp"
             android:scrollbars="none">
@@ -189,13 +180,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <!-- Promo Card 1 -->
+                <!-- Promo Card 1: Flash Sale (Blue Gradient) -->
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="280dp"
-                    android:layout_height="140dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="12dp"
                     app:cardCornerRadius="20dp"
-                    app:cardElevation="8dp"
+                    app:cardElevation="4dp"
                     app:strokeWidth="0dp">
 
                     <FrameLayout
@@ -205,50 +196,59 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/promo_banner_1"
-                            android:scaleType="centerCrop" />
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/img_promo_tools" />
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#66000000" />
+                            android:background="@drawable/bg_promo_blue"
+                            android:alpha="0.85" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:padding="20dp"
-                            android:gravity="center_vertical">
+                            android:padding="16dp"
+                            android:gravity="bottom">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/bg_status_badge"
+                                android:background="@drawable/bg_promo_tag"
                                 android:paddingHorizontal="8dp"
-                                android:paddingVertical="4dp"
-                                android:text="SUMMER SALE"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="10sp"
+                                android:paddingVertical="3dp"
+                                android:text="FLASH SALE"
+                                android:textColor="@color/white"
+                                android:textSize="9sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:text="Get 30% Off on\nPower Tools!"
+                                android:text="50% OFF"
                                 android:textColor="@color/white"
-                                android:textSize="18sp"
+                                android:textSize="28sp"
                                 android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Premium Tools"
+                                android:textColor="#B0FFFFFF"
+                                android:textSize="13sp" />
                         </LinearLayout>
                     </FrameLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Promo Card 2 -->
+                <!-- Promo Card 2: New Arrival (Purple Gradient) -->
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="280dp"
-                    android:layout_height="140dp"
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="12dp"
                     app:cardCornerRadius="20dp"
-                    app:cardElevation="8dp"
+                    app:cardElevation="4dp"
                     app:strokeWidth="0dp">
 
                     <FrameLayout
@@ -258,39 +258,109 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/promo_banner_2"
-                            android:scaleType="centerCrop" />
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/img_promo_drills" />
 
-                        <!-- Reverse the angle for variety using transparent black overlay -->
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#66000000" />
+                            android:background="@drawable/bg_promo_purple"
+                            android:alpha="0.85" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical"
-                            android:padding="20dp"
-                            android:gravity="center_vertical">
-                            
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="NEW ARRIVALS"
-                                android:textColor="#E0E0E0"
-                                android:textSize="12sp"
-                                android:fontFamily="sans-serif-medium"
-                                android:letterSpacing="0.1" />
+                            android:padding="16dp"
+                            android:gravity="bottom">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="Professional\nRepair Kits"
+                                android:background="@drawable/bg_promo_tag"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="3dp"
+                                android:text="NEW ARRIVAL"
                                 android:textColor="@color/white"
-                                android:textSize="20sp"
-                                android:fontFamily="sans-serif-black" />
+                                android:textSize="9sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Latest"
+                                android:textColor="@color/white"
+                                android:textSize="28sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Power Drills"
+                                android:textColor="#B0FFFFFF"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </FrameLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Promo Card 3: Gardening (Orange Gradient) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/img_promo_garden" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_promo_orange"
+                            android:alpha="0.85" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:gravity="bottom">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_promo_tag"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="3dp"
+                                android:text="SPRING SALE"
+                                android:textColor="@color/white"
+                                android:textSize="9sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="20% OFF"
+                                android:textColor="@color/white"
+                                android:textSize="28sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Garden Essentials"
+                                android:textColor="#B0FFFFFF"
+                                android:textSize="13sp" />
                         </LinearLayout>
                     </FrameLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -301,7 +371,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="28dp"
             android:paddingHorizontal="24dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -312,8 +382,8 @@
                 android:layout_weight="1"
                 android:text="Categories"
                 android:textColor="@color/textPrimary"
-                android:textSize="22sp"
-                android:fontFamily="sans-serif-black" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/ll_see_all_categories"
@@ -330,16 +400,16 @@
                     android:id="@+id/tv_see_all_categories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="See All"
-                    android:textColor="@color/colorPrimary"
+                    android:text="View All"
+                    android:textColor="#2563EB"
                     android:textSize="14sp"
                     android:textStyle="bold" />
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="2dp"
                     android:src="@drawable/ic_arrow_right"
-                    app:tint="@color/colorPrimary" />
+                    app:tint="#2563EB" />
             </LinearLayout>
         </LinearLayout>
 
@@ -347,28 +417,40 @@
             android:id="@+id/rv_categories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:clipToPadding="false"
-            android:paddingStart="18dp"
-            android:paddingEnd="18dp" />
+            android:paddingHorizontal="16dp" />
 
-        <!-- ═══════════ Featured Products Section ═══════════ -->
+        <!-- ═══════════ Trending Now Section ═══════════ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="28dp"
             android:paddingHorizontal="24dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Top Picks For You"
-                android:textColor="@color/textPrimary"
-                android:textSize="22sp"
-                android:fontFamily="sans-serif-black" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trending Now"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Top sellers"
+                    android:textColor="@color/textSecondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_see_all_featured"
@@ -386,15 +468,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="See All"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="#2563EB"
                     android:textSize="14sp"
                     android:textStyle="bold" />
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="2dp"
                     android:src="@drawable/ic_arrow_right"
-                    app:tint="@color/colorPrimary" />
+                    app:tint="#2563EB" />
             </LinearLayout>
         </LinearLayout>
 
@@ -402,7 +484,7 @@
             android:id="@+id/rv_featured"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:clipToPadding="false"
             android:nestedScrollingEnabled="false"
             android:paddingHorizontal="16dp" />

@@ -183,10 +183,12 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         // === Variant Selectors ===
         LinearLayout layoutVariantOptions = findViewById(R.id.layout_variant_options);
+        com.google.android.material.card.MaterialCardView cardVariants = findViewById(R.id.card_variants);
         layoutVariantOptions.removeAllViews();
 
         if (product.hasVariantOptions()) {
             // ── Multi-attribute mode (e.g. Voltage + Capacity) ─────────────
+            cardVariants.setVisibility(View.VISIBLE);
             layoutVariantOptions.setVisibility(View.VISIBLE);
 
             List<VariantOption> options = product.getVariantOptions();
@@ -253,6 +255,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         } else if (product.hasVariants()) {
             // ── Legacy single-label mode (backwards compatible) ────────────
+            cardVariants.setVisibility(View.VISIBLE);
             layoutVariantOptions.setVisibility(View.VISIBLE);
 
             TextView tvGroupTitle = new TextView(this);
@@ -291,6 +294,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                     chip.setChecked(true);
             }
         } else {
+            cardVariants.setVisibility(View.GONE);
             layoutVariantOptions.setVisibility(View.GONE);
             selectedVariant = null;
         }
@@ -332,6 +336,17 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
 
+        // Share Button
+        ImageView btnShare = findViewById(R.id.btn_share);
+        if (btnShare != null) {
+            btnShare.setOnClickListener(v -> {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out " + product.getName() + " on LexoraFix!");
+                startActivity(Intent.createChooser(shareIntent, "Share via"));
+            });
+        }
+
         // Wishlist Setup
         ImageView ivWishlist = findViewById(R.id.iv_wishlist);
         String uid = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() != null
@@ -362,6 +377,9 @@ public class ProductDetailActivity extends AppCompatActivity {
                         isWishlisted, new com.lexoratech.lexorafix.data.FirestoreHelper.FirestoreCallback<Void>() {
                             @Override
                             public void onSuccess(Void result) {
+                                android.widget.Toast.makeText(ProductDetailActivity.this,
+                                        isWishlisted ? "Added to Wishlist ❤️" : "Removed from Wishlist",
+                                        android.widget.Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
@@ -374,8 +392,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                     v -> Snackbar.make(findViewById(android.R.id.content), "Please login to save favorites", Snackbar.LENGTH_SHORT).show());
         }
 
-        btnAddCart.setOnClickListener(v -> addToCartIfStockAvailable(false));
-        btnBuyNow.setOnClickListener(v -> addToCartIfStockAvailable(true));
+        btnAddCart.setOnClickListener(v -> showVariantConfirmDialog(false));
+        btnBuyNow.setOnClickListener(v -> showVariantConfirmDialog(true));
 
         // Start listening to reviews
         attachReviewsListener();
@@ -410,14 +428,249 @@ public class ProductDetailActivity extends AppCompatActivity {
         if (stock > 0) {
             tvStock.setText(getString(R.string.in_stock) + " (" + stock + " available)");
             tvStock.setTextColor(getResources().getColor(R.color.colorSuccess, null));
-            btnAddCart.setEnabled(true);
-            btnBuyNow.setEnabled(true);
+            if (btnAddCart != null)
+                btnAddCart.setEnabled(true);
+            if (btnBuyNow != null)
+                btnBuyNow.setEnabled(true);
         } else {
             tvStock.setText(R.string.out_of_stock);
             tvStock.setTextColor(getResources().getColor(R.color.colorError, null));
-            btnAddCart.setEnabled(false);
-            btnBuyNow.setEnabled(false);
+            if (btnAddCart != null)
+                btnAddCart.setEnabled(false);
+            if (btnBuyNow != null)
+                btnBuyNow.setEnabled(false);
         }
+    }
+
+    private void showVariantConfirmDialog(boolean isBuyNow) {
+        if (product == null)
+            return;
+
+        com.google.android.material.bottomsheet.BottomSheetDialog dialog = new com.google.android.material.bottomsheet.BottomSheetDialog(this);
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_variant_confirm, null);
+        dialog.setContentView(dialogView);
+
+        // Header Views
+        ImageView ivProductImage = dialogView.findViewById(R.id.iv_product_image);
+        TextView tvProductName = dialogView.findViewById(R.id.tv_product_name);
+        TextView tvProductPrice = dialogView.findViewById(R.id.tv_product_price);
+        TextView tvProductStock = dialogView.findViewById(R.id.tv_product_stock);
+        LinearLayout layoutVariantContainer = dialogView.findViewById(R.id.layout_variant_options_container);
+
+        // Quantity Views
+        MaterialButton btnQtyMinus = dialogView.findViewById(R.id.btn_qty_minus);
+        MaterialButton btnQtyPlus = dialogView.findViewById(R.id.btn_qty_plus);
+        TextView tvQuantity = dialogView.findViewById(R.id.tv_quantity);
+        MaterialButton btnConfirm = dialogView.findViewById(R.id.btn_confirm);
+
+        // Bind Basic Info
+        tvProductName.setText(product.getName());
+        String imgUrl = (product.getImageUrls() != null && !product.getImageUrls().isEmpty())
+                ? product.getImageUrls().get(0)
+                : product.getImageUrl();
+        Glide.with(this).load(imgUrl).into(ivProductImage);
+
+        // Track dialog-specific selections safely
+        final int[] dialogQuantity = { selectedQuantity };
+        tvQuantity.setText(String.valueOf(dialogQuantity[0]));
+
+        // Replicate Variants
+        layoutVariantContainer.removeAllViews();
+        List<String> dialogOptionValues = new ArrayList<>(selectedOptionValues);
+
+        if (product.hasVariantOptions()) {
+            List<VariantOption> options = product.getVariantOptions();
+            for (int g = 0; g < options.size(); g++) {
+                final int groupIdx = g;
+                VariantOption opt = options.get(g);
+
+                // Title
+                TextView tvGroupTitle = new TextView(this);
+                tvGroupTitle.setText(opt.getName());
+                tvGroupTitle.setTextColor(getResources().getColor(R.color.textPrimary, null));
+                tvGroupTitle.setTextSize(14f);
+                tvGroupTitle.setTypeface(null, android.graphics.Typeface.BOLD);
+                tvGroupTitle.setPadding(0, 12, 0, 4);
+                layoutVariantContainer.addView(tvGroupTitle);
+
+                // Chips
+                ChipGroup cg = new ChipGroup(this);
+                cg.setSingleSelection(true);
+                cg.setSelectionRequired(true);
+                layoutVariantContainer.addView(cg);
+
+                if (opt.getValues() == null)
+                    continue;
+
+                for (int c = 0; c < opt.getValues().size(); c++) {
+                    final int chipIdx = c;
+                    String val = opt.getValues().get(c);
+                    Chip chip = new Chip(this);
+                    chip.setText(val);
+                    chip.setCheckable(true);
+                    chip.setChipBackgroundColorResource(R.color.colorSurface);
+                    chip.setTextColor(getResources().getColor(R.color.textPrimary, null));
+
+                    // Pre-select based on main screen
+                    if (val.equals(dialogOptionValues.get(groupIdx))) {
+                        chip.setChecked(true);
+                    }
+
+                    chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                        if (isChecked) {
+                            dialogOptionValues.set(groupIdx, opt.getValues().get(chipIdx));
+                            // Temporarily map to findVariant behavior
+                            List<String> tempBackup = new ArrayList<>(selectedOptionValues);
+                            selectedOptionValues.clear();
+                            selectedOptionValues.addAll(dialogOptionValues);
+                            selectedVariant = findVariant();
+                            updatePriceStock(tvProductPrice, tvProductStock, null, null);
+
+                            // Revert mapping to protect main screen until confirmed
+                            selectedOptionValues.clear();
+                            selectedOptionValues.addAll(tempBackup);
+
+                            // Reset qty in dialog immediately
+                            dialogQuantity[0] = 1;
+                            tvQuantity.setText("1");
+                            btnConfirm.setEnabled(selectedVariant != null && selectedVariant.getStock() > 0);
+                        }
+                    });
+                    cg.addView(chip);
+                }
+            }
+
+        } else if (product.hasVariants()) {
+            TextView tvGroupTitle = new TextView(this);
+            tvGroupTitle.setText("Select Variant");
+            tvGroupTitle.setTextColor(getResources().getColor(R.color.textPrimary, null));
+            tvGroupTitle.setTextSize(14f);
+            tvGroupTitle.setTypeface(null, android.graphics.Typeface.BOLD);
+            tvGroupTitle.setPadding(0, 12, 0, 4);
+            layoutVariantContainer.addView(tvGroupTitle);
+
+            ChipGroup cg = new ChipGroup(this);
+            cg.setSingleSelection(true);
+            cg.setSelectionRequired(true);
+            layoutVariantContainer.addView(cg);
+
+            for (int i = 0; i < product.getVariants().size(); i++) {
+                ProductVariant variant = product.getVariants().get(i);
+                Chip chip = new Chip(this);
+                chip.setText(variant.getLabel());
+                chip.setCheckable(true);
+                chip.setChipBackgroundColorResource(R.color.colorSurface);
+                chip.setTextColor(getResources().getColor(R.color.textPrimary, null));
+
+                if (selectedVariant != null && variant.getLabel().equals(selectedVariant.getLabel())) {
+                    chip.setChecked(true);
+                }
+
+                final int idx = i;
+                chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    if (isChecked) {
+                        ProductVariant oldVariant = selectedVariant;
+                        selectedVariant = product.getVariants().get(idx);
+                        updatePriceStock(tvProductPrice, tvProductStock, null, null);
+                        selectedVariant = oldVariant;
+
+                        dialogQuantity[0] = 1;
+                        tvQuantity.setText("1");
+                        btnConfirm.setEnabled(product.getVariants().get(idx).getStock() > 0);
+                    }
+                });
+                cg.addView(chip);
+            }
+        } else {
+            layoutVariantContainer.setVisibility(View.GONE);
+        }
+
+        // Initialize price and stock inside dialog
+        updatePriceStock(tvProductPrice, tvProductStock, null, null);
+        btnConfirm.setEnabled(selectedVariant != null ? selectedVariant.getStock() > 0 : product.getStock() > 0);
+
+        // Qty Listeners inside Dialog
+        btnQtyMinus.setOnClickListener(v -> {
+            if (dialogQuantity[0] > 1) {
+                dialogQuantity[0]--;
+                tvQuantity.setText(String.valueOf(dialogQuantity[0]));
+            }
+        });
+
+        btnQtyPlus.setOnClickListener(v -> {
+            // Find max stock for the selected variant *in the dialog*
+            int currentMax = product.getStock();
+            if (product.hasVariantOptions()) {
+                List<String> temp = new ArrayList<>(selectedOptionValues);
+                selectedOptionValues.clear();
+                selectedOptionValues.addAll(dialogOptionValues);
+                ProductVariant tempV = findVariant();
+                currentMax = tempV != null ? tempV.getStock() : 0;
+                selectedOptionValues.clear();
+                selectedOptionValues.addAll(temp);
+            } else if (product.hasVariants()) {
+                // Determine which single variant is checked in dialog
+                ChipGroup cg = (ChipGroup) layoutVariantContainer.getChildAt(1);
+                int checkedId = cg.getCheckedChipId();
+                if (checkedId != View.NO_ID) {
+                    Chip checkedChip = cg.findViewById(checkedId);
+                    for (ProductVariant varOption : product.getVariants()) {
+                        if (varOption.getLabel().equals(checkedChip.getText().toString())) {
+                            currentMax = varOption.getStock();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (dialogQuantity[0] < currentMax) {
+                dialogQuantity[0]++;
+                tvQuantity.setText(String.valueOf(dialogQuantity[0]));
+            } else {
+                Toast.makeText(this, "Maximum stock reached", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnConfirm.setOnClickListener(v -> {
+            // Commit dialog selections to main screen
+            selectedQuantity = dialogQuantity[0];
+
+            if (product.hasVariantOptions()) {
+                selectedOptionValues.clear();
+                selectedOptionValues.addAll(dialogOptionValues);
+                selectedVariant = findVariant();
+            } else if (product.hasVariants()) {
+                ChipGroup cg = (ChipGroup) layoutVariantContainer.getChildAt(1);
+                int checkedId = cg.getCheckedChipId();
+                if (checkedId != View.NO_ID) {
+                    Chip checkedChip = cg.findViewById(checkedId);
+                    for (ProductVariant var : product.getVariants()) {
+                        if (var.getLabel().equals(checkedChip.getText().toString())) {
+                            selectedVariant = var;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            // Sync main screen UI just in case
+            TextView mainPrice = findViewById(R.id.tv_price);
+            TextView mainStock = findViewById(R.id.tv_stock);
+            MaterialButton addBtn = findViewById(R.id.btn_add_cart);
+            MaterialButton buyBtn = findViewById(R.id.btn_buy_now);
+            TextView mainQty = findViewById(R.id.tv_quantity);
+
+            updatePriceStock(mainPrice, mainStock, addBtn, buyBtn);
+            if (mainQty != null)
+                mainQty.setText(String.valueOf(selectedQuantity));
+
+            // Proceed with original action
+            addToCartIfStockAvailable(isBuyNow);
+
+            dialog.dismiss();
+        });
+
+        dialog.show();
     }
 
     private void attachReviewsListener() {

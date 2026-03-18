@@ -350,6 +350,11 @@ public class ProductListFragment extends Fragment {
                             new FirestoreHelper.FirestoreCallback<Void>() {
                                 @Override
                                 public void onSuccess(Void result) {
+                                    if (isAdded()) {
+                                        android.widget.Toast.makeText(requireContext(),
+                                                isAdding ? "Added to Wishlist ❤️" : "Removed from Wishlist",
+                                                android.widget.Toast.LENGTH_SHORT).show();
+                                    }
                                 }
 
                                 @Override

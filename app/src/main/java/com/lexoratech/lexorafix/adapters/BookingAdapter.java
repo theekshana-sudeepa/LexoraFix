@@ -2,6 +2,7 @@ package com.lexoratech.lexorafix.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,38 +40,65 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ServiceBooking booking = bookings.get(position);
-        holder.tvServiceType.setText(booking.getServiceType());
-        holder.tvDate.setText(booking.getDate() + " at " + booking.getTime());
+        holder.tvServiceType.setText(booking.getServiceType() + " Service");
+        holder.tvDate.setText(booking.getDate());
+        holder.tvTime.setText(booking.getTime());
+
+        // Random-ish rating based on position
+        double[] ratings = {4.8, 4.9, 4.7, 4.6, 5.0, 4.5};
+        holder.tvRating.setText(String.valueOf(ratings[position % ratings.length]));
 
         String status = booking.getStatus();
         holder.tvStatus.setText(status);
-        setStatusColor(holder.tvStatus, status);
+        setStatusBadge(holder.tvStatus, status);
+
+        // Worker info
+        String workerName = booking.getAssignedWorkerName();
+        if (workerName != null && !workerName.isEmpty()) {
+            holder.workerRow.setVisibility(View.VISIBLE);
+            holder.tvWorkerName.setText(workerName);
+        } else {
+            holder.workerRow.setVisibility(View.GONE);
+        }
 
         holder.itemView.setOnClickListener(v -> showBookingDetailsDialog(booking));
     }
 
-    private void setStatusColor(TextView tvStatus, String status) {
+    private void setStatusBadge(TextView tvStatus, String status) {
         if (status == null) return;
+
+        int textColor;
+        int bgColor;
         switch (status) {
+            case "Confirmed":
             case "Accepted":
-                tvStatus.setTextColor(context.getResources().getColor(R.color.colorPrimary, null));
+                textColor = 0xFF0CA678;
+                bgColor = 0x1A0CA678;
                 break;
             case "In Progress":
-                tvStatus.setTextColor(context.getResources().getColor(R.color.colorWarning, null));
+                textColor = 0xFFF59F00;
+                bgColor = 0x1AF59F00;
                 break;
             case "Completed":
-                tvStatus.setTextColor(context.getResources().getColor(R.color.colorSuccess, null));
-                break;
-            case "Confirmed":
-                tvStatus.setTextColor(context.getResources().getColor(R.color.colorSuccess, null));
+                textColor = 0xFF2563EB;
+                bgColor = 0x1A2563EB;
                 break;
             case "Cancelled":
-                tvStatus.setTextColor(context.getResources().getColor(R.color.colorError, null));
+                textColor = 0xFFE03131;
+                bgColor = 0x1AE03131;
                 break;
+            case "Pending":
             default:
-                tvStatus.setTextColor(context.getResources().getColor(R.color.textSecondary, null));
+                textColor = 0xFFFF922B;
+                bgColor = 0x1AFF922B;
                 break;
         }
+
+        tvStatus.setTextColor(textColor);
+        GradientDrawable bg = new GradientDrawable();
+        bg.setColor(bgColor);
+        bg.setCornerRadius(20f);
+        tvStatus.setBackground(bg);
     }
 
     private void showBookingDetailsDialog(ServiceBooking booking) {
@@ -92,7 +120,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         tvServiceType.setText(booking.getServiceType());
         tvDateTime.setText(booking.getDate() + " at " + booking.getTime());
         tvStatus.setText(booking.getStatus());
-        setStatusColor(tvStatus, booking.getStatus());
+        setStatusBadge(tvStatus, booking.getStatus());
 
         if (booking.getNotes() != null && !booking.getNotes().isEmpty()) {
             tvNotes.setText(booking.getNotes());
@@ -134,13 +162,18 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvServiceType, tvDate, tvStatus;
+        TextView tvServiceType, tvDate, tvTime, tvStatus, tvRating, tvWorkerName;
+        LinearLayout workerRow;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvServiceType = itemView.findViewById(R.id.tv_service_type);
             tvDate = itemView.findViewById(R.id.tv_date);
+            tvTime = itemView.findViewById(R.id.tv_time);
             tvStatus = itemView.findViewById(R.id.tv_status);
+            tvRating = itemView.findViewById(R.id.tv_rating);
+            tvWorkerName = itemView.findViewById(R.id.tv_worker_name);
+            workerRow = itemView.findViewById(R.id.worker_row);
         }
     }
 }

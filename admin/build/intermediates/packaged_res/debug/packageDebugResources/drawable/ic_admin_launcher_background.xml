@@ -20,7 +20,7 @@
         android:fillAlpha="0.3"
         android:pathData="M-20,-20 C20,-20 50,10 50,50 C50,90 20,120 -20,120 Z" />
     <path
-        android:fillColor="#818CF8"
+        android:fillColor="#2563EB"
         android:fillAlpha="0.2"
         android:pathData="M128,128 C88,128 58,98 58,58 C58,18 88,-12 128,-12 Z" />
 </vector>

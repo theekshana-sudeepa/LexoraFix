@@ -74,6 +74,21 @@ public class AdminDashboardActivity extends AppCompatActivity
             }
         }
 
+        // Dynamic Greeting
+        TextView tvGreeting = findViewById(R.id.tv_greeting);
+        if (tvGreeting != null) {
+            int hour = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY);
+            String greeting;
+            if (hour < 12) {
+                greeting = "Good Morning, Admin \u2600\uFE0F";
+            } else if (hour < 17) {
+                greeting = "Good Afternoon, Admin \uD83D\uDC4B";
+            } else {
+                greeting = "Good Evening, Admin \uD83C\uDF19";
+            }
+            tvGreeting.setText(greeting);
+        }
+
         // Open Drawer on Menu Icon Click
         android.view.View btnMenu = findViewById(R.id.btn_menu);
         if (btnMenu != null) {
@@ -91,10 +106,6 @@ public class AdminDashboardActivity extends AppCompatActivity
             startActivity(new Intent(this, AddEditProductActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
-        findViewById(R.id.qa_add_category).setOnClickListener(v -> {
-            startActivity(new Intent(this, AddEditCategoryActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
         findViewById(R.id.qa_manage_orders).setOnClickListener(v -> {
             startActivity(new Intent(this, ManageOrdersActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -102,28 +113,6 @@ public class AdminDashboardActivity extends AppCompatActivity
         findViewById(R.id.qa_manage_bookings).setOnClickListener(v -> {
             startActivity(new Intent(this, ManageBookingsActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
-        findViewById(R.id.qa_manage_users).setOnClickListener(v -> {
-            startActivity(new Intent(this, ManageUsersActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
-        findViewById(R.id.qa_manage_products).setOnClickListener(v -> {
-            startActivity(new Intent(this, ManageProductsActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
-        findViewById(R.id.qa_manage_service_centers).setOnClickListener(v -> {
-            startActivity(new Intent(this, ManageServiceCentersActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
-
-
-
-        // Sign out
-        findViewById(R.id.btn_logout).setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(this, AdminLoginActivity.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
         });
 
         // Request notification permission (Android 13+) and start listener

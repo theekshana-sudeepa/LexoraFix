@@ -73,6 +73,9 @@ drawable ic_dashboard_users_premium
 drawable ic_delete
 drawable ic_edit
 drawable ic_email
+drawable ic_filter
+drawable ic_fingerprint
+drawable ic_google
 drawable ic_location
 drawable ic_logout
 drawable ic_menu
@@ -85,6 +88,8 @@ id btn_add_option
 id btn_add_variant
 id btn_back
 id btn_ban
+id btn_biometric_login
+id btn_cancel
 id btn_clear_1
 id btn_clear_2
 id btn_clear_3
@@ -93,7 +98,9 @@ id btn_delete_option
 id btn_delete_review
 id btn_delete_variant
 id btn_edit
+id btn_filter
 id btn_generate_combinations
+id btn_google_sign_up
 id btn_login
 id btn_logout
 id btn_menu
@@ -102,6 +109,7 @@ id btn_register
 id btn_resend
 id btn_reviews
 id btn_save
+id btn_send_reset
 id btn_update_status
 id card_status
 id cv_login_box
@@ -120,6 +128,7 @@ id et_option_values
 id et_password
 id et_phone
 id et_price
+id et_reset_email
 id et_stock
 id et_variant_label
 id et_variant_price
@@ -138,6 +147,7 @@ id layout_location
 id ll_login_container
 id ll_status_options
 id ll_theme_selector
+id ll_worker_info_container
 id nav_bookings
 id nav_categories
 id nav_dashboard
@@ -148,14 +158,11 @@ id nav_service_centers
 id nav_settings
 id nav_users
 id nav_view_admin
+id pb_worker_loading
 id progress_bar
-id qa_add_category
 id qa_add_product
 id qa_manage_bookings
 id qa_manage_orders
-id qa_manage_products
-id qa_manage_service_centers
-id qa_manage_users
 id rating_bar
 id rv_items
 id rv_list
@@ -167,6 +174,7 @@ id scroll_view
 id spinner_category
 id spinner_status
 id swipe_refresh
+id switch_biometric
 id switch_featured
 id switch_maintenance
 id switch_notifications
@@ -193,11 +201,17 @@ id tv_customer_email
 id tv_customer_name
 id tv_date
 id tv_description
+id tv_dialog_message
+id tv_dialog_title
+id tv_dialog_worker_name
+id tv_dialog_worker_phone
 id tv_email
 id tv_empty
 id tv_empty_icon
 id tv_empty_message
 id tv_featured
+id tv_forgot_password
+id tv_greeting
 id tv_header_email
 id tv_item_count
 id tv_location
@@ -249,6 +263,7 @@ layout activity_worker_dashboard
 layout activity_worker_pending
 layout activity_worker_registration
 layout dialog_booking_status
+layout dialog_forgot_password
 layout item_admin_booking
 layout item_admin_category
 layout item_admin_order

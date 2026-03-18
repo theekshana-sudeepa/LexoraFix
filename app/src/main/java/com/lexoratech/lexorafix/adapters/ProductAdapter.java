@@ -28,6 +28,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private final List<String> wishlist = new java.util.ArrayList<>();
     private final Context context;
     private OnProductClickListener listener;
+    private boolean useHorizontalLayout = false;
 
     public interface OnProductClickListener {
         void onProductClick(Product product);
@@ -40,6 +41,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         this.products = products;
     }
 
+    public ProductAdapter(Context context, List<Product> products, boolean useHorizontalLayout) {
+        this.context = context;
+        this.products = products;
+        this.useHorizontalLayout = useHorizontalLayout;
+    }
+
     public void setOnProductClickListener(OnProductClickListener listener) {
         this.listener = listener;
     }
@@ -47,7 +54,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
+        int layoutRes = useHorizontalLayout ? R.layout.item_product_horizontal : R.layout.item_product;
+        View view = LayoutInflater.from(context).inflate(layoutRes, parent, false);
         return new ViewHolder(view);
     }
 
@@ -76,7 +84,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                     .into(holder.ivProduct);
         } else {
             holder.ivProduct.setImageResource(R.drawable.ic_store);
-            holder.ivProduct.setScaleType(ImageView.ScaleType.CENTER);
             holder.ivProduct.setScaleType(ImageView.ScaleType.CENTER);
         }
 

@@ -256,6 +256,89 @@ public class CheckoutActivity extends AppCompatActivity {
                 ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_address))
                         .setError("Please enter Address Line 1");
                 return;
+            } else {
+                ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_address))
+                        .setError(null);
+            }
+
+            if (TextUtils.isEmpty(provinceVal)) {
+                ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_province))
+                        .setError("Please select a Province");
+                return;
+            } else {
+                ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_province))
+                        .setError(null);
+            }
+
+            if (TextUtils.isEmpty(districtVal)) {
+                ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_district))
+                        .setError("Please select a District");
+                return;
+            } else {
+                ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_district))
+                        .setError(null);
+            }
+
+            if (TextUtils.isEmpty(cityVal)) {
+                ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_city))
+                        .setError("Please enter a City");
+                return;
+            } else {
+                ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_city))
+                        .setError(null);
+            }
+
+            if (TextUtils.isEmpty(postalVal)) {
+                ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_postal))
+                        .setError("Please enter a Postal Code");
+                return;
+            } else {
+                ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_postal))
+                        .setError(null);
+            }
+            
+            // Validate Billing if not same
+            if (!cbBillingSame.isChecked()) {
+                String billAddr1 = etBillingAddr.getText() != null ? etBillingAddr.getText().toString().trim() : "";
+                String billProv = actBillingProvince.getText() != null ? actBillingProvince.getText().toString().trim() : "";
+                String billDist = actBillingDistrict.getText() != null ? actBillingDistrict.getText().toString().trim() : "";
+                String billCity = etBillingCity.getText() != null ? etBillingCity.getText().toString().trim() : "";
+                String billPost = etBillingPostal.getText() != null ? etBillingPostal.getText().toString().trim() : "";
+
+                if (TextUtils.isEmpty(billAddr1)) {
+                    ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_billing_address)).setError("Please enter Billing Address");
+                    return;
+                } else {
+                    ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_billing_address)).setError(null);
+                }
+
+                if (TextUtils.isEmpty(billProv)) {
+                    ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_billing_province)).setError("Please select Billing Province");
+                    return;
+                } else {
+                    ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_billing_province)).setError(null);
+                }
+
+                if (TextUtils.isEmpty(billDist)) {
+                    ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_billing_district)).setError("Please select Billing District");
+                    return;
+                } else {
+                    ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_billing_district)).setError(null);
+                }
+
+                if (TextUtils.isEmpty(billCity)) {
+                    ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_billing_city)).setError("Please enter Billing City");
+                    return;
+                } else {
+                    ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_billing_city)).setError(null);
+                }
+
+                if (TextUtils.isEmpty(billPost)) {
+                    ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_billing_postal)).setError("Please enter Billing Postal Code");
+                    return;
+                } else {
+                    ((com.google.android.material.textfield.TextInputLayout) findViewById(R.id.til_billing_postal)).setError(null);
+                }
             }
 
             // Combine into a deliverable address string

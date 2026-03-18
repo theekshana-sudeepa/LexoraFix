@@ -30,6 +30,8 @@ public class ManageBookingsActivity extends AppCompatActivity {
     private static final String TAG = "ManageBookings";
     private AdminBookingAdapter adapter;
     private List<Map<String, Object>> bookingList = new ArrayList<>();
+    private final List<Map<String, Object>> masterBookingList = new ArrayList<>();
+    private String currentFilter = "All Bookings";
     private ListenerRegistration bookingListener;
     private SwipeRefreshLayout swipeRefresh;
     private LinearLayout emptyState;
@@ -46,16 +48,18 @@ public class ManageBookingsActivity extends AppCompatActivity {
         swipeRefresh = findViewById(R.id.swipe_refresh);
         emptyState = findViewById(R.id.empty_state);
         tvCount = findViewById(R.id.tv_count);
+        ImageView btnFilter = findViewById(R.id.btn_filter);
 
         tvTitle.setText("Manage Bookings");
         btnBack.setOnClickListener(v -> finish());
+        btnFilter.setOnClickListener(v -> showFilterMenu(btnFilter));
 
         rvList.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AdminBookingAdapter(this, bookingList);
         rvList.setAdapter(adapter);
 
         // SwipeRefresh
-        swipeRefresh.setColorSchemeColors(0xFF4CAF50, 0xFF6C63FF, 0xFFFF9800);
+        swipeRefresh.setColorSchemeColors(0xFF4CAF50, 0xFF2563EB, 0xFFFF9800);
         swipeRefresh.setOnRefreshListener(() -> {
             if (bookingListener != null) {
                 bookingListener.remove();
@@ -69,6 +73,22 @@ public class ManageBookingsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         startListening();
+    }
+
+    private void showFilterMenu(View view) {
+        androidx.appcompat.widget.PopupMenu popup = new androidx.appcompat.widget.PopupMenu(this, view);
+        popup.getMenu().add("All Bookings");
+        popup.getMenu().add("Pending");
+        popup.getMenu().add("Accepted");
+        popup.getMenu().add("Completed");
+        popup.getMenu().add("Cancelled");
+
+        popup.setOnMenuItemClickListener(item -> {
+            currentFilter = item.getTitle().toString();
+            applyFilter();
+            return true;
+        });
+        popup.show();
     }
 
     @Override
@@ -123,7 +143,7 @@ public class ManageBookingsActivity extends AppCompatActivity {
     }
 
     private void populateBookings(List<DocumentSnapshot> documents) {
-        bookingList.clear();
+        masterBookingList.clear();
         for (DocumentSnapshot doc : documents) {
             Map<String, Object> data = doc.getData();
             if (data != null) {
@@ -132,12 +152,12 @@ public class ManageBookingsActivity extends AppCompatActivity {
                 if (uid != null) {
                     data.put("_firebaseUid", uid);
                 }
-                bookingList.add(data);
+                masterBookingList.add(data);
             }
         }
         
         // Ensure robust local sorting (descending)
-        Collections.sort(bookingList, (a, b) -> {
+        Collections.sort(masterBookingList, (a, b) -> {
             Object tsA = a.get("timestamp");
             Object tsB = b.get("timestamp");
             long timeA = 0, timeB = 0;
@@ -157,10 +177,24 @@ public class ManageBookingsActivity extends AppCompatActivity {
             return cmp;
         });
         
-        Log.d(TAG, "Loaded " + bookingList.size() + " bookings");
+        Log.d(TAG, "Loaded " + masterBookingList.size() + " total bookings");
+        applyFilter();
+    }
+
+    private void applyFilter() {
+        bookingList.clear();
+        for (Map<String, Object> booking : masterBookingList) {
+            if ("All Bookings".equals(currentFilter)) {
+                bookingList.add(booking);
+            } else {
+                String status = booking.get("status") != null ? booking.get("status").toString() : "";
+                if (status.equalsIgnoreCase(currentFilter)) {
+                    bookingList.add(booking);
+                }
+            }
+        }
         adapter.notifyDataSetChanged();
 
-        // Update count badge
         if (tvCount != null) {
             tvCount.setText(String.valueOf(bookingList.size()));
             tvCount.setVisibility(View.VISIBLE);

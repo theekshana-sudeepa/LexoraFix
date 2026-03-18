@@ -313,6 +313,41 @@ public class LoginActivity extends AppCompatActivity {
                 getString(R.string.welcome_back, name != null && !name.isEmpty() ? name : "User"),
                 Toast.LENGTH_SHORT).show();
 
+        // If biometric auth is enabled, verify identity before proceeding
+        if (prefs.isBiometricEnabled()
+                && com.lexoratech.lexorafix.utils.BiometricHelper.isBiometricAvailable(this)) {
+            com.lexoratech.lexorafix.utils.BiometricHelper.showBiometricPrompt(
+                    this, "Verify Identity",
+                    "Use your fingerprint to continue.",
+                    new com.lexoratech.lexorafix.utils.BiometricHelper.BiometricCallback() {
+                        @Override
+                        public void onSuccess() {
+                            prefs.setNeedsBiometricReauth(false);
+                            goToMain();
+                        }
+
+                        @Override
+                        public void onError(String error) {
+                            Toast.makeText(LoginActivity.this,
+                                    "Authentication failed. Please try again.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onCancelled() {
+                            // User cancelled — sign them out and stay on login
+                            FirebaseAuthHelper.getInstance().signOut();
+                            prefs.logout();
+                        }
+                    });
+        } else {
+            // No biometric — go straight in
+            prefs.setNeedsBiometricReauth(false);
+            goToMain();
+        }
+    }
+
+    private void goToMain() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

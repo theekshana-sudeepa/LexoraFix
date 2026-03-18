@@ -110,14 +110,14 @@ public class ManageCategoriesActivity extends AppCompatActivity
         intent.putExtra("documentId", documentId);
 
         HashMap<String, Object> safeData = new HashMap<>();
-        if (category.get("name") instanceof String)
-            safeData.put("name", category.get("name"));
-        if (category.get("description") instanceof String)
-            safeData.put("description", category.get("description"));
-        if (category.get("iconName") instanceof String)
-            safeData.put("iconName", category.get("iconName"));
-        if (category.get("imageUrl") instanceof String)
-            safeData.put("imageUrl", category.get("imageUrl"));
+        if (category.get("name") != null)
+            safeData.put("name", String.valueOf(category.get("name")));
+        if (category.get("description") != null)
+            safeData.put("description", String.valueOf(category.get("description")));
+        if (category.get("iconName") != null)
+            safeData.put("iconName", String.valueOf(category.get("iconName")));
+        if (category.get("imageUrl") != null)
+            safeData.put("imageUrl", String.valueOf(category.get("imageUrl")));
 
         intent.putExtra("categoryData", safeData);
         startActivity(intent);

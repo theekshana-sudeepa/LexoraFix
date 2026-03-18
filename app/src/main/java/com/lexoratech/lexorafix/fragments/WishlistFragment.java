@@ -55,7 +55,7 @@ public class WishlistFragment extends Fragment {
             }
         });
 
-        rvWishlist.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        rvWishlist.setLayoutManager(new androidx.recyclerview.widget.LinearLayoutManager(requireContext()));
 
         return view;
     }
@@ -143,7 +143,7 @@ public class WishlistFragment extends Fragment {
             layoutEmpty.setVisibility(View.GONE);
             rvWishlist.setVisibility(View.VISIBLE);
 
-            adapter = new ProductAdapter(requireContext(), products);
+            adapter = new ProductAdapter(requireContext(), products, true);
             adapter.setOnProductClickListener(new ProductAdapter.OnProductClickListener() {
                 @Override
                 public void onProductClick(Product product) {
@@ -159,6 +159,11 @@ public class WishlistFragment extends Fragment {
                             new FirestoreHelper.FirestoreCallback<Void>() {
                                 @Override
                                 public void onSuccess(Void result) {
+                                    if (isAdded()) {
+                                        android.widget.Toast.makeText(requireContext(),
+                                                isAdding ? "Added to Wishlist ❤️" : "Removed from Wishlist",
+                                                android.widget.Toast.LENGTH_SHORT).show();
+                                    }
                                     if (!isAdding) {
                                         // If removed from wishlist screen, reload list or remove item
                                         loadWishlistItems();

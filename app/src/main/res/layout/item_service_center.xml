@@ -19,141 +19,140 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Main row: icon + info + call button -->
+        <!-- Main Content Area -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="12dp">
+            android:padding="16dp"
+            android:gravity="center_vertical">
 
-            <!-- Gradient circle icon -->
+            <!-- Rounded Map Pin Icon Container -->
             <FrameLayout
-                android:layout_width="52dp"
-                android:layout_height="52dp">
-
-                <View
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
-                    android:background="@drawable/bg_gradient_circle" />
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_category_icon_circle_soft"
+                android:backgroundTint="#1A2563EB">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_store"
-                    app:tint="@color/white"
-                    android:contentDescription="Center" />
+                    android:src="@drawable/ic_location"
+                    app:tint="#2563EB"
+                    android:contentDescription="Store Pin" />
             </FrameLayout>
 
-            <!-- Name + Address + Distance badge -->
+            <!-- Name and Address Details -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
                 android:layout_weight="1"
+                android:layout_marginStart="16dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_name"
+                    android:fontFamily="@font/poppins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Center Name"
+                    android:text="Service Center Name"
                     android:textColor="@color/textPrimary"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     android:maxLines="1"
                     android:ellipsize="end" />
 
                 <TextView
                     android:id="@+id/tv_address"
+                    android:fontFamily="@font/poppins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="Address"
+                    android:layout_marginTop="2dp"
+                    android:text="123 Example Street, City"
                     android:textColor="@color/textSecondary"
                     android:textSize="13sp"
-                    android:maxLines="2"
+                    android:maxLines="1"
                     android:ellipsize="end" />
 
-                <!-- Distance badge -->
+                <!-- Distance Badge -->
                 <TextView
                     android:id="@+id/tv_distance"
+                    android:fontFamily="@font/poppins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/bg_distance_badge"
+                    android:backgroundTint="#1A10B981"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
                     android:text="📍 Calculating..."
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="#10B981"
                     android:textSize="11sp"
                     android:textStyle="bold"
                     android:visibility="gone" />
             </LinearLayout>
 
-            <!-- Call button with gradient -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btn_call"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                app:cardCornerRadius="22dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="@android:color/transparent"
-                app:strokeWidth="0dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_call_button" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_phone"
-                    app:tint="@color/white"
-                    android:contentDescription="Call" />
-            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
-        <!-- Bottom info row: phone number display -->
+        <!-- Solid Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDivider"
+            android:layout_marginHorizontal="16dp" />
+
+        <!-- Bottom Actions Area -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorSurfaceVariant"
-            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp">
+            android:paddingVertical="12dp"
+            android:gravity="center_vertical"
+            android:background="#FAFAFA">
 
             <ImageView
-                android:layout_width="14dp"
-                android:layout_height="14dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_phone"
                 app:tint="@color/textSecondary"
-                android:layout_marginEnd="8dp"
-                android:contentDescription="Phone" />
+                android:layout_marginEnd="6dp" />
 
+            <!-- Phone Text -->
             <TextView
                 android:id="@+id/tv_phone"
+                android:fontFamily="@font/poppins"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Phone"
-                android:textColor="@color/textSecondary"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tap to navigate ›"
-                android:textColor="@color/colorPrimary"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:text="+94 77 XXXXXXX"
+                android:textColor="@color/textSecondary"
+                android:textSize="13sp" />
+
+            <!-- Action Call Button -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_call"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                app:cardBackgroundColor="#2563EB"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:fontFamily="@font/poppins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="14dp"
+                    android:text="Call Now"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

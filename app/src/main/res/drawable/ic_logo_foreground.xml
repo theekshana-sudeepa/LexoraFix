@@ -17,6 +17,6 @@
 
     <!-- "L" letter -->
     <path
-        android:fillColor="#FF6B35"
+        android:fillColor="#2563EB"
         android:pathData="M58,62 L58,76 L70,76 L70,72 L63,72 L63,62 Z" />
 </vector>

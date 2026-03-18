@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Admin Premium Dark Palette -->
-    <color name="adminPrimary">#6C63FF</color>
-    <color name="adminPrimaryDark">#5A52E0</color>
-    <color name="adminPrimaryLight">#8B85FF</color>
-    <color name="adminSecondary">#00C9A7</color>
-    <color name="adminAccent">#FF6B9D</color>
+    <!-- Admin Premium Palette — Logo Blue-Teal -->
+    <color name="adminPrimary">#2563EB</color>
+    <color name="adminPrimaryDark">#1D4ED8</color>
+    <color name="adminPrimaryLight">#60A5FA</color>
+    <color name="adminSecondary">#14B8A6</color>
+    <color name="adminAccent">#06B6D4</color>
 
     <color name="adminBackground">#F8FAFC</color>
     <color name="adminSurface">#FFFFFF</color>
@@ -17,18 +17,18 @@
     <color name="adminTextHint">#94A3B8</color>
 
     <color name="adminDivider">#E2E8F0</color>
-    <color name="adminRipple">#1A6C63FF</color>
+    <color name="adminRipple">#1A2563EB</color>
 
     <color name="adminSuccess">#10B981</color>
     <color name="adminWarning">#F59E0B</color>
     <color name="adminError">#EF4444</color>
     <color name="adminInfo">#3B82F6</color>
 
-    <color name="adminGradientStart">#6C63FF</color>
-    <color name="adminGradientEnd">#A78BFA</color>
+    <color name="adminGradientStart">#1E3A8A</color>
+    <color name="adminGradientEnd">#2563EB</color>
 
-    <color name="adminHeroGradientStart">#4F46E5</color>
-    <color name="adminHeroGradientEnd">#7C3AED</color>
+    <color name="adminHeroGradientStart">#1D4ED8</color>
+    <color name="adminHeroGradientEnd">#06B6D4</color>
 
     <!-- Tinted Icon Backgrounds (Light Mode - 10/15% Opacity) -->
     <color name="adminTintBlue">#1A3B82F6</color>

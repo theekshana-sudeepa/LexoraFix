@@ -45,7 +45,11 @@ public class WorkerDashboardActivity extends AppCompatActivity {
     private TabLayout tabLayout;
 
     private WorkerBookingAdapter adapter;
+    private List<Map<String, Object>> fullBookingList = new ArrayList<>();
     private List<Map<String, Object>> bookingList = new ArrayList<>();
+    
+    private String currentFilter = "All";
+    private ImageView btnFilter;
 
     private FirebaseAuth auth;
     private FirebaseFirestore db;
@@ -112,9 +116,12 @@ public class WorkerDashboardActivity extends AppCompatActivity {
         tvEmptyMessage = findViewById(R.id.tv_empty_message);
         tvEmptyIcon = findViewById(R.id.tv_empty_icon);
         btnLogout = findViewById(R.id.btn_logout);
+        btnFilter = findViewById(R.id.btn_filter);
         tabLayout = findViewById(R.id.tab_layout);
 
         tvWorkerEmail.setText(auth.getCurrentUser().getEmail());
+
+        btnFilter.setOnClickListener(v -> showFilterMenu());
     }
 
     private void setupRecyclerView() {
@@ -169,17 +176,17 @@ public class WorkerDashboardActivity extends AppCompatActivity {
                 return;
             }
 
-            bookingList.clear();
+            fullBookingList.clear();
             if (queryDocumentSnapshots != null) {
                 for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                     Map<String, Object> bookingMap = doc.getData();
                     bookingMap.put("_documentId", doc.getId());
-                    bookingList.add(bookingMap);
+                    fullBookingList.add(bookingMap);
                 }
             }
 
             // Sort by timestamp descending (latest first)
-            Collections.sort(bookingList, (a, b) -> {
+            Collections.sort(fullBookingList, (a, b) -> {
                 Object tsA = a.get("timestamp");
                 Object tsB = b.get("timestamp");
                 long timeA = 0, timeB = 0;
@@ -202,7 +209,7 @@ public class WorkerDashboardActivity extends AppCompatActivity {
             });
 
             // Check if new bookings arrived (only on Available tab)
-            int newCount = bookingList.size();
+            int newCount = fullBookingList.size();
             if (currentTab == WorkerBookingAdapter.TAB_AVAILABLE && !isFirstLoad && newCount > previousBookingCount) {
                 int diff = newCount - previousBookingCount;
                 showNewBookingNotification(diff);
@@ -210,9 +217,46 @@ public class WorkerDashboardActivity extends AppCompatActivity {
             previousBookingCount = newCount;
             isFirstLoad = false;
 
-            adapter.notifyDataSetChanged();
-            updateEmptyState();
+            applyFilter();
         });
+    }
+
+    private void showFilterMenu() {
+        androidx.appcompat.widget.PopupMenu popup = new androidx.appcompat.widget.PopupMenu(this, btnFilter);
+        popup.getMenu().add("All");
+
+        java.util.Set<String> categories = new java.util.HashSet<>();
+        for (Map<String, Object> map : fullBookingList) {
+            if (map.get("serviceType") instanceof String) {
+                categories.add((String) map.get("serviceType"));
+            }
+        }
+        
+        List<String> sortedCategories = new ArrayList<>(categories);
+        Collections.sort(sortedCategories);
+        for (String cat : sortedCategories) {
+            popup.getMenu().add(cat);
+        }
+
+        popup.setOnMenuItemClickListener(item -> {
+            currentFilter = item.getTitle().toString();
+            applyFilter();
+            return true;
+        });
+        popup.show();
+    }
+
+    private void applyFilter() {
+        bookingList.clear();
+        for (Map<String, Object> map : fullBookingList) {
+            if ("All".equals(currentFilter)) {
+                bookingList.add(map);
+            } else if (currentFilter.equals(map.get("serviceType"))) {
+                bookingList.add(map);
+            }
+        }
+        adapter.notifyDataSetChanged();
+        updateEmptyState();
     }
 
     private void showNewBookingNotification(int count) {

@@ -20,22 +20,22 @@
 
     <!-- Centre windshield (orange) -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M54,55 L58,40 Q59,37 62,37 L68,37 Q71,37 72,40 L76,55 Z" />
 
     <!-- Left rear window (orange) -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M38,55 L45,40 Q46,37 48,37 L52,37 L49,55 Z" />
 
     <!-- Right rear window (orange) -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M92,55 L85,40 Q84,37 82,37 L78,37 L81,55 Z" />
 
     <!-- Left wheel outer ring (orange) — circle via path arc -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M41,86 m-10,0 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0" />
     <!-- Left wheel hub (white) -->
     <path
@@ -44,7 +44,7 @@
 
     <!-- Right wheel outer ring (orange) -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M89,86 m-10,0 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0" />
     <!-- Right wheel hub (white) -->
     <path
@@ -53,22 +53,22 @@
 
     <!-- Headlight left (orange rect) -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M20,62 L27,62 L27,69 L20,69 Z" />
 
     <!-- Headlight right (orange rect) -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M103,62 L110,62 L110,69 L103,69 Z" />
 
     <!-- Wrench handle -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M100,98 L108,90 L110,92 L102,100 Z" />
 
     <!-- Wrench head -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M105,86 Q110,84 113,87 Q116,90 114,95
             Q112,97 110,96 L107,93 L104,96 L101,93
             Q99,90 101,88 Z" />

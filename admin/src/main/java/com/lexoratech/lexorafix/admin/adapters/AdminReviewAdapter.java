@@ -49,7 +49,7 @@ public class AdminReviewAdapter extends RecyclerView.Adapter<AdminReviewAdapter.
         Map<String, Object> review = reviews.get(position);
 
         holder.tvUserName.setText(getStr(review, "userName", "Unknown User"));
-        holder.tvReviewText.setText(getStr(review, "reviewText", ""));
+        holder.tvReviewText.setText(getStr(review, "comment", ""));
 
         Object ratingObj = review.get("rating");
         float rating = ratingObj instanceof Number ? ((Number) ratingObj).floatValue() : 0f;

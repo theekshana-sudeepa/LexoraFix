@@ -90,9 +90,9 @@
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 app:icon="@drawable/ic_edit"
-                app:iconTint="#818CF8"
+                app:iconTint="#2563EB"
                 app:iconSize="18dp"
-                app:backgroundTint="#26818CF8"
+                app:backgroundTint="#262563EB"
                 app:cornerRadius="12dp"
                 android:contentDescription="Edit" />
 

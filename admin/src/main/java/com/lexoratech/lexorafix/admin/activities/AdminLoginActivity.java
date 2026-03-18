@@ -37,18 +37,13 @@ public class AdminLoginActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        // Check if already logged in as admin
-        if (auth.getCurrentUser() != null) {
-            checkAdminAndProceed();
-            return;
-        }
-
         tilEmail = findViewById(R.id.til_email);
         tilPassword = findViewById(R.id.til_password);
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
         btnLogin = findViewById(R.id.btn_login);
         progressBar = findViewById(R.id.progress_bar);
+        android.widget.ImageButton btnBiometricLogin = findViewById(R.id.btn_biometric_login);
 
         // Apply Entrance Animations
         applyEntranceAnimations();
@@ -59,6 +54,53 @@ public class AdminLoginActivity extends AppCompatActivity {
         tvRegister.setOnClickListener(v -> {
             startActivity(new Intent(AdminLoginActivity.this, WorkerRegistrationActivity.class));
         });
+
+        // Forgot Password handler
+        TextView tvForgotPassword = findViewById(R.id.tv_forgot_password);
+        if (tvForgotPassword != null) {
+            tvForgotPassword.setOnClickListener(v -> showForgotPasswordDialog());
+        }
+
+        // Check if already logged in as admin
+        if (auth.getCurrentUser() != null) {
+            boolean isBiometricEnabled = getSharedPreferences("admin_prefs", android.content.Context.MODE_PRIVATE)
+                    .getBoolean("biometric_enabled", false);
+            if (isBiometricEnabled && com.lexoratech.lexorafix.admin.utils.BiometricHelper.isBiometricAvailable(this)) {
+                
+                if (btnBiometricLogin != null) {
+                    btnBiometricLogin.setVisibility(View.VISIBLE);
+                    btnBiometricLogin.setOnClickListener(v -> triggerBiometricAuth());
+                }
+                
+                triggerBiometricAuth(); // Auto trigger on start
+            } else {
+                checkAdminAndProceed();
+            }
+        }
+    }
+    
+    private void triggerBiometricAuth() {
+        com.lexoratech.lexorafix.admin.utils.BiometricHelper.showBiometricPrompt(
+                this,
+                "Admin Authentication",
+                "Verify your identity to access the admin panel.",
+                new com.lexoratech.lexorafix.admin.utils.BiometricHelper.BiometricCallback() {
+                    @Override
+                    public void onSuccess() {
+                        checkAdminAndProceed();
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        Toast.makeText(AdminLoginActivity.this,
+                                "Authentication failed: " + error, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled() {
+                        // User cancelled — stay on the login screen
+                    }
+                });
     }
 
     private void applyEntranceAnimations() {
@@ -163,5 +205,65 @@ public class AdminLoginActivity extends AppCompatActivity {
             progressBar.setVisibility(loading ? View.VISIBLE : View.GONE);
         if (btnLogin != null)
             btnLogin.setEnabled(!loading);
+    }
+
+    private void showForgotPasswordDialog() {
+        android.app.Dialog dialog = new android.app.Dialog(this);
+        dialog.setContentView(R.layout.dialog_forgot_password);
+        
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+            dialog.getWindow().setLayout(
+                (int) (getResources().getDisplayMetrics().widthPixels * 0.9),
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+        }
+
+        com.google.android.material.textfield.TextInputEditText etEmail = dialog.findViewById(R.id.et_reset_email);
+        android.widget.TextView btnCancel = dialog.findViewById(R.id.btn_cancel);
+        com.google.android.material.button.MaterialButton btnSend = dialog.findViewById(R.id.btn_send_reset);
+
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
+
+        btnSend.setOnClickListener(v -> {
+            String email = etEmail.getText() != null ? etEmail.getText().toString().trim() : "";
+            if (TextUtils.isEmpty(email) || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            dialog.dismiss();
+            setLoading(true);
+            
+            FirebaseFirestore.getInstance().collection("users")
+                    .whereEqualTo("email", email)
+                    .get()
+                    .addOnSuccessListener(queryDocumentSnapshots -> {
+                        if (queryDocumentSnapshots != null && !queryDocumentSnapshots.isEmpty()) {
+                            auth.sendPasswordResetEmail(email)
+                                    .addOnSuccessListener(aVoid -> {
+                                        setLoading(false);
+                                        Toast.makeText(this,
+                                                "Reset link sent to your email",
+                                                Toast.LENGTH_LONG).show();
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        setLoading(false);
+                                        Toast.makeText(this,
+                                                "Error: " + e.getMessage(),
+                                                Toast.LENGTH_LONG).show();
+                                    });
+                        } else {
+                            setLoading(false);
+                            Toast.makeText(this, "This email is not registered.", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        setLoading(false);
+                        Toast.makeText(this, "Failed to verify email.", Toast.LENGTH_LONG).show();
+                    });
+        });
+
+        dialog.show();
     }
 }

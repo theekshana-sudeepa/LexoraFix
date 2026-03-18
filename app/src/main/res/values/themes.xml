@@ -145,15 +145,19 @@
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="itemIconTint">@color/nav_item_color_state</item>
         <item name="itemTextColor">@color/nav_item_color_state</item>
-        <item name="elevation">4dp</item>
-        <item name="itemRippleColor">@color/ripple</item>
+        <item name="elevation">8dp</item>
+        <item name="itemRippleColor">#1A2563EB</item>
         <!-- Material 3 Active Indicator (Pill Shape) -->
         <item name="itemActiveIndicatorStyle">@style/LexoraActiveIndicator</item>
-        <item name="labelVisibilityMode">unlabeled</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="android:minHeight">64dp</item>
+        <item name="itemIconSize">24dp</item>
+        <item name="itemTextAppearanceActive">@style/TextCaption</item>
+        <item name="itemTextAppearanceInactive">@style/TextCaption</item>
     </style>
 
     <style name="LexoraActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">#1AFF6B35</item> <!-- Translucent Primary -->
+        <item name="android:color">#1A2563EB</item> <!-- Translucent Blue -->
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Lexora.Pill</item>
     </style>
 

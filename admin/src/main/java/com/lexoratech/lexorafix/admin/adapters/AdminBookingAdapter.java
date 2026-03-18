@@ -135,10 +135,10 @@ public class AdminBookingAdapter extends RecyclerView.Adapter<AdminBookingAdapte
                 color = 0xFFF59E0B; // Orange
                 break;
             case "Confirmed":
-                color = 0xFF3B82F6; // Blue
+                color = 0xFF2563EB; // Brand Blue
                 break;
             default:
-                color = 0xFF6366F1; // Indigo
+                color = 0xFF14B8A6; // Brand Teal
                 break;
         }
         tv.setTextColor(color);
@@ -185,6 +185,35 @@ public class AdminBookingAdapter extends RecyclerView.Adapter<AdminBookingAdapte
         }
 
         LinearLayout llOptions = view.findViewById(R.id.ll_status_options);
+        LinearLayout llWorkerInfoContainer = view.findViewById(R.id.ll_worker_info_container);
+        TextView tvWorkerName = view.findViewById(R.id.tv_dialog_worker_name);
+        TextView tvWorkerPhone = view.findViewById(R.id.tv_dialog_worker_phone);
+        android.widget.ProgressBar pbWorkerLoading = view.findViewById(R.id.pb_worker_loading);
+
+        Map<String, Object> booking = bookings.get(pos);
+        String assignedWorkerId = getStr(booking, "assignedWorkerId", "");
+
+        if (!assignedWorkerId.isEmpty()) {
+            pbWorkerLoading.setVisibility(View.VISIBLE);
+            com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(assignedWorkerId)
+                    .get()
+                    .addOnSuccessListener(doc -> {
+                        pbWorkerLoading.setVisibility(View.GONE);
+                        if (doc.exists()) {
+                            llWorkerInfoContainer.setVisibility(View.VISIBLE);
+                            String wName = doc.getString("name");
+                            String wPhone = doc.getString("phone");
+                            
+                            tvWorkerName.setText("Name: " + (wName != null ? wName : "N/A"));
+                            tvWorkerPhone.setText("Phone: " + (wPhone != null && !wPhone.isEmpty() ? wPhone : "Not Provided"));
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        pbWorkerLoading.setVisibility(View.GONE);
+                    });
+        }
 
         for (String s : statuses) {
             View optionView = LayoutInflater.from(context).inflate(R.layout.item_status_option, llOptions, false);

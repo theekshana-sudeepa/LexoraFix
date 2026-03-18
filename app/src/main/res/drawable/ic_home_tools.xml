@@ -13,12 +13,12 @@
 
     <!-- Roof highlight (orange) -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M65,18 L110,54 L100,54 L65,28 L30,54 L20,54 Z" />
 
     <!-- Door (orange accent) -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M58,82 L72,82 L72,108 L58,108 Z" />
 
     <!-- Door knob -->
@@ -28,7 +28,7 @@
 
     <!-- Left window -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M34,62 L50,62 L50,78 L34,78 Z" />
     <!-- Left window cross (white) -->
     <path
@@ -40,7 +40,7 @@
 
     <!-- Right window -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M80,62 L96,62 L96,78 L80,78 Z" />
     <!-- Right window cross (white) -->
     <path
@@ -52,24 +52,24 @@
 
     <!-- Wrench (bottom right, orange) -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M96,90 Q101,86 106,89 Q110,93 107,98
             L103,94 L99,98 L95,94
             Q92,90 96,90 Z" />
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M99,97 L103,93 L107,97 L108,100 L100,108 L96,104 Z" />
 
     <!-- Hammer (bottom left, orange) -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M24,90 L32,90 L32,98 L24,98 Z" />
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M30,96 L36,96 L36,100 L30,100 Z" />
     <!-- Hammer handle -->
     <path
-        android:fillColor="#FFFF6B35"
+        android:fillColor="#FF2563EB"
         android:pathData="M33,99 L40,106 L38,108 L31,101 Z" />
 
 </vector>

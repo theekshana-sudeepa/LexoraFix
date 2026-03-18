@@ -38,6 +38,10 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         Review review = reviews.get(position);
         holder.tvName.setText(review.getUserName() != null ? review.getUserName() : "Anonymous");
         holder.ratingBar.setRating(review.getRating());
+        
+        if (holder.tvRatingText != null) {
+            holder.tvRatingText.setText(String.valueOf(review.getRating()));
+        }
 
         if (review.getComment() != null && !review.getComment().trim().isEmpty()) {
             holder.tvComment.setVisibility(View.VISIBLE);
@@ -67,7 +71,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvDate, tvComment;
+        TextView tvName, tvDate, tvComment, tvRatingText;
         RatingBar ratingBar;
 
         public ViewHolder(@NonNull View itemView) {
@@ -75,6 +79,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
             tvName = itemView.findViewById(R.id.tv_reviewer_name);
             tvDate = itemView.findViewById(R.id.tv_date);
             tvComment = itemView.findViewById(R.id.tv_comment);
+            tvRatingText = itemView.findViewById(R.id.tv_rating_text);
             ratingBar = itemView.findViewById(R.id.rating_bar);
         }
     }

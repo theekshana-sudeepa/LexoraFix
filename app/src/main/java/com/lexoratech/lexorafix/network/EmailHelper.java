@@ -65,14 +65,14 @@ public class EmailHelper {
         String subject = "✅ Order Confirmed — LexoraFix #" + orderId;
         String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body style='font-family:Arial,sans-serif;margin:0;padding:0;background:#f5f5f5;'>"
                 + "<div style='max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.1);'>"
-                + "<div style='background:linear-gradient(135deg,#FF6B35,#FF8F65);padding:32px;text-align:center;'>"
+                + "<div style='background:linear-gradient(135deg,#2563EB,#06B6D4);padding:32px;text-align:center;'>"
                 + "<h1 style='color:#fff;margin:0;font-size:24px;'>🎉 Order Confirmed!</h1>"
                 + "<p style='color:rgba(255,255,255,0.9);margin:8px 0 0;'>Order #" + orderId + "</p></div>"
                 + "<div style='padding:24px;'>"
                 + "<h3 style='color:#1A1A2E;margin-top:0;'>Order Summary</h3>"
                 + (itemsHtml != null ? itemsHtml : "")
-                + "<div style='border-top:2px solid #FF6B35;margin-top:16px;padding-top:16px;text-align:right;'>"
-                + "<h2 style='color:#FF6B35;margin:0;'>Total: LKR " + String.format("%.2f", total) + "</h2></div>"
+                + "<div style='border-top:2px solid #2563EB;margin-top:16px;padding-top:16px;text-align:right;'>"
+                + "<h2 style='color:#2563EB;margin:0;'>Total: LKR " + String.format("%.2f", total) + "</h2></div>"
                 + "<p style='color:#6B7280;font-size:14px;margin-top:24px;'>Thank you for shopping with LexoraFix! Your order is being processed and you'll receive updates soon.</p>"
                 + "</div>"
                 + "<div style='background:#f9fafb;padding:16px;text-align:center;border-top:1px solid #e5e7eb;'>"
@@ -90,7 +90,7 @@ public class EmailHelper {
                 + "!";
         String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body style='font-family:Arial,sans-serif;margin:0;padding:20px;background:#f4f4f9;'>"
                 + "<div style='max-width:600px;margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.05);'>"
-                + "<div style='background:linear-gradient(135deg,#FF6B35,#FF8F65);padding:40px 32px;text-align:center;'>"
+                + "<div style='background:linear-gradient(135deg,#2563EB,#06B6D4);padding:40px 32px;text-align:center;'>"
                 + "<h1 style='color:#fff;margin:0;font-size:28px;letter-spacing:0.5px;'>Welcome to LexoraFix! 🚀</h1>"
                 + "<p style='color:rgba(255,255,255,0.95);margin:12px 0 0;font-size:16px;'>Your premier destination for top-tier products & services.</p></div>"
                 + "<div style='padding:40px 32px;text-align:left;'>"
@@ -98,7 +98,7 @@ public class EmailHelper {
                 + "<p style='color:#4B5563;font-size:16px;line-height:1.7;margin-bottom:32px;'>"
                 + "We're absolutely thrilled to have you here. With LexoraFix, you can explore hundreds of exclusive products and access certified professional services right from the palm of your hand.</p>"
                 + "<div style='background:#fcfcfd;border-radius:12px;padding:28px;margin-bottom:32px;border:1px solid #f0f0f4;box-shadow:inset 0 2px 4px rgba(0,0,0,0.02);'>"
-                + "<h3 style='color:#FF6B35;margin:0 0 20px;font-size:18px;'>Ready to get started?</h3>"
+                + "<h3 style='color:#2563EB;margin:0 0 20px;font-size:18px;'>Ready to get started?</h3>"
                 + "<div style='margin-bottom:12px;display:flex;align-items:center;'><span style='margin-right:12px;font-size:18px;'>✨</span><span style='color:#374151;font-size:15px;line-height:1.5;font-weight:500;'>Browse our latest amazing Deals & Offers</span></div>"
                 + "<div style='margin-bottom:12px;display:flex;align-items:center;'><span style='margin-right:12px;font-size:18px;'>📝</span><span style='color:#374151;font-size:15px;line-height:1.5;font-weight:500;'>Set up your speedy delivery address in Profile</span></div>"
                 + "<div style='display:flex;align-items:center;'><span style='margin-right:12px;font-size:18px;'>💬</span><span style='color:#374151;font-size:15px;line-height:1.5;font-weight:500;'>Connect with verified & certified Service Providers</span></div>"
@@ -126,13 +126,13 @@ public class EmailHelper {
                 + "<body style='font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px;'>"
                 + "<div style='max-width:600px;margin:0 auto;background:#1A1A2E;border-radius:12px;overflow:hidden;'>"
                 // Header
-                + "<div style='background:linear-gradient(135deg,#FF6B35,#FF8F65);padding:28px;text-align:center;'>"
+                + "<div style='background:linear-gradient(135deg,#2563EB,#06B6D4);padding:28px;text-align:center;'>"
                 + "<h1 style='color:#fff;margin:0;font-size:22px;'>🛒 New Order Received!</h1>"
                 + "<p style='color:rgba(255,255,255,0.9);margin:8px 0 0;font-size:16px;'>Order #" + orderId
                 + "</p></div>"
                 // Customer info
                 + "<div style='padding:24px;'>"
-                + "<h3 style='color:#FF6B35;margin:0 0 12px;font-size:15px;'>👤 Customer Details</h3>"
+                + "<h3 style='color:#2563EB;margin:0 0 12px;font-size:15px;'>👤 Customer Details</h3>"
                 + "<div style='background:#242443;border-radius:8px;padding:16px;margin-bottom:20px;'>"
                 + "<table style='width:100%;border-collapse:collapse;'>"
                 + "<tr><td style='color:#9CA3AF;padding:4px 0;width:100px;'>Name</td>"
@@ -145,7 +145,7 @@ public class EmailHelper {
                 + "<td style='color:#E0E0E0;'>" + safe(address) + "</td></tr>"
                 + "</table></div>"
                 // Order items
-                + "<h3 style='color:#FF6B35;margin:0 0 12px;font-size:15px;'>📦 Order Items</h3>"
+                + "<h3 style='color:#2563EB;margin:0 0 12px;font-size:15px;'>📦 Order Items</h3>"
                 + "<div style='background:#242443;border-radius:8px;padding:16px;margin-bottom:20px;'>"
                 + (itemsHtml != null ? itemsHtml : "<p style='color:#9CA3AF;'>No items</p>")
                 + "</div>"
@@ -182,7 +182,7 @@ public class EmailHelper {
         String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head>"
                 + "<body style='font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px;'>"
                 + "<div style='max-width:600px;margin:0 auto;background:#1A1A2E;border-radius:12px;overflow:hidden;'>"
-                + "<div style='background:linear-gradient(135deg,#6C63FF,#8277FF);padding:28px;text-align:center;'>"
+                + "<div style='background:linear-gradient(135deg,#2563EB,#06B6D4);padding:28px;text-align:center;'>"
                 + "<h1 style='color:#fff;margin:0;font-size:22px;'>⭐ New Product Review</h1>"
                 + "<p style='color:rgba(255,255,255,0.9);margin:8px 0 0;font-size:16px;'>" + safe(productName)
                 + "</p></div>"

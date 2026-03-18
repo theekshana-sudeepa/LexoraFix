@@ -15,6 +15,16 @@
         android:translationY="-100dp"
         android:alpha="0.4" />
 
+    <View
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:background="@drawable/bg_glow_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:translationX="-90dp"
+        android:translationY="90dp"
+        android:alpha="0.25" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,9 +43,9 @@
                 android:fontFamily="@font/poppins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 android:text="🛠️"
-                android:textSize="56sp" />
+                android:textSize="52sp" />
 
             <TextView
                 android:id="@+id/tv_title"
@@ -44,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:text="Staff Signup"
                 android:textColor="@color/adminTextPrimary"
-                android:textSize="32sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -52,21 +62,23 @@
                 android:fontFamily="@font/poppins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="32dp"
                 android:text="Create Worker Account"
                 android:textColor="@color/adminTextSecondary"
-                android:textSize="15sp"
-                android:textAllCaps="true" />
+                android:textSize="13sp"
+                android:textAllCaps="true"
+                android:letterSpacing="0.12" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_register_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#1AFFFFFF"
+                app:cardBackgroundColor="#14FFFFFF"
                 app:cardCornerRadius="24dp"
-                app:cardElevation="4dp"
-                app:strokeWidth="0dp">
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#1AFFFFFF">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -85,10 +97,10 @@
                         app:boxCornerRadiusBottomStart="12dp"
                         app:boxCornerRadiusTopEnd="12dp"
                         app:boxCornerRadiusTopStart="12dp"
-                        app:boxStrokeColor="#818CF8"
+                        app:boxStrokeColor="#2563EB"
                         app:boxStrokeWidth="1dp"
                         app:boxStrokeWidthFocused="2dp"
-                        app:hintTextColor="#818CF8">
+                        app:hintTextColor="#2563EB">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_name"
@@ -111,10 +123,10 @@
                         app:boxCornerRadiusBottomStart="12dp"
                         app:boxCornerRadiusTopEnd="12dp"
                         app:boxCornerRadiusTopStart="12dp"
-                        app:boxStrokeColor="#818CF8"
+                        app:boxStrokeColor="#2563EB"
                         app:boxStrokeWidth="1dp"
                         app:boxStrokeWidthFocused="2dp"
-                        app:hintTextColor="#818CF8">
+                        app:hintTextColor="#2563EB">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_email"
@@ -137,10 +149,10 @@
                         app:boxCornerRadiusBottomStart="12dp"
                         app:boxCornerRadiusTopEnd="12dp"
                         app:boxCornerRadiusTopStart="12dp"
-                        app:boxStrokeColor="#818CF8"
+                        app:boxStrokeColor="#2563EB"
                         app:boxStrokeWidth="1dp"
                         app:boxStrokeWidthFocused="2dp"
-                        app:hintTextColor="#818CF8">
+                        app:hintTextColor="#2563EB">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_phone"
@@ -163,12 +175,12 @@
                         app:boxCornerRadiusBottomStart="12dp"
                         app:boxCornerRadiusTopEnd="12dp"
                         app:boxCornerRadiusTopStart="12dp"
-                        app:boxStrokeColor="#818CF8"
+                        app:boxStrokeColor="#2563EB"
                         app:boxStrokeWidth="1dp"
                         app:boxStrokeWidthFocused="2dp"
                         app:endIconMode="password_toggle"
                         app:endIconTint="@color/adminTextSecondary"
-                        app:hintTextColor="#818CF8">
+                        app:hintTextColor="#2563EB">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_password"
@@ -185,7 +197,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_marginTop="32dp"
-                        android:backgroundTint="#4F46E5"
+                        android:backgroundTint="#2563EB"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
                         android:text="Sign Up as Worker"
@@ -194,6 +206,58 @@
                         android:textStyle="bold"
                         app:cornerRadius="14dp"
                         app:elevation="4dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/adminDivider" />
+
+                        <TextView
+                            android:fontFamily="@font/poppins"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:text="Or continue with"
+                            android:textColor="@color/adminTextSecondary"
+                            android:textSize="12sp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/adminDivider" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_google_sign_up"
+                        android:fontFamily="@font/poppins"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="Google"
+                        android:textAllCaps="false"
+                        android:textColor="#374151"
+                        android:textSize="15sp"
+                        app:cornerRadius="16dp"
+                        app:elevation="2dp"
+                        app:icon="@drawable/ic_google"
+                        app:iconGravity="textStart"
+                        app:iconPadding="12dp"
+                        app:iconTint="@null"
+                        app:rippleColor="#E5E7EB"
+                        app:strokeColor="#E5E7EB"
+                        app:strokeWidth="1dp" />
 
                     <TextView
                         android:id="@+id/tv_back_to_login"
@@ -215,7 +279,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:indeterminateTint="#818CF8"
+                android:indeterminateTint="#2563EB"
                 android:visibility="gone" />
 
         </LinearLayout>

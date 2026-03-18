@@ -41,7 +41,7 @@ public class CategoryFragment extends Fragment {
         layoutEmptySearch = view.findViewById(R.id.layout_empty_search);
         EditText etSearch = view.findViewById(R.id.et_search);
 
-        rvCategories.setLayoutManager(new GridLayoutManager(requireContext(), 3));
+        rvCategories.setLayoutManager(new GridLayoutManager(requireContext(), 2));
 
         adapter = new CategoryAdapter(requireContext(), new ArrayList<>());
         adapter.setOnCategoryClickListener(category -> {
