@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-74:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-74:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-74:12
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-74:12
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-82:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-82:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-82:12
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:2:1-82:12
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/723696d02c972d14913cd8a4cbed0df6/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/d676669ba4050059e2fde379b7fef88b/transformed/constraintlayout-2.2.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.biometric:biometric:1.1.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/698a9c89bd043a7d31365a124a447295/transformed/biometric-1.1.0/AndroidManifest.xml:17:1-29:12
@@ -123,8 +123,8 @@ MERGED from [com.google.firebase:firebase-messaging:24.1.0] /Users/theekshanasud
 	android:name
 		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:6:22-74
 application
-ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-73:19
-INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-73:19
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-81:19
+INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:8:5-81:19
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/723696d02c972d14913cd8a4cbed0df6/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/723696d02c972d14913cd8a4cbed0df6/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/d676669ba4050059e2fde379b7fef88b/transformed/constraintlayout-2.2.0/AndroidManifest.xml:7:5-20
@@ -357,6 +357,18 @@ action#com.google.firebase.MESSAGING_EVENT
 ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:69:17-78
 	android:name
 		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:69:25-75
+meta-data#com.google.firebase.messaging.default_notification_icon
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:74:9-76:53
+	android:resource
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:76:13-50
+	android:name
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:75:13-83
+meta-data#com.google.firebase.messaging.default_notification_channel_id
+ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:77:9-79:61
+	android:value
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:79:13-58
+	android:name
+		ADDED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:78:13-89
 uses-sdk
 INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml

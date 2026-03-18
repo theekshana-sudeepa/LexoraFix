@@ -114,6 +114,9 @@ public class ChatActivity extends AppCompatActivity {
         ImageButton btnCallUser = findViewById(R.id.btnCallUser);
         btnCallUser.setOnClickListener(v -> initiateCallToWorker());
 
+        // Check if booking is completed and disable chat
+        checkBookingStatus();
+
         // Ensure chat document exists
         ensureChatDocumentExists();
 
@@ -122,6 +125,20 @@ public class ChatActivity extends AppCompatActivity {
 
         // Send button
         btnSend.setOnClickListener(v -> sendMessage());
+    }
+
+    private void checkBookingStatus() {
+        if (bookingId == null || bookingId.isEmpty()) return;
+        db.collection("bookings").document(bookingId).get()
+                .addOnSuccessListener(doc -> {
+                    if (doc.exists() && "Completed".equals(doc.getString("status"))) {
+                        etMessage.setEnabled(false);
+                        etMessage.setHint("Chat disabled (Booking Completed)");
+                        btnSend.setEnabled(false);
+                        RecyclerView rvQuickReplies = findViewById(R.id.rvQuickReplies);
+                        if (rvQuickReplies != null) rvQuickReplies.setVisibility(View.GONE);
+                    }
+                });
     }
 
     private void initiateCallToWorker() {

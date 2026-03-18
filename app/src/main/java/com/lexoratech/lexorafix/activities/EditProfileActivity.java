@@ -230,9 +230,24 @@ public class EditProfileActivity extends AppCompatActivity {
             tilName.setError("Name is required");
             return;
         }
-
-        if (!TextUtils.isEmpty(phone) && !phone.matches("^0[0-9]{9}$")) {
-            tilPhone.setError("Enter valid phone (07XXXXXXXX)");
+        if (TextUtils.isEmpty(phone)) {
+            tilPhone.setError("Phone number is required");
+            return;
+        }
+        if (!phone.matches("^[+]?[0-9]{9,15}$")) {
+            tilPhone.setError("Please enter a valid phone number");
+            return;
+        }
+        if (TextUtils.isEmpty(address)) {
+            tilAddress.setError("Address is required");
+            return;
+        }
+        if (TextUtils.isEmpty(province)) {
+            tilProvince.setError("Province is required");
+            return;
+        }
+        if (TextUtils.isEmpty(district)) {
+            tilDistrict.setError("District is required");
             return;
         }
 

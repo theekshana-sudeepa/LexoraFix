@@ -75,12 +75,12 @@
         message="Consider adding a `&lt;queries>` declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerChatActivity.java"
-            line="160"
+            line="177"
             column="20"
-            startOffset="7010"
-            endLine="160"
+            startOffset="7811"
+            endLine="177"
             endColumn="35"
-            endOffset="7025"/>
+            endOffset="7826"/>
         <map>
             <entry
                 name="queryAll"

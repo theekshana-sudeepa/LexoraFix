@@ -204,6 +204,15 @@ public class BookServiceActivity extends AppCompatActivity {
                         .addOnSuccessListener(aVoid -> {
                             android.util.Log.d("BookService", "✅ TOP-LEVEL booking written: bookings/" + bookingDocId);
                             Toast.makeText(BookServiceActivity.this, "☁️ Synced to cloud", Toast.LENGTH_SHORT).show();
+
+                            // Send emails
+                            String customerEmail = prefs.getUserEmail() != null ? prefs.getUserEmail() : "";
+                            String customerName = prefs.getUserName() != null ? prefs.getUserName() : "";
+                            if (!customerEmail.isEmpty()) {
+                                com.lexoratech.lexorafix.network.EmailHelper.getInstance().sendServiceBookedCustomerEmail(customerEmail, serviceType, date, time);
+                            }
+                            com.lexoratech.lexorafix.network.EmailHelper.getInstance().sendAdminNewBookingNotification(serviceType, customerName, date, time);
+
                             // Also write to user subcollection
                             com.google.firebase.firestore.FirebaseFirestore.getInstance()
                                     .collection("users").document(firebaseUid)

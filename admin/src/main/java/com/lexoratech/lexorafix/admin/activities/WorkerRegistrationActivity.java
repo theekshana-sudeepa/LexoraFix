@@ -128,6 +128,14 @@ public class WorkerRegistrationActivity extends AppCompatActivity {
             tilEmail.setError("Invalid email");
             return;
         }
+        if (TextUtils.isEmpty(phone)) {
+            tilPhone.setError("Phone number is required");
+            return;
+        }
+        if (!phone.matches("^[+]?[0-9]{9,15}$")) {
+            tilPhone.setError("Please enter a valid phone number");
+            return;
+        }
         if (TextUtils.isEmpty(password) || password.length() < 6) {
             tilPassword.setError("Password must be at least 6 characters");
             return;
@@ -223,6 +231,9 @@ public class WorkerRegistrationActivity extends AppCompatActivity {
                                                     if (android.text.TextUtils.isEmpty(phone)) {
                                                         Toast.makeText(this, "Phone number is required.", Toast.LENGTH_SHORT).show();
                                                         auth.signOut();
+                                                    } else if (!phone.matches("^[+]?[0-9]{9,15}$")) {
+                                                        Toast.makeText(this, "Please enter a valid phone number.", Toast.LENGTH_SHORT).show();
+                                                        auth.signOut();
                                                     } else {
                                                         setLoading(true);
                                                         saveWorkerToFirestore(name, email, phone);
@@ -261,6 +272,11 @@ public class WorkerRegistrationActivity extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> {
                     setLoading(false);
                     Toast.makeText(this, "Registration Successful. Please verify your email.", Toast.LENGTH_LONG).show();
+                    
+                    // Send Emails
+                    com.lexoratech.lexorafix.admin.network.EmailHelper.getInstance().sendWorkerRegistrationReceivedEmail(email, name);
+                    com.lexoratech.lexorafix.admin.network.EmailHelper.getInstance().sendAdminNewWorkerNotification(name, email);
+
                     startActivity(new Intent(this, WorkerPendingActivity.class));
                     finish();
                 })

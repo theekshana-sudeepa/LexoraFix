@@ -274,6 +274,161 @@ public class EmailHelper {
     }
 
     /**
+     * Send email to customer confirming their service booking.
+     */
+    public void sendServiceBookedCustomerEmail(String toEmail, String serviceName, String date, String time) {
+        String subject = "📅 Service Booking Confirmed — LexoraFix";
+        String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body style='font-family:Arial,sans-serif;background:#f5f5f5;'>"
+                + "<div style='max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.1);'>"
+                + "<div style='background:linear-gradient(135deg,#2563EB,#06B6D4);padding:32px;text-align:center;'>"
+                + "<h1 style='color:#fff;margin:0;font-size:24px;'>Booking Confirmed!</h1></div>"
+                + "<div style='padding:24px;'>"
+                + "<p style='color:#1A1A2E;font-size:16px;'>Your request for <strong>" + safe(serviceName) + "</strong> has been received.</p>"
+                + "<div style='background:#f9fafb;border-left:4px solid #3B82F6;padding:16px;margin:24px 0;'>"
+                + "<p style='margin:0 0 8px;'><strong>Date:</strong> " + safe(date) + "</p>"
+                + "<p style='margin:0;'><strong>Time:</strong> " + safe(time) + "</p></div>"
+                + "<p style='color:#6B7280;font-size:14px;'>We are assigning a verified worker to your request. You will receive another update shortly.</p>"
+                + "</div></div></body></html>";
+        sendEmail(toEmail, subject, body);
+    }
+
+    /**
+     * Send email to admin when a new service is booked.
+     */
+    public void sendAdminNewBookingNotification(String serviceName, String customerName, String date, String time) {
+        String adminEmail = BuildConfig.ADMIN_EMAIL;
+        if (adminEmail == null || adminEmail.isEmpty()) return;
+
+        String subject = "🔔 New Service Booking: " + serviceName;
+        String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body style='font-family:Arial,sans-serif;background:#f5f5f5;'>"
+                + "<div style='max-width:600px;margin:0 auto;background:#1A1A2E;border-radius:12px;overflow:hidden;'>"
+                + "<div style='background:linear-gradient(135deg,#8B5CF6,#D946EF);padding:28px;text-align:center;'>"
+                + "<h1 style='color:#fff;margin:0;font-size:22px;'>New Service Booking</h1></div>"
+                + "<div style='padding:24px;'>"
+                + "<div style='background:#242443;border-radius:8px;padding:16px;'>"
+                + "<p style='color:#9CA3AF;margin:0 0 8px;'><strong>Service:</strong> <span style='color:#E0E0E0;'>" + safe(serviceName) + "</span></p>"
+                + "<p style='color:#9CA3AF;margin:0 0 8px;'><strong>Customer:</strong> <span style='color:#E0E0E0;'>" + safe(customerName) + "</span></p>"
+                + "<p style='color:#9CA3AF;margin:0 0 8px;'><strong>Date:</strong> <span style='color:#E0E0E0;'>" + safe(date) + "</span></p>"
+                + "<p style='color:#9CA3AF;margin:0;'><strong>Time:</strong> <span style='color:#E0E0E0;'>" + safe(time) + "</span></p>"
+                + "</div></div></div></body></html>";
+        sendEmail(adminEmail, subject, body);
+    }
+
+    /**
+     * Send pending approval email to new worker.
+     */
+    public void sendWorkerRegistrationReceivedEmail(String toEmail, String workerName) {
+        String subject = "⏳ Application Received — LexoraFix Pro";
+        String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body style='font-family:Arial,sans-serif;background:#f5f5f5;'>"
+                + "<div style='max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.1);'>"
+                + "<div style='background:linear-gradient(135deg,#F59E0B,#D97706);padding:32px;text-align:center;'>"
+                + "<h1 style='color:#fff;margin:0;font-size:24px;'>Application Under Review</h1></div>"
+                + "<div style='padding:24px;'>"
+                + "<p style='color:#1A1A2E;font-size:16px;'>Hi <strong>" + safe(workerName) + "</strong>,</p>"
+                + "<p style='color:#4B5563;font-size:16px;line-height:1.6;'>Thank you for applying to join LexoraFix as a verified service provider. "
+                + "Our admin team is currently reviewing your application.</p>"
+                + "<p style='color:#6B7280;font-size:14px;margin-top:24px;'>We will notify you once your account has been approved. Please allow up to 48 hours for processing.</p>"
+                + "</div></div></body></html>";
+        sendEmail(toEmail, subject, body);
+    }
+
+    /**
+     * Send email to admin when a new worker registers.
+     */
+    public void sendAdminNewWorkerNotification(String workerName, String workerEmail) {
+        String adminEmail = BuildConfig.ADMIN_EMAIL;
+        if (adminEmail == null || adminEmail.isEmpty()) return;
+
+        String subject = "📋 Pending Approval: New Worker Registration";
+        String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body style='font-family:Arial,sans-serif;background:#f5f5f5;'>"
+                + "<div style='max-width:600px;margin:0 auto;background:#1A1A2E;border-radius:12px;overflow:hidden;'>"
+                + "<div style='background:linear-gradient(135deg,#F59E0B,#D97706);padding:28px;text-align:center;'>"
+                + "<h1 style='color:#fff;margin:0;font-size:22px;'>New Worker Application</h1></div>"
+                + "<div style='padding:24px;'>"
+                + "<div style='background:#242443;border-radius:8px;padding:16px;'>"
+                + "<p style='color:#9CA3AF;margin:0 0 8px;'><strong>Name:</strong> <span style='color:#E0E0E0;'>" + safe(workerName) + "</span></p>"
+                + "<p style='color:#9CA3AF;margin:0;'><strong>Email:</strong> <span style='color:#E0E0E0;'>" + safe(workerEmail) + "</span></p>"
+                + "</div>"
+                + "<p style='color:#6B7280;font-size:12px;margin-top:20px;text-align:center;'>Please open the LexoraFix Admin app to review and approve.</p>"
+                + "</div></div></body></html>";
+        sendEmail(adminEmail, subject, body);
+    }
+
+    /**
+     * Send approval or rejection email to worker.
+     */
+    public void sendWorkerApprovalEmail(String toEmail, String workerName, boolean isApproved) {
+        String subject = isApproved ? "🎉 Congratulations! Your LexoraFix Account is Approved" : "⚠️ Update on your LexoraFix Application";
+        String color = isApproved ? "#10B981" : "#EF4444";
+        String title = isApproved ? "Account Approved!" : "Application Update";
+        
+        String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body style='font-family:Arial,sans-serif;background:#f5f5f5;'>"
+                + "<div style='max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.1);'>"
+                + "<div style='background:" + color + ";padding:32px;text-align:center;'>"
+                + "<h1 style='color:#fff;margin:0;font-size:24px;'>" + title + "</h1></div>"
+                + "<div style='padding:24px;'>"
+                + "<p style='color:#1A1A2E;font-size:16px;'>Hi <strong>" + safe(workerName) + "</strong>,</p>";
+                
+        if (isApproved) {
+            body += "<p style='color:#4B5563;font-size:16px;line-height:1.6;'>Fantastic news! Your application has been fully approved by our administrators. You can now log into the LexoraFix Worker app and start accepting jobs.</p>"
+                 + "<p style='color:#6B7280;font-size:14px;margin-top:24px;'>Welcome aboard!<br>LexoraFix Team</p>";
+        } else {
+            body += "<p style='color:#4B5563;font-size:16px;line-height:1.6;'>Thank you for your interest in joining LexoraFix. Unfortunately, we are unable to approve your application at this time.</p>"
+                 + "<p style='color:#6B7280;font-size:14px;margin-top:24px;'>If you believe this was an error, please contact support.</p>";
+        }
+        
+        body += "</div></div></body></html>";
+        sendEmail(toEmail, subject, body);
+    }
+
+    /**
+     * Send booking status update to customer.
+     */
+    public void sendBookingStatusUpdateEmail(String toEmail, String serviceName, String newStatus, String workerName, String workerPhone) {
+        String subject = "🔧 Booking Update: " + newStatus;
+        String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body style='font-family:Arial,sans-serif;background:#f5f5f5;'>"
+                + "<div style='max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.1);'>"
+                + "<div style='background:linear-gradient(135deg,#3B82F6,#2563EB);padding:32px;text-align:center;'>"
+                + "<h1 style='color:#fff;margin:0;font-size:24px;'>Booking Status: " + safe(newStatus) + "</h1></div>"
+                + "<div style='padding:24px;'>"
+                + "<p style='color:#1A1A2E;font-size:16px;'>Your booking for <strong>" + safe(serviceName) + "</strong> has been updated to: <strong style='color:#2563EB;'>" + safe(newStatus) + "</strong>.</p>";
+                
+        if (("Accepted".equalsIgnoreCase(newStatus) || "In Progress".equalsIgnoreCase(newStatus)) && workerName != null && !workerName.isEmpty()) {
+            body += "<div style='background:#f0fdf4;border-left:4px solid #10B981;padding:16px;margin:24px 0;'>"
+                 + "<h3 style='margin:0 0 12px;color:#065F46;font-size:15px;'>Worker Details</h3>"
+                 + "<p style='margin:0 0 8px;color:#064E3B;'><strong>Name:</strong> " + safe(workerName) + "</p>"
+                 + "<p style='margin:0;color:#064E3B;'><strong>Phone:</strong> " + safe(workerPhone) + "</p></div>"
+                 + "<p style='color:#4B5563;font-size:14px;'>The assigned professional will contact you soon. If you need immediate assistance, feel free to call them directly.</p>";
+        }
+        
+        body += "</div></div></body></html>";
+        sendEmail(toEmail, subject, body);
+    }
+
+    /**
+     * Send general order status update to customer.
+     */
+    public void sendOrderStatusUpdateEmail(String toEmail, String orderId, String newStatus) {
+        String subject = "📦 Order #" + orderId + " Update: " + newStatus;
+        String color = "#3B82F6";
+        if ("Shipped".equalsIgnoreCase(newStatus)) color = "#8B5CF6";
+        else if ("Delivered".equalsIgnoreCase(newStatus)) color = "#10B981";
+        else if ("Cancelled".equalsIgnoreCase(newStatus)) color = "#EF4444";
+
+        String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body style='font-family:Arial,sans-serif;background:#f5f5f5;'>"
+                + "<div style='max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.1);'>"
+                + "<div style='background:" + color + ";padding:32px;text-align:center;'>"
+                + "<h1 style='color:#fff;margin:0;font-size:24px;'>Order " + safe(newStatus) + "</h1></div>"
+                + "<div style='padding:24px;text-align:center;'>"
+                + "<p style='color:#1A1A2E;font-size:16px;margin-bottom:24px;'>The status of your order <strong>#" + orderId + "</strong> has been updated.</p>"
+                + "<div style='display:inline-block;background:#f9fafb;border:2px solid " + color + ";border-radius:12px;padding:16px 32px;'>"
+                + "<h2 style='color:" + color + ";margin:0;font-size:20px;'>" + safe(newStatus).toUpperCase() + "</h2></div>"
+                + "<p style='color:#6B7280;font-size:14px;margin-top:24px;'>You can view more details in the LexoraFix app.</p>"
+                + "</div></div></body></html>";
+        sendEmail(toEmail, subject, body);
+    }
+
+    /**
      * Internal: send email on background thread.
      */
     private void sendEmail(String toEmail, String subject, String htmlBody) {

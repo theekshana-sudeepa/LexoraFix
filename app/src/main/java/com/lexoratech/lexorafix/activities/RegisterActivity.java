@@ -203,6 +203,10 @@ public class RegisterActivity extends AppCompatActivity {
             tilPhone.setError(getString(R.string.field_required));
             return;
         }
+        if (!phone.matches("^[+]?[0-9]{9,15}$")) {
+            tilPhone.setError("Please enter a valid phone number");
+            return;
+        }
         if (TextUtils.isEmpty(password)) {
             tilPassword.setError(getString(R.string.field_required));
             return;

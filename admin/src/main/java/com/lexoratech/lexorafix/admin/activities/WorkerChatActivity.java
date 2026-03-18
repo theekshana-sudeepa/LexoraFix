@@ -112,6 +112,9 @@ public class WorkerChatActivity extends AppCompatActivity {
         ImageButton btnCallUser = findViewById(R.id.btnCallUser);
         btnCallUser.setOnClickListener(v -> initiateCallToCustomer(bookingId));
 
+        // Check booking status
+        checkBookingStatus(bookingId);
+
         // Ensure chat document exists
         ensureChatDocumentExists(bookingId, customerName);
 
@@ -120,6 +123,20 @@ public class WorkerChatActivity extends AppCompatActivity {
 
         // Send button
         btnSend.setOnClickListener(v -> sendMessage());
+    }
+
+    private void checkBookingStatus(String bookingId) {
+        if (bookingId == null || bookingId.isEmpty()) return;
+        db.collection("bookings").document(bookingId).get()
+                .addOnSuccessListener(doc -> {
+                    if (doc.exists() && "Completed".equals(doc.getString("status"))) {
+                        etMessage.setEnabled(false);
+                        etMessage.setHint("Chat disabled (Booking Completed)");
+                        btnSend.setEnabled(false);
+                        RecyclerView rvQuickReplies = findViewById(R.id.rvQuickReplies);
+                        if (rvQuickReplies != null) rvQuickReplies.setVisibility(View.GONE);
+                    }
+                });
     }
 
     private void initiateCallToCustomer(String bookingId) {
@@ -136,8 +153,8 @@ public class WorkerChatActivity extends AppCompatActivity {
                     }
                     
                     // Fallback to searching users collection
-                    if (doc.exists() && doc.contains("customerId")) {
-                        String customerId = doc.getString("customerId");
+                    if (doc.exists() && doc.contains("firebaseUid")) {
+                        String customerId = doc.getString("firebaseUid");
                         if (customerId != null) {
                              db.collection("users").document(customerId).get().addOnSuccessListener(userDoc -> {
                                  if (userDoc.exists() && userDoc.contains("phone")) {

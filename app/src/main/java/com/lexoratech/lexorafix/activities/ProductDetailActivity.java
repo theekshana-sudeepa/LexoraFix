@@ -743,6 +743,34 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                             com.lexoratech.lexorafix.adapters.ReviewAdapter adapter = new com.lexoratech.lexorafix.adapters.ReviewAdapter(
                                     this, reviewsList);
+                            adapter.setOnReviewActionListener(new com.lexoratech.lexorafix.adapters.ReviewAdapter.OnReviewActionListener() {
+                                @Override
+                                public void onEditReview(com.lexoratech.lexorafix.models.Review review) {
+                                    com.lexoratech.lexorafix.fragments.ReviewBottomSheetFragment editSheet =
+                                            com.lexoratech.lexorafix.fragments.ReviewBottomSheetFragment.newInstanceForEdit(
+                                                    documentId, product.getName(), review.getId(), review.getRating(), review.getComment());
+                                    editSheet.show(getSupportFragmentManager(), "EditReview");
+                                }
+
+                                @Override
+                                public void onDeleteReview(com.lexoratech.lexorafix.models.Review review) {
+                                    new androidx.appcompat.app.AlertDialog.Builder(ProductDetailActivity.this)
+                                            .setTitle("Delete Review")
+                                            .setMessage("Are you sure you want to delete your review?")
+                                            .setPositiveButton("Delete", (dialog, which) -> {
+                                                FirebaseFirestore.getInstance()
+                                                        .collection("products").document(documentId)
+                                                        .collection("reviews").document(review.getId())
+                                                        .delete()
+                                                        .addOnSuccessListener(aVoid ->
+                                                                Toast.makeText(ProductDetailActivity.this, "Review deleted", Toast.LENGTH_SHORT).show())
+                                                        .addOnFailureListener(e ->
+                                                                Toast.makeText(ProductDetailActivity.this, "Failed to delete", Toast.LENGTH_SHORT).show());
+                                            })
+                                            .setNegativeButton("Cancel", null)
+                                            .show();
+                                }
+                            });
                             rvReviews.setAdapter(adapter);
                         }
                     }

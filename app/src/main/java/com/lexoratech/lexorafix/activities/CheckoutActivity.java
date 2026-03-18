@@ -219,30 +219,54 @@ public class CheckoutActivity extends AppCompatActivity {
             @Override
             public void onQuantityChanged(CartItem item, int newQuantity) {
                 if (newQuantity > item.getQuantity()) {
-                    // Increase requested: Check Firestore stock first
-                    com.google.firebase.firestore.FirebaseFirestore.getInstance()
-                            .collection("products")
-                            .whereEqualTo("name", item.getProductName())
-                            .limit(1)
-                            .get()
-                            .addOnSuccessListener(snapshot -> {
-                                if (!snapshot.isEmpty()) {
-                                    Number stockNum = snapshot.getDocuments().get(0).getLong("stock");
-                                    int stock = stockNum != null ? stockNum.intValue() : 0;
-                                    if (newQuantity > stock) {
-                                        Toast.makeText(CheckoutActivity.this,
-                                                "Cannot add more. Only " + stock + " available in stock.",
-                                                Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        updateItemQuantity(item, newQuantity, adapter);
-                                    }
-                                } else {
-                                    Toast.makeText(CheckoutActivity.this, "Product not found.", Toast.LENGTH_SHORT)
-                                            .show();
-                                }
-                            })
-                            .addOnFailureListener(e -> Toast.makeText(CheckoutActivity.this,
-                                    "Failed to check stock.", Toast.LENGTH_SHORT).show());
+                                        // Increase requested: Check specific variant stock first
+                                        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                                                .collection("products")
+                                                .whereEqualTo("name", item.getProductName())
+                                                .limit(1)
+                                                .get()
+                                                .addOnSuccessListener(snapshot -> {
+                                                    if (!snapshot.isEmpty()) {
+                                                        com.google.firebase.firestore.DocumentSnapshot doc = snapshot.getDocuments().get(0);
+                                                        int stock = 0;
+                                                        
+                                                        // Check variants array for exact label
+                                                        java.util.List<java.util.Map<String, Object>> variants = 
+                                                            (java.util.List<java.util.Map<String, Object>>) doc.get("variants");
+                                                        boolean foundVariant = false;
+                                                                
+                                                        if (variants != null) {
+                                                            for (java.util.Map<String, Object> var : variants) {
+                                                                String vLabel = var.get("label") != null ? var.get("label").toString() : "";
+                                                                if (vLabel.equals(item.getVariantLabel())) {
+                                                                    stock = var.get("stock") instanceof Number ? 
+                                                                        ((Number)var.get("stock")).intValue() : 0;
+                                                                    foundVariant = true;
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+                                                        
+                                                        // Fallback to legacy stock if no variant matches
+                                                        if (!foundVariant) {
+                                                            Number stockNum = doc.getLong("stock");
+                                                            stock = stockNum != null ? stockNum.intValue() : 0;
+                                                        }
+
+                                                        if (newQuantity > stock) {
+                                                            Toast.makeText(CheckoutActivity.this,
+                                                                    "Cannot add more. Only " + stock + " available in stock.",
+                                                                    Toast.LENGTH_SHORT).show();
+                                                        } else {
+                                                            updateItemQuantity(item, newQuantity, adapter);
+                                                        }
+                                                    } else {
+                                                        Toast.makeText(CheckoutActivity.this, "Product not found.", Toast.LENGTH_SHORT)
+                                                                .show();
+                                                    }
+                                                })
+                                                .addOnFailureListener(e -> Toast.makeText(CheckoutActivity.this,
+                                                        "Failed to check stock.", Toast.LENGTH_SHORT).show());
                 } else {
                     // Decrease requested
                     updateItemQuantity(item, newQuantity, adapter);
@@ -532,8 +556,32 @@ public class CheckoutActivity extends AppCompatActivity {
                     .get()
                     .addOnSuccessListener(snapshot -> {
                         if (!snapshot.isEmpty()) {
-                            Number stockNum = snapshot.getDocuments().get(0).getLong("stock");
-                            int stock = stockNum != null ? stockNum.intValue() : 0;
+                            com.google.firebase.firestore.DocumentSnapshot doc = snapshot.getDocuments().get(0);
+                            int stock = 0;
+                            
+                            // Check variants array for exact label
+                            java.util.List<java.util.Map<String, Object>> variants = 
+                                (java.util.List<java.util.Map<String, Object>>) doc.get("variants");
+                            boolean foundVariant = false;
+                                    
+                            if (variants != null) {
+                                for (java.util.Map<String, Object> var : variants) {
+                                    String vLabel = var.get("label") != null ? var.get("label").toString() : "";
+                                    if (vLabel.equals(item.getVariantLabel())) {
+                                        stock = var.get("stock") instanceof Number ? 
+                                            ((Number)var.get("stock")).intValue() : 0;
+                                        foundVariant = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            
+                            // Fallback to legacy stock if no variant matches
+                            if (!foundVariant) {
+                                Number stockNum = doc.getLong("stock");
+                                stock = stockNum != null ? stockNum.intValue() : 0;
+                            }
+
                             stockMap.put(item.getProductName(), stock);
                             adapter.setStockMap(stockMap);
                         }
@@ -571,8 +619,32 @@ public class CheckoutActivity extends AppCompatActivity {
                     .get()
                     .addOnSuccessListener(snapshot -> {
                         if (!snapshot.isEmpty()) {
-                            Number stockNum = snapshot.getDocuments().get(0).getLong("stock");
-                            int stock = stockNum != null ? stockNum.intValue() : 0;
+                            com.google.firebase.firestore.DocumentSnapshot doc = snapshot.getDocuments().get(0);
+                            int stock = 0;
+                            
+                            // Check variants array for exact label
+                            java.util.List<java.util.Map<String, Object>> variants = 
+                                (java.util.List<java.util.Map<String, Object>>) doc.get("variants");
+                            boolean foundVariant = false;
+                                    
+                            if (variants != null) {
+                                for (java.util.Map<String, Object> var : variants) {
+                                    String vLabel = var.get("label") != null ? var.get("label").toString() : "";
+                                    if (vLabel.equals(item.getVariantLabel())) {
+                                        stock = var.get("stock") instanceof Number ? 
+                                            ((Number)var.get("stock")).intValue() : 0;
+                                        foundVariant = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            
+                            // Fallback to legacy stock if no variant matches
+                            if (!foundVariant) {
+                                Number stockNum = doc.getLong("stock");
+                                stock = stockNum != null ? stockNum.intValue() : 0;
+                            }
+
                             if (item.getQuantity() > stock) {
                                 hasStockIssue[0] = true;
                                 Toast.makeText(CheckoutActivity.this,
@@ -833,15 +905,17 @@ public class CheckoutActivity extends AppCompatActivity {
                                                         if (variantLabel != null && !variantLabel.isEmpty()) {
                                                             java.util.List<java.util.Map<String, Object>> variants = (java.util.List<java.util.Map<String, Object>>) prodSnapshot.get("variants");
                                                             if (variants != null) {
+                                                                java.util.List<java.util.Map<String, Object>> updatedVariants = new java.util.ArrayList<>();
                                                                 for (java.util.Map<String, Object> v : variants) {
-                                                                    String vName = (String) v.get("name");
+                                                                    java.util.Map<String, Object> updatedV = new java.util.HashMap<>(v);
+                                                                    String vName = (String) updatedV.get("name");
                                                                     if (variantLabel.equals(vName)) {
-                                                                        long vStock = v.get("stock") != null ? ((Number) v.get("stock")).longValue() : 0;
-                                                                        v.put("stock", Math.max(0, vStock - qty));
-                                                                        break;
+                                                                        long vStock = updatedV.get("stock") != null ? ((Number) updatedV.get("stock")).longValue() : 0;
+                                                                        updatedV.put("stock", Math.max(0, vStock - qty));
                                                                     }
+                                                                    updatedVariants.add(updatedV);
                                                                 }
-                                                                transaction.update(docRef, "variants", variants);
+                                                                transaction.update(docRef, "variants", updatedVariants);
                                                             }
                                                         }
                                                         return null;

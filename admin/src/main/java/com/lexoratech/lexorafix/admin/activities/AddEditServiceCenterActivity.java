@@ -79,13 +79,39 @@ public class AddEditServiceCenterActivity extends AppCompatActivity {
             etName.setError("Name is required");
             return;
         }
+        if (TextUtils.isEmpty(address)) {
+            etAddress.setError("Address is required");
+            return;
+        }
+        if (TextUtils.isEmpty(phone)) {
+            etPhone.setError("Phone number is required");
+            return;
+        }
+        if (!phone.matches("^[+]?[0-9]{9,15}$")) {
+            etPhone.setError("Please enter a valid phone number");
+            return;
+        }
+        if (TextUtils.isEmpty(latStr)) {
+            etLatitude.setError("Latitude is required");
+            return;
+        }
+        if (TextUtils.isEmpty(lngStr)) {
+            etLongitude.setError("Longitude is required");
+            return;
+        }
 
         double latitude = 0, longitude = 0;
         try {
-            if (!TextUtils.isEmpty(latStr))
-                latitude = Double.parseDouble(latStr);
-            if (!TextUtils.isEmpty(lngStr))
-                longitude = Double.parseDouble(lngStr);
+            latitude = Double.parseDouble(latStr);
+            longitude = Double.parseDouble(lngStr);
+            if (latitude < -90 || latitude > 90) {
+                etLatitude.setError("Latitude must be between -90 and 90");
+                return;
+            }
+            if (longitude < -180 || longitude > 180) {
+                etLongitude.setError("Longitude must be between -180 and 180");
+                return;
+            }
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Invalid latitude or longitude format", Toast.LENGTH_SHORT).show();
             return;

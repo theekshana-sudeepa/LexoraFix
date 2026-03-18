@@ -5,12 +5,15 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.lexoratech.lexorafix.R;
 import com.lexoratech.lexorafix.models.Review;
 
@@ -20,10 +23,20 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
     private final Context context;
     private final List<Review> reviews;
+    private OnReviewActionListener actionListener;
+
+    public interface OnReviewActionListener {
+        void onEditReview(Review review);
+        void onDeleteReview(Review review);
+    }
 
     public ReviewAdapter(Context context, List<Review> reviews) {
         this.context = context;
         this.reviews = reviews;
+    }
+
+    public void setOnReviewActionListener(OnReviewActionListener listener) {
+        this.actionListener = listener;
     }
 
     @NonNull
@@ -57,6 +70,20 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         } else {
             holder.tvDate.setVisibility(View.GONE);
         }
+
+        // Show edit/delete only for the current user's own review
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null && currentUser.getUid().equals(review.getUserId())) {
+            holder.llActions.setVisibility(View.VISIBLE);
+            holder.btnEdit.setOnClickListener(v -> {
+                if (actionListener != null) actionListener.onEditReview(review);
+            });
+            holder.btnDelete.setOnClickListener(v -> {
+                if (actionListener != null) actionListener.onDeleteReview(review);
+            });
+        } else {
+            holder.llActions.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -72,6 +99,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvName, tvDate, tvComment, tvRatingText;
+        TextView btnEdit, btnDelete;
+        LinearLayout llActions;
         RatingBar ratingBar;
 
         public ViewHolder(@NonNull View itemView) {
@@ -81,6 +110,9 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
             tvComment = itemView.findViewById(R.id.tv_comment);
             tvRatingText = itemView.findViewById(R.id.tv_rating_text);
             ratingBar = itemView.findViewById(R.id.rating_bar);
+            llActions = itemView.findViewById(R.id.ll_actions);
+            btnEdit = itemView.findViewById(R.id.btn_edit_review);
+            btnDelete = itemView.findViewById(R.id.btn_delete_review);
         }
     }
 }

@@ -1,3 +1,22 @@
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/network/EmailHelper.java:425: Warning: Implicitly using the default locale is a common source of bugs: Use toUpperCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
+                + "<h2 style='color:" + color + ";margin:0;font-size:20px;'>" + safe(newStatus).toUpperCase() + "</h2></div>"
+                                                                                                ~~~~~~~~~~~
+
+   Explanation for issues of type "DefaultLocale":
+   Calling String#toLowerCase() or #toUpperCase() without specifying an
+   explicit locale is a common source of bugs. The reason for that is that
+   those methods will use the current locale on the user's device, and even
+   though the code appears to work correctly when you are developing the app,
+   it will fail in some locales. For example, in the Turkish locale, the
+   uppercase replacement for i is not I.
+
+   If you want the methods to just perform ASCII replacement, for example to
+   convert an enum name, call String#toUpperCase(Locale.ROOT) instead. If you
+   really want to use the current locale, call
+   String#toUpperCase(Locale.getDefault()) instead.
+
+   https://developer.android.com/reference/java/util/Locale.html#default_locale
+
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:21: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
         targetSdk = 35
         ~~~~~~~~~~~~~~
@@ -34,7 +53,7 @@
 
    https://www.bignerdranch.com/blog/understanding-androids-layoutinflater-inflate/
 
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerChatActivity.java:160: Warning: Consider adding a <queries> declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details [QueryPermissionsNeeded]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerChatActivity.java:177: Warning: Consider adding a <queries> declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details [QueryPermissionsNeeded]
         if (intent.resolveActivity(getPackageManager()) != null) {
                    ~~~~~~~~~~~~~~~
 
@@ -285,7 +304,7 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageUsersActivity.java:116: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
         adapter.notifyDataSetChanged();
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerChatActivity.java:201: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerChatActivity.java:218: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
                     chatAdapter.notifyDataSetChanged();
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:178: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
@@ -717,12 +736,18 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminOrderAdapter.java:89: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         holder.tvItemCount.setText(itemCount + " item" + (itemCount != 1 ? "s" : ""));
                                                ~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminProductAdapter.java:66: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
-        holder.tvStock.setText("Stock: " + stock);
-                               ~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminProductAdapter.java:66: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
-        holder.tvStock.setText("Stock: " + stock);
-                               ~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminProductAdapter.java:88: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            holder.tvStock.setText("Stock: " + totalStock);
+                                   ~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminProductAdapter.java:88: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            holder.tvStock.setText("Stock: " + totalStock);
+                                   ~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminProductAdapter.java:96: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            holder.tvStock.setText("Stock: " + stock);
+                                   ~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminProductAdapter.java:96: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            holder.tvStock.setText("Stock: " + stock);
+                                   ~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AdminProductReviewsActivity.java:50: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
             tvTitle.setText("Reviews: " + productName);
                             ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -753,16 +778,16 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:84: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnBan.setText("Approving...");
                                       ~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:100: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:108: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                             holder.btnBan.setText("Approve Worker");
                                                   ~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:109: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:117: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnBan.setText("Unban User");
                                       ~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:116: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:124: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnBan.setText("Ban User");
                                       ~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:128: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:136: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnBan.setText("Updating...");
                                       ~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageBookingsActivity.java:53: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
@@ -792,10 +817,10 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageUsersActivity.java:37: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         tvTitle.setText("Manage Users");
                         ~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/OrderDetailActivity.java:104: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/OrderDetailActivity.java:105: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
                     tvOrderId.setText("Order #" + (orderId != null ? orderId : documentId));
                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/OrderDetailActivity.java:104: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/OrderDetailActivity.java:105: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                     tvOrderId.setText("Order #" + (orderId != null ? orderId : documentId));
                                       ~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/OrderItemAdapter.java:51: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
@@ -1586,4 +1611,4 @@ googleServices = "4.4.2"
    probably also specify padding on the right side (and vice versa) for
    right-to-left layout symmetry.
 
-0 errors, 444 warnings
+0 errors, 447 warnings

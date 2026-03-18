@@ -83,6 +83,8 @@ public class NotificationFragment extends Fragment implements NotificationAdapte
                 .orderBy("timestamp", Query.Direction.DESCENDING)
                 .addSnapshotListener((value, error) -> {
                     if (error != null) {
+                        android.util.Log.e("NotificationFragment", "Error loading notifications", error);
+                        updateEmptyState();
                         return;
                     }
                     if (value != null) {

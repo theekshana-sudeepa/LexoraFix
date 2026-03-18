@@ -228,6 +228,17 @@ public class ManageBookingsActivity extends AppCompatActivity {
         db.collection("bookings").document(docId)
                 .update(updates)
                 .addOnSuccessListener(aVoid -> {
+                    // Send Email Update
+                    String serviceType = (String) booking.get("serviceType");
+                    String userEmail = (String) booking.get("userEmail");
+                    String workerName = (String) booking.get("assignedWorkerName");
+                    String workerPhone = (String) booking.get("assignedWorkerPhone");
+                    
+                    if (userEmail != null && !userEmail.isEmpty()) {
+                        com.lexoratech.lexorafix.admin.network.EmailHelper.getInstance()
+                                .sendBookingStatusUpdateEmail(userEmail, serviceType != null ? serviceType : "Service", newStatus, workerName, workerPhone);
+                    }
+
                     if (uid != null && !uid.isEmpty()) {
                         db.collection("users").document(uid)
                                 .collection("bookings").document(docId)

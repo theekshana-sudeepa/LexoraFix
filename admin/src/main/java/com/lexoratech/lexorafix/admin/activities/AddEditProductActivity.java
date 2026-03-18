@@ -451,6 +451,15 @@ public class AddEditProductActivity extends AppCompatActivity {
 
         String name = getText(etName);
         String description = getText(etDescription);
+        
+        if (TextUtils.isEmpty(name)) {
+            tilName.setError("Product name is required");
+            return;
+        }
+        if (TextUtils.isEmpty(description)) {
+            etDescription.setError("Product description is required");
+            return;
+        }
         int stock = 0; // Legacy base stock set to 0. Real stock is pulled from variants.
 
         boolean featured = switchFeatured.isChecked();

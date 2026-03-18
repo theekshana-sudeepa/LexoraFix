@@ -363,8 +363,8 @@ public class WorkerDashboardActivity extends AppCompatActivity {
                 etPhone.setError("Please enter a phone number");
                 return;
             }
-            if (phone.length() < 7) {
-                etPhone.setError("Phone number too short");
+            if (!phone.matches("^[+]?[0-9]{9,15}$")) {
+                etPhone.setError("Please enter a valid phone number (e.g., +94771234567)");
                 return;
             }
 

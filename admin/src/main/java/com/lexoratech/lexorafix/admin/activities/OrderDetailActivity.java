@@ -32,6 +32,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     private String orderId;
     private String documentId;
     private String userId; // Firebase UID of the customer
+    private String customerEmail; // Stored to send emails
     private Spinner spinnerStatus;
     private ProgressBar progressBar;
 
@@ -88,7 +89,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                     orderId = doc.getString("orderId");
                     userId = doc.getString("firebaseUid");
                     String customerName = doc.getString("userName");
-                    String customerEmail = doc.getString("userEmail");
+                    customerEmail = doc.getString("userEmail");
                     String address = doc.getString("address");
                     String status = doc.getString("status");
                     Object totalObj = doc.get("totalPrice");
@@ -137,46 +138,61 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     private void updateOrderStatus() {
         String newStatus = spinnerStatus.getSelectedItem().toString();
-        progressBar.setVisibility(View.VISIBLE);
+        
+        new com.google.android.material.dialog.MaterialAlertDialogBuilder(this)
+                .setTitle("Confirm Status Update")
+                .setMessage("Are you sure you want to update the order status to " + newStatus + "?")
+                .setPositiveButton("Update", (dialog, which) -> {
+                    progressBar.setVisibility(View.VISIBLE);
 
-        // Update in BOTH top-level orders and user subcollection
-        Map<String, Object> updates = new HashMap<>();
-        updates.put("status", newStatus);
-        updates.put("statusUpdatedAt", com.google.firebase.Timestamp.now());
+                    // Update in BOTH top-level orders and user subcollection
+                    Map<String, Object> updates = new HashMap<>();
+                    updates.put("status", newStatus);
+                    updates.put("statusUpdatedAt", com.google.firebase.Timestamp.now());
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // Update top-level
-        db.collection("orders").document(documentId)
-                .update(updates)
-                .addOnSuccessListener(aVoid -> {
-                    // Also update user's subcollection so their listener picks it up
-                    if (userId != null && !userId.isEmpty() && orderId != null) {
-                        db.collection("users").document(userId)
-                                .collection("orders").document(orderId)
-                                .update(updates)
-                                .addOnSuccessListener(aVoid2 -> {
+                    // Update top-level
+                    db.collection("orders").document(documentId)
+                            .update(updates)
+                            .addOnSuccessListener(aVoid -> {
+                                // Also update user's subcollection so their listener picks it up
+                                if (userId != null && !userId.isEmpty() && orderId != null) {
+                                    
+                                    // Send Order Status Update Email
+                                    if (customerEmail != null && !customerEmail.isEmpty()) {
+                                        com.lexoratech.lexorafix.admin.network.EmailHelper.getInstance()
+                                                .sendOrderStatusUpdateEmail(customerEmail, orderId, newStatus);
+                                    }
+
+                                    db.collection("users").document(userId)
+                                            .collection("orders").document(orderId)
+                                            .update(updates)
+                                            .addOnSuccessListener(aVoid2 -> {
+                                                progressBar.setVisibility(View.GONE);
+                                                Toast.makeText(this,
+                                                        "Status updated to " + newStatus + " ✅",
+                                                        Toast.LENGTH_SHORT).show();
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                progressBar.setVisibility(View.GONE);
+                                                Toast.makeText(this,
+                                                        "Updated top-level but user sync failed",
+                                                        Toast.LENGTH_SHORT).show();
+                                            });
+                                } else {
                                     progressBar.setVisibility(View.GONE);
                                     Toast.makeText(this,
                                             "Status updated to " + newStatus + " ✅",
                                             Toast.LENGTH_SHORT).show();
-                                })
-                                .addOnFailureListener(e -> {
-                                    progressBar.setVisibility(View.GONE);
-                                    Toast.makeText(this,
-                                            "Updated top-level but user sync failed",
-                                            Toast.LENGTH_SHORT).show();
-                                });
-                    } else {
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(this,
-                                "Status updated to " + newStatus + " ✅",
-                                Toast.LENGTH_SHORT).show();
-                    }
+                                }
+                            })
+                            .addOnFailureListener(e -> {
+                                progressBar.setVisibility(View.GONE);
+                                Toast.makeText(this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            });
                 })
-                .addOnFailureListener(e -> {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                });
+                .setNegativeButton("Cancel", null)
+                .show();
     }
 }

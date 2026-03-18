@@ -30,7 +30,7 @@ android {
             "\"${localProps.getProperty("payhere.merchant.id", "1211149")}\"")
         buildConfigField("String", "PAYHERE_MERCHANT_SECRET",
             "\"${localProps.getProperty("payhere.merchant.secret", "")}\"")
-        buildConfigField("boolean", "PAYHERE_SANDBOX", "true")
+        buildConfigField("boolean", "PAYHERE_SANDBOX", "false")
 
         // Email Configuration (from local.properties)
         buildConfigField("String", "EMAIL_SENDER_ADDRESS",

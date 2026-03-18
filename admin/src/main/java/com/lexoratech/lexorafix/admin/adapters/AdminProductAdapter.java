@@ -57,13 +57,44 @@ public class AdminProductAdapter extends RecyclerView.Adapter<AdminProductAdapte
         String docId = getStr(product, "_documentId", "");
 
         holder.tvName.setText(getStr(product, "name", "Unnamed"));
-        Object priceObj = product.get("price");
-        double price = priceObj instanceof Number ? ((Number) priceObj).doubleValue() : 0;
-        holder.tvPrice.setText(String.format(Locale.getDefault(), "LKR %.2f", price));
-
-        Object stockObj = product.get("stock");
-        int stock = stockObj instanceof Number ? ((Number) stockObj).intValue() : 0;
-        holder.tvStock.setText("Stock: " + stock);
+        Object variantsObj = product.get("variants");
+        double lowestPrice = -1;
+        int totalStock = 0;
+        boolean hasVariants = false;
+        
+        if (variantsObj instanceof List) {
+            List<?> variants = (List<?>) variantsObj;
+            if (!variants.isEmpty()) {
+                hasVariants = true;
+                for (Object vObj : variants) {
+                    if (vObj instanceof Map) {
+                        Map<?, ?> varMap = (Map<?, ?>) vObj;
+                        
+                        Object varPriceObj = varMap.get("price");
+                        double varPrice = varPriceObj instanceof Number ? ((Number) varPriceObj).doubleValue() : 0;
+                        if (lowestPrice == -1 || varPrice < lowestPrice) {
+                            lowestPrice = varPrice;
+                        }
+                        
+                        Object varStockObj = varMap.get("stock");
+                        totalStock += varStockObj instanceof Number ? ((Number) varStockObj).intValue() : 0;
+                    }
+                }
+            }
+        }
+        
+        if (hasVariants) {
+            holder.tvPrice.setText(String.format(Locale.getDefault(), "From LKR %.2f", lowestPrice != -1 ? lowestPrice : 0));
+            holder.tvStock.setText("Stock: " + totalStock);
+        } else {
+            Object priceObj = product.get("price");
+            double price = priceObj instanceof Number ? ((Number) priceObj).doubleValue() : 0;
+            holder.tvPrice.setText(String.format(Locale.getDefault(), "LKR %.2f", price));
+    
+            Object stockObj = product.get("stock");
+            int stock = stockObj instanceof Number ? ((Number) stockObj).intValue() : 0;
+            holder.tvStock.setText("Stock: " + stock);
+        }
 
         Object featObj = product.get("featured");
         boolean featured = featObj instanceof Boolean && (Boolean) featObj;

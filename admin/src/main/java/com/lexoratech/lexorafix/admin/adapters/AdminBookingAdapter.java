@@ -78,9 +78,13 @@ public class AdminBookingAdapter extends RecyclerView.Adapter<AdminBookingAdapte
             if (!locationAddr.isEmpty()) {
                 holder.tvLocation.setText(locationAddr);
             } else {
-                holder.tvLocation.setText(String.format(java.util.Locale.US,
-                        "%.4f, %.4f", Double.parseDouble(lat.toString()),
-                        Double.parseDouble(lng.toString())));
+                try {
+                    holder.tvLocation.setText(String.format(java.util.Locale.US,
+                            "%.4f, %.4f", Double.parseDouble(lat.toString()),
+                            Double.parseDouble(lng.toString())));
+                } catch (NumberFormatException e) {
+                    holder.tvLocation.setText("Location unavailable");
+                }
             }
 
             holder.layoutLocation.setOnClickListener(v -> {

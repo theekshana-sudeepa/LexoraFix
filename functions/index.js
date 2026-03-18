@@ -34,6 +34,10 @@ exports.onBookingCreated = onDocumentCreated("bookings/{bookingId}", async (even
   }
 
   const message = {
+    notification: {
+      title: "🔔 New Job Available!",
+      body: `${customerName} booked a ${serviceType} service. Tap to accept!`,
+    },
     data: {
       title: "🔔 New Job Available!",
       body: `${customerName} booked a ${serviceType} service. Tap to accept!`,
@@ -42,7 +46,10 @@ exports.onBookingCreated = onDocumentCreated("bookings/{bookingId}", async (even
       serviceType: serviceType,
     },
     android: {
-      priority: "high"
+      priority: "high",
+      notification: {
+        channelId: "lexorafix_admin_notifications",
+      },
     },
     tokens: tokens,
   };
@@ -111,6 +118,10 @@ exports.onBookingStatusChange = onDocumentUpdated("bookings/{bookingId}", async 
 
       try {
         await getMessaging().send({
+          notification: {
+            title: title,
+            body: body,
+          },
           data: {
             title: title,
             body: body,
@@ -118,7 +129,12 @@ exports.onBookingStatusChange = onDocumentUpdated("bookings/{bookingId}", async 
             bookingId: bookingId,
             newStatus: newStatus,
           },
-          android: { priority: "high" },
+          android: {
+            priority: "high",
+            notification: {
+              channelId: "lexorafix_notifications",
+            },
+          },
           token: customerToken,
         });
         console.log(`Notified customer ${customerUid}`);
@@ -158,13 +174,22 @@ exports.onBookingStatusChange = onDocumentUpdated("bookings/{bookingId}", async 
     if (tokens.length > 0) {
       try {
         await getMessaging().sendEachForMulticast({
+          notification: {
+            title: "📋 Job Taken",
+            body: `The ${serviceType} job has been accepted by another worker.`,
+          },
           data: {
             title: "📋 Job Taken",
             body: `The ${serviceType} job has been accepted by another worker.`,
             type: "booking_taken",
             bookingId: bookingId,
           },
-          android: { priority: "high" },
+          android: {
+            priority: "high",
+            notification: {
+              channelId: "lexorafix_admin_notifications",
+            },
+          },
           tokens: tokens,
         });
         console.log(`Notified ${tokens.length} other workers about taken job`);
@@ -243,6 +268,10 @@ exports.onChatMessage = onDocumentCreated("chats/{chatId}/messages/{messageId}",
     const body = messageText;
 
     const payload = {
+      notification: {
+        title: title,
+        body: body,
+      },
       data: {
         title: title,
         body: body,
@@ -253,7 +282,12 @@ exports.onChatMessage = onDocumentCreated("chats/{chatId}/messages/{messageId}",
         senderName: senderName,
         senderRole: senderRole
       },
-      android: { priority: "high" },
+      android: {
+        priority: "high",
+        notification: {
+          channelId: "lexorafix_admin_notifications",
+        },
+      },
       tokens: tokens,
     };
 
@@ -282,5 +316,263 @@ exports.onChatMessage = onDocumentCreated("chats/{chatId}/messages/{messageId}",
     console.error("Error sending chat notification:", error);
   }
   
+  return null;
+});
+
+/**
+ * When a new E-commerce ORDER is CREATED → notify Admin
+ */
+exports.onOrderCreated = onDocumentCreated("orders/{orderId}", async (event) => {
+  const order = event.data?.data();
+  if (!order) return null;
+
+  const db = getFirestore();
+  const orderId = order.orderId || event.params.orderId;
+  const customerName = order.userName || "A customer";
+  const totalPrice = order.totalPrice || 0;
+
+  // Get admin FCM tokens
+  const adminsSnap = await db.collection("users")
+    .where("role", "==", "admin")
+    .get();
+
+  const tokens = [];
+  adminsSnap.forEach((doc) => {
+    const fcmToken = doc.data().fcmToken;
+    if (fcmToken) tokens.push(fcmToken);
+  });
+
+  if (tokens.length === 0) {
+    console.log("No admin FCM tokens found for order notification");
+    return null;
+  }
+
+  const message = {
+    notification: {
+      title: "🛒 New Order Received!",
+      body: `${customerName} placed an order (#${orderId}) for LKR ${totalPrice.toFixed(2)}`,
+    },
+    data: {
+      title: "🛒 New Order Received!",
+      body: `${customerName} placed an order (#${orderId}) for LKR ${totalPrice.toFixed(2)}`,
+      type: "new_order",
+      orderId: String(orderId),
+    },
+    android: {
+      priority: "high",
+      notification: {
+        channelId: "lexorafix_admin_notifications",
+      },
+    },
+    tokens: tokens,
+  };
+
+  try {
+    const response = await getMessaging().sendEachForMulticast(message);
+    console.log(`Order notification sent to ${response.successCount}/${tokens.length} admins`);
+  } catch (error) {
+    console.error("Error sending order notification:", error);
+  }
+
+  return null;
+});
+
+/**
+ * When an ORDER STATUS CHANGES → notify the Customer
+ */
+exports.onOrderStatusChange = onDocumentUpdated("orders/{orderId}", async (event) => {
+  const before = event.data?.before?.data();
+  const after = event.data?.after?.data();
+  if (!before || !after) return null;
+
+  // Only trigger if status actually changed
+  if (before.status === after.status) return null;
+
+  const db = getFirestore();
+  const orderId = after.orderId || event.params.orderId;
+  const newStatus = after.status;
+  const customerUid = after.firebaseUid;
+
+  console.log(`Order ${orderId} status: ${before.status} → ${newStatus}`);
+
+  if (!customerUid) return null;
+
+  const customerDoc = await db.collection("users").doc(customerUid).get();
+  const customerToken = customerDoc.data()?.fcmToken;
+
+  if (!customerToken) {
+    console.log(`No FCM token for customer ${customerUid}`);
+    return null;
+  }
+
+  let title, body;
+  switch (newStatus) {
+    case "Processing":
+      title = "📦 Order Processing";
+      body = `Your order #${orderId} is now being processed!`;
+      break;
+    case "Shipped":
+      title = "🚚 Order Shipped!";
+      body = `Your order #${orderId} has been shipped and is on its way!`;
+      break;
+    case "Delivered":
+      title = "✅ Order Delivered!";
+      body = `Your order #${orderId} has been delivered. Enjoy!`;
+      break;
+    case "Cancelled":
+      title = "❌ Order Cancelled";
+      body = `Your order #${orderId} has been cancelled.`;
+      break;
+    default:
+      title = "📋 Order Updated";
+      body = `Your order #${orderId} status is now: ${newStatus}`;
+  }
+
+  try {
+    await getMessaging().send({
+      notification: { title, body },
+      data: {
+        title, body,
+        type: "order_status_update",
+        orderId: String(orderId),
+        newStatus: newStatus,
+      },
+      android: {
+        priority: "high",
+        notification: {
+          channelId: "lexorafix_notifications",
+        },
+      },
+      token: customerToken,
+    });
+    console.log(`Order status notification sent to customer ${customerUid}`);
+
+    // Log to customer's in-app notifications
+    await db.collection("users").doc(customerUid).collection("notifications").add({
+      title: title,
+      message: body,
+      type: "order_update",
+      timestamp: FieldValue.serverTimestamp(),
+      read: false,
+      orderId: String(orderId),
+    });
+    console.log(`Logged order update notification for customer ${customerUid}`);
+  } catch (error) {
+    console.error("Error notifying customer about order status:", error);
+  }
+
+  return null;
+});
+
+/**
+ * When a Worker's adminApproved changes to true → notify the Worker
+ */
+exports.onWorkerApproved = onDocumentUpdated("users/{userId}", async (event) => {
+  const before = event.data?.before?.data();
+  const after = event.data?.after?.data();
+  if (!before || !after) return null;
+
+  // Only trigger if adminApproved flipped from false to true AND role is worker
+  if (after.role !== "worker") return null;
+  if (before.adminApproved === true || after.adminApproved !== true) return null;
+
+  const userId = event.params.userId;
+  const workerToken = after.fcmToken;
+  const workerName = after.name || "Worker";
+
+  console.log(`Worker ${userId} (${workerName}) has been approved`);
+
+  if (!workerToken) {
+    console.log(`No FCM token for worker ${userId}`);
+    return null;
+  }
+
+  const title = "🎉 Account Approved!";
+  const body = `Congratulations ${workerName}! Your LexoraFix worker account has been approved. You can now start accepting jobs!`;
+
+  try {
+    await getMessaging().send({
+      notification: { title, body },
+      data: {
+        title, body,
+        type: "worker_approved",
+        userId: userId,
+      },
+      android: {
+        priority: "high",
+        notification: {
+          channelId: "lexorafix_admin_notifications",
+        },
+      },
+      token: workerToken,
+    });
+    console.log(`Approval notification sent to worker ${userId}`);
+  } catch (error) {
+    console.error("Error sending worker approval notification:", error);
+  }
+
+  return null;
+});
+
+/**
+ * When a new Worker registers (role=worker, adminApproved=false) → notify Admin
+ */
+exports.onWorkerRegistered = onDocumentCreated("users/{userId}", async (event) => {
+  const userData = event.data?.data();
+  if (!userData) return null;
+
+  // Only trigger for new worker registrations
+  if (userData.role !== "worker") return null;
+  if (userData.adminApproved === true) return null;
+
+  const db = getFirestore();
+  const workerName = userData.name || "Unknown";
+  const workerEmail = userData.email || "";
+
+  console.log(`New worker registered: ${workerName} (${workerEmail})`);
+
+  // Get admin FCM tokens
+  const adminsSnap = await db.collection("users")
+    .where("role", "==", "admin")
+    .get();
+
+  const tokens = [];
+  adminsSnap.forEach((doc) => {
+    const fcmToken = doc.data().fcmToken;
+    if (fcmToken) tokens.push(fcmToken);
+  });
+
+  if (tokens.length === 0) {
+    console.log("No admin FCM tokens found for worker registration notification");
+    return null;
+  }
+
+  const title = "📋 New Worker Application";
+  const body = `${workerName} has applied as a service worker. Review in the Admin app.`;
+
+  const message = {
+    notification: { title, body },
+    data: {
+      title, body,
+      type: "new_worker_registration",
+      workerName: workerName,
+      workerEmail: workerEmail,
+    },
+    android: {
+      priority: "high",
+      notification: {
+        channelId: "lexorafix_admin_notifications",
+      },
+    },
+    tokens: tokens,
+  };
+
+  try {
+    const response = await getMessaging().sendEachForMulticast(message);
+    console.log(`Worker registration notification sent to ${response.successCount}/${tokens.length} admins`);
+  } catch (error) {
+    console.error("Error sending worker registration notification:", error);
+  }
+
   return null;
 });

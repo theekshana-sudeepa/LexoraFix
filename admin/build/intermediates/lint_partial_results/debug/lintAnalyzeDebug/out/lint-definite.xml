@@ -2,6 +2,20 @@
 <incidents format="6" by="lint 8.7.3" type="incidents">
 
     <incident
+        id="DefaultLocale"
+        severity="warning"
+        message="Implicitly using the default locale is a common source of bugs: Use `toUpperCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`.">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/network/EmailHelper.java"
+            line="425"
+            column="97"
+            startOffset="28882"
+            endLine="425"
+            endColumn="108"
+            endOffset="28893"/>
+    </incident>
+
+    <incident
         id="OldTargetApi"
         severity="warning"
         message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details.">
@@ -704,12 +718,12 @@
         message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerChatActivity.java"
-            line="201"
+            line="218"
             column="21"
-            startOffset="8950"
-            endLine="201"
+            startOffset="9751"
+            endLine="218"
             endColumn="55"
-            endOffset="8984"/>
+            endOffset="9785"/>
     </incident>
 
     <incident
@@ -1249,13 +1263,13 @@
         severity="warning"
         message="Use version catalog instead">
         <fix-composite
-            description="Replace with new library catalog declaration for biometric"
+            description="Replace with new library catalog declaration for androidx-biometric"
             robot="true">
             <fix-replace
-                description="Replace with biometric = &quot;1.1.0&quot;..."
+                description="Replace with biometricVersion = &quot;1.1.0&quot;..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="biometric = &quot;1.1.0&quot;&#xA;"
+                replacement="biometricVersion = &quot;1.1.0&quot;&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
@@ -1263,10 +1277,10 @@
                     endOffset="25"/>
             </fix-replace>
             <fix-replace
-                description="Replace with biometric = { module = &quot;androidx.biometric:biometric&quot;, version.ref = &quot;biometric&quot; }..."
+                description="Replace with androidx-biometric = { module = &quot;androidx.biometric:biometric&quot;, version.ref = &quot;biometricVersion&quot; }..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="biometric = { module = &quot;androidx.biometric:biometric&quot;, version.ref = &quot;biometric&quot; }&#xA;"
+                replacement="androidx-biometric = { module = &quot;androidx.biometric:biometric&quot;, version.ref = &quot;biometricVersion&quot; }&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
@@ -1274,9 +1288,9 @@
                     endOffset="447"/>
             </fix-replace>
             <fix-replace
-                description="Replace with libs.biometric"
+                description="Replace with libs.androidx.biometric"
                 robot="true"
-                replacement="libs.biometric"
+                replacement="libs.androidx.biometric"
                 priority="0">
                 <range
                     file="${:admin*projectDir}/build.gradle.kts"
@@ -1299,13 +1313,13 @@
         severity="warning"
         message="Use version catalog instead">
         <fix-composite
-            description="Replace with new library catalog declaration for android-mail"
+            description="Replace with new library catalog declaration for mail-android-mail"
             robot="true">
             <fix-replace
-                description="Replace with androidMail = &quot;1.6.7&quot;..."
+                description="Replace with androidMailVersion = &quot;1.6.7&quot;..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="androidMail = &quot;1.6.7&quot;&#xA;"
+                replacement="androidMailVersion = &quot;1.6.7&quot;&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
@@ -1313,20 +1327,20 @@
                     endOffset="25"/>
             </fix-replace>
             <fix-replace
-                description="Replace with android-mail = { module = &quot;com.sun.mail:android-mail&quot;, version.ref = &quot;androidMail&quot; }..."
+                description="Replace with mail-android-mail = { module = &quot;com.sun.mail:android-mail&quot;, version.ref = &quot;androidMailVersion&quot; }..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="android-mail = { module = &quot;com.sun.mail:android-mail&quot;, version.ref = &quot;androidMail&quot; }&#xA;"
+                replacement="mail-android-mail = { module = &quot;com.sun.mail:android-mail&quot;, version.ref = &quot;androidMailVersion&quot; }&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="447"
-                    endOffset="447"/>
+                    startOffset="803"
+                    endOffset="803"/>
             </fix-replace>
             <fix-replace
-                description="Replace with libs.android.mail"
+                description="Replace with libs.mail.android.mail"
                 robot="true"
-                replacement="libs.android.mail"
+                replacement="libs.mail.android.mail"
                 priority="0">
                 <range
                     file="${:admin*projectDir}/build.gradle.kts"
@@ -1349,13 +1363,13 @@
         severity="warning"
         message="Use version catalog instead">
         <fix-composite
-            description="Replace with new library catalog declaration for android-activation"
+            description="Replace with new library catalog declaration for mail-android-activation"
             robot="true">
             <fix-replace
-                description="Replace with androidActivation = &quot;1.6.7&quot;..."
+                description="Replace with androidActivationVersion = &quot;1.6.7&quot;..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="androidActivation = &quot;1.6.7&quot;&#xA;"
+                replacement="androidActivationVersion = &quot;1.6.7&quot;&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
@@ -1363,20 +1377,20 @@
                     endOffset="25"/>
             </fix-replace>
             <fix-replace
-                description="Replace with android-activation = { module = &quot;com.sun.mail:android-activation&quot;, version.ref = &quot;androidActivation&quot; }..."
+                description="Replace with mail-android-activation = { module = &quot;com.sun.mail:android-activation&quot;, version.ref = &quot;androidActivationVersion&quot; }..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="android-activation = { module = &quot;com.sun.mail:android-activation&quot;, version.ref = &quot;androidActivation&quot; }&#xA;"
+                replacement="mail-android-activation = { module = &quot;com.sun.mail:android-activation&quot;, version.ref = &quot;androidActivationVersion&quot; }&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="447"
-                    endOffset="447"/>
+                    startOffset="803"
+                    endOffset="803"/>
             </fix-replace>
             <fix-replace
-                description="Replace with libs.android.activation"
+                description="Replace with libs.mail.android.activation"
                 robot="true"
-                replacement="libs.android.activation"
+                replacement="libs.mail.android.activation"
                 priority="0">
                 <range
                     file="${:admin*projectDir}/build.gradle.kts"
@@ -1399,34 +1413,34 @@
         severity="warning"
         message="Use version catalog instead">
         <fix-composite
-            description="Replace with new library catalog declaration for lombok"
+            description="Replace with new library catalog declaration for org-projectlombok-lombok"
             robot="true">
             <fix-replace
-                description="Replace with lombok = &quot;1.18.34&quot;..."
+                description="Replace with projectlombokLombok = &quot;1.18.34&quot;..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="lombok = &quot;1.18.34&quot;&#xA;"
+                replacement="projectlombokLombok = &quot;1.18.34&quot;&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="126"
-                    endOffset="126"/>
+                    startOffset="173"
+                    endOffset="173"/>
             </fix-replace>
             <fix-replace
-                description="Replace with lombok = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;lombok&quot; }..."
+                description="Replace with org-projectlombok-lombok = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;projectlombokLombok&quot; }..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="lombok = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;lombok&quot; }&#xA;"
+                replacement="org-projectlombok-lombok = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;projectlombokLombok&quot; }&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="803"
-                    endOffset="803"/>
+                    startOffset="1021"
+                    endOffset="1021"/>
             </fix-replace>
             <fix-replace
-                description="Replace with libs.lombok"
+                description="Replace with libs.org.projectlombok.lombok"
                 robot="true"
-                replacement="libs.lombok"
+                replacement="libs.org.projectlombok.lombok"
                 priority="0">
                 <range
                     file="${:admin*projectDir}/build.gradle.kts"
@@ -1449,24 +1463,24 @@
         severity="warning"
         message="Use version catalog instead">
         <fix-composite
-            description="Replace with new library catalog declaration for projectlombok-lombok"
+            description="Replace with new library catalog declaration for org-projectlombok-lombok2"
             robot="true">
             <fix-replace
-                description="Replace with lombokVersion = &quot;1.18.34&quot;..."
+                description="Replace with projectlombokLombokVersion = &quot;1.18.34&quot;..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="lombokVersion = &quot;1.18.34&quot;&#xA;"
+                replacement="projectlombokLombokVersion = &quot;1.18.34&quot;&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="126"
-                    endOffset="126"/>
+                    startOffset="173"
+                    endOffset="173"/>
             </fix-replace>
             <fix-replace
-                description="Replace with projectlombok-lombok = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;lombokVersion&quot; }..."
+                description="Replace with org-projectlombok-lombok2 = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;projectlombokLombokVersion&quot; }..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="projectlombok-lombok = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;lombokVersion&quot; }&#xA;"
+                replacement="org-projectlombok-lombok2 = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;projectlombokLombokVersion&quot; }&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
@@ -1474,9 +1488,9 @@
                     endOffset="1021"/>
             </fix-replace>
             <fix-replace
-                description="Replace with libs.projectlombok.lombok"
+                description="Replace with libs.org.projectlombok.lombok2"
                 robot="true"
-                replacement="libs.projectlombok.lombok"
+                replacement="libs.org.projectlombok.lombok2"
                 priority="0">
                 <range
                     file="${:admin*projectDir}/build.gradle.kts"
@@ -2606,12 +2620,12 @@
         message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/AdminProductAdapter.java"
-            line="66"
-            column="32"
-            startOffset="2341"
-            endLine="66"
-            endColumn="49"
-            endOffset="2358"/>
+            line="88"
+            column="36"
+            startOffset="3259"
+            endLine="88"
+            endColumn="58"
+            endOffset="3281"/>
     </incident>
 
     <incident
@@ -2620,12 +2634,40 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/AdminProductAdapter.java"
-            line="66"
-            column="32"
-            startOffset="2341"
-            endLine="66"
-            endColumn="41"
-            endOffset="2350"/>
+            line="88"
+            column="36"
+            startOffset="3259"
+            endLine="88"
+            endColumn="45"
+            endOffset="3268"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/AdminProductAdapter.java"
+            line="96"
+            column="36"
+            startOffset="3720"
+            endLine="96"
+            endColumn="53"
+            endOffset="3737"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/AdminProductAdapter.java"
+            line="96"
+            column="36"
+            startOffset="3720"
+            endLine="96"
+            endColumn="45"
+            endOffset="3729"/>
     </incident>
 
     <incident
@@ -2774,12 +2816,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="100"
+            line="108"
             column="51"
-            startOffset="4492"
-            endLine="100"
+            startOffset="4952"
+            endLine="108"
             endColumn="67"
-            endOffset="4508"/>
+            endOffset="4968"/>
     </incident>
 
     <incident
@@ -2788,12 +2830,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="109"
+            line="117"
             column="39"
-            startOffset="4906"
-            endLine="109"
+            startOffset="5366"
+            endLine="117"
             endColumn="51"
-            endOffset="4918"/>
+            endOffset="5378"/>
     </incident>
 
     <incident
@@ -2802,12 +2844,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="116"
+            line="124"
             column="39"
-            startOffset="5402"
-            endLine="116"
+            startOffset="5862"
+            endLine="124"
             endColumn="49"
-            endOffset="5412"/>
+            endOffset="5872"/>
     </incident>
 
     <incident
@@ -2816,12 +2858,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="128"
+            line="136"
             column="39"
-            startOffset="6004"
-            endLine="128"
+            startOffset="6464"
+            endLine="136"
             endColumn="52"
-            endOffset="6017"/>
+            endOffset="6477"/>
     </incident>
 
     <incident
@@ -2956,12 +2998,12 @@
         message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/OrderDetailActivity.java"
-            line="104"
+            line="105"
             column="39"
-            startOffset="4328"
-            endLine="104"
+            startOffset="4380"
+            endLine="105"
             endColumn="91"
-            endOffset="4380"/>
+            endOffset="4432"/>
     </incident>
 
     <incident
@@ -2970,12 +3012,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/OrderDetailActivity.java"
-            line="104"
+            line="105"
             column="39"
-            startOffset="4328"
-            endLine="104"
+            startOffset="4380"
+            endLine="105"
             endColumn="48"
-            endOffset="4337"/>
+            endOffset="4389"/>
     </incident>
 
     <incident
@@ -3154,10 +3196,10 @@
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
             line="372"
             column="29"
-            startOffset="14330"
+            startOffset="14379"
             endLine="372"
             endColumn="40"
-            endOffset="14341"/>
+            endOffset="14390"/>
     </incident>
 
     <incident
@@ -3168,10 +3210,10 @@
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
             line="382"
             column="41"
-            startOffset="14794"
+            startOffset="14843"
             endLine="382"
             endColumn="60"
-            endOffset="14813"/>
+            endOffset="14862"/>
     </incident>
 
     <incident

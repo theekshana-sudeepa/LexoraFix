@@ -94,6 +94,14 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
                             user.put("adminApproved", true);
                             user.put("status", "Active");
                             notifyItemChanged(position);
+
+                            // Send Approval Email
+                            String email = getStr(user, "email", "");
+                            String name = getStr(user, "name", "Worker");
+                            if (!email.isEmpty()) {
+                                com.lexoratech.lexorafix.admin.network.EmailHelper.getInstance()
+                                        .sendWorkerApprovalEmail(email, name, true);
+                            }
                         })
                         .addOnFailureListener(e -> {
                             holder.btnBan.setEnabled(true);
