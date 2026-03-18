@@ -63,7 +63,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = products.get(position);
         holder.tvName.setText(product.getName());
-        holder.tvPrice.setText(String.format(Locale.getDefault(), "LKR %.2f", product.getPrice()));
+        if (product.hasVariants() && product.getPrice() == 0 && product.getLowestPrice() > 0) {
+            holder.tvPrice.setText(String.format(Locale.getDefault(), "Starting from LKR %.2f", product.getLowestPrice()));
+            holder.tvPrice.setTextSize(12); // Slightly smaller for long text if needed, but keeping simple first
+        } else {
+            holder.tvPrice.setText(String.format(Locale.getDefault(), "LKR %.2f", product.getPrice()));
+        }
 
         int effectiveStock = product.getEffectiveStock();
         if (effectiveStock > 0) {

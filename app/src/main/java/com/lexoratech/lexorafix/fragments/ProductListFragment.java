@@ -119,6 +119,7 @@ public class ProductListFragment extends Fragment {
                 new FirestoreHelper.FirestoreCallback<com.google.firebase.firestore.QuerySnapshot>() {
                     @Override
                     public void onSuccess(com.google.firebase.firestore.QuerySnapshot result) {
+                        if (!isAdded() || getContext() == null) return;
                         allCategories.clear();
                         for (DocumentSnapshot doc : result.getDocuments()) {
                             Category cat = Category.fromMap(doc.getData());
@@ -141,6 +142,7 @@ public class ProductListFragment extends Fragment {
                 new FirestoreHelper.FirestoreCallback<com.google.firebase.firestore.QuerySnapshot>() {
                     @Override
                     public void onSuccess(com.google.firebase.firestore.QuerySnapshot result) {
+                        if (!isAdded() || getContext() == null) return;
                         setAdapter(rvProducts, result);
                     }
 
@@ -303,6 +305,7 @@ public class ProductListFragment extends Fragment {
                     new FirestoreHelper.FirestoreCallback<com.lexoratech.lexorafix.models.User>() {
                         @Override
                         public void onSuccess(com.lexoratech.lexorafix.models.User user) {
+                            if (!isAdded() || getContext() == null) return;
                             if (user != null && user.getWishlist() != null) {
                                 adapter.updateWishlist(user.getWishlist());
                             }

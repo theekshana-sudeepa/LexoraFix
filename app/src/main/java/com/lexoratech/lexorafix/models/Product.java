@@ -99,6 +99,28 @@ public class Product {
         return stock;
     }
 
+    /**
+     * Returns the lowest price among all variants if they exist, otherwise returns the base price.
+     */
+    public double getLowestPrice() {
+        if (hasVariants() && price == 0) {
+            double minPrice = Double.MAX_VALUE;
+            boolean found = false;
+            for (ProductVariant v : variants) {
+                if (v.getPrice() > 0) {
+                    if (v.getPrice() < minPrice) {
+                        minPrice = v.getPrice();
+                        found = true;
+                    }
+                }
+            }
+            if (found) {
+                return minPrice;
+            }
+        }
+        return price;
+    }
+
     // ========== Firestore Serialization ==========
 
     public Map<String, Object> toMap() {

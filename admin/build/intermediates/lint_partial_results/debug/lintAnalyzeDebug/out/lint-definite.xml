@@ -35,6 +35,20 @@
     </incident>
 
     <incident
+        id="InflateParams"
+        severity="warning"
+        message="Avoid passing `null` as the view root (needed to resolve layout parameters on the inflated layout&apos;s root element)">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
+            line="340"
+            column="77"
+            startOffset="13026"
+            endLine="340"
+            endColumn="81"
+            endOffset="13030"/>
+    </incident>
+
+    <incident
         id="AndroidGradlePluginVersion"
         severity="warning"
         message="A newer version of com.android.application than 8.7.3 is available: 9.1.0">
@@ -509,6 +523,34 @@
     </incident>
 
     <incident
+        id="ExportedService"
+        severity="warning"
+        message="Exported service does not require permission">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set permission"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="permission"
+                value="TODO"
+                point="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set exported=&quot;false&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="exported"
+                value="false"/>
+        </fix-alternatives>
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*manifest*0}"
+            line="65"
+            column="10"
+            startOffset="3194"
+            endLine="65"
+            endColumn="17"
+            endOffset="3201"/>
+    </incident>
+
+    <incident
         id="AnnotationProcessorOnCompilePath"
         severity="warning"
         message="Add annotation processor to processor path using `annotationProcessor` instead of `compileOnly`">
@@ -536,12 +578,12 @@
         message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java"
-            line="296"
+            line="293"
             column="9"
-            startOffset="12300"
-            endLine="296"
+            startOffset="12129"
+            endLine="293"
             endColumn="46"
-            endOffset="12337"/>
+            endOffset="12166"/>
     </incident>
 
     <incident
@@ -550,12 +592,12 @@
         message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java"
-            line="450"
+            line="441"
             column="13"
-            startOffset="18842"
-            endLine="450"
+            startOffset="18422"
+            endLine="441"
             endColumn="50"
-            endOffset="18879"/>
+            endOffset="18459"/>
     </incident>
 
     <incident
@@ -661,13 +703,13 @@
         severity="warning"
         message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
         <location
-            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="174"
-            column="17"
-            startOffset="6118"
-            endLine="174"
-            endColumn="47"
-            endOffset="6148"/>
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerChatActivity.java"
+            line="201"
+            column="21"
+            startOffset="8950"
+            endLine="201"
+            endColumn="55"
+            endOffset="8984"/>
     </incident>
 
     <incident
@@ -676,12 +718,26 @@
         message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="258"
+            line="178"
+            column="17"
+            startOffset="6311"
+            endLine="178"
+            endColumn="47"
+            endOffset="6341"/>
+    </incident>
+
+    <incident
+        id="NotifyDataSetChanged"
+        severity="warning"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
+            line="262"
             column="9"
-            startOffset="9361"
-            endLine="258"
+            startOffset="9554"
+            endLine="262"
             endColumn="39"
-            endOffset="9391"/>
+            endOffset="9584"/>
     </incident>
 
     <incident
@@ -794,27 +850,6 @@
             endLine="9"
             endColumn="1564"
             endOffset="1832"/>
-    </incident>
-
-    <incident
-        id="DisableBaselineAlignment"
-        severity="warning"
-        message="Set `android:baselineAligned=&quot;false&quot;` on this element for better performance">
-        <fix-attribute
-            description="Set baselineAligned=&quot;false&quot;"
-            robot="true"
-            independent="true"
-            namespace="http://schemas.android.com/apk/res/android"
-            attribute="baselineAligned"
-            value="false"/>
-        <location
-            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="225"
-            column="22"
-            startOffset="12479"
-            endLine="225"
-            endColumn="34"
-            endOffset="12491"/>
     </incident>
 
     <incident
@@ -1016,6 +1051,20 @@
     <incident
         id="Overdraw"
         severity="warning"
+        message="Possible overdraw: Root element paints background `@color/adminBackground` with a theme that also paints a background (inferred theme is `@style/Theme.LexoraAdmin`)">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_chat.xml"
+            line="8"
+            column="5"
+            startOffset="325"
+            endLine="8"
+            endColumn="48"
+            endOffset="368"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
         message="Possible overdraw: Root element paints background `@color/adminBackground` with a theme that also paints a background (inferred theme is `@style/Theme_LexoraAdmin`)">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_dashboard.xml"
@@ -1067,6 +1116,34 @@
             endLine="6"
             endColumn="52"
             endOffset="300"/>
+    </incident>
+
+    <incident
+        id="UselessParent"
+        severity="warning"
+        message="This `LinearLayout` layout or its `FrameLayout` parent is unnecessary; transfer the `background` attribute to the other view">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/item_message_received.xml"
+            line="10"
+            column="6"
+            startOffset="321"
+            endLine="10"
+            endColumn="18"
+            endOffset="333"/>
+    </incident>
+
+    <incident
+        id="UselessParent"
+        severity="warning"
+        message="This `LinearLayout` layout or its `FrameLayout` parent is unnecessary; transfer the `background` attribute to the other view">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/item_message_sent.xml"
+            line="10"
+            column="6"
+            startOffset="321"
+            endLine="10"
+            endColumn="18"
+            endOffset="333"/>
     </incident>
 
     <incident
@@ -1172,13 +1249,13 @@
         severity="warning"
         message="Use version catalog instead">
         <fix-composite
-            description="Replace with new library catalog declaration for androidx-biometric-biometric"
+            description="Replace with new library catalog declaration for biometric"
             robot="true">
             <fix-replace
-                description="Replace with androidxBiometric = &quot;1.1.0&quot;..."
+                description="Replace with biometric = &quot;1.1.0&quot;..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="androidxBiometric = &quot;1.1.0&quot;&#xA;"
+                replacement="biometric = &quot;1.1.0&quot;&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
@@ -1186,10 +1263,10 @@
                     endOffset="25"/>
             </fix-replace>
             <fix-replace
-                description="Replace with androidx-biometric-biometric = { module = &quot;androidx.biometric:biometric&quot;, version.ref = &quot;androidxBiometric&quot; }..."
+                description="Replace with biometric = { module = &quot;androidx.biometric:biometric&quot;, version.ref = &quot;biometric&quot; }..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="androidx-biometric-biometric = { module = &quot;androidx.biometric:biometric&quot;, version.ref = &quot;androidxBiometric&quot; }&#xA;"
+                replacement="biometric = { module = &quot;androidx.biometric:biometric&quot;, version.ref = &quot;biometric&quot; }&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
@@ -1197,9 +1274,9 @@
                     endOffset="447"/>
             </fix-replace>
             <fix-replace
-                description="Replace with libs.androidx.biometric.biometric"
+                description="Replace with libs.biometric"
                 robot="true"
-                replacement="libs.androidx.biometric.biometric"
+                replacement="libs.biometric"
                 priority="0">
                 <range
                     file="${:admin*projectDir}/build.gradle.kts"
@@ -1222,34 +1299,34 @@
         severity="warning"
         message="Use version catalog instead">
         <fix-composite
-            description="Replace with new library catalog declaration for sun-android-mail"
+            description="Replace with new library catalog declaration for android-mail"
             robot="true">
             <fix-replace
-                description="Replace with sunAndroidMail = &quot;1.6.7&quot;..."
+                description="Replace with androidMail = &quot;1.6.7&quot;..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="sunAndroidMail = &quot;1.6.7&quot;&#xA;"
+                replacement="androidMail = &quot;1.6.7&quot;&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="215"
-                    endOffset="215"/>
+                    startOffset="25"
+                    endOffset="25"/>
             </fix-replace>
             <fix-replace
-                description="Replace with sun-android-mail = { module = &quot;com.sun.mail:android-mail&quot;, version.ref = &quot;sunAndroidMail&quot; }..."
+                description="Replace with android-mail = { module = &quot;com.sun.mail:android-mail&quot;, version.ref = &quot;androidMail&quot; }..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="sun-android-mail = { module = &quot;com.sun.mail:android-mail&quot;, version.ref = &quot;sunAndroidMail&quot; }&#xA;"
+                replacement="android-mail = { module = &quot;com.sun.mail:android-mail&quot;, version.ref = &quot;androidMail&quot; }&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="1213"
-                    endOffset="1213"/>
+                    startOffset="447"
+                    endOffset="447"/>
             </fix-replace>
             <fix-replace
-                description="Replace with libs.sun.android.mail"
+                description="Replace with libs.android.mail"
                 robot="true"
-                replacement="libs.sun.android.mail"
+                replacement="libs.android.mail"
                 priority="0">
                 <range
                     file="${:admin*projectDir}/build.gradle.kts"
@@ -1272,34 +1349,34 @@
         severity="warning"
         message="Use version catalog instead">
         <fix-composite
-            description="Replace with new library catalog declaration for sun-android-activation"
+            description="Replace with new library catalog declaration for android-activation"
             robot="true">
             <fix-replace
-                description="Replace with sunAndroidActivation = &quot;1.6.7&quot;..."
+                description="Replace with androidActivation = &quot;1.6.7&quot;..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="sunAndroidActivation = &quot;1.6.7&quot;&#xA;"
+                replacement="androidActivation = &quot;1.6.7&quot;&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="215"
-                    endOffset="215"/>
+                    startOffset="25"
+                    endOffset="25"/>
             </fix-replace>
             <fix-replace
-                description="Replace with sun-android-activation = { module = &quot;com.sun.mail:android-activation&quot;, version.ref = &quot;sunAndroidActivation&quot; }..."
+                description="Replace with android-activation = { module = &quot;com.sun.mail:android-activation&quot;, version.ref = &quot;androidActivation&quot; }..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="sun-android-activation = { module = &quot;com.sun.mail:android-activation&quot;, version.ref = &quot;sunAndroidActivation&quot; }&#xA;"
+                replacement="android-activation = { module = &quot;com.sun.mail:android-activation&quot;, version.ref = &quot;androidActivation&quot; }&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="1213"
-                    endOffset="1213"/>
+                    startOffset="447"
+                    endOffset="447"/>
             </fix-replace>
             <fix-replace
-                description="Replace with libs.sun.android.activation"
+                description="Replace with libs.android.activation"
                 robot="true"
-                replacement="libs.sun.android.activation"
+                replacement="libs.android.activation"
                 priority="0">
                 <range
                     file="${:admin*projectDir}/build.gradle.kts"
@@ -1322,34 +1399,34 @@
         severity="warning"
         message="Use version catalog instead">
         <fix-composite
-            description="Replace with new library catalog declaration for org-projectlombok-lombok3"
+            description="Replace with new library catalog declaration for lombok"
             robot="true">
             <fix-replace
-                description="Replace with orgProjectlombokLombok = &quot;1.18.34&quot;..."
+                description="Replace with lombok = &quot;1.18.34&quot;..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="orgProjectlombokLombok = &quot;1.18.34&quot;&#xA;"
+                replacement="lombok = &quot;1.18.34&quot;&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="173"
-                    endOffset="173"/>
+                    startOffset="126"
+                    endOffset="126"/>
             </fix-replace>
             <fix-replace
-                description="Replace with org-projectlombok-lombok3 = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;orgProjectlombokLombok&quot; }..."
+                description="Replace with lombok = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;lombok&quot; }..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="org-projectlombok-lombok3 = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;orgProjectlombokLombok&quot; }&#xA;"
+                replacement="lombok = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;lombok&quot; }&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="1021"
-                    endOffset="1021"/>
+                    startOffset="803"
+                    endOffset="803"/>
             </fix-replace>
             <fix-replace
-                description="Replace with libs.org.projectlombok.lombok3"
+                description="Replace with libs.lombok"
                 robot="true"
-                replacement="libs.org.projectlombok.lombok3"
+                replacement="libs.lombok"
                 priority="0">
                 <range
                     file="${:admin*projectDir}/build.gradle.kts"
@@ -1372,24 +1449,24 @@
         severity="warning"
         message="Use version catalog instead">
         <fix-composite
-            description="Replace with new library catalog declaration for org-projectlombok-lombok4"
+            description="Replace with new library catalog declaration for projectlombok-lombok"
             robot="true">
             <fix-replace
-                description="Replace with orgProjectlombokLombok2 = &quot;1.18.34&quot;..."
+                description="Replace with lombokVersion = &quot;1.18.34&quot;..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="orgProjectlombokLombok2 = &quot;1.18.34&quot;&#xA;"
+                replacement="lombokVersion = &quot;1.18.34&quot;&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
-                    startOffset="173"
-                    endOffset="173"/>
+                    startOffset="126"
+                    endOffset="126"/>
             </fix-replace>
             <fix-replace
-                description="Replace with org-projectlombok-lombok4 = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;orgProjectlombokLombok2&quot; }..."
+                description="Replace with projectlombok-lombok = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;lombokVersion&quot; }..."
                 robot="true"
                 oldString="_lint_insert_begin_"
-                replacement="org-projectlombok-lombok4 = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;orgProjectlombokLombok2&quot; }&#xA;"
+                replacement="projectlombok-lombok = { module = &quot;org.projectlombok:lombok&quot;, version.ref = &quot;lombokVersion&quot; }&#xA;"
                 priority="0">
                 <range
                     file="$HOME/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml"
@@ -1397,9 +1474,9 @@
                     endOffset="1021"/>
             </fix-replace>
             <fix-replace
-                description="Replace with libs.org.projectlombok.lombok4"
+                description="Replace with libs.projectlombok.lombok"
                 robot="true"
-                replacement="libs.org.projectlombok.lombok4"
+                replacement="libs.projectlombok.lombok"
                 priority="0">
                 <range
                     file="${:admin*projectDir}/build.gradle.kts"
@@ -2137,12 +2214,12 @@
         </fix-alternatives>
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_dashboard.xml"
-            line="53"
+            line="64"
             column="10"
-            startOffset="2065"
-            endLine="53"
+            startOffset="2499"
+            endLine="64"
             endColumn="19"
-            endOffset="2074"/>
+            endOffset="2508"/>
     </incident>
 
     <incident
@@ -2291,12 +2368,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java"
-            line="157"
+            line="154"
             column="29"
-            startOffset="6861"
-            endLine="157"
+            startOffset="6690"
+            endLine="154"
             endColumn="43"
-            endOffset="6875"/>
+            endOffset="6704"/>
     </incident>
 
     <incident
@@ -2305,12 +2382,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java"
-            line="158"
+            line="155"
             column="29"
-            startOffset="6906"
-            endLine="158"
+            startOffset="6735"
+            endLine="155"
             endColumn="45"
-            endOffset="6922"/>
+            endOffset="6751"/>
     </incident>
 
     <incident
@@ -2935,12 +3012,12 @@
         message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
-            line="72"
+            line="74"
             column="42"
-            startOffset="2615"
-            endLine="72"
+            startOffset="2715"
+            endLine="74"
             endColumn="55"
-            endOffset="2628"/>
+            endOffset="2728"/>
     </incident>
 
     <incident
@@ -2949,12 +3026,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
-            line="85"
+            line="87"
             column="38"
-            startOffset="3050"
-            endLine="85"
+            startOffset="3150"
+            endLine="87"
             endColumn="54"
-            endOffset="3066"/>
+            endOffset="3166"/>
     </incident>
 
     <incident
@@ -2963,40 +3040,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
-            line="126"
+            line="142"
             column="42"
-            startOffset="4807"
-            endLine="126"
+            startOffset="5819"
+            endLine="142"
             endColumn="61"
-            endOffset="4826"/>
-    </incident>
-
-    <incident
-        id="SetTextI18n"
-        severity="warning"
-        message="String literal in `setText` can not be translated. Use Android resources instead.">
-        <location
-            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
-            line="132"
-            column="42"
-            startOffset="5226"
-            endLine="132"
-            endColumn="61"
-            endOffset="5245"/>
-    </incident>
-
-    <incident
-        id="SetTextI18n"
-        severity="warning"
-        message="String literal in `setText` can not be translated. Use Android resources instead.">
-        <location
-            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
-            line="138"
-            column="42"
-            startOffset="5641"
-            endLine="138"
-            endColumn="56"
-            endOffset="5655"/>
+            endOffset="5838"/>
     </incident>
 
     <incident
@@ -3006,11 +3055,11 @@
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
             line="148"
-            column="34"
-            startOffset="6118"
+            column="42"
+            startOffset="6238"
             endLine="148"
-            endColumn="48"
-            endOffset="6132"/>
+            endColumn="61"
+            endOffset="6257"/>
     </incident>
 
     <incident
@@ -3019,12 +3068,12 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
-            line="191"
-            column="50"
-            startOffset="8755"
-            endLine="191"
-            endColumn="66"
-            endOffset="8771"/>
+            line="154"
+            column="42"
+            startOffset="6653"
+            endLine="154"
+            endColumn="56"
+            endOffset="6667"/>
     </incident>
 
     <incident
@@ -3033,26 +3082,96 @@
         message="String literal in `setText` can not be translated. Use Android resources instead.">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
-            line="197"
-            column="46"
-            startOffset="9086"
-            endLine="197"
-            endColumn="62"
-            endOffset="9102"/>
-    </incident>
-
-    <incident
-        id="SetTextI18n"
-        severity="warning"
-        message="String literal in `setText` can not be translated. Use Android resources instead.">
-        <location
-            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
-            line="204"
+            line="164"
             column="34"
-            startOffset="9441"
-            endLine="204"
+            startOffset="7130"
+            endLine="164"
+            endColumn="48"
+            endOffset="7144"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
+            line="207"
+            column="50"
+            startOffset="9767"
+            endLine="207"
+            endColumn="66"
+            endOffset="9783"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
+            line="213"
+            column="46"
+            startOffset="10098"
+            endLine="213"
+            endColumn="62"
+            endOffset="10114"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
+            line="220"
+            column="34"
+            startOffset="10453"
+            endLine="220"
             endColumn="47"
-            endOffset="9454"/>
+            endOffset="10466"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
+            line="356"
+            column="40"
+            startOffset="13843"
+            endLine="356"
+            endColumn="49"
+            endOffset="13852"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
+            line="372"
+            column="29"
+            startOffset="14330"
+            endLine="372"
+            endColumn="40"
+            endOffset="14341"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
+            line="382"
+            column="41"
+            startOffset="14794"
+            endLine="382"
+            endColumn="60"
+            endOffset="14813"/>
     </incident>
 
     <incident
@@ -3324,43 +3443,15 @@
     <incident
         id="HardcodedText"
         severity="warning"
-        message="Hardcoded string &quot;Base Price (LKR)&quot;, should use `@string` resource">
-        <location
-            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="237"
-            column="29"
-            startOffset="13127"
-            endLine="237"
-            endColumn="60"
-            endOffset="13158"/>
-    </incident>
-
-    <incident
-        id="HardcodedText"
-        severity="warning"
-        message="Hardcoded string &quot;Base Stock&quot;, should use `@string` resource">
-        <location
-            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="263"
-            column="29"
-            startOffset="14814"
-            endLine="263"
-            endColumn="54"
-            endOffset="14839"/>
-    </incident>
-
-    <incident
-        id="HardcodedText"
-        severity="warning"
         message="Hardcoded string &quot;Category&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="294"
+            line="235"
             column="29"
-            startOffset="16699"
-            endLine="294"
+            startOffset="12998"
+            endLine="235"
             endColumn="52"
-            endOffset="16722"/>
+            endOffset="13021"/>
     </incident>
 
     <incident
@@ -3369,12 +3460,12 @@
         message="Hardcoded string &quot;Status&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="323"
+            line="264"
             column="29"
-            startOffset="18335"
-            endLine="323"
+            startOffset="14634"
+            endLine="264"
             endColumn="50"
-            endOffset="18356"/>
+            endOffset="14655"/>
     </incident>
 
     <incident
@@ -3383,12 +3474,12 @@
         message="Hardcoded string &quot;Featured Product&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="359"
+            line="300"
             column="33"
-            startOffset="20297"
-            endLine="359"
+            startOffset="16596"
+            endLine="300"
             endColumn="64"
-            endOffset="20328"/>
+            endOffset="16627"/>
     </incident>
 
     <incident
@@ -3397,12 +3488,12 @@
         message="Hardcoded string &quot;Show on home screen spotlight&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="367"
+            line="308"
             column="33"
-            startOffset="20795"
-            endLine="367"
+            startOffset="17094"
+            endLine="308"
             endColumn="77"
-            endOffset="20839"/>
+            endOffset="17138"/>
     </incident>
 
     <incident
@@ -3411,12 +3502,12 @@
         message="Hardcoded string &quot;Variant Generation (Optional)&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="406"
+            line="347"
             column="25"
-            startOffset="22661"
-            endLine="406"
+            startOffset="18960"
+            endLine="347"
             endColumn="69"
-            endOffset="22705"/>
+            endOffset="19004"/>
     </incident>
 
     <incident
@@ -3425,12 +3516,12 @@
         message="Hardcoded string &quot;Define properties to automatically create variant combinations.&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="416"
+            line="357"
             column="25"
-            startOffset="23187"
-            endLine="416"
+            startOffset="19486"
+            endLine="357"
             endColumn="103"
-            endOffset="23265"/>
+            endOffset="19564"/>
     </incident>
 
     <incident
@@ -3439,12 +3530,12 @@
         message="Hardcoded string &quot;+ Add Base Property&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="442"
+            line="383"
             column="29"
-            startOffset="24589"
-            endLine="442"
+            startOffset="20888"
+            endLine="383"
             endColumn="63"
-            endOffset="24623"/>
+            endOffset="20922"/>
     </incident>
 
     <incident
@@ -3453,12 +3544,12 @@
         message="Hardcoded string &quot;Generate Combinations&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="455"
+            line="396"
             column="25"
-            startOffset="25327"
-            endLine="455"
+            startOffset="21626"
+            endLine="396"
             endColumn="61"
-            endOffset="25363"/>
+            endOffset="21662"/>
     </incident>
 
     <incident
@@ -3467,12 +3558,12 @@
         message="Hardcoded string &quot;Combinations&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="482"
+            line="423"
             column="29"
-            startOffset="26626"
-            endLine="482"
+            startOffset="22925"
+            endLine="423"
             endColumn="56"
-            endOffset="26653"/>
+            endOffset="22952"/>
     </incident>
 
     <incident
@@ -3481,12 +3572,12 @@
         message="Hardcoded string &quot;+ Add Manual&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="494"
+            line="435"
             column="29"
-            startOffset="27342"
-            endLine="494"
+            startOffset="23641"
+            endLine="435"
             endColumn="56"
-            endOffset="27369"/>
+            endOffset="23668"/>
     </incident>
 
     <incident
@@ -3495,12 +3586,12 @@
         message="Hardcoded string &quot;Save Product&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_add_edit_product.xml"
-            line="522"
+            line="463"
             column="17"
-            startOffset="28564"
-            endLine="522"
+            startOffset="24863"
+            endLine="463"
             endColumn="44"
-            endOffset="28591"/>
+            endOffset="24890"/>
     </incident>
 
     <incident
@@ -4514,6 +4605,118 @@
     <incident
         id="HardcodedText"
         severity="warning"
+        message="Hardcoded string &quot;Customer Name&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_chat.xml"
+            line="38"
+            column="21"
+            startOffset="1494"
+            endLine="38"
+            endColumn="49"
+            endOffset="1522"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Installation Service&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_chat.xml"
+            line="50"
+            column="21"
+            startOffset="2024"
+            endLine="50"
+            endColumn="56"
+            endOffset="2059"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Call Customer&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_chat.xml"
+            line="64"
+            column="17"
+            startOffset="2629"
+            endLine="64"
+            endColumn="59"
+            endOffset="2671"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;💬&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_chat.xml"
+            line="84"
+            column="13"
+            startOffset="3237"
+            endLine="84"
+            endColumn="30"
+            endOffset="3254"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Start the conversation!&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_chat.xml"
+            line="91"
+            column="13"
+            startOffset="3466"
+            endLine="91"
+            endColumn="51"
+            endOffset="3504"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Send a message to the customer&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_chat.xml"
+            line="100"
+            column="13"
+            startOffset="3820"
+            endLine="100"
+            endColumn="58"
+            endOffset="3865"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Type a message...&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_chat.xml"
+            line="153"
+            column="17"
+            startOffset="5822"
+            endLine="153"
+            endColumn="49"
+            endOffset="5854"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Send&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_chat.xml"
+            line="169"
+            column="17"
+            startOffset="6536"
+            endLine="169"
+            endColumn="50"
+            endOffset="6569"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
         message="Hardcoded string &quot;Worker Dashboard&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_dashboard.xml"
@@ -4542,15 +4745,29 @@
     <incident
         id="HardcodedText"
         severity="warning"
+        message="Hardcoded string &quot;Edit Profile&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_dashboard.xml"
+            line="61"
+            column="13"
+            startOffset="2401"
+            endLine="61"
+            endColumn="54"
+            endOffset="2442"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
         message="Hardcoded string &quot;🔔 Available Jobs&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_dashboard.xml"
-            line="82"
+            line="93"
             column="13"
-            startOffset="3217"
-            endLine="82"
+            startOffset="3651"
+            endLine="93"
             endColumn="45"
-            endOffset="3249"/>
+            endOffset="3683"/>
     </incident>
 
     <incident
@@ -4559,12 +4776,12 @@
         message="Hardcoded string &quot;📋 My Jobs&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_dashboard.xml"
-            line="87"
+            line="98"
             column="13"
-            startOffset="3413"
-            endLine="87"
+            startOffset="3847"
+            endLine="98"
             endColumn="38"
-            endOffset="3438"/>
+            endOffset="3872"/>
     </incident>
 
     <incident
@@ -4573,12 +4790,12 @@
         message="Hardcoded string &quot;🔔&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_dashboard.xml"
-            line="130"
+            line="141"
             column="17"
-            startOffset="5015"
-            endLine="130"
+            startOffset="5449"
+            endLine="141"
             endColumn="34"
-            endOffset="5032"/>
+            endOffset="5466"/>
     </incident>
 
     <incident
@@ -4587,12 +4804,12 @@
         message="Hardcoded string &quot;No available jobs right now.&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_dashboard.xml"
-            line="139"
+            line="150"
             column="17"
-            startOffset="5370"
-            endLine="139"
+            startOffset="5804"
+            endLine="150"
             endColumn="60"
-            endOffset="5413"/>
+            endOffset="5847"/>
     </incident>
 
     <incident
@@ -4887,6 +5104,90 @@
             endLine="74"
             endColumn="45"
             endOffset="2788"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;📱 Edit Phone Number&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/dialog_edit_phone.xml"
+            line="23"
+            column="9"
+            startOffset="783"
+            endLine="23"
+            endColumn="44"
+            endOffset="818"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Customers will see this when you accept a job&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/dialog_edit_phone.xml"
+            line="33"
+            column="9"
+            startOffset="1133"
+            endLine="33"
+            endColumn="69"
+            endOffset="1193"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Current:&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/dialog_edit_phone.xml"
+            line="49"
+            column="13"
+            startOffset="1725"
+            endLine="49"
+            endColumn="36"
+            endOffset="1748"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Not set&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/dialog_edit_phone.xml"
+            line="60"
+            column="13"
+            startOffset="2142"
+            endLine="60"
+            endColumn="35"
+            endOffset="2164"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;New phone number&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/dialog_edit_phone.xml"
+            line="71"
+            column="9"
+            startOffset="2539"
+            endLine="71"
+            endColumn="40"
+            endOffset="2570"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Save Phone Number&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/dialog_edit_phone.xml"
+            line="97"
+            column="9"
+            startOffset="3562"
+            endLine="97"
+            endColumn="41"
+            endOffset="3594"/>
     </incident>
 
     <incident
@@ -5662,6 +5963,20 @@
     <incident
         id="HardcodedText"
         severity="warning"
+        message="Hardcoded string &quot;Reply&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/item_quick_reply.xml"
+            line="14"
+            column="5"
+            startOffset="529"
+            endLine="14"
+            endColumn="25"
+            endOffset="549"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
         message="Hardcoded string &quot;Center Name&quot;, should use `@string` resource">
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/item_service_center.xml"
@@ -5965,6 +6280,20 @@
             endLine="142"
             endColumn="38"
             endOffset="5612"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;💬  Chat with Customer&quot;, should use `@string` resource">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/item_worker_booking.xml"
+            line="158"
+            column="13"
+            startOffset="6255"
+            endLine="158"
+            endColumn="50"
+            endOffset="6292"/>
     </incident>
 
     <incident

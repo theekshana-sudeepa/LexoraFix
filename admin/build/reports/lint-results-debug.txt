@@ -23,6 +23,9 @@
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:179: Warning: Avoid passing null as the view root (needed to resolve layout parameters on the inflated layout's root element) [InflateParams]
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_booking_status, null);
                                                                                          ~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:340: Warning: Avoid passing null as the view root (needed to resolve layout parameters on the inflated layout's root element) [InflateParams]
+        View view = getLayoutInflater().inflate(R.layout.dialog_edit_phone, null);
+                                                                            ~~~~
 
    Explanation for issues of type "InflateParams":
    When inflating a layout, avoid passing in null as the parent view, since
@@ -30,6 +33,23 @@
    ignored.
 
    https://www.bignerdranch.com/blog/understanding-androids-layoutinflater-inflate/
+
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerChatActivity.java:160: Warning: Consider adding a <queries> declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details [QueryPermissionsNeeded]
+        if (intent.resolveActivity(getPackageManager()) != null) {
+                   ~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "QueryPermissionsNeeded":
+   Apps that target Android 11 cannot query or interact with other installed
+   apps by default. If you need to query or interact with other installed
+   apps, you may need to add a <queries> declaration in your manifest.
+
+   As a corollary, the methods PackageManager#getInstalledPackages and
+   PackageManager#getInstalledApplications will no longer return information
+   about all installed apps. To query specific apps or types of apps, you can
+   use methods like PackageManager#getPackageInfo or
+   PackageManager#queryIntentActivities.
+
+   https://g.co/dev/packagevisibility
 
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/gradle/libs.versions.toml:2: Warning: A newer version of com.android.application than 8.7.3 is available: 9.1.0 [AndroidGradlePluginVersion]
 agp = "8.7.3"
@@ -217,6 +237,18 @@ googleServices = "4.4.2"
    This check looks through the string definitions, and if it finds any words
    that look like likely misspellings, they are flagged.
 
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:65: Warning: Exported service does not require permission [ExportedService]
+        <service
+         ~~~~~~~
+
+   Explanation for issues of type "ExportedService":
+   Exported services (services which either set exported=true or contain an
+   intent-filter and do not specify exported=false) should define a permission
+   that an entity must have in order to launch the service or bind to it.
+   Without this, any application can use this service.
+
+   https://goo.gle/ExportedService
+
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:99: Warning: Add annotation processor to processor path using annotationProcessor instead of compileOnly [AnnotationProcessorOnCompilePath]
     compileOnly("org.projectlombok:lombok:1.18.34")
     ~~~~~~~~~~~
@@ -226,10 +258,10 @@ googleServices = "4.4.2"
    it to the processor path using annotationProcessor instead of including it
    to the compile path.
 
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java:296: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java:293: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
         variantAdapter.notifyDataSetChanged();
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java:450: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java:441: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
             variantAdapter.notifyDataSetChanged();
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AdminProductReviewsActivity.java:99: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
@@ -253,10 +285,13 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageUsersActivity.java:116: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
         adapter.notifyDataSetChanged();
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:174: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerChatActivity.java:201: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+                    chatAdapter.notifyDataSetChanged();
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:178: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
                 adapter.notifyDataSetChanged();
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:258: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:262: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
         adapter.notifyDataSetChanged();
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -311,9 +346,6 @@ googleServices = "4.4.2"
    * Using the Android Studio vector conversion tool
    * Rasterizing the image (converting to PNG)
 
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:225: Warning: Set android:baselineAligned="false" on this element for better performance [DisableBaselineAlignment]
-                    <LinearLayout
-                     ~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_service_center.xml:170: Warning: Set android:baselineAligned="false" on this element for better performance [DisableBaselineAlignment]
                     <LinearLayout
                      ~~~~~~~~~~~~
@@ -355,6 +387,9 @@ googleServices = "4.4.2"
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_order_detail.xml:7: Warning: Possible overdraw: Root element paints background @color/adminBackground with a theme that also paints a background (inferred theme is @style/Theme.LexoraAdmin) [Overdraw]
     android:background="@color/adminBackground"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_chat.xml:8: Warning: Possible overdraw: Root element paints background @color/adminBackground with a theme that also paints a background (inferred theme is @style/Theme.LexoraAdmin) [Overdraw]
+    android:background="@color/adminBackground">
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:7: Warning: Possible overdraw: Root element paints background @color/adminBackground with a theme that also paints a background (inferred theme is @style/Theme_LexoraAdmin) [Overdraw]
     android:background="@color/adminBackground"
@@ -435,6 +470,12 @@ googleServices = "4.4.2"
    lint.unused-resources.exclude-tests =true.
    ,
 
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_message_received.xml:10: Warning: This LinearLayout layout or its FrameLayout parent is unnecessary; transfer the background attribute to the other view [UselessParent]
+    <LinearLayout
+     ~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_message_sent.xml:10: Warning: This LinearLayout layout or its FrameLayout parent is unnecessary; transfer the background attribute to the other view [UselessParent]
+    <LinearLayout
+     ~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_service_center.xml:29: Warning: This LinearLayout layout or its LinearLayout parent is unnecessary [UselessParent]
             <LinearLayout
              ~~~~~~~~~~~~
@@ -584,7 +625,7 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:43: Warning: Missing contentDescription attribute on image [ContentDescription]
         <ImageView
          ~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:53: Warning: Missing contentDescription attribute on image [ContentDescription]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:64: Warning: Missing contentDescription attribute on image [ContentDescription]
         <ImageView
          ~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_pending.xml:25: Warning: Missing contentDescription attribute on image [ContentDescription]
@@ -625,10 +666,10 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AddEditCategoryActivity.java:77: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
             btnSave.setText("Update Category");
                             ~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java:157: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java:154: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
             tvTitle.setText("Edit Product");
                             ~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java:158: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AddEditProductActivity.java:155: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
             btnSave.setText("Update Product");
                             ~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AddEditServiceCenterActivity.java:43: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
@@ -763,33 +804,42 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/OrderItemAdapter.java:51: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         holder.tvQuantity.setText("Qty: " + qty);
                                   ~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:72: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:74: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
             holder.tvDescription.setText("📝 " + notes);
                                          ~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:85: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:87: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
             holder.btnAction.setText("🤝  Accept Job");
                                      ~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:126: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:142: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnAction.setText("🔧  Start Working");
                                          ~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:132: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:148: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnAction.setText("✅  Mark Completed");
                                          ~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:138: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:154: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnAction.setText("✓  Completed");
                                          ~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:148: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:164: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         holder.btnAction.setText("Accepting...");
                                  ~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:191: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:207: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                         holder.btnAction.setText("🤝  Accept Job");
                                                  ~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:197: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:213: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                     holder.btnAction.setText("🤝  Accept Job");
                                              ~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:204: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:220: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         holder.btnAction.setText("Updating...");
                                  ~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:356: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                tvCurrentPhone.setText("Not set");
+                                       ~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:372: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            btnSave.setText("Saving...");
+                            ~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:382: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                        btnSave.setText("Save Phone Number");
+                                        ~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerPendingActivity.java:102: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         tvStatusTitle.setText("Verify Your Email");
                               ~~~~~~~~~~~~~~~~~~~
@@ -861,43 +911,37 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:201: Warning: Hardcoded string "Description (Markdown Supported)", should use @string resource [HardcodedText]
                         android:hint="Description (Markdown Supported)"
                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:237: Warning: Hardcoded string "Base Price (LKR)", should use @string resource [HardcodedText]
-                            android:hint="Base Price (LKR)"
-                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:263: Warning: Hardcoded string "Base Stock", should use @string resource [HardcodedText]
-                            android:hint="Base Stock"
-                            ~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:294: Warning: Hardcoded string "Category", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:235: Warning: Hardcoded string "Category", should use @string resource [HardcodedText]
                             android:text="Category"
                             ~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:323: Warning: Hardcoded string "Status", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:264: Warning: Hardcoded string "Status", should use @string resource [HardcodedText]
                             android:text="Status"
                             ~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:359: Warning: Hardcoded string "Featured Product", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:300: Warning: Hardcoded string "Featured Product", should use @string resource [HardcodedText]
                                 android:text="Featured Product"
                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:367: Warning: Hardcoded string "Show on home screen spotlight", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:308: Warning: Hardcoded string "Show on home screen spotlight", should use @string resource [HardcodedText]
                                 android:text="Show on home screen spotlight"
                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:406: Warning: Hardcoded string "Variant Generation (Optional)", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:347: Warning: Hardcoded string "Variant Generation (Optional)", should use @string resource [HardcodedText]
                         android:text="Variant Generation (Optional)"
                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:416: Warning: Hardcoded string "Define properties to automatically create variant combinations.", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:357: Warning: Hardcoded string "Define properties to automatically create variant combinations.", should use @string resource [HardcodedText]
                         android:text="Define properties to automatically create variant combinations."
                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:442: Warning: Hardcoded string "+ Add Base Property", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:383: Warning: Hardcoded string "+ Add Base Property", should use @string resource [HardcodedText]
                             android:text="+ Add Base Property"
                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:455: Warning: Hardcoded string "Generate Combinations", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:396: Warning: Hardcoded string "Generate Combinations", should use @string resource [HardcodedText]
                         android:text="Generate Combinations"
                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:482: Warning: Hardcoded string "Combinations", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:423: Warning: Hardcoded string "Combinations", should use @string resource [HardcodedText]
                             android:text="Combinations"
                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:494: Warning: Hardcoded string "+ Add Manual", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:435: Warning: Hardcoded string "+ Add Manual", should use @string resource [HardcodedText]
                             android:text="+ Add Manual"
                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:522: Warning: Hardcoded string "Save Product", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_product.xml:463: Warning: Hardcoded string "Save Product", should use @string resource [HardcodedText]
                 android:text="Save Product"
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_add_edit_service_center.xml:35: Warning: Hardcoded string "Add/Edit Center", should use @string resource [HardcodedText]
@@ -1116,22 +1160,49 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_order_detail.xml:220: Warning: Hardcoded string "Update Status", should use @string resource [HardcodedText]
                 android:text="Update Status"
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_chat.xml:38: Warning: Hardcoded string "Customer Name", should use @string resource [HardcodedText]
+                    android:text="Customer Name"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_chat.xml:50: Warning: Hardcoded string "Installation Service", should use @string resource [HardcodedText]
+                    android:text="Installation Service"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_chat.xml:64: Warning: Hardcoded string "Call Customer", should use @string resource [HardcodedText]
+                android:contentDescription="Call Customer"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_chat.xml:84: Warning: Hardcoded string "💬", should use @string resource [HardcodedText]
+            android:text="💬"
+            ~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_chat.xml:91: Warning: Hardcoded string "Start the conversation!", should use @string resource [HardcodedText]
+            android:text="Start the conversation!"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_chat.xml:100: Warning: Hardcoded string "Send a message to the customer", should use @string resource [HardcodedText]
+            android:text="Send a message to the customer"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_chat.xml:153: Warning: Hardcoded string "Type a message...", should use @string resource [HardcodedText]
+                android:hint="Type a message..."
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_chat.xml:169: Warning: Hardcoded string "Send", should use @string resource [HardcodedText]
+                android:contentDescription="Send"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:29: Warning: Hardcoded string "Worker Dashboard", should use @string resource [HardcodedText]
                 android:text="Worker Dashboard"
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:38: Warning: Hardcoded string "worker@email.com", should use @string resource [HardcodedText]
                 android:text="worker@email.com"
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:82: Warning: Hardcoded string "🔔 Available Jobs", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:61: Warning: Hardcoded string "Edit Profile", should use @string resource [HardcodedText]
+            android:contentDescription="Edit Profile"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:93: Warning: Hardcoded string "🔔 Available Jobs", should use @string resource [HardcodedText]
             android:text="🔔 Available Jobs" />
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:87: Warning: Hardcoded string "📋 My Jobs", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:98: Warning: Hardcoded string "📋 My Jobs", should use @string resource [HardcodedText]
             android:text="📋 My Jobs" />
             ~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:130: Warning: Hardcoded string "🔔", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:141: Warning: Hardcoded string "🔔", should use @string resource [HardcodedText]
                 android:text="🔔"
                 ~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:139: Warning: Hardcoded string "No available jobs right now.", should use @string resource [HardcodedText]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_dashboard.xml:150: Warning: Hardcoded string "No available jobs right now.", should use @string resource [HardcodedText]
                 android:text="No available jobs right now."
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_pending.xml:38: Warning: Hardcoded string "Verify Your Email", should use @string resource [HardcodedText]
@@ -1197,6 +1268,24 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_booking_status.xml:74: Warning: Hardcoded string "Phone: Loading...", should use @string resource [HardcodedText]
             android:text="Phone: Loading..."
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_edit_phone.xml:23: Warning: Hardcoded string "📱 Edit Phone Number", should use @string resource [HardcodedText]
+        android:text="📱 Edit Phone Number"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_edit_phone.xml:33: Warning: Hardcoded string "Customers will see this when you accept a job", should use @string resource [HardcodedText]
+        android:text="Customers will see this when you accept a job"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_edit_phone.xml:49: Warning: Hardcoded string "Current:", should use @string resource [HardcodedText]
+            android:text="Current:"
+            ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_edit_phone.xml:60: Warning: Hardcoded string "Not set", should use @string resource [HardcodedText]
+            android:text="Not set"
+            ~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_edit_phone.xml:71: Warning: Hardcoded string "New phone number", should use @string resource [HardcodedText]
+        android:hint="New phone number"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_edit_phone.xml:97: Warning: Hardcoded string "Save Phone Number", should use @string resource [HardcodedText]
+        android:text="Save Phone Number"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/dialog_forgot_password.xml:24: Warning: Hardcoded string "Reset Password", should use @string resource [HardcodedText]
             android:text="Reset Password"
             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1362,6 +1451,9 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_order_detail_product.xml:99: Warning: Hardcoded string "LKR 0.00", should use @string resource [HardcodedText]
             android:text="LKR 0.00"
             ~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_quick_reply.xml:14: Warning: Hardcoded string "Reply", should use @string resource [HardcodedText]
+    android:text="Reply" />
+    ~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_service_center.xml:40: Warning: Hardcoded string "Center Name", should use @string resource [HardcodedText]
                     android:text="Center Name"
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1428,6 +1520,9 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_worker_booking.xml:142: Warning: Hardcoded string "Accept Job", should use @string resource [HardcodedText]
             android:text="Accept Job"
             ~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/item_worker_booking.xml:158: Warning: Hardcoded string "💬  Chat with Customer", should use @string resource [HardcodedText]
+            android:text="💬  Chat with Customer"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/menu/menu_admin_drawer.xml:7: Warning: Hardcoded string "Dashboard", should use @string resource [HardcodedText]
             android:title="Dashboard" />
             ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1482,4 +1577,13 @@ googleServices = "4.4.2"
    There are quickfixes to automatically extract this hardcoded string into a
    resource lookup.
 
-0 errors, 419 warnings
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_worker_chat.xml:25: Warning: When you define paddingEnd you should probably also define paddingStart for right-to-left symmetry [RtlSymmetry]
+            android:paddingEnd="16dp">
+            ~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "RtlSymmetry":
+   If you specify padding or margin on the left side of a layout, you should
+   probably also specify padding on the right side (and vice versa) for
+   right-to-left layout symmetry.
+
+0 errors, 444 warnings

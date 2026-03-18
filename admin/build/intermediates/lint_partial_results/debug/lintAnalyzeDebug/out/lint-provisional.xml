@@ -45,13 +45,47 @@
         message="When targeting Android 13 or higher, posting a permission requires holding the `POST_NOTIFICATIONS` permission">
         <fix-data missing="android.permission.POST_NOTIFICATIONS"/>
         <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/services/MyFirebaseMessagingService.java"
+            line="110"
+            column="9"
+            startOffset="4803"
+            endLine="110"
+            endColumn="68"
+            endOffset="4862"/>
+    </incident>
+
+    <incident
+        id="NotificationPermission"
+        severity="error"
+        message="When targeting Android 13 or higher, posting a permission requires holding the `POST_NOTIFICATIONS` permission">
+        <fix-data missing="android.permission.POST_NOTIFICATIONS"/>
+        <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="292"
+            line="296"
             column="13"
-            startOffset="10907"
-            endLine="292"
+            startOffset="11100"
+            endLine="296"
             endColumn="90"
-            endOffset="10984"/>
+            endOffset="11177"/>
+    </incident>
+
+    <incident
+        id="QueryPermissionsNeeded"
+        severity="warning"
+        message="Consider adding a `&lt;queries>` declaration to your manifest when calling this method; see https://g.co/dev/packagevisibility for details">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerChatActivity.java"
+            line="160"
+            column="20"
+            startOffset="7010"
+            endLine="160"
+            endColumn="35"
+            endOffset="7025"/>
+        <map>
+            <entry
+                name="queryAll"
+                boolean="false"/>
+        </map>
     </incident>
 
     <incident
@@ -479,41 +513,13 @@
         severity="warning"
         message="">
         <location
-            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_profile.xml"
-            line="6"
-            column="19"
-            startOffset="199"
-            endLine="6"
-            endColumn="43"
-            endOffset="223"/>
-        <map>
-            <entry
-                name="containsFillType"
-                boolean="false"/>
-            <entry
-                name="containsGradient"
-                boolean="false"/>
-            <entry
-                name="folderVersion"
-                int="-1"/>
-            <entry
-                name="message"
-                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
-        </map>
-    </incident>
-
-    <incident
-        id="VectorRaster"
-        severity="warning"
-        message="">
-        <location
-            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_profile.xml"
-            line="8"
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/drawable/ic_send.xml"
+            line="13"
             column="28"
-            startOffset="263"
-            endLine="8"
-            endColumn="48"
-            endOffset="283"/>
+            startOffset="461"
+            endLine="13"
+            endColumn="54"
+            endOffset="487"/>
         <map>
             <entry
                 name="containsFillType"
@@ -707,6 +713,25 @@
             endOffset="1182"/>
         <map>
             <condition minGE="fffffffffc000000"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlSymmetry"
+        severity="warning"
+        message="When you define `paddingEnd` you should probably also define `paddingStart` for right-to-left symmetry">
+        <location
+            file="${:admin*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_worker_chat.xml"
+            line="25"
+            column="13"
+            startOffset="986"
+            endLine="25"
+            endColumn="31"
+            endOffset="1004"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
         </map>
     </incident>
 

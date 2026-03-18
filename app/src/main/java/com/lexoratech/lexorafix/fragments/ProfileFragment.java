@@ -57,6 +57,14 @@ public class ProfileFragment extends Fragment {
 
         btnEditProfile.setOnClickListener(v -> startActivity(new Intent(requireContext(), EditProfileActivity.class)));
 
+        // ── Theme Toggle Setup ──
+        View cardThemeToggle = view.findViewById(R.id.card_theme_toggle);
+        TextView tvThemeStatus = view.findViewById(R.id.tv_theme_status);
+        if (cardThemeToggle != null && tvThemeStatus != null) {
+            updateThemeStatusText(tvThemeStatus, ThemeUtils.getThemeMode(requireContext()));
+            cardThemeToggle.setOnClickListener(v2 -> showThemePickerDialog(tvThemeStatus));
+        }
+
         SharedPreferencesManager prefs = SharedPreferencesManager.getInstance(requireContext());
 
         // ── Guest Mode Detection ──
@@ -190,14 +198,6 @@ public class ProfileFragment extends Fragment {
                     }
                 });
             }
-        }
-
-        // ── Theme Toggle Setup ──
-        View cardThemeToggle = view.findViewById(R.id.card_theme_toggle);
-        TextView tvThemeStatus = view.findViewById(R.id.tv_theme_status);
-        if (cardThemeToggle != null && tvThemeStatus != null) {
-            updateThemeStatusText(tvThemeStatus, ThemeUtils.getThemeMode(requireContext()));
-            cardThemeToggle.setOnClickListener(v -> showThemePickerDialog(tvThemeStatus));
         }
 
         // ── Logout ──

@@ -138,7 +138,11 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         // Set data
         tvName.setText(product.getName());
-        tvPrice.setText(String.format(Locale.getDefault(), "LKR %.2f", product.getPrice()));
+        if (product.hasVariants() && product.getPrice() == 0 && product.getLowestPrice() > 0) {
+            tvPrice.setText(String.format(Locale.getDefault(), "Starting from LKR %.2f", product.getLowestPrice()));
+        } else {
+            tvPrice.setText(String.format(Locale.getDefault(), "LKR %.2f", product.getPrice()));
+        }
         tvDescription.setText(product.getDescription());
 
         // Setup Image Slider
@@ -438,7 +442,12 @@ public class ProductDetailActivity extends AppCompatActivity {
             MaterialButton btnAddCart, MaterialButton btnBuyNow) {
         double price = selectedVariant != null ? selectedVariant.getPrice() : product.getPrice();
         int stock = selectedVariant != null ? selectedVariant.getStock() : product.getEffectiveStock();
-        tvPrice.setText(String.format(Locale.getDefault(), "LKR %.2f", price));
+        
+        if (selectedVariant == null && product.hasVariants() && product.getPrice() == 0 && product.getLowestPrice() > 0) {
+            tvPrice.setText(String.format(Locale.getDefault(), "Starting from LKR %.2f", product.getLowestPrice()));
+        } else {
+            tvPrice.setText(String.format(Locale.getDefault(), "LKR %.2f", price));
+        }
         if (stock > 0) {
             tvStock.setText(getString(R.string.in_stock) + " (" + stock + " available)");
             tvStock.setTextColor(getResources().getColor(R.color.colorSuccess, null));

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:layout_marginHorizontal="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/adminCardBackground"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/adminDivider">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Top Section: Image and Info -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            
+            <!-- Product Image Container -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/adminDivider">
+
+                <ImageView
+                    android:id="@+id/iv_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Product image"
+                    android:background="@color/adminSurfaceLight"
+                    android:src="@android:drawable/ic_menu_gallery" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Product Info -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:fontFamily="@font/poppins"
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Name"
+                    android:textColor="@color/adminTextPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:fontFamily="@font/poppins"
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="LKR 0.00"
+                    android:textColor="@color/adminWarning"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:fontFamily="@font/poppins"
+                        android:id="@+id/tv_stock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stock: 0"
+                        android:textColor="@color/adminTextSecondary"
+                        android:textSize="13sp" />
+
+                    <!-- Status Indicator -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        app:cardBackgroundColor="@color/adminSuccess"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="0dp"
+                        app:cardCornerRadius="8dp">
+
+                        <TextView
+                            android:fontFamily="@font/poppins"
+                            android:id="@+id/tv_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
+                            android:text="Active"
+                            android:textColor="@color/adminSurface"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:fontFamily="@font/poppins"
+                        android:id="@+id/tv_featured"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="⭐ Featured"
+                        android:textColor="@color/adminWarning"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/adminDivider" />
+
+        <!-- Action Buttons Horizontal Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:fontFamily="@font/poppins"
+                android:id="@+id/btn_reviews"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton.Icon"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Reviews"
+                android:textSize="11sp"
+                android:textColor="@color/adminIconPurple"
+                app:icon="@android:drawable/ic_menu_sort_by_size"
+                app:iconSize="18dp"
+                app:iconTint="@color/adminIconPurple"
+                app:iconGravity="textStart"
+                app:iconPadding="4dp"
+                app:backgroundTint="@color/adminTintPurple"
+                app:cornerRadius="12dp"
+                android:contentDescription="View Reviews" />
+
+            <com.google.android.material.button.MaterialButton
+                android:fontFamily="@font/poppins"
+                android:id="@+id/btn_edit"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton.Icon"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Edit"
+                android:textSize="11sp"
+                android:textColor="@color/adminIconBlue"
+                app:icon="@drawable/ic_edit"
+                app:iconSize="18dp"
+                app:iconTint="@color/adminIconBlue"
+                app:iconGravity="textStart"
+                app:iconPadding="4dp"
+                app:backgroundTint="@color/adminTintBlue"
+                app:cornerRadius="12dp"
+                android:contentDescription="Edit" />
+
+            <com.google.android.material.button.MaterialButton
+                android:fontFamily="@font/poppins"
+                android:id="@+id/btn_delete"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton.Icon"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Delete"
+                android:textSize="11sp"
+                android:textColor="@color/adminIconRed"
+                app:icon="@drawable/ic_delete"
+                app:iconSize="18dp"
+                app:iconTint="@color/adminIconRed"
+                app:iconGravity="textStart"
+                app:iconPadding="4dp"
+                app:backgroundTint="@color/adminTintRed"
+                app:cornerRadius="12dp"
+                android:contentDescription="Delete" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

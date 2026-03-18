@@ -84,6 +84,7 @@ public class HomeFragment extends Fragment {
                 .getAllCategories(new FirestoreHelper.FirestoreCallback<com.google.firebase.firestore.QuerySnapshot>() {
                     @Override
                     public void onSuccess(com.google.firebase.firestore.QuerySnapshot result) {
+                        if (!isAdded() || getContext() == null) return;
                         List<Category> categories = new ArrayList<>();
                         for (DocumentSnapshot doc : result.getDocuments()) {
                             Category cat = Category.fromMap(doc.getData());
@@ -186,6 +187,7 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onSuccess(com.google.firebase.firestore.QuerySnapshot result) {
+                        if (!isAdded() || getContext() == null) return;
                         allProducts.clear();
                         for (DocumentSnapshot doc : result.getDocuments()) {
                             Product p = Product.fromMap(doc.getData());
@@ -200,6 +202,7 @@ public class HomeFragment extends Fragment {
                                     new FirestoreHelper.FirestoreCallback<com.google.firebase.firestore.QuerySnapshot>() {
                                         @Override
                                         public void onSuccess(com.google.firebase.firestore.QuerySnapshot result) {
+                                            if (!isAdded() || getContext() == null) return;
                                             for (DocumentSnapshot doc : result.getDocuments()) {
                                                 Product p = Product.fromMap(doc.getData());
                                                 if (p != null && p.getEffectiveStock() > 0) {
@@ -255,6 +258,7 @@ public class HomeFragment extends Fragment {
                     new FirestoreHelper.FirestoreCallback<com.lexoratech.lexorafix.models.User>() {
                         @Override
                         public void onSuccess(com.lexoratech.lexorafix.models.User user) {
+                            if (!isAdded() || getContext() == null) return;
                             if (user != null && user.getWishlist() != null) {
                                 productAdapter.updateWishlist(user.getWishlist());
                             }
