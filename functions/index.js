@@ -1,8 +1,26 @@
+/**
+ * Firebase Cloud Functions for LexoraFix
+ * 
+ * These server-side functions run automatically in response to Firestore document
+ * changes (triggers). They handle push notifications for:
+ *   - New bookings (notifies workers)
+ *   - Booking status changes (notifies customers)
+ *   - Chat messages (notifies the other participant)
+ *   - New e-commerce orders (notifies admin)
+ *   - Order status changes (notifies customers)
+ *   - Worker registrations (notifies admin)
+ *   - Worker approvals (notifies worker)
+ * 
+ * Each function listens to a specific Firestore collection path using
+ * onDocumentCreated or onDocumentUpdated triggers from Firebase Functions v2.
+ */
+
 const { onDocumentUpdated, onDocumentCreated } = require("firebase-functions/v2/firestore");
 const { initializeApp } = require("firebase-admin/app");
 const { getFirestore, FieldValue } = require("firebase-admin/firestore");
 const { getMessaging } = require("firebase-admin/messaging");
 
+// Initialize the Firebase Admin SDK (required for Firestore and FCM access)
 initializeApp();
 
 /**
@@ -440,8 +458,16 @@ exports.onOrderStatusChange = onDocumentUpdated("orders/{orderId}", async (event
       android: {
         priority: "high",
         notification: {
-          channelId: "lexorafix_notifications",
+          channelId: "lexorafix_notifications"
         },
+      },
+      apns: {
+        payload: {
+          aps: {
+            contentAvailable: true,
+            sound: "default"
+          }
+        }
       },
       token: customerToken,
     });

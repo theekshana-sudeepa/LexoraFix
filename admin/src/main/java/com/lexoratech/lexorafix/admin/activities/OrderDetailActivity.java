@@ -171,7 +171,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                                             .addOnSuccessListener(aVoid2 -> {
                                                 progressBar.setVisibility(View.GONE);
                                                 Toast.makeText(this,
-                                                        "Status updated to " + newStatus + " ✅",
+                                                        "Status updated to " + newStatus + "",
                                                         Toast.LENGTH_SHORT).show();
                                             })
                                             .addOnFailureListener(e -> {
@@ -183,7 +183,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                                 } else {
                                     progressBar.setVisibility(View.GONE);
                                     Toast.makeText(this,
-                                            "Status updated to " + newStatus + " ✅",
+                                            "Status updated to " + newStatus + "",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             })

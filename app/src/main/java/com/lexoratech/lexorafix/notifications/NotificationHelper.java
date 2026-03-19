@@ -62,11 +62,22 @@ public class NotificationHelper {
                     context.getString(R.string.channel_promotions),
                     NotificationManager.IMPORTANCE_LOW);
             promoChannel.setDescription("Promotional offers and deals");
+            
+            // Critical fix for background notifications: 
+            // Create Firebase default channel eagerly so OS doesn't drop messages when app is killed
+            NotificationChannel firebaseDefaultChannel = new NotificationChannel(
+                    "lexorafix_notifications",
+                    "LexoraFix Notifications",
+                    NotificationManager.IMPORTANCE_HIGH);
+            firebaseDefaultChannel.setDescription("Important notifications from LexoraFix");
+            firebaseDefaultChannel.enableVibration(true);
+            firebaseDefaultChannel.setVibrationPattern(new long[]{0, 300, 200, 300});
 
             manager.createNotificationChannel(ordersChannel);
             manager.createNotificationChannel(bookingsChannel);
             manager.createNotificationChannel(remindersChannel);
             manager.createNotificationChannel(promoChannel);
+            manager.createNotificationChannel(firebaseDefaultChannel);
         }
     }
 
@@ -99,7 +110,7 @@ public class NotificationHelper {
     public void showBookingConfirmation(String bookingId, String serviceType) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_BOOKINGS)
                 .setSmallIcon(R.drawable.ic_stat_logo)
-                .setContentTitle("Booking Confirmed! ✅")
+                .setContentTitle("Booking Confirmed!")
                 .setContentText(serviceType + " service has been booked successfully.")
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText("Your " + serviceType + " service booking #" + bookingId
@@ -172,7 +183,7 @@ public class NotificationHelper {
             title = "Account Suspended 🚫";
             text = "Your LexoraFix account has been suspended by an administrator. Please contact support.";
         } else if ("Active".equalsIgnoreCase(newStatus)) {
-            title = "Account Activated ✅";
+            title = "Account Activated";
             text = "Your LexoraFix account has been reactivated. Welcome back!";
         } else {
             text = "Your account status has been updated to: " + newStatus;
@@ -253,9 +264,9 @@ public class NotificationHelper {
             case "shipped":
                 return "\uD83D\uDE9A";
             case "delivered":
-                return "✅";
+                return "";
             case "cancelled":
-                return "❌";
+                return "";
             default:
                 return "\uD83D\uDCCB";
         }
@@ -266,13 +277,13 @@ public class NotificationHelper {
             return "";
         switch (status.toLowerCase(java.util.Locale.ROOT)) {
             case "confirmed":
-                return "✅";
+                return "";
             case "in progress":
                 return "🔧";
             case "completed":
                 return "🎉";
             case "cancelled":
-                return "❌";
+                return "";
             default:
                 return "\uD83D\uDCCB";
         }

@@ -762,8 +762,11 @@ public class ProductDetailActivity extends AppCompatActivity {
                                                         .collection("products").document(documentId)
                                                         .collection("reviews").document(review.getId())
                                                         .delete()
-                                                        .addOnSuccessListener(aVoid ->
-                                                                Toast.makeText(ProductDetailActivity.this, "Review deleted", Toast.LENGTH_SHORT).show())
+                                                        .addOnSuccessListener(aVoid -> {
+                                                            Toast.makeText(ProductDetailActivity.this, "Review deleted", Toast.LENGTH_SHORT).show();
+                                                            reviewsList.remove(review);
+                                                            adapter.notifyDataSetChanged();
+                                                        })
                                                         .addOnFailureListener(e ->
                                                                 Toast.makeText(ProductDetailActivity.this, "Failed to delete", Toast.LENGTH_SHORT).show());
                                             })

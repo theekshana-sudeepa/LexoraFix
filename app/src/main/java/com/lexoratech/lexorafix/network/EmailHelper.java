@@ -17,12 +17,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * Sends emails via Gmail SMTP using a Google App Password.
- * Credentials are read from BuildConfig (set in local.properties).
- *
- * Usage:
- * EmailHelper.getInstance().sendOrderConfirmation(email, orderId, total,
- * itemsHtml);
+ * Handles all outgoing emails via Gmail SMTP using a Google App Password.
+ * Uses the Singleton pattern to reuse a single SMTP session across the app.
+ * Credentials are stored securely in BuildConfig (sourced from local.properties).
  */
 public class EmailHelper {
 
@@ -31,17 +28,19 @@ public class EmailHelper {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Session session;
 
+    // Private constructor — enforces Singleton pattern
     private EmailHelper() {
         String senderEmail = BuildConfig.EMAIL_SENDER_ADDRESS;
         String appPassword = BuildConfig.EMAIL_APP_PASSWORD;
 
+        // Configure SMTP properties for Gmail
         Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");              // Enable authentication
+        props.put("mail.smtp.starttls.enable", "true");    // Enable TLS encryption
+        props.put("mail.smtp.host", "smtp.gmail.com");     // Gmail SMTP server
+        props.put("mail.smtp.port", "587");                // TLS port
         props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-        props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // Fix for Modern Android Handshake failures
+        props.put("mail.smtp.ssl.protocols", "TLSv1.2");   // Required for modern Android TLS handshake
 
         session = Session.getInstance(props, new Authenticator() {
             @Override
@@ -51,6 +50,7 @@ public class EmailHelper {
         });
     }
 
+    // Thread-safe lazy initialization of the singleton instance
     public static synchronized EmailHelper getInstance() {
         if (instance == null) {
             instance = new EmailHelper();
@@ -62,7 +62,7 @@ public class EmailHelper {
      * Send order confirmation email to customer.
      */
     public void sendOrderConfirmation(String toEmail, String orderId, double total, String itemsHtml) {
-        String subject = "✅ Order Confirmed — LexoraFix #" + orderId;
+        String subject = "Order Confirmed — LexoraFix #" + orderId;
         String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body style='font-family:Arial,sans-serif;margin:0;padding:0;background:#f5f5f5;'>"
                 + "<div style='max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.1);'>"
                 + "<div style='background:linear-gradient(135deg,#2563EB,#06B6D4);padding:32px;text-align:center;'>"
@@ -232,8 +232,8 @@ public class EmailHelper {
      */
     public void sendBanStatusEmail(String toEmail, String userName, boolean isBanned) {
         String statusText = isBanned ? "has been Restrained" : "has been Restored";
-        String subject = isBanned ? "⚠️ Urgent: Your LexoraFix Account has been Restricted"
-                : "✅ Your LexoraFix Account has been Restored";
+        String subject = isBanned ? "Urgent: Your LexoraFix Account has been Restricted"
+                : "Your LexoraFix Account has been Restored";
         String color = isBanned ? "#EF5350" : "#10B981";
 
         String body = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><body style='font-family:Arial,sans-serif;background:#f5f5f5;'>"
@@ -358,7 +358,7 @@ public class EmailHelper {
      * Send approval or rejection email to worker.
      */
     public void sendWorkerApprovalEmail(String toEmail, String workerName, boolean isApproved) {
-        String subject = isApproved ? "🎉 Congratulations! Your LexoraFix Account is Approved" : "⚠️ Update on your LexoraFix Application";
+        String subject = isApproved ? "🎉 Congratulations! Your LexoraFix Account is Approved" : "Update on your LexoraFix Application";
         String color = isApproved ? "#10B981" : "#EF4444";
         String title = isApproved ? "Account Approved!" : "Application Update";
         
@@ -429,7 +429,8 @@ public class EmailHelper {
     }
 
     /**
-     * Internal: send email on background thread.
+     * Core method that sends an email on a background thread.
+     * Uses ExecutorService to avoid blocking the UI thread.
      */
     private void sendEmail(String toEmail, String subject, String htmlBody) {
         if (toEmail == null || toEmail.isEmpty()) {
@@ -444,7 +445,7 @@ public class EmailHelper {
         }
 
         executor.execute(() -> {
-            // Fix for Android "NoSuchProviderException: smtp" on background threads
+            // Set the class loader so JavaMail can find the SMTP provider on background threads
             Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
             try {
                 MimeMessage message = new MimeMessage(session);
@@ -461,9 +462,9 @@ public class EmailHelper {
 
                 message.setContent(htmlBody, "text/html; charset=utf-8");
                 Transport.send(message);
-                Log.d(TAG, "✅ Email sent to " + toEmail);
+                Log.d(TAG, "Email sent to " + toEmail);
             } catch (Exception e) {
-                Log.e(TAG, "❌ Email send failed: " + e.getMessage(), e);
+                Log.e(TAG, "Email send failed: " + e.getMessage(), e);
             }
         });
     }

@@ -233,13 +233,13 @@ public class ManageOrdersActivity extends AppCompatActivity {
                                 .collection("orders").document(orderId)
                                 .update(updates)
                                 .addOnSuccessListener(aVoid2 ->
-                                        Toast.makeText(this, "Status → " + newStatus + " ✅",
+                                        Toast.makeText(this, "Status → " + newStatus + "",
                                                 Toast.LENGTH_SHORT).show())
                                 .addOnFailureListener(e ->
                                         Toast.makeText(this, "Updated, but user sync pending",
                                                 Toast.LENGTH_SHORT).show());
                     } else {
-                        Toast.makeText(this, "Status → " + newStatus + " ✅",
+                        Toast.makeText(this, "Status → " + newStatus + "",
                                 Toast.LENGTH_SHORT).show();
                     }
                 })

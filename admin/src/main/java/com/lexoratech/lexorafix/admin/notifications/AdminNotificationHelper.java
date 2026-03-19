@@ -181,8 +181,8 @@ public class AdminNotificationHelper {
             case "confirmed": return "\uD83D\uDCE6";
             case "processing": return "⚙️";
             case "shipped": return "\uD83D\uDE9A";
-            case "delivered": return "✅";
-            case "cancelled": return "❌";
+            case "delivered": return "";
+            case "cancelled": return "";
             default: return "\uD83D\uDCCB";
         }
     }
@@ -190,10 +190,10 @@ public class AdminNotificationHelper {
     private String getBookingStatusEmoji(String status) {
         if (status == null) return "";
         switch (status.toLowerCase(java.util.Locale.ROOT)) {
-            case "confirmed": return "✅";
+            case "confirmed": return "";
             case "in progress": return "🔧";
             case "completed": return "🎉";
-            case "cancelled": return "❌";
+            case "cancelled": return "";
             default: return "\uD83D\uDCCB";
         }
     }

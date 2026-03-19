@@ -291,7 +291,7 @@ public class AddEditProductActivity extends AppCompatActivity {
             }
         }
         variantAdapter.notifyDataSetChanged();
-        Toast.makeText(this, combinations.size() + " combinations generated ✅", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, combinations.size() + " combinations generated", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -586,7 +586,7 @@ public class AddEditProductActivity extends AppCompatActivity {
                     .update(productData)
                     .addOnSuccessListener(aVoid -> {
                         setLoading(false);
-                        Toast.makeText(this, "Product updated ✅", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Product updated", Toast.LENGTH_SHORT).show();
                         finish();
                     })
                     .addOnFailureListener(e -> {
@@ -598,7 +598,7 @@ public class AddEditProductActivity extends AppCompatActivity {
                     .add(productData)
                     .addOnSuccessListener(docRef -> {
                         setLoading(false);
-                        Toast.makeText(this, "Product added ✅", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Product added", Toast.LENGTH_SHORT).show();
                         finish();
                     })
                     .addOnFailureListener(e -> {

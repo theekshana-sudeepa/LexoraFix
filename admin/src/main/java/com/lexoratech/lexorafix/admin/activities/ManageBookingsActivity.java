@@ -244,13 +244,13 @@ public class ManageBookingsActivity extends AppCompatActivity {
                                 .collection("bookings").document(docId)
                                 .update(updates)
                                 .addOnSuccessListener(aVoid2 ->
-                                        Toast.makeText(this, "Status → " + newStatus + " ✅",
+                                        Toast.makeText(this, "Status → " + newStatus + "",
                                                 Toast.LENGTH_SHORT).show())
                                 .addOnFailureListener(e ->
                                         Toast.makeText(this, "Updated, but user sync pending",
                                                 Toast.LENGTH_SHORT).show());
                     } else {
-                        Toast.makeText(this, "Status → " + newStatus + " ✅",
+                        Toast.makeText(this, "Status → " + newStatus + "",
                                 Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -273,7 +273,7 @@ public class ManageBookingsActivity extends AppCompatActivity {
         FirebaseFirestore.getInstance().document(docPath)
                 .update("status", newStatus, "statusUpdatedAt", com.google.firebase.Timestamp.now())
                 .addOnSuccessListener(aVoid ->
-                        Toast.makeText(this, "Status → " + newStatus + " ✅",
+                        Toast.makeText(this, "Status → " + newStatus + "",
                                 Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e ->
                         Toast.makeText(this, "Update failed: " + e.getMessage(),

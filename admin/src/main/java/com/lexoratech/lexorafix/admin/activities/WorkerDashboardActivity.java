@@ -363,8 +363,9 @@ public class WorkerDashboardActivity extends AppCompatActivity {
                 etPhone.setError("Please enter a phone number");
                 return;
             }
-            if (!phone.matches("^[+]?[0-9]{9,15}$")) {
-                etPhone.setError("Please enter a valid phone number (e.g., +94771234567)");
+            // Strict regex for Sri Lankan format: optional +94 or 0, followed by exactly 9 digits (started with 7)
+            if (!phone.matches("^(?:\\+94|0)?[7][0-9]{8}$")) {
+                etPhone.setError("Please enter a valid Sri Lankan phone number (e.g., 0771234567 or +94771234567)");
                 return;
             }
 
@@ -374,7 +375,7 @@ public class WorkerDashboardActivity extends AppCompatActivity {
             db.collection("users").document(uid)
                     .update("phone", phone)
                     .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(this, "Phone number updated ✅", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Phone number updated", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     })
                     .addOnFailureListener(e -> {

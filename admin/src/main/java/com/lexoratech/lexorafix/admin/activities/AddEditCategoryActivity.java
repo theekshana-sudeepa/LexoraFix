@@ -159,7 +159,7 @@ public class AddEditCategoryActivity extends AppCompatActivity {
                     .update(categoryData)
                     .addOnSuccessListener(aVoid -> {
                         setLoading(false);
-                        Toast.makeText(this, "Category updated ✅", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Category updated", Toast.LENGTH_SHORT).show();
                         finish();
                     })
                     .addOnFailureListener(e -> {
@@ -172,7 +172,7 @@ public class AddEditCategoryActivity extends AppCompatActivity {
                     .add(categoryData)
                     .addOnSuccessListener(docRef -> {
                         setLoading(false);
-                        Toast.makeText(this, "Category added ✅", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Category added", Toast.LENGTH_SHORT).show();
                         finish();
                     })
                     .addOnFailureListener(e -> {

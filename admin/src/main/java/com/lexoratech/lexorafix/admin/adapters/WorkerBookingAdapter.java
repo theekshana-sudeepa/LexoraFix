@@ -145,7 +145,7 @@ public class WorkerBookingAdapter extends RecyclerView.Adapter<WorkerBookingAdap
                 holder.btnAction.setOnClickListener(v -> updateStatus(holder, booking, docId, "In Progress", position));
                 break;
             case "In Progress":
-                holder.btnAction.setText("✅  Mark Completed");
+                holder.btnAction.setText(" Mark Completed");
                 holder.btnAction.setBackgroundTintList(
                         android.content.res.ColorStateList.valueOf(ContextCompat.getColor(context, R.color.adminSuccess)));
                 holder.btnAction.setOnClickListener(v -> updateStatus(holder, booking, docId, "Completed", position));
@@ -198,7 +198,7 @@ public class WorkerBookingAdapter extends RecyclerView.Adapter<WorkerBookingAdap
                         transaction.update(docRef, "status", "Accepted");
                         return null;
                     }).addOnSuccessListener(aVoid -> {
-                        Toast.makeText(context, "Job accepted! ✅", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Job accepted!", Toast.LENGTH_SHORT).show();
 
                         // Sync to customer's subcollection
                         syncToCustomerSubcollection(booking, docId, "Accepted", finalWorkerName, finalWorkerPhone, workerEmail);
@@ -257,9 +257,9 @@ public class WorkerBookingAdapter extends RecyclerView.Adapter<WorkerBookingAdap
                 .collection("bookings").document(docId)
                 .set(updates, SetOptions.merge())
                 .addOnSuccessListener(aVoid -> 
-                    android.util.Log.d("WorkerBooking", "✅ Synced status to customer subcollection"))
+                    android.util.Log.d("WorkerBooking", "Synced status to customer subcollection"))
                 .addOnFailureListener(e ->
-                    android.util.Log.e("WorkerBooking", "❌ Failed to sync: " + e.getMessage()));
+                    android.util.Log.e("WorkerBooking", "Failed to sync: " + e.getMessage()));
     }
 
     @Override

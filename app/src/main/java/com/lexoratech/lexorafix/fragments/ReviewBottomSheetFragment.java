@@ -121,14 +121,10 @@ public class ReviewBottomSheetFragment extends BottomSheetDialogFragment {
             String userName = SharedPreferencesManager.getInstance(requireContext()).getUserName();
 
             FirestoreHelper.getInstance().getDb()
-                    .collection("products")
-                    .whereEqualTo("name", productName)
-                    .limit(1)
+                    .collection("products").document(productId)
                     .get()
                     .addOnSuccessListener(snapshot -> {
-                        if (!snapshot.isEmpty()) {
-                            String realDocId = snapshot.getDocuments().get(0).getId();
-
+                        if (snapshot.exists()) {
                             if (isEditMode) {
                                 // Update existing review
                                 java.util.Map<String, Object> updates = new java.util.HashMap<>();
@@ -137,7 +133,7 @@ public class ReviewBottomSheetFragment extends BottomSheetDialogFragment {
                                 updates.put("timestamp", Timestamp.now());
 
                                 FirestoreHelper.getInstance().getDb()
-                                        .collection("products").document(realDocId)
+                                        .collection("products").document(productId)
                                         .collection("reviews").document(editReviewId)
                                         .update(updates)
                                         .addOnSuccessListener(aVoid -> {
@@ -155,7 +151,7 @@ public class ReviewBottomSheetFragment extends BottomSheetDialogFragment {
                             } else {
                                 // Check if user already reviewed this product
                                 FirestoreHelper.getInstance().getDb()
-                                        .collection("products").document(realDocId)
+                                        .collection("products").document(productId)
                                         .collection("reviews")
                                         .whereEqualTo("userId", uid)
                                         .limit(1)
@@ -171,7 +167,7 @@ public class ReviewBottomSheetFragment extends BottomSheetDialogFragment {
 
                                             Review review = new Review(uid, userName, rating, comment, Timestamp.now());
                                             FirestoreHelper.getInstance().getDb()
-                                                    .collection("products").document(realDocId)
+                                                    .collection("products").document(productId)
                                                     .collection("reviews")
                                                     .add(review.toMap())
                                                     .addOnSuccessListener(documentReference -> {

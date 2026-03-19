@@ -409,7 +409,7 @@ public class CheckoutActivity extends AppCompatActivity {
             String firebaseUid = prefs.getFirebaseUid();
             if (firebaseUid == null || firebaseUid.isEmpty()) {
                 Log.e(TAG, "No Firebase UID found — user not properly authenticated");
-                Toast.makeText(this, "⚠️ Please log in again to place order", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Please log in again to place order", Toast.LENGTH_LONG).show();
                 return;
             }
 
@@ -469,7 +469,7 @@ public class CheckoutActivity extends AppCompatActivity {
                             }
                         }
                         deliveryRatesLoaded = true;
-                        Log.d(TAG, "✅ Delivery rates loaded: " + provinceRates.size() + " provinces, threshold=" + freeDeliveryThreshold);
+                        Log.d(TAG, "Delivery rates loaded: " + provinceRates.size() + " provinces, threshold=" + freeDeliveryThreshold);
 
                         // If province already selected, recalculate
                         String currentProvince = actProvince.getText() != null ? actProvince.getText().toString().trim() : "";
@@ -737,7 +737,7 @@ public class CheckoutActivity extends AppCompatActivity {
             startActivityForResult(intent, PAYHERE_REQUEST);
         } catch (Exception e) {
             Log.e(TAG, "PayHere launch error: " + e.getMessage(), e);
-            Toast.makeText(this, "❌ Payment SDK error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Payment SDK error: " + e.getMessage(), Toast.LENGTH_LONG).show();
             if (paymentOverlay != null)
                 paymentOverlay.setVisibility(android.view.View.GONE);
             if (btnPlaceOrder != null)
@@ -791,12 +791,12 @@ public class CheckoutActivity extends AppCompatActivity {
 
                 if (response != null && response.isSuccess()) {
                     Log.d(TAG, "PayHere payment successful!");
-                    Toast.makeText(this, "Payment successful! ✅", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Payment successful!", Toast.LENGTH_SHORT).show();
                     placeOrderAfterPayment(pendingAddress);
                 } else {
                     String msg = response != null ? response.toString() : "Payment failed";
                     Log.e(TAG, "PayHere payment failed: " + msg);
-                    Toast.makeText(this, "❌ Payment failed: " + msg, Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Payment failed: " + msg, Toast.LENGTH_LONG).show();
                     // In sandbox, offer bypass
                     if (BuildConfig.PAYHERE_SANDBOX) {
                         offerSandboxBypass(pendingAddress);
@@ -873,7 +873,7 @@ public class CheckoutActivity extends AppCompatActivity {
                         new FirestoreHelper.FirestoreCallback<Void>() {
                             @Override
                             public void onSuccess(Void result) {
-                                Log.d(TAG, "✅ Order synced to Firestore: " + orderId);
+                                Log.d(TAG, "Order synced to Firestore: " + orderId);
                                 // Decrement stock for each product — query by name since
                                 // SQLite productId doesn't match Firestore document IDs
                                 com.google.firebase.firestore.FirebaseFirestore firestore = com.google.firebase.firestore.FirebaseFirestore
@@ -908,8 +908,8 @@ public class CheckoutActivity extends AppCompatActivity {
                                                                 java.util.List<java.util.Map<String, Object>> updatedVariants = new java.util.ArrayList<>();
                                                                 for (java.util.Map<String, Object> v : variants) {
                                                                     java.util.Map<String, Object> updatedV = new java.util.HashMap<>(v);
-                                                                    String vName = (String) updatedV.get("name");
-                                                                    if (variantLabel.equals(vName)) {
+                                                                    String vLabel = (String) updatedV.get("label");
+                                                                    if (variantLabel.equals(vLabel)) {
                                                                         long vStock = updatedV.get("stock") != null ? ((Number) updatedV.get("stock")).longValue() : 0;
                                                                         updatedV.put("stock", Math.max(0, vStock - qty));
                                                                     }
@@ -920,30 +920,30 @@ public class CheckoutActivity extends AppCompatActivity {
                                                         }
                                                         return null;
                                                     }).addOnSuccessListener(aVoid -> {
-                                                        Log.d(TAG, "📦 Stock decremented for: " + productName + (item.getVariantLabel() != null ? " (" + item.getVariantLabel() + ")" : ""));
+                                                        Log.d(TAG, "Stock decremented for: " + productName + (item.getVariantLabel() != null ? " (" + item.getVariantLabel() + ")" : ""));
                                                     }).addOnFailureListener(e -> {
-                                                        Log.e(TAG, "❌ Stock decrement failed for " + productName + ": " + e.getMessage());
+                                                        Log.e(TAG, "Stock decrement failed for " + productName + ": " + e.getMessage());
                                                     });
                                                 } else {
-                                                    Log.e(TAG, "❌ Product not found in Firestore: " + productName);
+                                                    Log.e(TAG, "Product not found in Firestore: " + productName);
                                                 }
                                             })
                                             .addOnFailureListener(e -> Log.e(TAG,
-                                                    "❌ Product query failed: " + e.getMessage()));
+                                                    "Product query failed: " + e.getMessage()));
                                 }
                             }
 
                             @Override
                             public void onError(String message) {
-                                Log.e(TAG, "❌ Firestore sync FAILED: " + message);
+                                Log.e(TAG, "Firestore sync FAILED: " + message);
                                 runOnUiThread(() -> Toast.makeText(CheckoutActivity.this,
-                                        "⚠️ Cloud sync failed: " + message,
+                                        "Cloud sync failed: " + message,
                                         Toast.LENGTH_LONG).show());
                             }
                         });
             } else {
-                Log.e(TAG, "❌ No Firebase UID — order NOT saved to cloud!");
-                Toast.makeText(this, "⚠️ Order saved locally but not synced (no login)",
+                Log.e(TAG, "No Firebase UID — order NOT saved to cloud!");
+                Toast.makeText(this, "Order saved locally but not synced (no login)",
                         Toast.LENGTH_LONG).show();
             }
 
@@ -954,6 +954,11 @@ public class CheckoutActivity extends AppCompatActivity {
             // Send email confirmation to customer + admin/seller
             try {
                 String customerEmail = prefs.getUserEmail();
+                com.google.firebase.auth.FirebaseUser currentUser = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser();
+                if ((customerEmail == null || customerEmail.isEmpty()) && currentUser != null) {
+                    customerEmail = currentUser.getEmail();
+                }
+                
                 String customerName = prefs.getUserName() != null ? prefs.getUserName() : "Customer";
                 String customerPhone = prefs.getUserPhone() != null ? prefs.getUserPhone() : "";
 
@@ -983,7 +988,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 Log.w(TAG, "Email sending failed (non-critical): " + e.getMessage());
             }
 
-            Toast.makeText(this, "Order placed successfully! 🎉", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Order placed successfully!", Toast.LENGTH_LONG).show();
 
             // Go back to main
             Intent intent = new Intent(this, MainActivity.class);

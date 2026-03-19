@@ -153,23 +153,22 @@ public class BookServiceActivity extends AppCompatActivity {
         android.util.Log.d("BookService", "Local DB booking ID: " + id);
 
         if (id > 0) {
-            // Sync booking to Firestore — dual-write for admin visibility
+            // Sync booking to Firestore for admin visibility
             SharedPreferencesManager prefs = SharedPreferencesManager.getInstance(this);
             String firebaseUid = prefs.getFirebaseUid();
             android.util.Log.d("BookService", "Firebase UID: " + firebaseUid);
 
             if (firebaseUid != null && !firebaseUid.isEmpty()) {
-                // CRITICAL: Check if Firebase Auth session is still active
+                // Check if Firebase Auth session is still active
                 com.google.firebase.auth.FirebaseUser currentUser = com.google.firebase.auth.FirebaseAuth.getInstance()
                         .getCurrentUser();
                 android.util.Log.d("BookService", "Firebase currentUser: " +
-                        (currentUser != null ? currentUser.getUid() : "NULL — AUTH SESSION EXPIRED!"));
+                        (currentUser != null ? currentUser.getUid() : "null"));
 
                 if (currentUser == null) {
-                    android.util.Log.e("BookService", "⚠️ Firebase Auth session is NULL! " +
-                            "SharedPrefs has UID but Firebase Auth token expired. " +
-                            "Firestore writes will be REJECTED by security rules.");
-                    Toast.makeText(this, "⚠️ Session expired. Please log out and log in again.",
+                    android.util.Log.e("BookService", "Firebase Auth session is null. " +
+                            "SharedPrefs has UID but Auth token expired.");
+                    Toast.makeText(this, "Session expired. Please log out and log in again.",
                             Toast.LENGTH_LONG).show();
                 }
 
@@ -202,8 +201,8 @@ public class BookServiceActivity extends AppCompatActivity {
                         .collection("bookings").document(bookingDocId)
                         .set(bookingData)
                         .addOnSuccessListener(aVoid -> {
-                            android.util.Log.d("BookService", "✅ TOP-LEVEL booking written: bookings/" + bookingDocId);
-                            Toast.makeText(BookServiceActivity.this, "☁️ Synced to cloud", Toast.LENGTH_SHORT).show();
+                            android.util.Log.d("BookService", "Top-level booking written: bookings/" + bookingDocId);
+                            Toast.makeText(BookServiceActivity.this, "Synced to cloud", Toast.LENGTH_SHORT).show();
 
                             // Send emails
                             String customerEmail = prefs.getUserEmail() != null ? prefs.getUserEmail() : "";
@@ -219,27 +218,27 @@ public class BookServiceActivity extends AppCompatActivity {
                                     .collection("bookings").document(bookingDocId)
                                     .set(bookingData)
                                     .addOnSuccessListener(aVoid2 -> android.util.Log.d("BookService",
-                                            "✅ USER subcollection booking written"))
+                                            "User subcollection booking written"))
                                     .addOnFailureListener(e -> android.util.Log.e("BookService",
-                                            "❌ User subcollection FAILED: " + e.getMessage()));
+                                            "User subcollection failed: " + e.getMessage()));
                         })
                         .addOnFailureListener(e -> {
-                            android.util.Log.e("BookService", "❌ TOP-LEVEL booking FAILED: " + e.getMessage());
+                            android.util.Log.e("BookService", "Top-level booking failed: " + e.getMessage());
                             android.util.Log.e("BookService", "Error class: " + e.getClass().getSimpleName());
                             runOnUiThread(() -> Toast.makeText(BookServiceActivity.this,
-                                    "❌ Cloud sync failed: " + e.getMessage(),
+                                    "Cloud sync failed: " + e.getMessage(),
                                     Toast.LENGTH_LONG).show());
                         });
             } else {
-                android.util.Log.e("BookService", "No Firebase UID — booking NOT synced to cloud");
-                Toast.makeText(this, "⚠️ Booking saved locally but not synced (no login)",
+                android.util.Log.e("BookService", "No Firebase UID, booking not synced to cloud");
+                Toast.makeText(this, "Booking saved locally but not synced (no login)",
                         Toast.LENGTH_LONG).show();
             }
 
             NotificationHelper notificationHelper = new NotificationHelper(this);
             notificationHelper.showBookingConfirmation(String.valueOf(id), serviceType);
 
-            Toast.makeText(this, "Booking confirmed! 🔧", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Booking confirmed!", Toast.LENGTH_LONG).show();
             finish();
         } else {
             Toast.makeText(this, "Failed to create booking", Toast.LENGTH_SHORT).show();

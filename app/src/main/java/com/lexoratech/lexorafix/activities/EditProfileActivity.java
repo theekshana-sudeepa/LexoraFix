@@ -319,7 +319,7 @@ public class EditProfileActivity extends AppCompatActivity {
                                     .sendProfileUpdateEmail(fbUser.getEmail(), name);
                         }
 
-                        Toast.makeText(EditProfileActivity.this, "Profile updated ✅", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditProfileActivity.this, "Profile updated", Toast.LENGTH_SHORT).show();
                         finish();
                     }
 
