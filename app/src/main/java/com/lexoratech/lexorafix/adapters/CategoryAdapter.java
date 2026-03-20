@@ -67,7 +67,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         Category category = categories.get(position);
         holder.tvName.setText(category.getName());
 
-        if (category.getImageUrl() != null && !category.getImageUrl().isEmpty()) {
+        boolean hasCustomImage = category.getImageUrl() != null && !category.getImageUrl().isEmpty();
+        if (hasCustomImage) {
             Glide.with(context)
                     .load(category.getImageUrl())
                     .placeholder(R.drawable.ic_category)
@@ -79,18 +80,25 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         // Apply vibrant color to the icon background
         if (holder.iconBg != null) {
-            int color = CATEGORY_COLORS[position % CATEGORY_COLORS.length];
-            GradientDrawable bg = new GradientDrawable();
-            if (useHomeLayout) {
-                bg.setShape(GradientDrawable.OVAL);
+            if (hasCustomImage) {
+                // Keep the background fully transparent/empty for custom images
+                holder.iconBg.setBackground(null);
+                holder.ivIcon.clearColorFilter();
             } else {
-                bg.setShape(GradientDrawable.RECTANGLE);
-                bg.setCornerRadius(context.getResources().getDisplayMetrics().density * 16);
+                int color = CATEGORY_COLORS[position % CATEGORY_COLORS.length];
+                GradientDrawable bg = new GradientDrawable();
+                if (useHomeLayout) {
+                    bg.setShape(GradientDrawable.OVAL);
+                } else {
+                    bg.setShape(GradientDrawable.RECTANGLE);
+                    bg.setCornerRadius(context.getResources().getDisplayMetrics().density * 16);
+                }
+                bg.setColor(color);
+                holder.iconBg.setBackground(bg);
+                
+                // Tint the regular vector icons white for contrast
+                holder.ivIcon.setColorFilter(0xFFFFFFFF);
             }
-            bg.setColor(color);
-            holder.iconBg.setBackground(bg);
-            // Tint the icon white for contrast on the solid color
-            holder.ivIcon.setColorFilter(0xFFFFFFFF);
         }
 
         holder.itemView.setOnClickListener(v -> {

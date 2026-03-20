@@ -135,7 +135,23 @@ public class SplashActivity extends AppCompatActivity {
     private void navigateSafely() {
         if (isNavigating) return;
         isNavigating = true;
-        navigateToNextScreen();
+        
+        // Check maintenance mode before navigating
+        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                .collection("system").document("settings").get()
+                .addOnSuccessListener(doc -> {
+                    Boolean isMaintenance = doc.exists() ? doc.getBoolean("maintenance_mode") : null;
+                    if (isMaintenance != null && isMaintenance) {
+                        startActivity(new android.content.Intent(SplashActivity.this, MaintenanceActivity.class));
+                        finish();
+                    } else {
+                        navigateToNextScreen();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    // If we can't check, proceed normally
+                    navigateToNextScreen();
+                });
     }
 
     private void navigateToNextScreen() {

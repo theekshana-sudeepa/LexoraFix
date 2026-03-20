@@ -700,6 +700,20 @@ public class ProductDetailActivity extends AppCompatActivity {
         if (documentId == null || documentId.isEmpty())
             return;
 
+        // Wire up the Write Review button
+        com.google.android.material.button.MaterialButton btnWriteReview = findViewById(R.id.btn_write_review);
+        if (btnWriteReview != null) {
+            btnWriteReview.setOnClickListener(v -> {
+                if (com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() == null) {
+                    startActivity(new Intent(this, LoginActivity.class));
+                    return;
+                }
+                com.lexoratech.lexorafix.fragments.ReviewBottomSheetFragment sheet =
+                        com.lexoratech.lexorafix.fragments.ReviewBottomSheetFragment.newInstance(documentId, product.getName());
+                sheet.show(getSupportFragmentManager(), "WriteReview");
+            });
+        }
+
         androidx.recyclerview.widget.RecyclerView rvReviews = findViewById(R.id.rv_reviews);
         TextView tvNoReviews = findViewById(R.id.tv_no_reviews);
         android.widget.RatingBar ratingBarAvg = findViewById(R.id.rating_bar_average);
@@ -754,6 +768,10 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onDeleteReview(com.lexoratech.lexorafix.models.Review review) {
+                                    if (review == null || review.getId() == null) {
+                                        Toast.makeText(ProductDetailActivity.this, "Error: Invalid review reference", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
                                     new androidx.appcompat.app.AlertDialog.Builder(ProductDetailActivity.this)
                                             .setTitle("Delete Review")
                                             .setMessage("Are you sure you want to delete your review?")
@@ -767,8 +785,14 @@ public class ProductDetailActivity extends AppCompatActivity {
                                                             reviewsList.remove(review);
                                                             adapter.notifyDataSetChanged();
                                                         })
-                                                        .addOnFailureListener(e ->
-                                                                Toast.makeText(ProductDetailActivity.this, "Failed to delete", Toast.LENGTH_SHORT).show());
+                                                        .addOnFailureListener(e -> {
+                                                                String errorMsg = e.getMessage();
+                                                                if (errorMsg != null && errorMsg.contains("PERMISSION_DENIED")) {
+                                                                    errorMsg = "Permission Denied. Please update Firestore Security Rules!";
+                                                                }
+                                                                Toast.makeText(ProductDetailActivity.this, "Failed to delete: " + errorMsg, Toast.LENGTH_LONG).show();
+                                                                android.util.Log.e("ProductDetail", "Delete review failed", e);
+                                                        });
                                             })
                                             .setNegativeButton("Cancel", null)
                                             .show();

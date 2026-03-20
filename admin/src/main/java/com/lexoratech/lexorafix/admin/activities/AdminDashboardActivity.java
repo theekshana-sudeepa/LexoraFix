@@ -120,6 +120,9 @@ public class AdminDashboardActivity extends AppCompatActivity
 
         // Apply Entrance Animations
         applyEntranceAnimations();
+        
+        // Auto-seed delivery charges if missing
+        seedDeliveryChargesIfMissing();
     }
 
 
@@ -141,6 +144,34 @@ public class AdminDashboardActivity extends AppCompatActivity
         } else {
             startListenerService();
         }
+    }
+    
+    private void seedDeliveryChargesIfMissing() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("system").document("deliveryCharges").get()
+                .addOnSuccessListener(doc -> {
+                    if (!doc.exists()) {
+                        java.util.Map<String, Object> data = new java.util.HashMap<>();
+                        data.put("freeDeliveryThreshold", 5000.0);
+                        data.put("defaultRate", 500.0);
+                        
+                        java.util.Map<String, Object> provinceRates = new java.util.HashMap<>();
+                        provinceRates.put("Western", 250.0);
+                        provinceRates.put("Central", 400.0);
+                        provinceRates.put("Southern", 450.0);
+                        provinceRates.put("North Western", 400.0);
+                        provinceRates.put("North Central", 500.0);
+                        provinceRates.put("Uva", 550.0);
+                        provinceRates.put("Sabaragamuwa", 450.0);
+                        provinceRates.put("Eastern", 600.0);
+                        provinceRates.put("Northern", 650.0);
+                        
+                        data.put("provinceRates", provinceRates);
+                        
+                        db.collection("system").document("deliveryCharges").set(data)
+                                .addOnSuccessListener(aVoid -> Log.d(TAG, "Successfully seeded default delivery charges."));
+                    }
+                });
     }
 
     private void startListenerService() {

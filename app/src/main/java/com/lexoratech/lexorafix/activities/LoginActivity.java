@@ -184,7 +184,15 @@ public class LoginActivity extends AppCompatActivity {
                                 new FirestoreHelper.FirestoreCallback<Void>() {
                                     @Override
                                     public void onSuccess(Void result) {
-                                        finishLogin(uid, newUser.getName(), newUser.getEmail());
+                                        // Send welcome email for new Google signups
+                                        com.lexoratech.lexorafix.network.EmailHelper.getInstance()
+                                                .sendWelcomeEmail(newUser.getEmail(), newUser.getName());
+                                        
+                                        // Add a 2-second delay to ensure JavaMail has enough time to negotiate SMTP 
+                                        // before the task stack is cleared, which was killing the background thread.
+                                        new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+                                            finishLogin(uid, newUser.getName(), newUser.getEmail());
+                                        }, 2500);
                                     }
 
                                     @Override

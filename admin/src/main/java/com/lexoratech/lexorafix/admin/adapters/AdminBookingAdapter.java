@@ -192,6 +192,7 @@ public class AdminBookingAdapter extends RecyclerView.Adapter<AdminBookingAdapte
         LinearLayout llWorkerInfoContainer = view.findViewById(R.id.ll_worker_info_container);
         TextView tvWorkerName = view.findViewById(R.id.tv_dialog_worker_name);
         TextView tvWorkerPhone = view.findViewById(R.id.tv_dialog_worker_phone);
+        TextView tvWorkerRating = view.findViewById(R.id.tv_dialog_worker_rating);
         android.widget.ProgressBar pbWorkerLoading = view.findViewById(R.id.pb_worker_loading);
 
         Map<String, Object> booking = bookings.get(pos);
@@ -209,9 +210,38 @@ public class AdminBookingAdapter extends RecyclerView.Adapter<AdminBookingAdapte
                             llWorkerInfoContainer.setVisibility(View.VISIBLE);
                             String wName = doc.getString("name");
                             String wPhone = doc.getString("phone");
+                            String wEmail = doc.getString("email");
                             
                             tvWorkerName.setText("Name: " + (wName != null ? wName : "N/A"));
                             tvWorkerPhone.setText("Phone: " + (wPhone != null && !wPhone.isEmpty() ? wPhone : "Not Provided"));
+
+                            if (wEmail != null && !wEmail.isEmpty() && tvWorkerRating != null) {
+                                tvWorkerRating.setVisibility(View.VISIBLE);
+                                tvWorkerRating.setText("Rating: Loading...");
+                                com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                                        .collection("bookings")
+                                        .whereEqualTo("assignedWorkerEmail", wEmail)
+                                        .whereEqualTo("isRated", true)
+                                        .get()
+                                        .addOnSuccessListener(ratingSnap -> {
+                                            float total = 0;
+                                            int count = 0;
+                                            for (com.google.firebase.firestore.DocumentSnapshot rDoc : ratingSnap.getDocuments()) {
+                                                Object r = rDoc.get("rating");
+                                                if (r instanceof Number) {
+                                                    total += ((Number) r).floatValue();
+                                                    count++;
+                                                }
+                                            }
+                                            if (count > 0) {
+                                                float avg = total / count;
+                                                tvWorkerRating.setText(String.format("Rating: ⭐ %.1f (%d reviews)", avg, count));
+                                            } else {
+                                                tvWorkerRating.setText("Rating: ⭐ No reviews yet");
+                                            }
+                                        })
+                                        .addOnFailureListener(e -> tvWorkerRating.setVisibility(View.GONE));
+                            }
                         }
                     })
                     .addOnFailureListener(e -> {

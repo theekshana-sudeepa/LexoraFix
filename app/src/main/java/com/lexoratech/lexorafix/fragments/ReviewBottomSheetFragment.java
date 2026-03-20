@@ -100,6 +100,10 @@ public class ReviewBottomSheetFragment extends BottomSheetDialogFragment {
             if (editComment != null) etComment.setText(editComment);
         } else if (productName != null) {
             tvTitle.setText("Rate " + productName);
+            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                checkVerifiedBuyer(uid, productId, ratingBar, etComment, btnSubmit);
+            }
         }
 
         btnSubmit.setOnClickListener(v -> {
@@ -121,10 +125,14 @@ public class ReviewBottomSheetFragment extends BottomSheetDialogFragment {
             String userName = SharedPreferencesManager.getInstance(requireContext()).getUserName();
 
             FirestoreHelper.getInstance().getDb()
-                    .collection("products").document(productId)
+                    .collection("products")
+                    .whereEqualTo("name", productName)
+                    .limit(1)
                     .get()
-                    .addOnSuccessListener(snapshot -> {
-                        if (snapshot.exists()) {
+                    .addOnSuccessListener(querySnapshot -> {
+                        if (!querySnapshot.isEmpty()) {
+                            String actualProductId = querySnapshot.getDocuments().get(0).getId();
+                            
                             if (isEditMode) {
                                 // Update existing review
                                 java.util.Map<String, Object> updates = new java.util.HashMap<>();
@@ -133,7 +141,7 @@ public class ReviewBottomSheetFragment extends BottomSheetDialogFragment {
                                 updates.put("timestamp", Timestamp.now());
 
                                 FirestoreHelper.getInstance().getDb()
-                                        .collection("products").document(productId)
+                                        .collection("products").document(actualProductId)
                                         .collection("reviews").document(editReviewId)
                                         .update(updates)
                                         .addOnSuccessListener(aVoid -> {
@@ -145,13 +153,17 @@ public class ReviewBottomSheetFragment extends BottomSheetDialogFragment {
                                         .addOnFailureListener(e -> {
                                             btnSubmit.setEnabled(true);
                                             btnSubmit.setText("Update Review");
+                                            String errorMsg = e.getMessage();
+                                            if (errorMsg != null && errorMsg.contains("PERMISSION_DENIED")) {
+                                                errorMsg = "Permission Denied. Please update Firestore Security Rules!";
+                                            }
                                             if (getContext() != null)
-                                                Toast.makeText(requireContext(), "Failed to update: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(requireContext(), "Failed to update: " + errorMsg, Toast.LENGTH_LONG).show();
                                         });
                             } else {
                                 // Check if user already reviewed this product
                                 FirestoreHelper.getInstance().getDb()
-                                        .collection("products").document(productId)
+                                        .collection("products").document(actualProductId)
                                         .collection("reviews")
                                         .whereEqualTo("userId", uid)
                                         .limit(1)
@@ -167,7 +179,7 @@ public class ReviewBottomSheetFragment extends BottomSheetDialogFragment {
 
                                             Review review = new Review(uid, userName, rating, comment, Timestamp.now());
                                             FirestoreHelper.getInstance().getDb()
-                                                    .collection("products").document(productId)
+                                                    .collection("products").document(actualProductId)
                                                     .collection("reviews")
                                                     .add(review.toMap())
                                                     .addOnSuccessListener(documentReference -> {
@@ -207,5 +219,49 @@ public class ReviewBottomSheetFragment extends BottomSheetDialogFragment {
         });
 
         return view;
+    }
+
+    private void checkVerifiedBuyer(String uid, String productId, RatingBar ratingBar, TextInputEditText etComment, MaterialButton btnSubmit) {
+        // Disable UI temporarily while checking
+        ratingBar.setIsIndicator(true);
+        etComment.setEnabled(false);
+        btnSubmit.setEnabled(false);
+        btnSubmit.setText("Verifying Purchase...");
+
+        FirestoreHelper.getInstance().getDb()
+                .collection("orders")
+                .whereEqualTo("firebaseUid", uid)
+                .whereEqualTo("status", "Delivered")
+                .get()
+                .addOnSuccessListener(snapshot -> {
+                    boolean hasPurchased = false;
+                    for (com.google.firebase.firestore.DocumentSnapshot doc : snapshot.getDocuments()) {
+                        com.lexoratech.lexorafix.models.Order order = com.lexoratech.lexorafix.models.Order.fromMap(doc.getData());
+                        if (order != null && order.getItems() != null) {
+                            for (java.util.Map<String, Object> item : order.getItems()) {
+                                if (productId.equals(item.get("productId"))) {
+                                    hasPurchased = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (hasPurchased) break;
+                    }
+
+                    if (hasPurchased) {
+                        ratingBar.setIsIndicator(false);
+                        etComment.setEnabled(true);
+                        btnSubmit.setEnabled(true);
+                        btnSubmit.setText("Submit Review");
+                    } else {
+                        btnSubmit.setText("Purchase Required");
+                        if (getContext() != null) {
+                            Toast.makeText(requireContext(), "You can only review products you have purchased and received.", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    btnSubmit.setText("Verification Failed");
+                });
     }
 }

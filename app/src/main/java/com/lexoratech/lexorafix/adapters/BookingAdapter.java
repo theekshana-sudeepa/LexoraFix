@@ -44,9 +44,16 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         holder.tvDate.setText(booking.getDate());
         holder.tvTime.setText(booking.getTime());
 
-        // Random-ish rating based on position
-        double[] ratings = {4.8, 4.9, 4.7, 4.6, 5.0, 4.5};
-        holder.tvRating.setText(String.valueOf(ratings[position % ratings.length]));
+        // Show real rating if booking has been rated
+        Boolean isRated = booking.getIsRated();
+        if (isRated != null && isRated && booking.getRating() != null) {
+            holder.ivStar.setVisibility(android.view.View.VISIBLE);
+            holder.tvRating.setVisibility(android.view.View.VISIBLE);
+            holder.tvRating.setText(String.format(java.util.Locale.getDefault(), "%.1f", booking.getRating()));
+        } else {
+            holder.ivStar.setVisibility(android.view.View.GONE);
+            holder.tvRating.setVisibility(android.view.View.GONE);
+        }
 
         String status = booking.getStatus();
         holder.tvStatus.setText(status);
@@ -115,6 +122,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         LinearLayout workerInfoSection = view.findViewById(R.id.worker_info_section);
         TextView tvWorkerName = view.findViewById(R.id.tv_dialog_worker_name);
         TextView tvWorkerPhone = view.findViewById(R.id.tv_dialog_worker_phone);
+        TextView tvWorkerRating = view.findViewById(R.id.tv_dialog_worker_rating);
         MaterialButton btnCallWorker = view.findViewById(R.id.btn_call_worker);
         MaterialButton btnChatWorker = view.findViewById(R.id.btn_chat_worker);
         MaterialButton btnRateWorker = view.findViewById(R.id.btn_rate_worker);
@@ -137,6 +145,25 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             tvWorkerPhone.setText(workerPhone != null && !workerPhone.isEmpty()
                     ? "📞 " + workerPhone
                     : "No phone provided");
+
+            String workerEmail = booking.getAssignedWorkerEmail();
+            if (workerEmail != null && !workerEmail.isEmpty() && tvWorkerRating != null) {
+                com.lexoratech.lexorafix.data.FirestoreHelper.getInstance().getWorkerAverageRatingByEmail(workerEmail, new com.lexoratech.lexorafix.data.FirestoreHelper.FirestoreCallback<android.util.Pair<Float, Integer>>() {
+                    @Override
+                    public void onSuccess(android.util.Pair<Float, Integer> result) {
+                        tvWorkerRating.setVisibility(View.VISIBLE);
+                        if (result.second > 0) {
+                            tvWorkerRating.setText(String.format("⭐ %.1f (%d reviews)", result.first, result.second));
+                        } else {
+                            tvWorkerRating.setText("⭐ No reviews yet");
+                        }
+                    }
+                    @Override
+                    public void onError(String message) {
+                        tvWorkerRating.setVisibility(View.GONE);
+                    }
+                });
+            }
 
             btnCallWorker.setOnClickListener(v -> {
                 if (workerPhone != null && !workerPhone.isEmpty()) {
@@ -201,6 +228,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvServiceType, tvDate, tvTime, tvStatus, tvRating, tvWorkerName;
+        android.widget.ImageView ivStar;
         LinearLayout workerRow;
 
         ViewHolder(@NonNull View itemView) {
@@ -210,6 +238,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
             tvTime = itemView.findViewById(R.id.tv_time);
             tvStatus = itemView.findViewById(R.id.tv_status);
             tvRating = itemView.findViewById(R.id.tv_rating);
+            ivStar = itemView.findViewById(R.id.iv_star);
             tvWorkerName = itemView.findViewById(R.id.tv_worker_name);
             workerRow = itemView.findViewById(R.id.worker_row);
         }

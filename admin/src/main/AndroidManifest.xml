@@ -54,6 +54,7 @@
         <activity android:name=".activities.OrderDetailActivity" android:exported="false" />
         <activity android:name=".activities.AdminProductReviewsActivity" android:exported="false" />
         <activity android:name=".activities.AdminSettingsActivity" android:exported="false" />
+        <activity android:name=".activities.MaintenanceActivity" android:exported="false" />
         <activity android:name=".activities.WorkerChatActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />

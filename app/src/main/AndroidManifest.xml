@@ -80,6 +80,9 @@
         <!-- Order Tracking -->
         <activity android:name=".activities.OrderTrackingActivity" android:exported="false" />
 
+        <!-- Maintenance Mode -->
+        <activity android:name=".activities.MaintenanceActivity" android:exported="false" />
+
         <!-- Google Maps API Key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"

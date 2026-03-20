@@ -61,12 +61,12 @@
         <fix-data missing="android.permission.POST_NOTIFICATIONS"/>
         <location
             file="${:admin*debug*MAIN*sourceProvider*0*javaDir*0}/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="296"
+            line="311"
             column="13"
-            startOffset="11100"
-            endLine="296"
+            startOffset="11940"
+            endLine="311"
             endColumn="90"
-            endOffset="11177"/>
+            endOffset="12017"/>
     </incident>
 
     <incident

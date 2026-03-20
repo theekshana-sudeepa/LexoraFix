@@ -148,7 +148,12 @@ public class RegisterActivity extends AppCompatActivity {
                                         // Trigger welcome email for new Google signups
                                         com.lexoratech.lexorafix.network.EmailHelper.getInstance()
                                                 .sendWelcomeEmail(newUser.getEmail(), newUser.getName());
-                                        finishRegistration(uid, newUser.getName(), newUser.getEmail());
+                                        
+                                        // Add a 2.5-second delay to ensure JavaMail has enough time to negotiate SMTP 
+                                        // before the task stack is cleared, which was killing the background thread.
+                                        new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+                                            finishRegistration(uid, newUser.getName(), newUser.getEmail());
+                                        }, 2500);
                                     }
 
                                     @Override
@@ -203,8 +208,8 @@ public class RegisterActivity extends AppCompatActivity {
             tilPhone.setError(getString(R.string.field_required));
             return;
         }
-        if (!phone.matches("^[+]?[0-9]{9,15}$")) {
-            tilPhone.setError("Please enter a valid phone number");
+        if (!phone.matches("^(\\+94|0)\\d{9}$")) {
+            tilPhone.setError("Enter a valid Sri Lankan number (e.g. 0771234567 or +94771234567)");
             return;
         }
         if (TextUtils.isEmpty(password)) {

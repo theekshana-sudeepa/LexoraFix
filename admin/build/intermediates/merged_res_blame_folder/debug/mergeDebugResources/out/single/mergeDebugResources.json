@@ -208,12 +208,20 @@
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.9/com.lexoratech.lexorafix.admin-main-46:/drawable/bg_glow_orange.xml"
     },
     {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_order_detail.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_order_detail.xml"
+    },
+    {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.9/com.lexoratech.lexorafix.admin-debug-44:/layout_activity_order_detail.xml.flat",
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.9/com.lexoratech.lexorafix.admin-main-46:/layout/activity_order_detail.xml"
     },
     {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.9/com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_fingerprint.xml.flat",
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.9/com.lexoratech.lexorafix.admin-main-46:/drawable/ic_fingerprint.xml"
+    },
+    {
+        "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.9/com.lexoratech.lexorafix.admin-debug-44:/layout_activity_maintenance.xml.flat",
+        "source": "/Users/theekshanasudeepa/.gradle/daemon/8.9/com.lexoratech.lexorafix.admin-main-46:/layout/activity_maintenance.xml"
     },
     {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.9/com.lexoratech.lexorafix.admin-debug-44:/layout_activity_worker_chat.xml.flat",
@@ -330,10 +338,6 @@
     {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.9/com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_add.xml.flat",
         "source": "/Users/theekshanasudeepa/.gradle/daemon/8.9/com.lexoratech.lexorafix.admin-main-46:/drawable/ic_add.xml"
-    },
-    {
-        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_add_edit_product.xml.flat",
-        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_add_edit_product.xml"
     },
     {
         "merged": "/Users/theekshanasudeepa/.gradle/daemon/8.9/com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_glow_blue.xml.flat",

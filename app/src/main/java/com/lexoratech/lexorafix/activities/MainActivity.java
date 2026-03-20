@@ -27,6 +27,8 @@ import com.lexoratech.lexorafix.notifications.NotificationHelper;
 import com.lexoratech.lexorafix.services.OrderStatusService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.ListenerRegistration;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private static final int SHAKE_THRESHOLD = 12;
     private static final int SHAKE_COOLDOWN = 2000;
     private static final int PERMISSION_REQUEST_CODE = 100;
+    private ListenerRegistration maintenanceListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,12 +138,30 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (accelerometer != null) {
             sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
         }
+        // Start real-time maintenance mode listener
+        maintenanceListener = FirebaseFirestore.getInstance()
+                .collection("system").document("settings")
+                .addSnapshotListener((snapshot, e) -> {
+                    if (snapshot != null && snapshot.exists()) {
+                        Boolean isMaintenance = snapshot.getBoolean("maintenance_mode");
+                        if (isMaintenance != null && isMaintenance) {
+                            android.content.Intent intent = new android.content.Intent(MainActivity.this, MaintenanceActivity.class);
+                            intent.setFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK | android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                });
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(this);
+        if (maintenanceListener != null) {
+            maintenanceListener.remove();
+            maintenanceListener = null;
+        }
     }
 
     // Shake detection via accelerometer sensor

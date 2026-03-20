@@ -40,9 +40,118 @@ public class ManageUsersActivity extends AppCompatActivity {
 
         rvList.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AdminUserAdapter(this, userList);
+        
+        adapter.setOnUserActionListener(new AdminUserAdapter.OnUserActionListener() {
+            @Override
+            public void onDeleteUser(Map<String, Object> user, int position) {
+                new androidx.appcompat.app.AlertDialog.Builder(ManageUsersActivity.this)
+                        .setTitle("Delete User")
+                        .setMessage("Are you sure you want to permanently delete this user and all their data (orders, bookings, notifications)? This cannot be undone.")
+                        .setPositiveButton("Delete", (dialog, which) -> deleteFullUser(user, position))
+                        .setNegativeButton("Cancel", null)
+                        .show();
+            }
+        });
+        
         rvList.setAdapter(adapter);
 
         loadUsers();
+    }
+
+    private void deleteFullUser(Map<String, Object> user, int position) {
+        String uid = user.get("uid") != null ? user.get("uid").toString() : null;
+        if (uid == null) {
+            Toast.makeText(this, "Invalid user ID.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        android.app.ProgressDialog progressDialog = new android.app.ProgressDialog(this);
+        progressDialog.setMessage("Deleting user and associated data...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        // 1. Delete matching top-level orders
+        db.collection("orders").whereEqualTo("firebaseUid", uid).get().addOnCompleteListener(topOrdersTask -> {
+            if (topOrdersTask.isSuccessful() && topOrdersTask.getResult() != null) {
+                com.google.firebase.firestore.WriteBatch batch1 = db.batch();
+                for (DocumentSnapshot doc : topOrdersTask.getResult()) {
+                    batch1.delete(doc.getReference());
+                }
+                batch1.commit();
+            }
+
+            // 2. Delete matching top-level bookings
+            db.collection("bookings").whereEqualTo("firebaseUid", uid).get().addOnCompleteListener(topBookingsTask -> {
+                if (topBookingsTask.isSuccessful() && topBookingsTask.getResult() != null) {
+                    com.google.firebase.firestore.WriteBatch batch2 = db.batch();
+                    for (DocumentSnapshot doc : topBookingsTask.getResult()) {
+                        batch2.delete(doc.getReference());
+                    }
+                    batch2.commit();
+                }
+
+                deleteSubcollectionsAndUser(db, uid, progressDialog, user, position);
+            });
+        });
+    }
+
+    private void deleteSubcollectionsAndUser(FirebaseFirestore db, String uid, android.app.ProgressDialog progressDialog, Map<String, Object> user, int position) {
+        db.collection("users").document(uid).collection("notifications").get().addOnCompleteListener(t1 -> {
+            if (t1.isSuccessful() && t1.getResult() != null) {
+                com.google.firebase.firestore.WriteBatch batch = db.batch();
+                for (DocumentSnapshot d : t1.getResult()) batch.delete(d.getReference());
+                batch.commit();
+            }
+            
+            db.collection("users").document(uid).collection("orders").get().addOnCompleteListener(t2 -> {
+                if (t2.isSuccessful() && t2.getResult() != null) {
+                    com.google.firebase.firestore.WriteBatch batch = db.batch();
+                    for (DocumentSnapshot d : t2.getResult()) batch.delete(d.getReference());
+                    batch.commit();
+                }
+                
+                db.collection("users").document(uid).collection("bookings").get().addOnCompleteListener(t3 -> {
+                    if (t3.isSuccessful() && t3.getResult() != null) {
+                        com.google.firebase.firestore.WriteBatch batch = db.batch();
+                        for (DocumentSnapshot d : t3.getResult()) batch.delete(d.getReference());
+                        batch.commit();
+                    }
+                    
+                    db.collection("users").document(uid).delete().addOnCompleteListener(delTask -> {
+                        if (delTask.isSuccessful()) {
+                            // Now delete from Firebase Authentication via Cloud Function
+                            java.util.Map<String, Object> data = new java.util.HashMap<>();
+                            data.put("uid", uid);
+                            com.google.firebase.functions.FirebaseFunctions.getInstance()
+                                    .getHttpsCallable("deleteUser")
+                                    .call(data)
+                                    .addOnCompleteListener(cfTask -> {
+                                        progressDialog.dismiss();
+                                        if (cfTask.isSuccessful()) {
+                                            Toast.makeText(ManageUsersActivity.this, "User fully deleted (Firestore + Auth)", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(ManageUsersActivity.this, "Firestore deleted, but Auth removal failed. Re-deploy Cloud Functions.", Toast.LENGTH_LONG).show();
+                                        }
+                                        userList.remove(user);
+                                        masterUserList.remove(user);
+                                        adapter.notifyDataSetChanged();
+                                        
+                                        android.widget.TextView tvCount = findViewById(R.id.tv_count);
+                                        if (tvCount != null) tvCount.setText(String.valueOf(userList.size()));
+                                        
+                                        android.widget.LinearLayout emptyState = findViewById(R.id.empty_state);
+                                        if (emptyState != null) emptyState.setVisibility(userList.isEmpty() ? android.view.View.VISIBLE : android.view.View.GONE);
+                                    });
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(ManageUsersActivity.this, "Failed to delete user document", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                });
+            });
+        });
     }
 
     private void showFilterMenu(android.view.View view) {

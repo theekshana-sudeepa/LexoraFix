@@ -1,0 +1,526 @@
+
+
+
+
+
+
+
+
+
+Java Institute for Advanced Technology
+Department of Examinations
+
+
+
+COURSE(S) – (LEADING TO)
+BSC (HONS) IN SOFTWARE ENGINEERING
+UNIT NAME
+HANDHELD DEVICE PROGRAMMING II
+UNIT ID
+JIAT/HHDPII
+EXAMINATION ID
+JIAT/HHDPII/EX01
+
+
+NAME
+: K.A.THEEKSHANA SUDEEPA KURUPPU
+ADMISSION NO
+: ..................................................................................................................................
+NIC NO
+: 200601802774
+NAME
+: K.A.THEEKSHANA SUDEEPA KURUPPU
+ADMISSION NO
+: ..................................................................................................................................
+NIC NO
+: 200601802774
+
+
+
+
+
+
+
+
+APPENDIX 02
+
+FINAL PROJECT
+DOCUMENTATION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Acknowledgments and Abstract
+Being the author of the report, you have to decide the content of this page. This page should be numbered using Roman numeral, i.
+
+Abstract
+The abstract of your report should not exceed the maximum of 250 words. This page should be numbered using Roman numeral, ii.
+Table of Contents
+The table of contents should consist of two levels, i.e., chapter titles as its first level, and section headings as its second level. The third level sub-section headings should not be included in the table of contents
+First Level (Chapter title) Include 1. Introduction
+
+Second Level (Section) Include 1.1 Motivation 1.2 Problem Statement Third Level (Sub-Section) Exclude 1.2.1 Background
+List of Tables, Figures, and Abbreviations
+The list of tables, figures, and abbreviations should follow the same style as described for the Table-of-Contents page. Long titles should be shortened to precisely explain the respective object. A list of abbreviations should be tied closely in the body of the report, and should not be included if there are less than five abbreviations in the document. The list of tables, figures, and abbreviations page should be numbered Roman numeral.
+Captions and Citation Caption
+Captions of tables are required to be center-aligned and on the top of the respective table.
+
+Captions of figures are required to be center-aligned and should be below the respective figure.
+
+Citation If you are using a figure, or table from some other sources such as a published article and book, you should cite it in the footnote of the respective object and should be listed in the references section.
+
+
+
+
+
+
+Main Body of your Document
+	•	Introduction: A good introduction should tell the reader what the project is about without assuming special knowledge and without introducing any specific material that might obscure the overview. It should anticipate and combine the main points described in more detail in the rest of the project report
+	•	Background: The purpose of the Background section is to provide the typical reader with information that they cannot be expected to know, but which they will need to know in order to fully understand and appreciate the rest of the report. It should explain why the project is addressing the problem described in the report, indicate an awareness of other work relevant to this problem, and show clearly that the problem has not been solved by anyone else.
+	•	Specification: The purpose of the Specification and Design sections is to give the reader a clear picture of the system you plan to create, in terms of the capability required. A specification should tell the reader what the software system is required to do. The design then gives the top-level details of how the software system meets the requirement. It will also identify
+constraints on the software solution. Describing what a software system does (specification) and how it does so (design) effectively usually means describing it from more than one viewpoint.
+Each viewpoint will convey some information about the system that other viewpoints omit. (You would use the same technique when describing any complicated construction such as a building, an aircraft, a novel, or a painting)
+	•	Design: A common approach is to first define the user or business requirements, then describe the static architecture, identify modules and groups of closely connected modules, and then apply other views to each of these groups. Fine details, specifically details of code, should be left out. We strongly recommend that you make extensive use of diagrams, such as
+entity-relationship diagrams, UML diagrams, state charts, or other pictorial techniques (see Section 5.4 for more detailed advice on this).
+The design of the system will almost certainly have evolved while you were developing it. Obviously, you should describe its final state but often there are good reasons for describing intermediate states, too; for example, if you want to discuss the details of the design method used or to highlight learning that you later refer to in the Reflection section. If you do this, take special care to make sure the reader does not get confused between different stages of the design. If you are not designing a system, but testing a hypothesis for a more scientifically oriented project, specification, and design sections may not be required in quite the same form.
+	•	Implementation:
+
+The Implementation section is similar to the Specification and Design section in that it describes the system, but it does so at a finer level of detail, down to the code level. This section is about the realization of the concepts and ideas developed earlier. It can also describe any problems that may have arisen during implementation and how you dealt with them.
+
+
+	•	Results and Evaluation:
+
+In this section, you should describe to what extent you achieved your goals. You should describe how you demonstrated that the system works as intended (or not, as the case may be). Include comprehensible summaries of the results of all critical tests that were carried out. You might not have had the time to carry out any full rigorous tests – you may not even get as far as producing a testable system. However, you should try to indicate how confident you are about whatever you have produced, and also suggest what tests would be required to gain further confidence.
+	•	Future Work:
+
+It is quite likely that by the end of your project you will not have achieved all that you planned at the start; and in any case, your ideas will have grown during the course of the project beyond what you could hope to do within the available time. The Future Work section is for expressing your unrealized ideas. It is a way of recording that „I have thought about this‟, and it is also a way of stating what you would like to have done if only you had not run out of time
+1. A good Future Work section should provide a starting point for someone else to continue the work which you have begun.
+	•	Conclusions:
+
+The Conclusions section should be a summary of the aims of the project and a restatement of its main results, i.e., what has been learned and what it has achieved. An effective set of conclusions should not introduce new material. Instead, it should briefly draw out, summarize, combine and reiterate the main points that have been made in the body of the project report and present opinions based on them. The Conclusions section marks the end of the project report properly. Be honest and objective in your conclusions.
+	•	Reflection on Learning:
+
+Reflection should focus on what Argyris calls “double-loop learning”, this is where we identify, not relatively “simple skills”, such as the mastery of a new programming language, but the impact of what we have done on the assumptions, concepts, and ideas we used to make decisions about our work.
+	•	References:
+
+You should relate your work to that of other people, but other work explicitly cited should be listed in the Reference section and referred to in the text using some kind of key. It is important that you give proper credit to all work that is not strictly your own, and that you do not violate copyright restrictions. It may be desirable to provide a Bibliography section separately from the reference section. In general, references are those documents/sources cited within the text. The bibliography lists documents that have informed the text or are otherwise relevant but have not been explicitly cited.
+
+Special Note: Plagiarism
+Special Note: Plagiarism
+
+Definition Presenting someone else’s idea, work, project, or words as your own. This also includes using someone’s exact words, figures, tables, et or even modifying them but not providing citation or reference to the actual work. Warning PLAGIARISM IF PROVED WILL BE GROUNDS FOR DISMISSAL OF YOUR FINAL PROJECT AND IN WORST CASE DENIAL OF YOUR DEGREE.
+You can use this characteristic structure as a rough template for organizing the material. However, often it may be of advantage to adjust the suggested structure to your particular project instead of sticking to the template
+It is your responsibility to ensure that your project document is formatted correctly before your final submission.
+
+
+
+Reference URLs
+
+
+
+
+WARNING:
+PLAGIARISM IF PROVED WILL BE GROUNDS FOR DISMISSAL OF YOUR FINAL PROJECT AND IN WORST CASE DENIAL OF YOUR DEGREE.
+WARNING:
+PLAGIARISM IF PROVED WILL BE GROUNDS FOR DISMISSAL OF YOUR FINAL PROJECT AND IN WORST CASE DENIAL OF YOUR DEGREE.
+
+==========================
+FILLED FINAL REPORT BLOCK
+==========================
+
+Acknowledgments
+I would like to express my sincere gratitude to my course instructors and supervisors for their guidance, feedback, and encouragement throughout the planning and implementation of this project. I also thank my peers for useful discussions during troubleshooting and feature refinement. Finally, I acknowledge the open-source and documentation communities behind the technologies used in this project, including Firebase, Google Maps, PayHere Android SDK, and Cloud Functions, which made implementation and debugging more efficient.
+
+Abstract (<=250 words)
+LexoraFix is an Android mobile commerce and home-services marketplace application built to combine product purchasing with service booking in a single, real-time user experience. The system consists of two client modules: a customer application and an admin/worker application. Customers register and authenticate using Firebase Authentication (email/password and Google sign-in), optionally enable biometric quick login, browse products by category with live stock information, and manage wishlist and cart items. Checkout is implemented using the PayHere payment gateway; after successful payment the app creates an order and synchronizes it to Cloud Firestore using a dual-write pattern. Product inventory is decremented transactionally to reduce overselling. Customers can book services by selecting date/time, writing notes, capturing GPS location (or selecting a map location), and monitoring booking status in real time. Communication is supported with Firestore-backed chat and event-driven notifications delivered through Firebase Cloud Messaging and Cloud Functions (Firestore triggers).
+Administrators manage catalogue data (products, categories, service centers), monitor operational analytics, and update order and booking statuses. Workers accept jobs using Firestore transactions to avoid concurrent claims, progress work through defined status transitions, and chat with customers. The overall solution enforces role-based access control using Firestore Security Rules and includes a maintenance-mode mechanism for controlled system availability.
+
+Table of Contents (2 levels)
+1. Introduction
+1.1 Motivation
+1.2 Problem Statement
+1.3 Objectives
+1.4 Scope and Report Overview
+2. Background
+2.1 M-Commerce and Service Marketplaces
+2.2 Technologies Used
+2.3 Security Model (RBAC)
+3. Specification and Design
+3.1 Functional Requirements
+3.2 Non-Functional Requirements
+3.3 System Architecture (Client/Backend/Notifications)
+3.4 Data Model and Firestore Schema
+3.5 Core Business Flows (Orders, Bookings, Chat, Notifications)
+4. Implementation
+4.1 Customer App Implementation
+4.2 Admin/Worker App Implementation
+4.3 Cloud Functions and Notification Pipeline
+4.4 Payments, Email, and Media Storage
+4.5 Real-Time Synchronization and Local Persistence
+5. Results and Evaluation
+5.1 Functional Verification (End-to-End)
+5.2 Security Verification (Rules and Workflow Guards)
+5.3 Limitations
+6. Future Work
+7. Conclusions
+8. Reflection on Learning
+9. References
+
+List of Tables, Figures, and Abbreviations
+Abbreviations:
+LKR: Sri Lankan Rupee
+M-Commerce: Mobile Commerce
+RBAC: Role-Based Access Control
+FCM: Firebase Cloud Messaging
+CRUD: Create, Read, Update, Delete
+UML: Unified Modeling Language
+
+Figure 1: System Architecture (Customer/Admin/Worker + Firebase + Cloud Functions)
+Figure 2: Order Flow (Cart -> Checkout -> PayHere -> Dual-write -> Tracking)
+Figure 3: Booking Flow (Book -> Worker Accept -> Status Sync -> Chat)
+Figure 4: Notification Flow (Firestore triggers -> FCM + In-app documents -> UI)
+
+Main Body of your Document
+1. Introduction
+1.1 Motivation
+Home improvement and maintenance tasks often require both purchasing products (tools, accessories, replacement parts) and arranging professional services (installation, repair, maintenance). In many real-world scenarios these steps are handled through separate systems, leading to a fragmented user journey. Users can experience duplicated browsing steps, inconsistent stock visibility, delayed updates on progress, and limited communication between customers and service providers.
+
+LexoraFix is motivated by the need for a unified mobile platform that supports:
+- Product discovery and purchasing
+- Service booking with scheduling and location support
+- Real-time tracking, notifications, and chat coordination
+- Administrative control over catalogue and operational workflow
+
+1.2 Problem Statement
+The project addresses the following issues:
+- Lack of a single interface for both commerce and service booking.
+- Inventory and stock changes that are not reflected quickly enough, causing invalid purchases.
+- Unreliable status communication between admins/workers and customers.
+- Difficulty for customers to coordinate with assigned workers after a booking is accepted.
+- Security challenges: ensuring that customers and workers can only access permitted data, while admins can manage the full system.
+
+1.3 Objectives
+The objectives of LexoraFix are:
+- Implement a customer app that supports registration/login, product browsing with filtering, wishlist and cart management, PayHere checkout, order tracking, and service booking.
+- Implement an admin/worker app that supports RBAC-protected access, operational dashboards, catalogue CRUD, order/booking status management, and transactional worker job acceptance.
+- Use Firebase backend technologies to provide real-time updates via snapshot listeners and event-driven notifications via Cloud Functions and FCM.
+- Enforce security using Firestore Security Rules and maintain correctness of workflow transitions using transactions and dual-write synchronization.
+
+1.4 Scope and Report Overview
+This report covers the system design and implementation of LexoraFix across:
+- Data modeling and Firestore schema design
+- End-to-end user flows (orders, bookings, chat, notifications)
+- Implementation details at code-module level (activities, adapters, helpers, services)
+- Security enforcement and workflow guards
+- Evaluation approach and limitations
+
+2. Background
+2.1 M-Commerce and Service Marketplaces
+Mobile commerce enables shopping from mobile devices, usually focusing on catalogue, cart, and checkout. A service marketplace adds coordination complexity because service fulfillment is a multi-step workflow. Typical marketplace requirements include:
+- Asynchronous events (job accepted, work started, completed)
+- Status-driven UI updates
+- Assignment and conflict prevention
+- Messaging and notifications for coordination
+
+LexoraFix models service fulfillment as a state machine driven by Firestore document fields and synchronized across roles.
+
+2.2 Technologies Used
+LexoraFix uses:
+- Firebase Authentication for identity (customer/admin/worker).
+- Cloud Firestore for the primary database with real-time listeners.
+- Firebase Storage for product/category/user images.
+- Firebase Cloud Messaging (FCM) for push notifications.
+- Firebase Cloud Functions (Firestore triggers) to react to document changes and send notifications.
+- Google Maps SDK for location visualization and map-based selection.
+- PayHere Android SDK for payments in Sri Lanka.
+- JavaMail-based email utilities for transactional communication.
+
+2.3 Security Model (RBAC)
+Security is enforced primarily through Firestore Security Rules. The rules determine access using role information stored under `users/{uid}`. Helper functions such as `isAdmin()` and `isWorker()` restrict reads/writes to:
+- admin-controlled collections and system settings
+- user-owned documents (orders/bookings)
+- worker-controlled booking status transitions under allowed conditions
+
+Additionally, client-side navigation checks are used for user experience (e.g., redirecting based on role and email verification), but enforcement remains server-side through rules and transactions.
+
+3. Specification and Design
+3.1 Functional Requirements
+Customer module:
+- Email/password and Google sign-in with Firebase Authentication.
+- Biometric quick login support.
+- Browse categories and products, including search and filter operations.
+- Product details with variant selection and live stock updates.
+- Wishlist management persisted to Firestore.
+- Cart management via local SQLite persistence.
+- Checkout using PayHere and delivery address inputs.
+- Order tracking UI driven by order status updates.
+- Service booking with scheduling, GPS capture, and map location selection.
+- Map view of service centers sorted by distance.
+- Chat between customer and worker for active bookings.
+- Review submission for eligible completed purchases.
+- Profile editing and profile photo upload.
+
+Admin/Worker module:
+- Role-based login with role verification from Firestore.
+- Maintenance-mode routing.
+- Admin dashboard analytics with real-time counts.
+- CRUD for products, categories, and service centers.
+- Manage orders and bookings with status updates mirrored to customer subcollections.
+- Worker dashboard for available jobs and assigned jobs.
+- Worker accepts job through Firestore transactions to avoid conflicting assignments.
+- Worker status transitions and chat with customers.
+
+3.2 Non-Functional Requirements
+LexoraFix prioritizes:
+- Responsiveness via snapshot listeners (near real-time UI updates).
+- Reliability through hybrid notification delivery (push + in-app documents).
+- Security through RBAC rules and transaction-based workflow guards.
+- Usability via clear status-driven UI patterns and Material design components.
+
+3.3 System Architecture (Client/Backend/Notifications)
+Figure 1: System Architecture
+```mermaid
+flowchart LR
+  CustomerApp[Customer Android App] -->|browse, cart| Firestore[(Cloud Firestore)]
+  CustomerApp -->|media| Storage[(Firebase Storage)]
+  CustomerApp -->|payments| PayHere[PayHere SDK]
+  CustomerApp -->|writes orders/bookings| Firestore
+
+  AdminWorkerApp[Admin/Worker Android App] -->|CRUD, status updates| Firestore
+  WorkerApp[Worker UI] -->|transactional accept| Firestore
+
+  Firestore -->|events| CloudFns[Cloud Functions triggers]
+  CloudFns -->|push| FCM[FCM]
+  FCM --> CustomerApp
+  FCM --> AdminWorkerApp
+  CloudFns -->|log docs| InApp[users/{uid}/notifications]
+  CustomerApp --> NotificationFragment[NotificationFragment UI]
+```
+
+3.4 Data Model and Firestore Schema
+Primary top-level collections:
+- `users`: user profiles (role, status, tokens).
+- `products`: product definitions (stock, variants, images).
+- `categories`: category metadata and images.
+- `service_centers`: service locations with coordinates and contact info.
+- `orders`: order documents for admin visibility and tracking.
+- `bookings`: service booking documents for admin and worker visibility.
+- `chats`: chat headers with subcollection `chats/{chatId}/messages`.
+
+User-specific subcollections:
+- `users/{uid}/orders`: customer view for order tracking.
+- `users/{uid}/bookings`: customer view for booking status tracking.
+- `users/{uid}/notifications`: in-app notifications displayed by `NotificationFragment`.
+
+Product reviews:
+- `products/{productId}/reviews`: review objects for moderation and display.
+
+3.5 Core Business Flows (Orders, Bookings, Chat, Notifications)
+Figure 2: Order Flow
+```mermaid
+flowchart TD
+  A[Add to Cart] --> B[CheckoutActivity]
+  B --> C[Validate stock]
+  C --> D[PayHere payment]
+  D -->|success| E[placeOrderAfterPayment]
+  E --> F[FirestoreHelper.saveOrderWithNotification]
+  F --> G[Write orders (top-level + user subcollection)]
+  F --> H[Decrement stock transactionally]
+  H --> I[OrderStatusService listens]
+  I --> J[OrderTrackingActivity updates UI]
+  K[Admin updates order status] --> L[Firestore order doc update]
+  L --> I
+```
+
+Figure 3: Booking Flow
+```mermaid
+flowchart TD
+  A[BookServiceActivity: schedule + notes] --> B[GPS/map location capture]
+  B --> C[Write booking (top-level + user subcollection)]
+  C --> D[WorkerDashboardActivity sees Confirmed jobs]
+  D --> E[WorkerBookingAdapter accept transaction]
+  E --> F[Booking status becomes Accepted/In Progress/Completed]
+  F --> G[Mirror updates to user booking subcollection]
+  G --> H[Bookings UI + ChatActivity enabled]
+```
+
+Figure 4: Notification Flow
+```mermaid
+flowchart LR
+  X[Firestore doc created/updated] --> Y[Cloud Functions triggers]
+  Y -->|FCM push| Z[MyFirebaseMessagingService]
+  Y -->|Write notification doc| N[users/{uid}/notifications]
+  Z --> CustomerApp[App UI]
+  CustomerApp --> NotificationFragment[NotificationFragment reads docs]
+  AdminLocal[AdminOrderListenerService] --> AdminApp[Admin local notifications]
+```
+
+4. Implementation
+4.1 Customer App Implementation
+Authentication and roles:
+- `LoginActivity` performs sign-in (email/password, Google) and checks role and email verification status from Firestore. It navigates users to the correct module based on role.
+- Biometric login is supported by enabling biometric prompt setup and verifying biometric-enabled state for faster re-authentication.
+
+Navigation, maintenance mode, and UI:
+- `MainActivity` hosts bottom navigation and loads fragments for Home, Categories, Cart, Services, and Profile.
+- `MainActivity` listens to the `maintenance_mode` setting in Firestore and redirects users to `MaintenanceActivity` when required.
+- A shake gesture is implemented to quickly reach the services workflow.
+
+Catalogue browsing:
+- `HomeFragment` loads categories and featured products.
+- Product lists support live search and filtering; filter UI is implemented using fragments and chips/range sliders.
+- `ProductDetailActivity` listens to product changes to keep stock information up to date.
+
+Checkout and payments:
+- `CheckoutActivity` validates stock before payment.
+- Delivery address input includes province/district selections and delivery fee logic.
+- PayHere SDK is initialized and the payment request is launched. On success, `placeOrderAfterPayment` stores order details and triggers local and Firestore updates.
+
+Orders and tracking:
+- Order status changes are delivered to the user using `OrderStatusService` which listens to Firestore status updates.
+- `OrderTrackingActivity` shows a timeline of order states based on the order `status` field.
+
+Service booking:
+- `BookServiceActivity` gathers booking date/time and notes.
+- Location is captured by GPS (with reverse geocoding) or by `LocationPickerActivity`.
+- Booking is synchronized to Firestore (top-level and user subcollection).
+
+Chat:
+- `ChatActivity` uses chat headers and message subcollections under `chats/{chatId}/messages`.
+- Chat is enabled for active bookings and disabled once the booking is completed.
+
+4.2 Admin/Worker App Implementation
+Login and maintenance mode:
+- `AdminLoginActivity` authenticates admins and workers, verifies roles using Firestore, and routes to the correct dashboards.
+
+Admin dashboard and analytics:
+- `AdminDashboardActivity` uses listeners to compute operational metrics (e.g., number of users/orders/bookings/products) and displays them in the UI.
+
+Catalogue management:
+- `ManageProductsActivity` allows adding/editing/deleting products and also supports reviewing product reviews.
+- Category and service center management is handled by admin screens with consistent Firestore CRUD.
+
+Order management:
+- `ManageOrdersActivity` lists orders and allows status updates via UI dialogs.
+- Status update logic ensures updates are mirrored to both top-level orders and customer subcollection views.
+
+Booking and worker workflows:
+- `ManageBookingsActivity` enables booking status updates and notifies customers through status change mechanisms.
+- Workers accept jobs using `WorkerBookingAdapter` and Firestore transactions to prevent double assignment.
+- Workers update their assigned job status progression and can chat with customers.
+
+4.3 Cloud Functions and Notification Pipeline
+The backend uses Cloud Functions (Firestore triggers) in `functions/index.js` to implement event-driven notifications:
+- New booking created: notify approved workers via FCM.
+- Booking status changes: notify the customer and write an in-app notification document to `users/{uid}/notifications`.
+- New chat message: send push to the other participant and log in-app notifications when applicable.
+- New order created: notify admins.
+- Order status changes: notify the customer and log in-app notification documents.
+
+This architecture ensures that notifications are still delivered accurately even when users are not actively using the relevant screens.
+
+4.4 Payments, Email, and Media Storage
+Payments:
+- PayHere SDK is integrated through `CheckoutActivity`. Merchant identifiers are stored in `BuildConfig`.
+
+Email:
+- `EmailHelper` uses JavaMail to send transactional emails for order confirmations and status updates.
+
+Media storage:
+- `StorageHelper` uploads images to Firebase Storage and updates Firestore documents with download URLs.
+
+4.5 Real-Time Synchronization and Local Persistence
+Local cart persistence:
+- SQLite persistence is implemented via `DatabaseHelper` for cart-related data.
+
+Cloud synchronization:
+- Orders and bookings use dual-write patterns to support both admin visibility and customer-specific listeners.
+- Real-time updates are delivered through snapshot listeners, which keep the UI responsive with minimal delay.
+
+5. Results and Evaluation
+5.1 Functional Verification (End-to-End)
+Functional verification was performed by validating the main user journeys through the app modules:
+- Customer authentication flows (email/password, Google sign-in, biometric quick login).
+- Product catalogue browsing including category selection, search/filter, and variant selection.
+- Wishlist toggling and cart updates with stock constraints.
+- PayHere checkout success path and subsequent order creation synchronization.
+- Real-time order status timeline updates.
+- Service booking creation with GPS/map location and status tracking.
+- Worker job acceptance using transactional guards.
+- Worker progress workflow and chat availability during active jobs.
+- Notification delivery through push (FCM) and in-app notification document logging.
+- Admin dashboard updates and status transitions for orders and bookings.
+
+5.2 Security Verification (Rules and Workflow Guards)
+Security verification was evaluated using:
+- Firestore Security Rules inspection and RBAC logic review (admin vs worker vs customer).
+- Transaction-based workflow guards (worker booking acceptance) to reduce race conditions.
+- Controlled actions through callable functions (e.g., admin-driven deletion).
+
+5.3 Limitations
+Important limitations include:
+- Some legacy local persistence patterns may require refinement for a fully offline-first experience.
+- Review verification relies on stored purchase history; additional business rules can be added for edge cases.
+- Notification reliability depends on correct token management for FCM; token refresh/update logic should be monitored.
+
+6. Future Work
+Future improvements for a next iteration:
+- Stronger payment verification using backend confirmation (webhooks) to reduce reliance on client SDK outcomes.
+- Full offline queueing for cart and checkout with conflict resolution on reconnect.
+- Enhanced stock model for variant stock granularity and more robust stock transition invariants.
+- Improved chat UX: read receipts, message attachments, and better deep linking.
+- Map improvements: caching, marker clustering, and smarter distance calculation performance.
+
+7. Conclusions
+LexoraFix provides an end-to-end mobile commerce and home-services marketplace solution. The customer app supports product browsing, wishlist and cart management, PayHere-based checkout, real-time order tracking, and service booking with location support and chat. The admin/worker app supports role-based operational control, catalogue CRUD, status transitions for orders and bookings, and transactional worker job acceptance. The system uses Firebase Authentication, Cloud Firestore, Firebase Storage, Cloud Functions, and FCM to deliver real-time data synchronization and reliable event-driven notifications. Security is enforced through Firestore Security Rules with RBAC, and workflow correctness is improved using Firestore transactions for critical assignments.
+
+8. Reflection on Learning
+This project aligns with Argyris' double-loop learning concept. The development process influenced not only technical skills but also underlying assumptions:
+- Early assumption that UI checks alone are enough for access control was corrected after security review; server-side RBAC rules became a primary design constraint.
+- Early assumption that local-only data patterns can keep the experience consistent was corrected by adopting dual-write patterns and snapshot listeners for real-time updates across roles.
+- Early assumption that job assignment can be handled with simple updates was corrected by adding transactional acceptance to prevent concurrency issues between workers.
+- Early assumption that notifications can be handled purely on-device was corrected by combining push notifications (FCM) with Cloud Functions and in-app notification document logging.
+
+9. References
+[1] Firebase Authentication Documentation: https://firebase.google.com/docs/auth
+[2] Cloud Firestore Security Rules: https://firebase.google.com/docs/firestore/security/get-started
+[3] Firebase Cloud Messaging for Android: https://firebase.google.com/docs/cloud-messaging
+[4] Firebase Cloud Functions (Firestore triggers): https://firebase.google.com/docs/functions
+[5] PayHere Android SDK Documentation: https://payhere.lk/
+[6] Google Maps SDK for Android: https://developers.google.com/maps/documentation/android-sdk
+
+
+
+
+
+
+
+
+
+
+
+
+

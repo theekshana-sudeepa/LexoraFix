@@ -1,4 +1,4 @@
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/network/EmailHelper.java:425: Warning: Implicitly using the default locale is a common source of bugs: Use toUpperCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/network/EmailHelper.java:426: Warning: Implicitly using the default locale is a common source of bugs: Use toUpperCase(Locale) instead. For strings meant to be internal use Locale.ROOT, otherwise Locale.getDefault(). [DefaultLocale]
                 + "<h2 style='color:" + color + ";margin:0;font-size:20px;'>" + safe(newStatus).toUpperCase() + "</h2></div>"
                                                                                                 ~~~~~~~~~~~
 
@@ -39,10 +39,10 @@
 
    https://developer.android.com/distribute/best-practices/develop/target-sdk.html
 
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:179: Warning: Avoid passing null as the view root (needed to resolve layout parameters on the inflated layout's root element) [InflateParams]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:183: Warning: Avoid passing null as the view root (needed to resolve layout parameters on the inflated layout's root element) [InflateParams]
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_booking_status, null);
                                                                                          ~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:340: Warning: Avoid passing null as the view root (needed to resolve layout parameters on the inflated layout's root element) [InflateParams]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:358: Warning: Avoid passing null as the view root (needed to resolve layout parameters on the inflated layout's root element) [InflateParams]
         View view = getLayoutInflater().inflate(R.layout.dialog_edit_phone, null);
                                                                             ~~~~
 
@@ -256,7 +256,7 @@ googleServices = "4.4.2"
    This check looks through the string definitions, and if it finds any words
    that look like likely misspellings, they are flagged.
 
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:65: Warning: Exported service does not require permission [ExportedService]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml:66: Warning: Exported service does not require permission [ExportedService]
         <service
          ~~~~~~~
 
@@ -268,7 +268,7 @@ googleServices = "4.4.2"
 
    https://goo.gle/ExportedService
 
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:99: Warning: Add annotation processor to processor path using annotationProcessor instead of compileOnly [AnnotationProcessorOnCompilePath]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:100: Warning: Add annotation processor to processor path using annotationProcessor instead of compileOnly [AnnotationProcessorOnCompilePath]
     compileOnly("org.projectlombok:lombok:1.18.34")
     ~~~~~~~~~~~
 
@@ -301,16 +301,19 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageServiceCentersActivity.java:89: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
                     adapter.notifyDataSetChanged();
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageUsersActivity.java:116: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageUsersActivity.java:139: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+                                        adapter.notifyDataSetChanged();
+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageUsersActivity.java:225: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
         adapter.notifyDataSetChanged();
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerChatActivity.java:218: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
                     chatAdapter.notifyDataSetChanged();
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:178: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:193: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
                 adapter.notifyDataSetChanged();
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:262: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:277: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
         adapter.notifyDataSetChanged();
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -401,6 +404,9 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_settings.xml:8: Warning: Possible overdraw: Root element paints background @color/adminBackground with a theme that also paints a background (inferred theme is @style/Theme.LexoraAdmin) [Overdraw]
     android:background="@color/adminBackground">
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_maintenance.xml:9: Warning: Possible overdraw: Root element paints background @android:color/white with a theme that also paints a background (inferred theme is @style/Theme.LexoraAdmin) [Overdraw]
+    android:background="@android:color/white">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_manage_list.xml:7: Warning: Possible overdraw: Root element paints background @color/adminBackground with a theme that also paints a background (inferred theme is @style/Theme.LexoraAdmin) [Overdraw]
     android:background="@color/adminBackground"
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -550,16 +556,19 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:78: Warning: Use version catalog instead [UseTomlInstead]
     implementation("androidx.biometric:biometric:1.1.0")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:95: Warning: Use version catalog instead [UseTomlInstead]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:86: Warning: Use version catalog instead [UseTomlInstead]
+    implementation("com.google.firebase:firebase-functions")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:96: Warning: Use version catalog instead [UseTomlInstead]
     implementation("com.sun.mail:android-mail:1.6.7")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:96: Warning: Use version catalog instead [UseTomlInstead]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:97: Warning: Use version catalog instead [UseTomlInstead]
     implementation("com.sun.mail:android-activation:1.6.7")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:99: Warning: Use version catalog instead [UseTomlInstead]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:100: Warning: Use version catalog instead [UseTomlInstead]
     compileOnly("org.projectlombok:lombok:1.18.34")
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:100: Warning: Use version catalog instead [UseTomlInstead]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts:101: Warning: Use version catalog instead [UseTomlInstead]
     annotationProcessor("org.projectlombok:lombok:1.18.34")
                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -635,6 +644,9 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_settings.xml:238: Warning: Missing contentDescription attribute on image [ContentDescription]
                         <ImageView
                          ~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_maintenance.xml:11: Warning: Missing contentDescription attribute on image [ContentDescription]
+    <ImageView
+     ~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_manage_list.xml:20: Warning: Missing contentDescription attribute on image [ContentDescription]
         <ImageView
          ~~~~~~~~~
@@ -706,16 +718,19 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:59: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         holder.tvDate.setText("📅 " + date + " at " + time);
                                              ~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:209: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:86: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                    holder.tvLocation.setText("Location unavailable");
+                                              ~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:213: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
                             tvWorkerName.setText("Name: " + (wName != null ? wName : "N/A"));
                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:209: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:213: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                             tvWorkerName.setText("Name: " + (wName != null ? wName : "N/A"));
                                                  ~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:210: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:214: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
                             tvWorkerPhone.setText("Phone: " + (wPhone != null && !wPhone.isEmpty() ? wPhone : "Not Provided"));
                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:210: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java:214: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                             tvWorkerPhone.setText("Phone: " + (wPhone != null && !wPhone.isEmpty() ? wPhone : "Not Provided"));
                                                   ~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminOrderAdapter.java:49: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
@@ -766,28 +781,28 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/AdminSettingsActivity.java:131: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 tvThemeStatus.setText("System Default");
                                       ~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:68: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:77: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
         holder.tvUid.setText("UID: " + uid);
                              ~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:68: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:77: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         holder.tvUid.setText("UID: " + uid);
                              ~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:76: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:85: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
             holder.btnBan.setText("Approve Worker");
                                   ~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:84: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:93: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnBan.setText("Approving...");
                                       ~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:108: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:117: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                             holder.btnBan.setText("Approve Worker");
                                                   ~~~~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:117: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:126: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnBan.setText("Unban User");
                                       ~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:124: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:133: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnBan.setText("Ban User");
                                       ~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:136: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java:145: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnBan.setText("Updating...");
                                       ~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageBookingsActivity.java:53: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
@@ -839,8 +854,8 @@ googleServices = "4.4.2"
                 holder.btnAction.setText("🔧  Start Working");
                                          ~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:148: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
-                holder.btnAction.setText("✅  Mark Completed");
-                                         ~~~~~~~~~~~~~~~~~~~
+                holder.btnAction.setText(" Mark Completed");
+                                         ~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:154: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 holder.btnAction.setText("✓  Completed");
                                          ~~~~~~~~~~~~~~
@@ -856,13 +871,13 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java:220: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
         holder.btnAction.setText("Updating...");
                                  ~~~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:356: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:374: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                 tvCurrentPhone.setText("Not set");
                                        ~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:372: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:391: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
             btnSave.setText("Saving...");
                             ~~~~~~~~~~~
-/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:382: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java:401: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
                         btnSave.setText("Save Phone Number");
                                         ~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerPendingActivity.java:102: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
@@ -1131,6 +1146,12 @@ googleServices = "4.4.2"
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_settings.xml:296: Warning: Hardcoded string "Version 1.0.0", should use @string resource [HardcodedText]
                     android:text="Version 1.0.0"
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_maintenance.xml:21: Warning: Hardcoded string "System Maintenance", should use @string resource [HardcodedText]
+        android:text="System Maintenance"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_maintenance.xml:31: Warning: Hardcoded string "We are currently upgrading our systems to serve you better. We'll be back shortly!", should use @string resource [HardcodedText]
+        android:text="We are currently upgrading our systems to serve you better. We'll be back shortly!"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_manage_list.xml:36: Warning: Hardcoded string "Manage", should use @string resource [HardcodedText]
             android:text="Manage"
             ~~~~~~~~~~~~~~~~~~~~~
@@ -1611,4 +1632,4 @@ googleServices = "4.4.2"
    probably also specify padding on the right side (and vice versa) for
    right-to-left layout symmetry.
 
-0 errors, 447 warnings
+0 errors, 454 warnings

@@ -56,6 +56,7 @@ public class WorkerDashboardActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private ListenerRegistration snapshotListener;
+    private ListenerRegistration maintenanceListener;
     private int currentTab = WorkerBookingAdapter.TAB_AVAILABLE;
 
     // Track count to detect new bookings
@@ -93,6 +94,20 @@ public class WorkerDashboardActivity extends AppCompatActivity {
             startActivity(new Intent(this, AdminLoginActivity.class));
             finish();
         });
+
+        // Real-time maintenance mode listener
+        maintenanceListener = db.collection("system").document("settings")
+                .addSnapshotListener((snapshot, e) -> {
+                    if (snapshot != null && snapshot.exists()) {
+                        Boolean isMaintenance = snapshot.getBoolean("maintenance_mode");
+                        if (isMaintenance != null && isMaintenance) {
+                            Intent mIntent = new Intent(WorkerDashboardActivity.this, MaintenanceActivity.class);
+                            mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(mIntent);
+                            finish();
+                        }
+                    }
+                });
     }
 
     private void createNotificationChannel() {
@@ -331,6 +346,9 @@ public class WorkerDashboardActivity extends AppCompatActivity {
         super.onDestroy();
         if (snapshotListener != null) {
             snapshotListener.remove();
+        }
+        if (maintenanceListener != null) {
+            maintenanceListener.remove();
         }
     }
 

@@ -170,26 +170,85 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
+                    android:orientation="vertical"
                     android:padding="16dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <!-- Subtotal -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Total: "
-                        android:fontFamily="@font/poppins"
-                        android:textColor="@color/adminTextPrimary"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:gravity="end"
+                        android:layout_marginBottom="4dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Subtotal: "
+                            android:fontFamily="@font/poppins"
+                            android:textColor="@color/adminTextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/tv_subtotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="LKR 0.00"
+                            android:fontFamily="@font/poppins"
+                            android:textColor="@color/adminTextPrimary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tv_total"
-                        android:layout_width="wrap_content"
+                    <!-- Delivery Fee -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="LKR 0.00"
-                        android:fontFamily="@font/poppins"
-                        android:textColor="@color/adminWarning"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:gravity="end"
+                        android:layout_marginBottom="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Delivery Fee: "
+                            android:fontFamily="@font/poppins"
+                            android:textColor="@color/adminTextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/tv_delivery_fee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="LKR 0.00"
+                            android:fontFamily="@font/poppins"
+                            android:textColor="@color/adminTextPrimary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/adminDivider"
+                        android:layout_marginVertical="8dp" />
+
+                    <!-- Grand Total -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total: "
+                            android:fontFamily="@font/poppins"
+                            android:textColor="@color/adminTextPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="LKR 0.00"
+                            android:fontFamily="@font/poppins"
+                            android:textColor="@color/adminWarning"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

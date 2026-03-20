@@ -219,11 +219,13 @@ id tv_current_phone
 id tv_customer_email
 id tv_customer_name
 id tv_date
+id tv_delivery_fee
 id tv_description
 id tv_dialog_message
 id tv_dialog_title
 id tv_dialog_worker_name
 id tv_dialog_worker_phone
+id tv_dialog_worker_rating
 id tv_email
 id tv_empty
 id tv_empty_icon
@@ -276,6 +278,7 @@ layout activity_admin_dashboard
 layout activity_admin_login
 layout activity_admin_product_reviews
 layout activity_admin_settings
+layout activity_maintenance
 layout activity_manage_list
 layout activity_order_detail
 layout activity_worker_chat

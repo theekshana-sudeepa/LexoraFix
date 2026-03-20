@@ -16,9 +16,11 @@
  */
 
 const { onDocumentUpdated, onDocumentCreated } = require("firebase-functions/v2/firestore");
+const { onCall, HttpsError } = require("firebase-functions/v2/https");
 const { initializeApp } = require("firebase-admin/app");
 const { getFirestore, FieldValue } = require("firebase-admin/firestore");
 const { getMessaging } = require("firebase-admin/messaging");
+const { getAuth } = require("firebase-admin/auth");
 
 // Initialize the Firebase Admin SDK (required for Firestore and FCM access)
 initializeApp();
@@ -601,4 +603,42 @@ exports.onWorkerRegistered = onDocumentCreated("users/{userId}", async (event) =
   }
 
   return null;
+});
+
+/**
+ * Callable function: Delete a user from Firebase Authentication
+ * Only admins can call this. The Android admin app invokes this after
+ * deleting Firestore data to fully remove the user from Auth as well.
+ */
+exports.deleteUser = onCall(async (request) => {
+  // Verify caller is authenticated
+  if (!request.auth) {
+    throw new HttpsError("unauthenticated", "Must be logged in.");
+  }
+
+  const callerUid = request.auth.uid;
+  const targetUid = request.data.uid;
+
+  if (!targetUid) {
+    throw new HttpsError("invalid-argument", "Target user UID is required.");
+  }
+
+  // Verify caller is an admin
+  const callerDoc = await getFirestore().collection("users").doc(callerUid).get();
+  if (!callerDoc.exists || callerDoc.data().role !== "admin") {
+    throw new HttpsError("permission-denied", "Only admins can delete users.");
+  }
+
+  // Delete the user from Firebase Authentication
+  try {
+    await getAuth().deleteUser(targetUid);
+    console.log(`Successfully deleted user ${targetUid} from Firebase Auth`);
+    return { success: true, message: "User deleted from Authentication." };
+  } catch (error) {
+    console.error(`Failed to delete user ${targetUid}:`, error);
+    if (error.code === "auth/user-not-found") {
+      return { success: true, message: "User was already removed from Authentication." };
+    }
+    throw new HttpsError("internal", "Failed to delete user: " + error.message);
+  }
 });

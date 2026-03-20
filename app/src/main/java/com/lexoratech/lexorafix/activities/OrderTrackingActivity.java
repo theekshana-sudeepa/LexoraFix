@@ -139,6 +139,31 @@ public class OrderTrackingActivity extends AppCompatActivity {
         Object itemsObj = doc.get("items");
         View cardOrderItems = findViewById(R.id.card_order_items);
         androidx.recyclerview.widget.RecyclerView rvOrderItems = findViewById(R.id.rv_order_items);
+        
+        // Extract pricing
+        Object totalObj = doc.get("totalPrice");
+        double total = totalObj instanceof Number ? ((Number) totalObj).doubleValue() : 0;
+        
+        Object subObj = doc.get("subtotal");
+        double subtotal = subObj instanceof Number ? ((Number) subObj).doubleValue() : total;
+        
+        Object feeObj = doc.get("deliveryFee");
+        double deliveryFee = feeObj instanceof Number ? ((Number) feeObj).doubleValue() : 0;
+        
+        TextView tvSubtotal = findViewById(R.id.tv_subtotal);
+        TextView tvDeliveryFee = findViewById(R.id.tv_delivery_fee);
+        TextView tvTotal = findViewById(R.id.tv_total);
+        
+        if (tvSubtotal != null) tvSubtotal.setText(String.format(java.util.Locale.US, "LKR %.2f", subtotal));
+        if (tvDeliveryFee != null) {
+            if (deliveryFee > 0) {
+                tvDeliveryFee.setText(String.format(java.util.Locale.US, "LKR %.2f", deliveryFee));
+            } else {
+                tvDeliveryFee.setText("FREE");
+                tvDeliveryFee.setTextColor(ContextCompat.getColor(this, R.color.colorSuccess));
+            }
+        }
+        if (tvTotal != null) tvTotal.setText(String.format(java.util.Locale.US, "LKR %.2f", total));
 
         if (itemsObj instanceof java.util.List) {
             java.util.List<java.util.Map<String, Object>> items = (java.util.List<java.util.Map<String, Object>>) itemsObj;

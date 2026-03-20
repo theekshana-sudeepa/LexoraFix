@@ -35,13 +35,15 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- Star + Rating -->
+            <!-- Star + Rating (hidden by default; shown only when real data exists) -->
             <ImageView
+                android:id="@+id/iv_star"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@drawable/ic_star"
                 app:tint="#FCC419"
-                android:layout_marginEnd="4dp" />
+                android:layout_marginEnd="4dp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_rating"
@@ -50,7 +52,8 @@
                 android:text="4.8"
                 android:textColor="@color/textPrimary"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
         </LinearLayout>
 
         <!-- Status Badge -->

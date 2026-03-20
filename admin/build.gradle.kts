@@ -83,6 +83,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
     implementation(libs.firebase.messaging)
+    implementation("com.google.firebase:firebase-functions")
 
     // Image Loading
     implementation(libs.glide)

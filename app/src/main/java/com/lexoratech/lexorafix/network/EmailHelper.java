@@ -41,6 +41,7 @@ public class EmailHelper {
         props.put("mail.smtp.port", "587");                // TLS port
         props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         props.put("mail.smtp.ssl.protocols", "TLSv1.2");   // Required for modern Android TLS handshake
+        props.put("mail.debug", "true");                   // Enable full debugging
 
         session = Session.getInstance(props, new Authenticator() {
             @Override

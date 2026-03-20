@@ -75,6 +75,18 @@
             android:textColor="@color/adminTextSecondary"
             android:textSize="14sp"
             android:layout_marginTop="2dp" />
+
+        <TextView
+            android:id="@+id/tv_dialog_worker_rating"
+            android:fontFamily="@font/poppins"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rating: Loading..."
+            android:textColor="#F59E0B"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            android:visibility="gone" />
     </LinearLayout>
 
     <!-- Progress bar for loading worker info -->

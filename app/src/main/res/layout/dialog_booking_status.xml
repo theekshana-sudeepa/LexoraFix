@@ -148,6 +148,18 @@
                     android:text="Phone"
                     android:textColor="@color/textSecondary"
                     android:textSize="13sp" />
+
+                <!-- Worker Rating -->
+                <TextView
+                    android:id="@+id/tv_dialog_worker_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="⭐ Loading rating..."
+                    android:textColor="#FFB300"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
 

@@ -413,13 +413,22 @@
             </LinearLayout>
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_categories"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_categories"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="190dp"
             android:layout_marginTop="12dp"
             android:clipToPadding="false"
             android:paddingHorizontal="16dp" />
+
+        <!-- Dot Indicator for Category Carousel -->
+        <LinearLayout
+            android:id="@+id/ll_category_dots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal" />
 
         <!-- ═══════════ Trending Now Section ═══════════ -->
         <LinearLayout

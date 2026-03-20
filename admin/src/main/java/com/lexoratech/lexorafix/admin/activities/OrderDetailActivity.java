@@ -57,6 +57,8 @@ public class OrderDetailActivity extends AppCompatActivity {
         TextView tvCustomerName = findViewById(R.id.tv_customer_name);
         TextView tvCustomerEmail = findViewById(R.id.tv_customer_email);
         TextView tvAddress = findViewById(R.id.tv_address);
+        TextView tvSubtotal = findViewById(R.id.tv_subtotal);
+        TextView tvDeliveryFee = findViewById(R.id.tv_delivery_fee);
         TextView tvTotal = findViewById(R.id.tv_total);
         TextView tvTimestamp = findViewById(R.id.tv_timestamp);
         RecyclerView rvItems = findViewById(R.id.rv_items);
@@ -94,6 +96,12 @@ public class OrderDetailActivity extends AppCompatActivity {
                     String status = doc.getString("status");
                     Object totalObj = doc.get("totalPrice");
                     double total = totalObj instanceof Number ? ((Number) totalObj).doubleValue() : 0;
+                    
+                    Object subObj = doc.get("subtotal");
+                    double subtotal = subObj instanceof Number ? ((Number) subObj).doubleValue() : total; // fallback to total if missing
+
+                    Object feeObj = doc.get("deliveryFee");
+                    double deliveryFee = feeObj instanceof Number ? ((Number) feeObj).doubleValue() : 0;
 
                     // Handle timestamp
                     Object tsObj = doc.get("timestamp");
@@ -106,6 +114,15 @@ public class OrderDetailActivity extends AppCompatActivity {
                     tvCustomerName.setText(customerName != null ? customerName : "N/A");
                     tvCustomerEmail.setText(customerEmail != null ? customerEmail : "N/A");
                     tvAddress.setText(address != null ? address : "N/A");
+                    if (tvSubtotal != null) tvSubtotal.setText(String.format(java.util.Locale.US, "LKR %.2f", subtotal));
+                    if (tvDeliveryFee != null) {
+                        if (deliveryFee > 0) {
+                            tvDeliveryFee.setText(String.format(java.util.Locale.US, "LKR %.2f", deliveryFee));
+                        } else {
+                            tvDeliveryFee.setText("FREE");
+                            tvDeliveryFee.setTextColor(getResources().getColor(R.color.adminSuccess, null));
+                        }
+                    }
                     tvTotal.setText(String.format(java.util.Locale.US, "LKR %.2f", total));
                     tvTimestamp.setText(timeStr);
 

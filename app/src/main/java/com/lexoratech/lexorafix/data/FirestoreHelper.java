@@ -448,6 +448,30 @@ public class FirestoreHelper {
                 .addOnFailureListener(e -> callback.onError(e.getMessage()));
     }
 
+    /**
+     * Calculate the average rating for a specific worker based on all their rated bookings.
+     */
+    public void getWorkerAverageRatingByEmail(String workerEmail, FirestoreCallback<android.util.Pair<Float, Integer>> callback) {
+        db.collection(COLLECTION_BOOKINGS)
+                .whereEqualTo("assignedWorkerEmail", workerEmail)
+                .whereEqualTo("isRated", true)
+                .get()
+                .addOnSuccessListener(snapshot -> {
+                    float total = 0;
+                    int count = 0;
+                    for (DocumentSnapshot doc : snapshot.getDocuments()) {
+                        Object r = doc.get("rating");
+                        if (r instanceof Number) {
+                            total += ((Number) r).floatValue();
+                            count++;
+                        }
+                    }
+                    float average = count > 0 ? total / count : 0f;
+                    callback.onSuccess(new android.util.Pair<>(average, count));
+                })
+                .addOnFailureListener(e -> callback.onError(e.getMessage()));
+    }
+
     public void getAllUsers(FirestoreCallback<QuerySnapshot> callback) {
         db.collection(COLLECTION_USERS)
                 .get()

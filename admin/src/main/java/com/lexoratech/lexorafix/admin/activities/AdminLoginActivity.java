@@ -174,15 +174,36 @@ public class AdminLoginActivity extends AppCompatActivity {
                         startActivity(new Intent(this, AdminDashboardActivity.class));
                         finish();
                     } else if ("worker".equals(role)) {
-                        boolean emailVerified = doc.contains("emailVerified") && Boolean.TRUE.equals(doc.getBoolean("emailVerified"));
-                        boolean adminApproved = doc.contains("adminApproved") && Boolean.TRUE.equals(doc.getBoolean("adminApproved"));
-
-                        if (emailVerified && adminApproved) {
-                            startActivity(new Intent(this, WorkerDashboardActivity.class));
-                        } else {
-                            startActivity(new Intent(this, WorkerPendingActivity.class));
-                        }
-                        finish();
+                        // Check maintenance mode before allowing workers in
+                        FirebaseFirestore.getInstance().collection("system").document("settings").get()
+                                .addOnSuccessListener(settingsDoc -> {
+                                    Boolean isMaintenance = settingsDoc.exists() ? settingsDoc.getBoolean("maintenance_mode") : null;
+                                    if (isMaintenance != null && isMaintenance) {
+                                        setLoading(false);
+                                        startActivity(new Intent(this, MaintenanceActivity.class));
+                                        finish();
+                                        return;
+                                    }
+                                    boolean emailVerified = doc.contains("emailVerified") && Boolean.TRUE.equals(doc.getBoolean("emailVerified"));
+                                    boolean adminApproved = doc.contains("adminApproved") && Boolean.TRUE.equals(doc.getBoolean("adminApproved"));
+                                    if (emailVerified && adminApproved) {
+                                        startActivity(new Intent(this, WorkerDashboardActivity.class));
+                                    } else {
+                                        startActivity(new Intent(this, WorkerPendingActivity.class));
+                                    }
+                                    finish();
+                                })
+                                .addOnFailureListener(ex -> {
+                                    // If can't check, allow through
+                                    boolean emailVerified = doc.contains("emailVerified") && Boolean.TRUE.equals(doc.getBoolean("emailVerified"));
+                                    boolean adminApproved = doc.contains("adminApproved") && Boolean.TRUE.equals(doc.getBoolean("adminApproved"));
+                                    if (emailVerified && adminApproved) {
+                                        startActivity(new Intent(this, WorkerDashboardActivity.class));
+                                    } else {
+                                        startActivity(new Intent(this, WorkerPendingActivity.class));
+                                    }
+                                    finish();
+                                });
                     } else {
                         setLoading(false);
                         auth.signOut();

@@ -234,8 +234,8 @@ public class EditProfileActivity extends AppCompatActivity {
             tilPhone.setError("Phone number is required");
             return;
         }
-        if (!phone.matches("^[+]?[0-9]{9,15}$")) {
-            tilPhone.setError("Please enter a valid phone number");
+        if (!phone.matches("^(\\+94|0)\\d{9}$")) {
+            tilPhone.setError("Enter a valid Sri Lankan number (e.g. 0771234567 or +94771234567)");
             return;
         }
         if (TextUtils.isEmpty(address)) {

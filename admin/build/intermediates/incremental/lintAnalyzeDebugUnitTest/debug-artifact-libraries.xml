@@ -133,6 +133,19 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="com.google.firebase:firebase-functions:21.1.0@aar"
+      jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/18467785d2f6a98d6b77f3e70f17d2b7/transformed/firebase-functions-21.1.0/jars/classes.jar"
+      resolved="com.google.firebase:firebase-functions:21.1.0"
+      folder="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/18467785d2f6a98d6b77f3e70f17d2b7/transformed/firebase-functions-21.1.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="com.google.android.recaptcha:recaptcha:18.5.1@aar"
       jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/196e163c63a1b37a42a2e1c1a66b92e6/transformed/recaptcha-18.5.1/jars/classes.jar"
       resolved="com.google.android.recaptcha:recaptcha:18.5.1"
@@ -215,6 +228,19 @@
       jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/5cf9bfe4d142122c37ca777a0c271308/transformed/firebase-messaging-24.1.0/jars/classes.jar"
       resolved="com.google.firebase:firebase-messaging:24.1.0"
       folder="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/5cf9bfe4d142122c37ca777a0c271308/transformed/firebase-messaging-24.1.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.firebase:firebase-iid:21.1.0@aar"
+      jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/bee677363389b3988b817cb0b40b0b3f/transformed/firebase-iid-21.1.0/jars/classes.jar"
+      resolved="com.google.firebase:firebase-iid:21.1.0"
+      folder="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/bee677363389b3988b817cb0b40b0b3f/transformed/firebase-iid-21.1.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -484,6 +510,19 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="com.google.android.gms:play-services-stats:17.0.2@aar"
+      jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/34ea2082e024b847f4ca6102171e7616/transformed/play-services-stats-17.0.2/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-stats:17.0.2"
+      folder="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/34ea2082e024b847f4ca6102171e7616/transformed/play-services-stats-17.0.2"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="androidx.legacy:legacy-support-core-utils:1.0.0@aar"
       jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/010d75756fc58ce637be665b35acfbd2/transformed/legacy-support-core-utils-1.0.0/jars/classes.jar"
       resolved="androidx.legacy:legacy-support-core-utils:1.0.0"
@@ -603,6 +642,19 @@
       name="org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3@jar"
       jars="/Users/theekshanasudeepa/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-play-services/1.7.3/7087d47913cfb0062c9909dacbfc78fe44c5ecff/kotlinx-coroutines-play-services-1.7.3.jar"
       resolved="org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3"/>
+  <library
+      name="com.google.android.gms:play-services-cloud-messaging:17.2.0@aar"
+      jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/f68838a6746135e046d223d958c93f8f/transformed/play-services-cloud-messaging-17.2.0/jars/classes.jar"
+      resolved="com.google.android.gms:play-services-cloud-messaging:17.2.0"
+      folder="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/f68838a6746135e046d223d958c93f8f/transformed/play-services-cloud-messaging-17.2.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
   <library
       name="com.google.android.gms:play-services-tasks:18.2.0@aar"
       jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/39f5e34e58a0f987adac53e32d7fd552/transformed/play-services-tasks-18.2.0/jars/classes.jar"
@@ -984,19 +1036,6 @@
       jars="/Users/theekshanasudeepa/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.27.0/91b2c29d8a6148b5e2e4930f070d4840e2e48e34/error_prone_annotations-2.27.0.jar"
       resolved="com.google.errorprone:error_prone_annotations:2.27.0"/>
   <library
-      name="com.google.android.play:core-common:2.0.3@aar"
-      jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/1c203e28a5a338a9b714b595f6c72f11/transformed/core-common-2.0.3/jars/classes.jar"
-      resolved="com.google.android.play:core-common:2.0.3"
-      folder="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/1c203e28a5a338a9b714b595f6c72f11/transformed/core-common-2.0.3"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
       name="com.google.firebase:firebase-components:18.0.0@aar"
       jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/54d229a974ff06620853e2c5fd067250/transformed/firebase-components-18.0.0/jars/classes.jar"
       resolved="com.google.firebase:firebase-components:18.0.0"
@@ -1017,6 +1056,19 @@
       name="javax.inject:javax.inject:1@jar"
       jars="/Users/theekshanasudeepa/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
       resolved="javax.inject:javax.inject:1"/>
+  <library
+      name="com.google.android.play:core-common:2.0.3@aar"
+      jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/1c203e28a5a338a9b714b595f6c72f11/transformed/core-common-2.0.3/jars/classes.jar"
+      resolved="com.google.android.play:core-common:2.0.3"
+      folder="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/1c203e28a5a338a9b714b595f6c72f11/transformed/core-common-2.0.3"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
   <library
       name="com.google.firebase:protolite-well-known-types:18.0.0@aar"
       jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/c1f99f9b387274f69763bb213444a1ca/transformed/protolite-well-known-types-18.0.0/jars/classes.jar"
@@ -1060,32 +1112,6 @@
       jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/ef71ff6a35a5d4aa51a8d7fc6bca3156/transformed/customview-poolingcontainer-1.0.0/jars/classes.jar"
       resolved="androidx.customview:customview-poolingcontainer:1.0.0"
       folder="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/ef71ff6a35a5d4aa51a8d7fc6bca3156/transformed/customview-poolingcontainer-1.0.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="com.google.android.gms:play-services-cloud-messaging:17.2.0@aar"
-      jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/f68838a6746135e046d223d958c93f8f/transformed/play-services-cloud-messaging-17.2.0/jars/classes.jar"
-      resolved="com.google.android.gms:play-services-cloud-messaging:17.2.0"
-      folder="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/f68838a6746135e046d223d958c93f8f/transformed/play-services-cloud-messaging-17.2.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="com.google.android.gms:play-services-stats:17.0.2@aar"
-      jars="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/34ea2082e024b847f4ca6102171e7616/transformed/play-services-stats-17.0.2/jars/classes.jar"
-      resolved="com.google.android.gms:play-services-stats:17.0.2"
-      folder="/Users/theekshanasudeepa/.gradle/caches/8.9/transforms/34ea2082e024b847f4ca6102171e7616/transformed/play-services-stats-17.0.2"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -1193,6 +1219,10 @@
       symbolFile="R.txt"
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
+  <library
+      name="com.squareup.okhttp3:okhttp:3.12.13@jar"
+      jars="/Users/theekshanasudeepa/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.12.13/528e024f340da35cca5d679b631da85d8db9ed/okhttp-3.12.13.jar"
+      resolved="com.squareup.okhttp3:okhttp:3.12.13"/>
   <library
       name="io.grpc:grpc-okhttp:1.62.2@jar"
       jars="/Users/theekshanasudeepa/.gradle/caches/modules-2/files-2.1/io.grpc/grpc-okhttp/1.62.2/2d8b802e7fe17c1577527195fd53a2e7355b3541/grpc-okhttp-1.62.2.jar"

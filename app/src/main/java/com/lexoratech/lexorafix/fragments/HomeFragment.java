@@ -13,7 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,7 +23,7 @@ import com.lexoratech.lexorafix.R;
 import com.lexoratech.lexorafix.activities.MainActivity;
 import com.lexoratech.lexorafix.activities.ProductDetailActivity;
 import com.lexoratech.lexorafix.activities.MapActivity;
-import com.lexoratech.lexorafix.adapters.CategoryAdapter;
+
 import com.lexoratech.lexorafix.adapters.ProductAdapter;
 import com.lexoratech.lexorafix.data.FirestoreHelper;
 import com.lexoratech.lexorafix.data.SharedPreferencesManager;
@@ -36,7 +36,6 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private ProductAdapter productAdapter;
-    private CategoryAdapter categoryAdapter;
     private List<Product> allProducts = new ArrayList<>();
 
     @Nullable
@@ -74,9 +73,9 @@ public class HomeFragment extends Fragment {
         // Show badge dot if there are active bookings
         checkForActiveBookings(notificationBadge);
 
-        // Categories RecyclerView — 3-column grid
-        RecyclerView rvCategories = view.findViewById(R.id.rv_categories);
-        rvCategories.setLayoutManager(new GridLayoutManager(requireContext(), 3));
+        // Categories Carousel — swipeable pages with 2 rows × 2 columns
+        androidx.viewpager2.widget.ViewPager2 vpCategories = view.findViewById(R.id.vp_categories);
+        android.widget.LinearLayout llDots = view.findViewById(R.id.ll_category_dots);
 
         // Load categories from Firestore
         FirestoreHelper firestoreHelper = FirestoreHelper.getInstance();
@@ -93,8 +92,9 @@ public class HomeFragment extends Fragment {
                                 categories.add(cat);
                             }
                         }
-                        categoryAdapter = new CategoryAdapter(requireContext(), categories, true);
-                        categoryAdapter.setOnCategoryClickListener(category -> {
+                        com.lexoratech.lexorafix.adapters.CategoryCarouselAdapter carouselAdapter =
+                                new com.lexoratech.lexorafix.adapters.CategoryCarouselAdapter(requireContext(), categories);
+                        carouselAdapter.setOnCategoryClickListener(category -> {
                             ProductListFragment fragment = ProductListFragment.newInstance(
                                     category.getDocumentId(), category.getName());
                             requireActivity().getSupportFragmentManager()
@@ -105,7 +105,16 @@ public class HomeFragment extends Fragment {
                                     .addToBackStack(null)
                                     .commit();
                         });
-                        rvCategories.setAdapter(categoryAdapter);
+                        vpCategories.setAdapter(carouselAdapter);
+
+                        // Setup dot indicators
+                        setupDotIndicators(llDots, carouselAdapter.getPageCount(), 0);
+                        vpCategories.registerOnPageChangeCallback(new androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback() {
+                            @Override
+                            public void onPageSelected(int position) {
+                                setupDotIndicators(llDots, carouselAdapter.getPageCount(), position);
+                            }
+                        });
                     }
 
                     @Override
@@ -310,5 +319,34 @@ public class HomeFragment extends Fragment {
                 .addOnFailureListener(e -> {
                     // Silent — don't show badge if we can't check
                 });
+    }
+
+    /**
+     * Create/update dot indicators for the category carousel.
+     */
+    private void setupDotIndicators(android.widget.LinearLayout container, int totalPages, int currentPage) {
+        if (container == null || totalPages <= 1) {
+            if (container != null) container.setVisibility(View.GONE);
+            return;
+        }
+        container.setVisibility(View.VISIBLE);
+        container.removeAllViews();
+
+        for (int i = 0; i < totalPages; i++) {
+            View dot = new View(requireContext());
+            int size = (int) (8 * getResources().getDisplayMetrics().density);
+            android.widget.LinearLayout.LayoutParams params =
+                    new android.widget.LinearLayout.LayoutParams(size, size);
+            int margin = (int) (4 * getResources().getDisplayMetrics().density);
+            params.setMargins(margin, 0, margin, 0);
+            dot.setLayoutParams(params);
+
+            android.graphics.drawable.GradientDrawable drawable = new android.graphics.drawable.GradientDrawable();
+            drawable.setShape(android.graphics.drawable.GradientDrawable.OVAL);
+            drawable.setColor(i == currentPage ? 0xFF2563EB : 0xFFD1D5DB);
+            dot.setBackground(drawable);
+
+            container.addView(dot);
+        }
     }
 }

@@ -27,6 +27,15 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
 
     private final Context context;
     private final List<Map<String, Object>> users;
+    private OnUserActionListener actionListener;
+
+    public interface OnUserActionListener {
+        void onDeleteUser(Map<String, Object> user, int position);
+    }
+
+    public void setOnUserActionListener(OnUserActionListener listener) {
+        this.actionListener = listener;
+    }
 
     public AdminUserAdapter(Context context, List<Map<String, Object>> users) {
         this.context = context;
@@ -155,6 +164,13 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
                         });
             });
         }
+
+        // Delete Button logic
+        holder.btnDelete.setOnClickListener(v -> {
+            if (actionListener != null) {
+                actionListener.onDeleteUser(user, position);
+            }
+        });
     }
 
     @Override
@@ -169,7 +185,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvName, tvEmail, tvRole, tvUid, tvStatus;
-        MaterialButton btnBan;
+        MaterialButton btnBan, btnDelete;
         MaterialCardView cardStatus;
 
         ViewHolder(@NonNull View itemView) {
@@ -180,6 +196,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.View
             tvUid = itemView.findViewById(R.id.tv_uid);
             tvStatus = itemView.findViewById(R.id.tv_status);
             btnBan = itemView.findViewById(R.id.btn_ban);
+            btnDelete = itemView.findViewById(R.id.btn_delete);
             cardStatus = itemView.findViewById(R.id.card_status);
         }
     }

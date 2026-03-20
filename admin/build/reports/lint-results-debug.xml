@@ -15,7 +15,7 @@
         errorLine2="                                                                                                ~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/network/EmailHelper.java"
-            line="425"
+            line="426"
             column="97"/>
     </issue>
 
@@ -51,7 +51,7 @@
         errorLine2="                                                                                         ~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
-            line="179"
+            line="183"
             column="90"/>
     </issue>
 
@@ -69,7 +69,7 @@
         errorLine2="                                                                            ~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="340"
+            line="358"
             column="77"/>
     </issue>
 
@@ -911,7 +911,7 @@
         errorLine2="         ~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/AndroidManifest.xml"
-            line="65"
+            line="66"
             column="10"/>
     </issue>
 
@@ -927,7 +927,7 @@
         errorLine2="    ~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="99"
+            line="100"
             column="5"/>
     </issue>
 
@@ -1067,11 +1067,27 @@
         priority="8"
         summary="Invalidating All RecyclerView Data"
         explanation="The `RecyclerView` adapter&apos;s `onNotifyDataSetChanged` method does not specify what about the data set has changed, forcing any observers to assume that all existing items and structure may no longer be valid. `LayoutManager`s will be forced to fully rebind and relayout all visible views."
+        errorLine1="                                        adapter.notifyDataSetChanged();"
+        errorLine2="                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageUsersActivity.java"
+            line="139"
+            column="41"/>
+    </issue>
+
+    <issue
+        id="NotifyDataSetChanged"
+        severity="Warning"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort."
+        category="Performance"
+        priority="8"
+        summary="Invalidating All RecyclerView Data"
+        explanation="The `RecyclerView` adapter&apos;s `onNotifyDataSetChanged` method does not specify what about the data set has changed, forcing any observers to assume that all existing items and structure may no longer be valid. `LayoutManager`s will be forced to fully rebind and relayout all visible views."
         errorLine1="        adapter.notifyDataSetChanged();"
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/ManageUsersActivity.java"
-            line="116"
+            line="225"
             column="9"/>
     </issue>
 
@@ -1103,7 +1119,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="178"
+            line="193"
             column="17"/>
     </issue>
 
@@ -1119,7 +1135,7 @@
         errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="262"
+            line="277"
             column="9"/>
     </issue>
 
@@ -1408,6 +1424,22 @@
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_settings.xml"
             line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        severity="Warning"
+        message="Possible overdraw: Root element paints background `@android:color/white` with a theme that also paints a background (inferred theme is `@style/Theme.LexoraAdmin`)"
+        category="Performance"
+        priority="3"
+        summary="Overdraw: Painting regions more than once"
+        explanation="If you set a background drawable on a root view, then you should use a custom theme where the theme background is null. Otherwise, the theme background will be painted first, only to have your custom background completely cover it; this is called &quot;overdraw&quot;.&#xA;&#xA;NOTE: This detector relies on figuring out which layouts are associated with which activities based on scanning the Java code, and it&apos;s currently doing that using an inexact pattern matching algorithm. Therefore, it can incorrectly conclude which activity the layout is associated with and then wrongly complain that a background-theme is hidden.&#xA;&#xA;If you want your custom background on multiple pages, then you should consider making a custom theme with your custom background and just using that theme instead of a root element background.&#xA;&#xA;Of course it&apos;s possible that your custom drawable is translucent and you want it to be mixed with the background. However, you will get better performance if you pre-mix the background with your drawable and use that resulting image or color as a custom theme background instead."
+        errorLine1="    android:background=&quot;@android:color/white&quot;>"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_maintenance.xml"
+            line="9"
             column="5"/>
     </issue>
 
@@ -1851,11 +1883,27 @@
         priority="4"
         summary="Use TOML Version Catalog Instead"
         explanation="If your project is using a `libs.versions.toml` file, you should place all Gradle dependencies in the TOML file. This lint check looks for version declarations outside of the TOML file and suggests moving them (and in the IDE, provides a quickfix to performing the operation automatically)."
+        errorLine1="    implementation(&quot;com.google.firebase:firebase-functions&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
+            line="86"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="UseTomlInstead"
+        severity="Warning"
+        message="Use version catalog instead"
+        category="Productivity"
+        priority="4"
+        summary="Use TOML Version Catalog Instead"
+        explanation="If your project is using a `libs.versions.toml` file, you should place all Gradle dependencies in the TOML file. This lint check looks for version declarations outside of the TOML file and suggests moving them (and in the IDE, provides a quickfix to performing the operation automatically)."
         errorLine1="    implementation(&quot;com.sun.mail:android-mail:1.6.7&quot;)"
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="95"
+            line="96"
             column="20"/>
     </issue>
 
@@ -1871,7 +1919,7 @@
         errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="96"
+            line="97"
             column="20"/>
     </issue>
 
@@ -1887,7 +1935,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="99"
+            line="100"
             column="17"/>
     </issue>
 
@@ -1903,7 +1951,7 @@
         errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build.gradle.kts"
-            line="100"
+            line="101"
             column="25"/>
     </issue>
 
@@ -2313,6 +2361,24 @@
         explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
         url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
         urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
+        errorLine1="    &lt;ImageView"
+        errorLine2="     ~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_maintenance.xml"
+            line="11"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        severity="Warning"
+        message="Missing `contentDescription` attribute on image"
+        category="Accessibility"
+        priority="3"
+        summary="Image without `contentDescription`"
+        explanation="Non-textual widgets like ImageViews and ImageButtons should use the `contentDescription` attribute to specify a textual description of the widget such that screen readers and other accessibility tools can adequately describe the user interface.&#xA;&#xA;Note that elements in application screens that are purely decorative and do not provide any content or enable a user action should not have accessibility content descriptions. In this case, set their descriptions to `@null`. If your app&apos;s minSdkVersion is 16 or higher, you can instead set these graphical elements&apos; `android:importantForAccessibility` attributes to `no`.&#xA;&#xA;Note that for text fields, you should not set both the `hint` and the `contentDescription` attributes since the hint will never be shown. Just set the `hint`."
+        url="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
+        urls="https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases"
         errorLine1="        &lt;ImageView"
         errorLine2="         ~~~~~~~~~">
         <location
@@ -2612,6 +2678,24 @@
     <issue
         id="SetTextI18n"
         severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                    holder.tvLocation.setText(&quot;Location unavailable&quot;);"
+        errorLine2="                                              ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
+            line="86"
+            column="47"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
         message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
         category="Internationalization"
         priority="6"
@@ -2623,7 +2707,7 @@
         errorLine2="                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
-            line="209"
+            line="213"
             column="50"/>
     </issue>
 
@@ -2641,7 +2725,7 @@
         errorLine2="                                                 ~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
-            line="209"
+            line="213"
             column="50"/>
     </issue>
 
@@ -2659,7 +2743,7 @@
         errorLine2="                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
-            line="210"
+            line="214"
             column="51"/>
     </issue>
 
@@ -2677,7 +2761,7 @@
         errorLine2="                                                  ~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminBookingAdapter.java"
-            line="210"
+            line="214"
             column="51"/>
     </issue>
 
@@ -2983,7 +3067,7 @@
         errorLine2="                             ~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="68"
+            line="77"
             column="30"/>
     </issue>
 
@@ -3001,7 +3085,7 @@
         errorLine2="                             ~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="68"
+            line="77"
             column="30"/>
     </issue>
 
@@ -3019,7 +3103,7 @@
         errorLine2="                                  ~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="76"
+            line="85"
             column="35"/>
     </issue>
 
@@ -3037,7 +3121,7 @@
         errorLine2="                                      ~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="84"
+            line="93"
             column="39"/>
     </issue>
 
@@ -3055,7 +3139,7 @@
         errorLine2="                                                  ~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="108"
+            line="117"
             column="51"/>
     </issue>
 
@@ -3073,7 +3157,7 @@
         errorLine2="                                      ~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="117"
+            line="126"
             column="39"/>
     </issue>
 
@@ -3091,7 +3175,7 @@
         errorLine2="                                      ~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="124"
+            line="133"
             column="39"/>
     </issue>
 
@@ -3109,7 +3193,7 @@
         errorLine2="                                      ~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/AdminUserAdapter.java"
-            line="136"
+            line="145"
             column="39"/>
     </issue>
 
@@ -3411,8 +3495,8 @@
         explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
         url="https://developer.android.com/guide/topics/resources/localization.html"
         urls="https://developer.android.com/guide/topics/resources/localization.html"
-        errorLine1="                holder.btnAction.setText(&quot;✅  Mark Completed&quot;);"
-        errorLine2="                                         ~~~~~~~~~~~~~~~~~~~">
+        errorLine1="                holder.btnAction.setText(&quot; Mark Completed&quot;);"
+        errorLine2="                                         ~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/adapters/WorkerBookingAdapter.java"
             line="148"
@@ -3523,7 +3607,7 @@
         errorLine2="                                       ~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="356"
+            line="374"
             column="40"/>
     </issue>
 
@@ -3541,7 +3625,7 @@
         errorLine2="                            ~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="372"
+            line="391"
             column="29"/>
     </issue>
 
@@ -3559,7 +3643,7 @@
         errorLine2="                                        ~~~~~~~~~~~~~~~~~~~">
         <location
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/java/com/lexoratech/lexorafix/admin/activities/WorkerDashboardActivity.java"
-            line="382"
+            line="401"
             column="41"/>
     </issue>
 
@@ -4917,6 +5001,38 @@
             file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_admin_settings.xml"
             line="296"
             column="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;System Maintenance&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="        android:text=&quot;System Maintenance&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_maintenance.xml"
+            line="21"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        severity="Warning"
+        message="Hardcoded string &quot;We are currently upgrading our systems to serve you better. We&apos;ll be back shortly!&quot;, should use `@string` resource"
+        category="Internationalization"
+        priority="5"
+        summary="Hardcoded text"
+        explanation="Hardcoding text attributes directly in layout files is bad for several reasons:&#xA;&#xA;* When creating configuration variations (for example for landscape or portrait) you have to repeat the actual text (and keep it up to date when making changes)&#xA;&#xA;* The application cannot be translated to other languages by just adding new translations for existing string resources.&#xA;&#xA;There are quickfixes to automatically extract this hardcoded string into a resource lookup."
+        errorLine1="        android:text=&quot;We are currently upgrading our systems to serve you better. We&apos;ll be back shortly!&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="/Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/src/main/res/layout/activity_maintenance.xml"
+            line="31"
+            column="9"/>
     </issue>
 
     <issue

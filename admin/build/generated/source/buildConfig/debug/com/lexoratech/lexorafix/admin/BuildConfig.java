@@ -10,7 +10,7 @@ public final class BuildConfig {
   public static final int VERSION_CODE = 1;
   public static final String VERSION_NAME = "1.0";
   // Field from default config.
-  public static final String ADMIN_EMAIL = "info@lexoratech.com";
+  public static final String ADMIN_EMAIL = "lexoratech@gmail.com";
   // Field from default config.
   public static final String EMAIL_APP_PASSWORD = "ypuxrvuuqhlanvnp";
   // Field from default config.
