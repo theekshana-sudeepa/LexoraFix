@@ -1,0 +1,354 @@
+[
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_input_admin.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_input_admin.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_manage_list.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_manage_list.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_dialog_booking_status.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/dialog_booking_status.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_filter.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_filter.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_logout.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_logout.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_admin_dashboard.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_admin_dashboard.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_variant.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_variant.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_quick_reply_chip.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_quick_reply_chip.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_admin_user.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_user.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_status_option.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_status_option.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_quick_reply.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_quick_reply.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_back.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_back.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_maintenance.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_maintenance.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/font_poppins.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/font/poppins.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_message_sent.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_message_sent.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_dialog_forgot_password.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/dialog_forgot_password.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_spinner_saas.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_spinner_saas.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_worker_booking.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_worker_booking.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_variant_option.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_variant_option.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_message_received.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_message_received.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_admin_order.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_order.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/color_admin_nav_item_bg.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/color/admin_nav_item_bg.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_dashboard_users_premium.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_dashboard_users_premium.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_worker_chat.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_worker_chat.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_glow_purple.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_glow_purple.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_premium_hero_card.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_premium_hero_card.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_admin_product_reviews.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_admin_product_reviews.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_dashboard_centers_premium.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_dashboard_centers_premium.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_delete.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_delete.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_add.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_add.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_icon_tint_purple.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_icon_tint_purple.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_google.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_google.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/anim_item_animation_fall_down.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/anim/item_animation_fall_down.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_phone.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_phone.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_icon_tint_orange.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_icon_tint_orange.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_status_badge_admin.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_status_badge_admin.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_menu.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_menu.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_gradient_admin_toolbar.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/gradient_admin_toolbar.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_message_sent.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_message_sent.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_admin_launcher_background.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_admin_launcher_background.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_circle_primary_light.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_circle_primary_light.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_dashboard_categories_premium.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_dashboard_categories_premium.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_profile.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_profile.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_admin_settings.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_admin_settings.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_store.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_store.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_send.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_send.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_admin_category.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_category.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_add_edit_category.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_add_edit_category.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_admin_review.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_review.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_icon_tint_red.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_icon_tint_red.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_admin_login.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_admin_login.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_admin_logo_foreground.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_admin_logo_foreground.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_service_center.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_service_center.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_message_received.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_message_received.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_glow_blue.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_glow_blue.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_order_detail.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_order_detail.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_fingerprint.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_fingerprint.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_glow_orange.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_glow_orange.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_status_active_modern.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_status_active_modern.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_dashboard_migrate_premium.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_dashboard_migrate_premium.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_worker_pending.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_worker_pending.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_admin_settings.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_admin_settings.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/anim_layout_animation_fall_down.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/anim/layout_animation_fall_down.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_icon_tint_green.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_icon_tint_green.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_send_button.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_send_button.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_chat_input.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_chat_input.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_saas_card.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_saas_card.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_add_edit_service_center.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_add_edit_service_center.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_dashboard_bookings_premium.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_dashboard_bookings_premium.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_order_detail_product.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_order_detail_product.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_admin_product.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_product.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_worker_registration.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_worker_registration.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_icon_tint_blue.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_icon_tint_blue.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_dialog_edit_phone.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/dialog_edit_phone.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_edit.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_edit.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_arrow_forward.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_arrow_forward.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_location.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_location.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_item_admin_booking.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/item_admin_booking.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_dashboard_products_premium.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_dashboard_products_premium.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_dashboard_orders_premium.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_dashboard_orders_premium.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_ic_email.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/ic_email.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_add_edit_product.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_add_edit_product.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/menu_menu_admin_drawer.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/menu/menu_admin_drawer.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_activity_worker_dashboard.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/activity_worker_dashboard.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/drawable_bg_admin_header_curved.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/drawable/bg_admin_header_curved.xml"
+    },
+    {
+        "merged": "com.lexoratech.lexorafix.admin-debug-44:/layout_nav_header_admin.xml.flat",
+        "source": "com.lexoratech.lexorafix.admin-main-46:/layout/nav_header_admin.xml"
+    }
+]
