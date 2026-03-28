@@ -6,13 +6,13 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="32dp"
-    android:background="@android:color/white">
+    android:background="@color/colorBackground">
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@android:drawable/ic_menu_preferences"
-        app:tint="#6200EA" />
+        app:tint="@color/colorPrimary" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         android:text="System Maintenance"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#212121" />
+        android:textColor="@color/textPrimary" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,12 +29,12 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="We are currently upgrading our systems to serve you better. We'll be back shortly!"
-        android:textColor="#757575"
+        android:textColor="@color/textSecondary"
         android:textSize="14sp" />
 
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:indeterminateTint="#6200EA" />
+        android:indeterminateTint="@color/colorPrimary" />
 </LinearLayout>

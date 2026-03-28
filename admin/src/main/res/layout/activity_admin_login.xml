@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0A0A"> <!-- Very dark premium background -->
+    android:background="@color/adminBackground">
 
     <!-- Ambient Glow Top Right -->
     <View
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Administrator"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/adminTextPrimary"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 android:letterSpacing="-0.03" />
@@ -79,7 +79,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="48dp"
                 android:text="Welcome back to the command center."
-                android:textColor="#9CA3AF"
+                android:textColor="@color/adminTextSecondary"
                 android:textSize="14sp" />
 
             <!-- Glassmorphic Login Box -->
@@ -87,11 +87,11 @@
                 android:id="@+id/cv_login_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#14FFFFFF"
+                app:cardBackgroundColor="@color/adminCardBackground"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="1dp"
-                app:strokeColor="#1AFFFFFF">
+                app:strokeColor="@color/adminDivider">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -105,7 +105,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Email Address"
-                        android:textColor="#E5E7EB"
+                        android:textColor="@color/adminTextPrimary"
                         android:textSize="13sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp"
@@ -132,10 +132,10 @@
                             android:layout_height="match_parent"
                             android:fontFamily="@font/poppins"
                             android:hint="admin@lexora.com"
-                            android:textColorHint="#6B7280"
+                            android:textColorHint="@color/adminTextHint"
                             android:inputType="textEmailAddress"
                             android:paddingHorizontal="20dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/adminTextPrimary"
                             android:textSize="15sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,7 +144,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Password"
-                        android:textColor="#E5E7EB"
+                        android:textColor="@color/adminTextPrimary"
                         android:textSize="13sp"
                         android:textStyle="bold"
                         android:layout_marginTop="24dp"
@@ -174,10 +174,10 @@
                             android:layout_height="match_parent"
                             android:fontFamily="@font/poppins"
                             android:hint="••••••••"
-                            android:textColorHint="#6B7280"
+                            android:textColorHint="@color/adminTextHint"
                             android:inputType="textPassword"
                             android:paddingHorizontal="20dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/adminTextPrimary"
                             android:textSize="15sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -194,7 +194,7 @@
                             android:layout_width="0dp"
                             android:layout_height="64dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#3B82F6"
+                            android:backgroundTint="@color/adminPrimary"
                             android:insetTop="0dp"
                             android:insetBottom="0dp"
                             android:text="Authenticate &amp; Enter"
@@ -205,7 +205,7 @@
                             android:letterSpacing="0.02"
                             app:cornerRadius="16dp"
                             app:elevation="8dp"
-                            app:rippleColor="#60A5FA" />
+                            app:rippleColor="@color/adminPrimaryLight" />
                             
                         <ImageButton
                             android:id="@+id/btn_biometric_login"
@@ -215,7 +215,7 @@
                             android:background="?attr/selectableItemBackgroundBorderless"
                             android:src="@drawable/ic_fingerprint"
                             android:contentDescription="Sign in with Fingerprint"
-                            app:tint="#3B82F6"
+                            app:tint="@color/adminPrimary"
                             android:visibility="gone" />
                     </LinearLayout>
                         
@@ -225,7 +225,7 @@
                         android:layout_height="32dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="16dp"
-                        android:indeterminateTint="#3B82F6"
+                        android:indeterminateTint="@color/adminPrimary"
                         android:visibility="gone" />
 
 
@@ -241,7 +241,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:text="Forgot Password?"
-                android:textColor="#60A5FA"
+                android:textColor="@color/adminPrimary"
                 android:textSize="14sp"
                 android:padding="8dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
@@ -256,7 +256,7 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="New staff? Register as Worker"
-                android:textColor="#9CA3AF"
+                android:textColor="@color/adminTextSecondary"
                 android:textSize="14sp"
                 android:padding="12dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
