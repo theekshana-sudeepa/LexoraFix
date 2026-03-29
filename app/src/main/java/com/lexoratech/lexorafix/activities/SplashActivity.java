@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.lexoratech.lexorafix.R;
+import com.lexoratech.lexorafix.activities.OrderTrackingActivity;
 import com.lexoratech.lexorafix.data.FirestoreHelper;
 import com.lexoratech.lexorafix.data.SharedPreferencesManager;
 import com.lexoratech.lexorafix.models.User;
@@ -181,25 +182,43 @@ public class SplashActivity extends AppCompatActivity {
                     String senderRole = startingIntent.getStringExtra("senderRole");
                     String senderName = startingIntent.getStringExtra("senderName");
                     
-                    Intent chatIntent = new Intent();
+                    Intent childIntent = new Intent();
                     // If the sender was a worker, we (the recipient) must be the customer
                     if ("worker".equals(senderRole)) {
-                        chatIntent.setClass(SplashActivity.this, ChatActivity.class);
-                        chatIntent.putExtra("BOOKING_ID", bookingId);
-                        chatIntent.putExtra("WORKER_NAME", senderName != null ? senderName : "Worker");
+                        childIntent.setClass(SplashActivity.this, ChatActivity.class);
+                        childIntent.putExtra(ChatActivity.EXTRA_BOOKING_ID, bookingId);
+                        childIntent.putExtra(ChatActivity.EXTRA_WORKER_NAME, senderName != null ? senderName : "Worker");
                     } else {
                         // We are the worker (running the admin app, but SplashActivity is shared or the customer app received it).
-                        // Create an implicit intent or use the component name.
-                        chatIntent.setClassName(SplashActivity.this, "com.lexoratech.lexorafix.admin.activities.WorkerChatActivity");
-                        chatIntent.putExtra("BOOKING_ID", bookingId);
-                        chatIntent.putExtra("CUSTOMER_NAME", senderName != null ? senderName : "Customer");
+                        childIntent.setClassName(SplashActivity.this, "com.lexoratech.lexorafix.admin.activities.WorkerChatActivity");
+                        childIntent.putExtra("BOOKING_ID", bookingId);
+                        childIntent.putExtra("CUSTOMER_NAME", senderName != null ? senderName : "Customer");
                     }
                     
-                    // Start MainActivity first so the back stack is preserved, then ChatActivity
+                    // Start MainActivity first so the back stack is preserved, then child
                     Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivities(new Intent[]{mainIntent, chatIntent});
+                    startActivities(new Intent[]{mainIntent, childIntent});
                     finish();
                     return;
+                } else if (("booking_update".equals(type) || "status_update".equals(type)) && bookingId != null) {
+                    Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                    mainIntent.putExtra("navigateTo", "bookings");
+                    mainIntent.putExtra("bookingId", bookingId);
+                    startActivity(mainIntent);
+                    finish();
+                    return;
+                } else if ("order_update".equals(type) || "order_status_update".equals(type)) {
+                    String orderId = startingIntent.getStringExtra("orderId");
+                    if (orderId != null) {
+                        Intent childIntent = new Intent(SplashActivity.this, OrderTrackingActivity.class);
+                        childIntent.putExtra("userId", uid);
+                        childIntent.putExtra("orderId", orderId);
+                        
+                        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                        startActivities(new Intent[]{mainIntent, childIntent});
+                        finish();
+                        return;
+                    }
                 }
             }
 

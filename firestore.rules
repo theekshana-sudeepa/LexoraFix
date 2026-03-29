@@ -90,6 +90,12 @@ service cloud.firestore {
       allow write: if isWorker(); // Workers sync status updates to customer subcollection
     }
 
+    // ----- User subcollection notifications -----
+    match /users/{uid}/notifications/{notificationId} {
+      allow read, update: if request.auth != null && request.auth.uid == uid;
+      allow write: if isAdmin();
+    }
+
     // ----- Collection group queries (for admin) -----
     match /{path=**}/bookings/{bookingId} {
       allow read: if isAdmin();

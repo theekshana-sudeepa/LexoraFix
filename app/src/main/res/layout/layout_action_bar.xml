@@ -51,5 +51,29 @@
             android:textStyle="bold"
             android:maxLines="1"
             android:ellipsize="end" />
+
+        <!-- Clear All / Action icon (Hidden by default, used selectively) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_action"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:strokeWidth="0dp"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/btn_action"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/textPrimary" />
+        </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

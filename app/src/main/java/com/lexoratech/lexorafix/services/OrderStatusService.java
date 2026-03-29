@@ -81,6 +81,12 @@ public class OrderStatusService extends Service {
                                     Log.d(TAG, "Order " + orderId + " status: "
                                             + oldStatus + " → " + newStatus);
                                     notificationHelper.showOrderStatusUpdate(orderId, newStatus);
+                                    
+                                    // Also save to Firestore so it shows up in the Notifications screen
+                                    String title = "Order Update";
+                                    String text = "Your order #" + orderId + " is now " + newStatus;
+                                    saveNotificationToFirestore(uid, title, text, "order_update", orderId);
+                                    
                                     knownOrderStatuses.put(orderId, newStatus);
                                 }
                             } else if (dc.getType() == DocumentChange.Type.ADDED) {
@@ -138,10 +144,15 @@ public class OrderStatusService extends Service {
                                     String serviceType = dc.getDocument().getString("serviceType");
                                     Log.d(TAG, "Booking " + docId + " status: "
                                             + oldStatus + " → " + newStatus);
-                                    notificationHelper.showBookingStatusUpdate(
-                                            docId,
-                                            serviceType != null ? serviceType : "Service",
-                                            newStatus);
+                                    
+                                    String sType = serviceType != null ? serviceType : "Service";
+                                    notificationHelper.showBookingStatusUpdate(docId, sType, newStatus);
+                                    
+                                    // Also save to Firestore so it shows up in the Notifications screen
+                                    String title = "Booking Update";
+                                    String text = "Your " + sType + " booking is now " + newStatus;
+                                    saveNotificationToFirestore(uid, title, text, "booking_update", docId);
+                                    
                                     knownBookingStatuses.put(docId, newStatus);
                                 }
                             } else if (dc.getType() == DocumentChange.Type.ADDED) {
@@ -183,5 +194,29 @@ public class OrderStatusService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    private void saveNotificationToFirestore(String uid, String title, String body, String type, String referenceId) {
+        if (uid == null || uid.isEmpty()) return;
+        
+        // Generate a deterministic ID based on type and refId so we don't duplicate
+        String notificationId = type + "_" + referenceId + "_" + (System.currentTimeMillis() / 1000);
+
+        Map<String, Object> notificationData = new HashMap<>();
+        notificationData.put("title", title);
+        notificationData.put("message", body);
+        notificationData.put("timestamp", com.google.firebase.firestore.FieldValue.serverTimestamp());
+        notificationData.put("read", false);
+        notificationData.put("type", type);
+        notificationData.put("referenceId", referenceId);
+
+        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                .collection("users")
+                .document(uid)
+                .collection("notifications")
+                .document(notificationId)
+                .set(notificationData, com.google.firebase.firestore.SetOptions.merge())
+                .addOnSuccessListener(aVoid -> Log.d(TAG, "Locally saved notification to Firestore: " + title))
+                .addOnFailureListener(e -> Log.e(TAG, "Failed to save local notification to Firestore: " + e.getMessage()));
     }
 }

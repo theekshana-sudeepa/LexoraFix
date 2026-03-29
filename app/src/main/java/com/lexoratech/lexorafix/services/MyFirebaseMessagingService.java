@@ -65,6 +65,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void showNotification(String title, String body, java.util.Map<String, String> data) {
+        // Save to Firestore so it appears in the in-app Notifications screen
+        saveNotificationToFirestore(title, body, data);
+        
         // Tap action — opens the app at SplashActivity which routes appropriately
         Intent intent = new Intent(this, SplashActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -108,6 +111,60 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Use current time as unique notification ID so multiple notifications stack
         int notificationId = (int) System.currentTimeMillis();
         notificationManager.notify(notificationId, builder.build());
+    }
+
+    /**
+     * Save the received push notification to Firestore so it appears
+     * in the in-app Notifications screen (NotificationFragment).
+     * 
+     * The Cloud Function already writes notifications to Firestore, but this
+     * acts as a safety net to ensure they always appear in-app.
+     * We use a unique document ID based on the notification content + timestamp
+     * to avoid exact duplicates.
+     */
+    private void saveNotificationToFirestore(String title, String body, java.util.Map<String, String> data) {
+        try {
+            com.google.firebase.auth.FirebaseUser user =
+                    com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser();
+            if (user == null) {
+                android.util.Log.w("FCMService", "No logged-in user, skipping notification save");
+                return;
+            }
+
+            String type = data != null ? data.getOrDefault("type", "general") : "general";
+            String bookingId = data != null ? data.getOrDefault("bookingId", "") : "";
+            String orderId = data != null ? data.getOrDefault("orderId", "") : "";
+            String chatId = data != null ? data.getOrDefault("chatId", "") : "";
+            String senderId = data != null ? data.getOrDefault("senderId", "") : "";
+
+            // Create a deterministic document ID to prevent duplicates
+            // (Cloud Function also writes the same notification)
+            String docId = type + "_" + (bookingId.isEmpty() ? orderId : bookingId) + "_" + (System.currentTimeMillis() / 10000);
+
+            java.util.Map<String, Object> notifData = new java.util.HashMap<>();
+            notifData.put("title", title);
+            notifData.put("message", body);
+            notifData.put("type", type);
+            notifData.put("timestamp", com.google.firebase.Timestamp.now());
+            notifData.put("read", false);
+            
+            if (!bookingId.isEmpty()) notifData.put("bookingId", bookingId);
+            if (!orderId.isEmpty()) notifData.put("orderId", orderId);
+            if (!chatId.isEmpty()) notifData.put("chatId", chatId);
+            if (!senderId.isEmpty()) notifData.put("senderId", senderId);
+
+            com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                    .collection("users").document(user.getUid())
+                    .collection("notifications").document(docId)
+                    .set(notifData, com.google.firebase.firestore.SetOptions.merge())
+                    .addOnSuccessListener(aVoid -> 
+                        android.util.Log.d("FCMService", "Notification saved to Firestore: " + docId))
+                    .addOnFailureListener(e -> 
+                        android.util.Log.e("FCMService", "Failed to save notification: " + e.getMessage()));
+
+        } catch (Exception e) {
+            android.util.Log.e("FCMService", "Error saving notification to Firestore", e);
+        }
     }
 
     /**

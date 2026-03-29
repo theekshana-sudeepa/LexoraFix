@@ -159,6 +159,19 @@ public class BookingsFragment extends Fragment {
         } else {
             layoutEmpty.setVisibility(View.GONE);
             rvBookings.setVisibility(View.VISIBLE);
+            
+            // Check if we need to auto-open a specific booking from a notification
+            if (getArguments() != null && getArguments().getString("bookingId") != null) {
+                String targetId = getArguments().getString("bookingId");
+                for (ServiceBooking booking : displayedBookings) {
+                    if (targetId.equals(booking.getOrderId())) {
+                        adapter.showBookingDetailsDialog(booking);
+                        // Remove argument so it doesn't reopen unexpectedly
+                        getArguments().remove("bookingId");
+                        break;
+                    }
+                }
+            }
         }
     }
 

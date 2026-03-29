@@ -128,8 +128,13 @@ exports.onBookingStatusChange = onDocumentUpdated("bookings/{bookingId}", async 
           body = `Your ${serviceType} booking is now in progress!`;
           break;
         case "Completed":
-          title = "✅ Job Completed!";
-          body = `Your ${serviceType} booking has been completed!`;
+          if (!after.isRated) {
+            title = "✨ Job Completed! Please Review";
+            body = `Your ${serviceType} booking was completed. Tap here to rate ${workerName}!`;
+          } else {
+            title = "✅ Job Completed!";
+            body = `Your ${serviceType} booking has been completed!`;
+          }
           break;
         default:
           title = "📋 Booking Updated";
@@ -247,20 +252,20 @@ exports.onChatMessage = onDocumentCreated("chats/{chatId}/messages/{messageId}",
     let senderRole = "worker"; // Default assumption, will verify below
     
     // We expect the chat document to have `participants` array, or we can look up booking
-    if (participants.length > 0) {
+    if (participants && participants.length > 0) {
       recipientId = participants.find(id => id !== senderId);
     } 
     
-    // Fallback logic if participants array is missing or incomplete
-    if (!recipientId && bookingId) {
+    // Verify role (and recipientId) via booking
+    if (bookingId) {
       const bookingDoc = await getFirestore().collection("bookings").doc(bookingId).get();
       if (bookingDoc.exists) {
          const bookingData = bookingDoc.data();
          if (senderId === bookingData.assignedWorkerId) {
-             recipientId = bookingData.firebaseUid; // FIXED: It's firebaseUid in LexoraFix, not customerId
+             if (!recipientId) recipientId = bookingData.firebaseUid;
              senderRole = "worker";
          } else if (senderId === bookingData.firebaseUid) {
-             recipientId = bookingData.assignedWorkerId;
+             if (!recipientId) recipientId = bookingData.assignedWorkerId;
              senderRole = "customer";
          }
       }
@@ -283,15 +288,11 @@ exports.onChatMessage = onDocumentCreated("chats/{chatId}/messages/{messageId}",
       return null;
     }
 
-    // 4. Construct Notification Payload
+    // 4. Construct Notification Payload as pure DATA to wake device safely
     const title = senderName;
     const body = messageText;
 
     const payload = {
-      notification: {
-        title: title,
-        body: body,
-      },
       data: {
         title: title,
         body: body,
@@ -303,10 +304,7 @@ exports.onChatMessage = onDocumentCreated("chats/{chatId}/messages/{messageId}",
         senderRole: senderRole
       },
       android: {
-        priority: "high",
-        notification: {
-          channelId: "lexorafix_admin_notifications",
-        },
+        priority: "high"
       },
       tokens: tokens,
     };
@@ -436,8 +434,8 @@ exports.onOrderStatusChange = onDocumentUpdated("orders/{orderId}", async (event
       body = `Your order #${orderId} has been shipped and is on its way!`;
       break;
     case "Delivered":
-      title = "✅ Order Delivered!";
-      body = `Your order #${orderId} has been delivered. Enjoy!`;
+      title = "⭐ Order Delivered! Please Review";
+      body = `Your order #${orderId} safely arrived. Don't forget to review your purchased products!`;
       break;
     case "Cancelled":
       title = "❌ Order Cancelled";

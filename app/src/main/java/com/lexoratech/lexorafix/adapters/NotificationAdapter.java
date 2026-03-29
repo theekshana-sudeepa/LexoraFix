@@ -68,7 +68,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         // Icon based on type
         if ("chat_message".equals(notification.getType())) {
-            holder.ivIcon.setImageResource(R.drawable.ic_notifications); // Using same notification icon if missing chat
+            holder.ivIcon.setImageResource(R.drawable.ic_chat);
+        } else if ("order_update".equals(notification.getType()) || "order_status_update".equals(notification.getType())) {
+            holder.ivIcon.setImageResource(R.drawable.ic_orders);
+        } else if ("booking_update".equals(notification.getType()) || "status_update".equals(notification.getType())) {
+            holder.ivIcon.setImageResource(R.drawable.ic_services);
         } else {
             holder.ivIcon.setImageResource(R.drawable.ic_notifications);
         }

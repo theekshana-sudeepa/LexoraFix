@@ -12,6 +12,7 @@ public class AppNotification {
     
     // Additional data fields
     private String bookingId;
+    private String orderId;
     private String chatId;
     private String senderId;
 
@@ -40,6 +41,9 @@ public class AppNotification {
 
     public String getChatId() { return chatId; }
     public void setChatId(String chatId) { this.chatId = chatId; }
+
+    public String getOrderId() { return orderId; }
+    public void setOrderId(String orderId) { this.orderId = orderId; }
 
     public String getSenderId() { return senderId; }
     public void setSenderId(String senderId) { this.senderId = senderId; }

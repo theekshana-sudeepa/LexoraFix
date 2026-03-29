@@ -89,9 +89,29 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             return false;
         });
 
-        // Load home fragment by default
+        // Load home fragment by default or handle deep link
         if (savedInstanceState == null) {
-            bottomNav.setSelectedItemId(R.id.nav_home);
+            String navigateTo = getIntent() != null ? getIntent().getStringExtra("navigateTo") : null;
+            if ("bookings".equals(navigateTo)) {
+                bottomNav.setSelectedItemId(R.id.nav_profile);
+                
+                String bookingId = getIntent().getStringExtra("bookingId");
+                com.lexoratech.lexorafix.fragments.BookingsFragment fragment = new com.lexoratech.lexorafix.fragments.BookingsFragment();
+                if (bookingId != null) {
+                    Bundle args = new Bundle();
+                    args.putString("bookingId", bookingId);
+                    fragment.setArguments(args);
+                }
+                
+                getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
+                                android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+                        .replace(R.id.fragment_container, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            } else {
+                bottomNav.setSelectedItemId(R.id.nav_home);
+            }
         }
 
         // Setup shake sensor

@@ -295,7 +295,7 @@ public class HomeFragment extends Fragment {
     }
 
     /**
-     * Check if the user has any active (non-completed) bookings.
+     * Check if the user has any unread notifications.
      * If so, show the red notification badge dot on the bell icon.
      */
     private void checkForActiveBookings(View badgeView) {
@@ -305,19 +305,22 @@ public class HomeFragment extends Fragment {
                 : null;
         if (uid == null) return;
 
+        // Check for unread notifications in the user's notifications subcollection
         com.google.firebase.firestore.FirebaseFirestore.getInstance()
                 .collection("users").document(uid)
-                .collection("bookings")
-                .whereNotEqualTo("status", "Completed")
+                .collection("notifications")
+                .whereEqualTo("read", false)
                 .limit(1)
                 .get()
                 .addOnSuccessListener(snapshot -> {
                     if (isAdded() && !snapshot.isEmpty()) {
                         badgeView.setVisibility(View.VISIBLE);
+                    } else if (isAdded()) {
+                        badgeView.setVisibility(View.GONE);
                     }
                 })
                 .addOnFailureListener(e -> {
-                    // Silent — don't show badge if we can't check
+                    android.util.Log.e("HomeFragment", "Failed to check notifications: " + e.getMessage());
                 });
     }
 

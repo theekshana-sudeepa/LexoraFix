@@ -108,7 +108,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
         tvStatus.setBackground(bg);
     }
 
-    private void showBookingDetailsDialog(ServiceBooking booking) {
+    public void showBookingDetailsDialog(ServiceBooking booking) {
         BottomSheetDialog dialog = new BottomSheetDialog(context, R.style.AppBottomSheetDialogTheme);
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_booking_status, null);
 

@@ -39,6 +39,7 @@ public class NotificationFragment extends Fragment implements NotificationAdapte
     private ListenerRegistration listenerRegistration;
     private FirebaseFirestore db;
     private String currentUserId;
+    private View cardAction;
 
     @Nullable
     @Override
@@ -59,6 +60,11 @@ public class NotificationFragment extends Fragment implements NotificationAdapte
 
         rvNotifications = view.findViewById(R.id.rvNotifications);
         layoutEmpty = view.findViewById(R.id.ll_empty_state);
+        cardAction = view.findViewById(R.id.card_action);
+
+        if (cardAction != null) {
+            cardAction.setOnClickListener(v -> clearAllNotifications());
+        }
 
         notificationList = new ArrayList<>();
         adapter = new NotificationAdapter(requireContext(), notificationList, this);
@@ -78,16 +84,21 @@ public class NotificationFragment extends Fragment implements NotificationAdapte
     }
 
     private void loadNotifications() {
+        android.util.Log.d("NotificationFragment", "Loading notifications for user: " + currentUserId);
+        
         listenerRegistration = db.collection("users").document(currentUserId)
                 .collection("notifications")
                 .orderBy("timestamp", Query.Direction.DESCENDING)
                 .addSnapshotListener((value, error) -> {
                     if (error != null) {
-                        android.util.Log.e("NotificationFragment", "Error loading notifications", error);
-                        updateEmptyState();
+                        android.util.Log.e("NotificationFragment", "Error loading notifications: " + error.getMessage(), error);
+                        
+                        // If index error, try fallback query without ordering
+                        loadNotificationsFallback();
                         return;
                     }
                     if (value != null) {
+                        android.util.Log.d("NotificationFragment", "Received " + value.size() + " notifications");
                         notificationList.clear();
                         for (DocumentSnapshot doc : value.getDocuments()) {
                             AppNotification notification = doc.toObject(AppNotification.class);
@@ -96,6 +107,52 @@ public class NotificationFragment extends Fragment implements NotificationAdapte
                                 notificationList.add(notification);
                             }
                         }
+
+                        adapter.notifyDataSetChanged();
+                        updateEmptyState();
+                    }
+                });
+    }
+
+    /**
+     * Fallback: load notifications without orderBy (in case Firestore index is missing).
+     * This ensures notifications still appear even without descending timestamp index.
+     */
+    private void loadNotificationsFallback() {
+        android.util.Log.w("NotificationFragment", "Using fallback query without orderBy");
+        
+        // Remove the failed listener first
+        if (listenerRegistration != null) {
+            listenerRegistration.remove();
+        }
+        
+        listenerRegistration = db.collection("users").document(currentUserId)
+                .collection("notifications")
+                .addSnapshotListener((value, error) -> {
+                    if (error != null) {
+                        android.util.Log.e("NotificationFragment", "Fallback also failed: " + error.getMessage(), error);
+                        updateEmptyState();
+                        return;
+                    }
+                    if (value != null) {
+                        android.util.Log.d("NotificationFragment", "Fallback received " + value.size() + " notifications");
+                        notificationList.clear();
+                        for (DocumentSnapshot doc : value.getDocuments()) {
+                            AppNotification notification = doc.toObject(AppNotification.class);
+                            if (notification != null) {
+                                notification.setId(doc.getId());
+                                notificationList.add(notification);
+                            }
+                        }
+
+                        // Sort manually since we couldn't use orderBy
+                        notificationList.sort((a, b) -> {
+                            if (a.getTimestamp() == null && b.getTimestamp() == null) return 0;
+                            if (a.getTimestamp() == null) return 1;
+                            if (b.getTimestamp() == null) return -1;
+                            return b.getTimestamp().compareTo(a.getTimestamp());
+                        });
+
                         adapter.notifyDataSetChanged();
                         updateEmptyState();
                     }
@@ -106,10 +163,45 @@ public class NotificationFragment extends Fragment implements NotificationAdapte
         if (notificationList.isEmpty()) {
             layoutEmpty.setVisibility(View.VISIBLE);
             rvNotifications.setVisibility(View.GONE);
+            if (cardAction != null) cardAction.setVisibility(View.GONE);
         } else {
             layoutEmpty.setVisibility(View.GONE);
             rvNotifications.setVisibility(View.VISIBLE);
+            if (cardAction != null) cardAction.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void clearAllNotifications() {
+        if (currentUserId == null || notificationList.isEmpty()) return;
+        
+        android.app.Dialog dialog = new android.app.Dialog(requireContext());
+        dialog.setContentView(R.layout.dialog_clear_notifications);
+        
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+        
+        com.google.android.material.button.MaterialButton btnCancel = dialog.findViewById(R.id.btn_dialog_cancel);
+        com.google.android.material.button.MaterialButton btnClear = dialog.findViewById(R.id.btn_dialog_clear);
+        
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
+        
+        btnClear.setOnClickListener(v -> {
+            dialog.dismiss();
+            com.google.firebase.firestore.WriteBatch batch = db.batch();
+            for (AppNotification notif : notificationList) {
+                batch.delete(db.collection("users").document(currentUserId)
+                        .collection("notifications").document(notif.getId()));
+            }
+            batch.commit().addOnSuccessListener(aVoid -> {
+                Toast.makeText(getContext(), "Notifications cleared", Toast.LENGTH_SHORT).show();
+            }).addOnFailureListener(e -> {
+                Toast.makeText(getContext(), "Failed to clear notifications", Toast.LENGTH_SHORT).show();
+            });
+        });
+        
+        dialog.show();
     }
 
     @Override
@@ -126,6 +218,16 @@ public class NotificationFragment extends Fragment implements NotificationAdapte
             Intent intent = new Intent(requireContext(), ChatActivity.class);
             intent.putExtra(ChatActivity.EXTRA_BOOKING_ID, notification.getBookingId());
             intent.putExtra(ChatActivity.EXTRA_WORKER_NAME, notification.getTitle());
+            startActivity(intent);
+        } else if (("booking_update".equals(notification.getType()) || "status_update".equals(notification.getType())) && notification.getBookingId() != null) {
+            Intent intent = new Intent(requireContext(), com.lexoratech.lexorafix.activities.MainActivity.class);
+            intent.putExtra("navigateTo", "bookings");
+            intent.putExtra("bookingId", notification.getBookingId());
+            startActivity(intent);
+        } else if (("order_update".equals(notification.getType()) || "order_status_update".equals(notification.getType())) && notification.getOrderId() != null) {
+            Intent intent = new Intent(requireContext(), com.lexoratech.lexorafix.activities.OrderTrackingActivity.class);
+            intent.putExtra("userId", currentUserId);
+            intent.putExtra("orderId", notification.getOrderId());
             startActivity(intent);
         }
     }

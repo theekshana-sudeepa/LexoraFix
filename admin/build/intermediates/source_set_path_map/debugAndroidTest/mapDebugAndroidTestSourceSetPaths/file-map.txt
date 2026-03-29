@@ -1,0 +1,5 @@
+com.lexoratech.lexorafix.admin.test.admin-core-1.6.1-0 /Users/theekshanasudeepa/.gradle/caches/8.9/transforms/e6b22bc5a417f9f52a10f39e830cb49d/transformed/core-1.6.1/res
+com.lexoratech.lexorafix.admin.test.admin-androidTest-1 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build/generated/res/resValues/androidTest/debug
+com.lexoratech.lexorafix.admin.test.admin-mergeDebugAndroidTestResources-2 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.lexoratech.lexorafix.admin.test.admin-mergeDebugAndroidTestResources-3 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.lexoratech.lexorafix.admin.test.admin-debugAndroidTest-4 /Users/theekshanasudeepa/AndroidStudioProjects/LexoraFix/admin/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources

@@ -24,6 +24,7 @@ public class OrderProductAdapter extends RecyclerView.Adapter<OrderProductAdapte
     private final List<Map<String, Object>> items;
     private final String orderStatus;
     private final OnReviewClickListener listener;
+    private final java.util.Map<String, Boolean> reviewStatusCache = new java.util.HashMap<>();
 
     public interface OnReviewClickListener {
         void onReviewClick(String productId, String productName, String productImage);
@@ -77,6 +78,44 @@ public class OrderProductAdapter extends RecyclerView.Adapter<OrderProductAdapte
 
         if ("Delivered".equalsIgnoreCase(orderStatus)) {
             holder.btnReview.setVisibility(View.VISIBLE);
+            
+            String uid = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() != null 
+                    ? com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser().getUid() : null;
+
+            if (uid != null && productId != null) {
+                if (reviewStatusCache.containsKey(productId)) {
+                    boolean isReviewed = reviewStatusCache.get(productId);
+                    if (isReviewed) {
+                        holder.btnReview.setEnabled(false);
+                        holder.btnReview.setText("Reviewed");
+                    } else {
+                        holder.btnReview.setEnabled(true);
+                        holder.btnReview.setText("Rate Product");
+                    }
+                } else {
+                    holder.btnReview.setEnabled(true);
+                    holder.btnReview.setText("Rate Product");
+                    
+                    com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                            .collection("products")
+                            .document(productId)
+                            .collection("reviews")
+                            .whereEqualTo("userId", uid)
+                            .get()
+                            .addOnSuccessListener(queryDocumentSnapshots -> {
+                                boolean hasReviewed = !queryDocumentSnapshots.isEmpty();
+                                reviewStatusCache.put(productId, hasReviewed);
+                                // only update if still bound to the same product (in case of fast scrolling)
+                                if (holder.getAdapterPosition() == position) {
+                                    if (hasReviewed) {
+                                        holder.btnReview.setEnabled(false);
+                                        holder.btnReview.setText("Reviewed");
+                                    }
+                                }
+                            });
+                }
+            }
+            
             holder.btnReview.setOnClickListener(v -> {
                 if (listener != null) {
                     listener.onReviewClick(productId, name, imageUrl);

@@ -732,6 +732,11 @@ public class ProductDetailActivity extends AppCompatActivity {
                     if (snapshot != null) {
                         java.util.List<com.lexoratech.lexorafix.models.Review> reviewsList = new java.util.ArrayList<>();
                         float totalRating = 0;
+                        boolean userHasReviewed = false;
+                        String currentUid = com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser() != null
+                                ? com.google.firebase.auth.FirebaseAuth.getInstance().getCurrentUser().getUid()
+                                : null;
+
                         for (com.google.firebase.firestore.DocumentSnapshot doc : snapshot.getDocuments()) {
                             com.lexoratech.lexorafix.models.Review review = com.lexoratech.lexorafix.models.Review
                                     .fromMap(doc.getData());
@@ -739,6 +744,21 @@ public class ProductDetailActivity extends AppCompatActivity {
                                 review.setId(doc.getId());
                                 reviewsList.add(review);
                                 totalRating += review.getRating();
+                                
+                                if (currentUid != null && currentUid.equals(review.getUserId())) {
+                                    userHasReviewed = true;
+                                }
+                            }
+                        }
+
+                        com.google.android.material.button.MaterialButton innerBtnWriteReview = findViewById(R.id.btn_write_review);
+                        if (innerBtnWriteReview != null) {
+                            if (userHasReviewed) {
+                                innerBtnWriteReview.setEnabled(false);
+                                innerBtnWriteReview.setText("You have reviewed this product");
+                            } else {
+                                innerBtnWriteReview.setEnabled(true);
+                                innerBtnWriteReview.setText("Write a Review");
                             }
                         }
 
