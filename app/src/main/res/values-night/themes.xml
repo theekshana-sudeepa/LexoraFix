@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- ========== Night / Dark Theme Override ========== -->
+    <!-- We inherit perfectly from the DayNight base theme provided in values/themes.xml 
+         We ONLY override the status bar flags here to tell Android the background is dark -->
+    <style name="Theme.LexoraFix" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/colorBackground</item>
+        <item name="android:navigationBarColor">@color/colorSurface</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">false</item>
+    </style>
+
+    <!-- ========== Splash Theme (Night) ========== -->
+    <style name="Theme.LexoraFix.Splash" parent="Theme.LexoraFix">
+        <item name="android:statusBarColor">@color/splashBackground</item>
+        <item name="android:navigationBarColor">@color/splashBackground</item>
+    </style>
+
+    <!-- ========== Bottom Sheet Dialog Theme ========== -->
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>

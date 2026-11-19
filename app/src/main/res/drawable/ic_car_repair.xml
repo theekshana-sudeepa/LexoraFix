@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Automotive car + wrench icon for LexoraFix splash screen -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="130dp"
+    android:height="130dp"
+    android:viewportWidth="130"
+    android:viewportHeight="130">
+
+    <!-- Car body (white) -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M18,76 L18,60 Q18,55 24,55 L37,55
+            L50,38 Q53,33 59,33 L71,33 Q77,33 80,38
+            L93,55 L106,55 Q112,55 112,60 L112,76
+            Q112,82 106,82 L100,82
+            Q98.5,88 91,90 Q84,92 78,88 Q74,86 72,82
+            L58,82
+            Q56,86 52,88 Q46,92 39,90 Q32,88 30,82
+            L24,82 Q18,82 18,76 Z" />
+
+    <!-- Centre windshield (orange) -->
+    <path
+        android:fillColor="#FF2563EB"
+        android:pathData="M54,55 L58,40 Q59,37 62,37 L68,37 Q71,37 72,40 L76,55 Z" />
+
+    <!-- Left rear window (orange) -->
+    <path
+        android:fillColor="#FF2563EB"
+        android:pathData="M38,55 L45,40 Q46,37 48,37 L52,37 L49,55 Z" />
+
+    <!-- Right rear window (orange) -->
+    <path
+        android:fillColor="#FF2563EB"
+        android:pathData="M92,55 L85,40 Q84,37 82,37 L78,37 L81,55 Z" />
+
+    <!-- Left wheel outer ring (orange) — circle via path arc -->
+    <path
+        android:fillColor="#FF2563EB"
+        android:pathData="M41,86 m-10,0 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0" />
+    <!-- Left wheel hub (white) -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M41,86 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+
+    <!-- Right wheel outer ring (orange) -->
+    <path
+        android:fillColor="#FF2563EB"
+        android:pathData="M89,86 m-10,0 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0" />
+    <!-- Right wheel hub (white) -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M89,86 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0" />
+
+    <!-- Headlight left (orange rect) -->
+    <path
+        android:fillColor="#FF2563EB"
+        android:pathData="M20,62 L27,62 L27,69 L20,69 Z" />
+
+    <!-- Headlight right (orange rect) -->
+    <path
+        android:fillColor="#FF2563EB"
+        android:pathData="M103,62 L110,62 L110,69 L103,69 Z" />
+
+    <!-- Wrench handle -->
+    <path
+        android:fillColor="#FF2563EB"
+        android:pathData="M100,98 L108,90 L110,92 L102,100 Z" />
+
+    <!-- Wrench head -->
+    <path
+        android:fillColor="#FF2563EB"
+        android:pathData="M105,86 Q110,84 113,87 Q116,90 114,95
+            Q112,97 110,96 L107,93 L104,96 L101,93
+            Q99,90 101,88 Z" />
+
+</vector>

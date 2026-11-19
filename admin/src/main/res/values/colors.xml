@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Admin Premium Palette — Logo Blue-Teal -->
+    <color name="adminPrimary">#2563EB</color>
+    <color name="adminPrimaryDark">#1D4ED8</color>
+    <color name="adminPrimaryLight">#60A5FA</color>
+    <color name="adminSecondary">#14B8A6</color>
+    <color name="adminAccent">#06B6D4</color>
+
+    <color name="adminBackground">#F8FAFC</color>
+    <color name="adminSurface">#FFFFFF</color>
+    <color name="adminSurfaceLight">#F1F5F9</color>
+    <color name="adminCardBackground">#FFFFFF</color>
+
+    <color name="adminTextPrimary">#0F172A</color>
+    <color name="adminTextSecondary">#64748B</color>
+    <color name="adminTextHint">#94A3B8</color>
+
+    <color name="adminDivider">#E2E8F0</color>
+    <color name="adminRipple">#1A2563EB</color>
+
+    <color name="adminSuccess">#10B981</color>
+    <color name="adminWarning">#F59E0B</color>
+    <color name="adminError">#EF4444</color>
+    <color name="adminInfo">#3B82F6</color>
+
+    <color name="adminGradientStart">#1E3A8A</color>
+    <color name="adminGradientEnd">#2563EB</color>
+
+    <color name="adminHeroGradientStart">#1D4ED8</color>
+    <color name="adminHeroGradientEnd">#06B6D4</color>
+
+    <!-- Tinted Icon Backgrounds (Light Mode - 10/15% Opacity) -->
+    <color name="adminTintBlue">#1A3B82F6</color>
+    <color name="adminTintGreen">#1A10B981</color>
+    <color name="adminTintPurple">#1A8B5CF6</color>
+    <color name="adminTintOrange">#1AF59E0B</color>
+    <color name="adminTintRed">#1AEF4444</color>
+
+    <!-- Base Icon Colors to match tints -->
+    <color name="adminIconBlue">#3B82F6</color>
+    <color name="adminIconGreen">#10B981</color>
+    <color name="adminIconPurple">#8B5CF6</color>
+    <color name="adminIconOrange">#F59E0B</color>
+    <color name="adminIconRed">#EF4444</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

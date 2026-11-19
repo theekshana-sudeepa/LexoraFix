@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ========== Premium Color Palette (Deep Slate Dark Mode — Logo Blue-Teal) ========== -->
+
+    <!-- Primary — Lighter Blue for dark backgrounds -->
+    <color name="colorPrimary">#60A5FA</color>
+    <color name="colorPrimaryDark">#0F172A</color> <!-- Match Slate background for system bars -->
+    <color name="colorPrimaryLight">#93C5FD</color>
+    <color name="colorPrimaryVariant">#2563EB</color>
+
+    <!-- Secondary — Brighter Teal -->
+    <color name="colorSecondary">#5EEAD4</color>
+    <color name="colorSecondaryDark">#14B8A6</color>
+    <color name="colorSecondaryLight">#99F6E4</color>
+    <color name="colorSecondaryVariant">#14B8A6</color>
+
+    <!-- Accent -->
+    <color name="colorAccent">#60A5FA</color>
+
+    <!-- Surface & Background — Premium Deep Slate -->
+    <color name="colorBackground">#0F172A</color> <!-- Deep Slate Background -->
+    <color name="colorSurface">#1E293B</color>    <!-- Slightly lighter Slate for Cards -->
+    <color name="colorSurfaceVariant">#334155</color>
+    <color name="colorOnSurface">#F8FAFC</color>  <!-- Crisp White Text -->
+
+    <!-- Text Colors — Light on dark -->
+    <color name="textPrimary">#F8FAFC</color>
+    <color name="textSecondary">#94A3B8</color>
+    <color name="textHint">#64748B</color>
+    <color name="textOnPrimary">#FFFFFF</color>
+    <color name="textOnSecondary">#000000</color>
+
+    <!-- Status Colors — Slightly brighter for dark bg -->
+    <color name="colorSuccess">#34D399</color>
+    <color name="colorWarning">#FBBF24</color>
+    <color name="colorError">#F87171</color>
+    <color name="colorInfo">#60A5FA</color>
+    <color name="colorDivider">#334155</color>   <!-- Slate Border -->
+    <color name="splashBackground">#0F172A</color>
+
+    <!-- Gradient — Blue-teal on dark -->
+    <color name="gradientStart">#1E3A8A</color>
+    <color name="gradientCenter">#2563EB</color>
+    <color name="gradientEnd">#06B6D4</color>
+
+    <color name="gradientTealStart">#0D9488</color>
+    <color name="gradientTealEnd">#14B8A6</color>
+
+    <color name="gradientDarkStart">#0F172A</color>
+    <color name="gradientDarkEnd">#1E293B</color>
+
+    <!-- Card & Elevation — Dark Slate cards -->
+    <color name="cardBackground">#1E293B</color>
+    <color name="cardStroke">#334155</color>
+    <color name="divider">#334155</color>
+    <color name="ripple">#3360A5FA</color>
+
+    <!-- Standard -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Status Badge Colors — Brighter for dark bg -->
+    <color name="statusConfirmed">#60A5FA</color>
+    <color name="statusProcessing">#FBBF24</color>
+    <color name="statusShipped">#A78BFA</color>
+    <color name="statusDelivered">#34D399</color>
+    <color name="statusCancelled">#F87171</color>
+
+    <!-- Star -->
+    <color name="starActive">#FBBF24</color>
+    <color name="starInactive">#334155</color>
+
+    <!-- Shimmer -->
+    <color name="shimmerBase">#1E293B</color>
+    <color name="shimmerHighlight">#334155</color>
+</resources>
