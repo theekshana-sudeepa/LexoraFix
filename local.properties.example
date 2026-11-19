@@ -1,0 +1,18 @@
+# Copy this file to `local.properties` and fill in your local SDK path and credentials.
+# Never commit `local.properties` to version control.
+
+# Android SDK location (auto-populated by Android Studio)
+sdk.dir=/path/to/your/Android/sdk
+
+# PayHere Payment Gateway Credentials (https://www.payhere.lk/)
+payhere.merchant.id=YOUR_PAYHERE_MERCHANT_ID
+payhere.merchant.secret=YOUR_PAYHERE_MERCHANT_SECRET
+payhere.sandbox=true
+
+# Google Maps Android SDK API Key
+maps.api.key=YOUR_GOOGLE_MAPS_API_KEY
+
+# JavaMail / SMTP Transactional Email Credentials (e.g., Gmail App Password)
+email.sender.address=notifications@example.com
+email.app.password=YOUR_SMTP_APP_PASSWORD
+admin.email=admin@example.com

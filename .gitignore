@@ -1,0 +1,67 @@
+# =============================================================
+# Secrets, Credentials & Local Configuration
+# =============================================================
+local.properties
+.env
+.env.*
+google-services.json
+**/google-services.json
+*serviceAccount*.json
+**/serviceAccountKey.json
+.firebaserc
+*.jks
+*.keystore
+*.pem
+*.key
+
+# Explicitly allow sanitized example templates
+!*.example
+!.env.example
+!local.properties.example
+!.firebaserc.example
+!app/google-services.json.example
+!admin/google-services.json.example
+
+# =============================================================
+# Android / Gradle Build Artifacts
+# =============================================================
+.gradle/
+build/
+app/build/
+admin/build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# =============================================================
+# Firebase Cloud Functions (Node.js)
+# =============================================================
+functions/node_modules/
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+ui-debug.log
+
+# =============================================================
+# IDE & Operating System Metadata
+# =============================================================
+*.iml
+.idea/
+.vscode/
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# =============================================================
+# Local Portfolio & Coursework Artifacts (Non-Source)
+# =============================================================
+AssignmentSubmittedones/
+portfolio_assets/
+Project_Showcase.pdf
+Project_Hero_Hook.png
+generate_showcase_deck.py
